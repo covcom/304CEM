@@ -18,26 +18,6 @@ var fakeSlowNetwork;
   });
 }());
 
-function spawn(generatorFunc) {
-  function continuer(verb, arg) {
-    var result;
-    try {
-      result = generator[verb](arg);
-    } catch (err) {
-      return Promise.reject(err);
-    }
-    if (result.done) {
-      return result.value;
-    } else {
-      return Promise.resolve(result.value).then(callback, errback);
-    }
-  }
-  var generator = generatorFunc();
-  var callback = continuer.bind(continuer, "next");
-  var errback = continuer.bind(continuer, "throw");
-  return callback();
-}
-
 function wait(ms) {
   return new Promise(function(resolve) {
     setTimeout(resolve, ms);
@@ -83,36 +63,6 @@ function get(url) {
 
 function getJson(url) {
   return get(url).then(JSON.parse);
-}
-
-function getSync(url) {
-  var startTime = Date.now();
-  var waitTime = 3000 * Math.random() * fakeSlowNetwork;
-
-  var req = new XMLHttpRequest();
-  req.open('get', url, false);
-  req.send();
-
-  while (waitTime > Date.now() - startTime);
-
-  if (req.status == 200) {
-    return req.response;
-  }
-  else {
-    throw Error(req.statusText || "Request failed");
-  }
-}
-
-function getJsonSync(url) {
-  return JSON.parse(getSync(url));
-}
-
-function getJsonCallback(url, callback) {
-  getJson(url).then(function(response) {
-    callback(undefined, response);
-  }, function(err) {
-    callback(err);
-  });
 }
 
 var storyDiv = document.querySelector('.story');
