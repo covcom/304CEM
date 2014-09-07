@@ -17,6 +17,7 @@
   <script src="js/promise-2.0.4.min.js"></script>
   <script src="js/utils.js"></script>
   <script>
+    // alternative JSON url: 'https://gist.githubusercontent.com/c0lin/571d38b984d41b44aacf/raw/story.json'
     getJson('data/story.json').then(function(story) {
       addHtmlToPage(story.heading);
 
