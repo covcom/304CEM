@@ -14,14 +14,14 @@ The code applies promises in an increasingly efficient way.
 
 ## Files
 
-The `js` directory contains a shim for browsers not supporting ECMAScript6 natively, called `promise-2.0.4.min.js`. Non-promise related functionality is inside the `utils.js` file.
+The `js` directory contains a shim for browsers not supporting ECMAScript6 natively, called `promise-2.0.4.min.js`. Non-promise related functionality, i.e. the AJAX, is inside the `utils.js` file.
 
 The `data` directory contains the JSON data for this example. **NOTE:** read below if you are not using a web server.
 
 ## Running the Code
 
-Each of the HTML files contains a script calling `getJson()` on a URL. Due to browsers' [same origin security policy](http://en.wikipedia.org/wiki/Same-origin_policy) the code will fail if you are testing the page via a `file:\\` address in the browser, since the AJAX call will use `http:\\` and there is no way for the browser to know that your filesystem is OK with that.
+Each of the HTML files contains a script calling `getJson()` on a URL. Due to browsers' [same origin security policy](http://en.wikipedia.org/wiki/Same-origin_policy) the code will fail if you are testing the page via a `file:\\` address in the browser, since the AJAX call will use `http:\\` whereas the relative link should come from a `file:\\` as well.
 
 In other words, to use the JSON files in the `data` directory you will need to serve the page from a web server and access the HTML files via `http(s):\\`.
 
-Alternatively: swap in the suggested Github Gist URLs found in the comments within the HTML files, which allow cross domain requests.
+_Alternatively_: swap in the suggested Github Gist URLs found in the comments within the HTML files, which allow cross domain requests.
