@@ -85,41 +85,22 @@ Interacting with the browser, storing and manipulating JSON, and communicating w
 
 Once you are up to speed with the basics of JavaScript, you will want to begin using it to interact with _events_ and browser _documents_. Often this will involve storing or updating data in the browser or on a remote server.
 
-**hfjs/**
-
-* chapter9/event.html
-* chapter9/image.html
-* chapter9/imageReblur.html
-* chapter9/map.html
-* chapter9/ticktock.html
-* extras/timer.html
-* appendix/JSON.html
-* appendix/events.html
-
-#### Advanced
-
-* todomvc DOM and event wrappers in `vanilla_js/js/helpers.js`
-
 #### Resources
 
-[MDN AJAX Tutorial](https://developer.mozilla.org/en-US/docs/AJAX/Getting_Started)
+[MDN AJAX Tutorial][]
 
 ## Week 5 - JavaScript Promises
 
 Using JavaScript promises to build robust asynchronous code.
 
-**html5rocks/**
-
-* ajax_async.html
-* ajax_async_all.html
-* ajax_async_best.html
-
 #### Resources
 
-[HTML5 Rocks Introduction to Promises](http://www.html5rocks.com/en/tutorials/es6/promises/)
+[Introduction to Promises][]
 
 -----
 
+[Introduction to Promises]: http://www.html5rocks.com/en/tutorials/es6/promises/
+[MDN AJAX Tutorial]: https://developer.mozilla.org/en-US/docs/AJAX/Getting_Started
 [MDN JavaScript]: https://developer.mozilla.org/en/docs/Web/JavaScript
 [MDN web tutorial list]: https://developer.mozilla.org/en-US/docs/Web/Tutorials
 [Learn javascript properly]: http://javascriptissexy.com/how-to-learn-javascript-properly/
