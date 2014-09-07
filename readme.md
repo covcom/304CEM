@@ -18,7 +18,6 @@ This repository contains lab code for weeks 1 to 5 of _305CDE Developing the Mod
 4. The DOM and AJAX
 5. Using promises for clean asynchronous code
 
-
 ## Week 1 - Basics
 
 This week covers the basics of JS and how to get up and running with your development. Code is fairly minimal while you get up to speed.
