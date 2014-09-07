@@ -1,4 +1,4 @@
-// This script defines an object 'U' with some useful functions
+// This script defines an object 'U' with some useful DOM functions
 // In particular it adds a DOM selector '$' like that in jQuery
 // It also allows setting text of an element, and adding/removing event listeners
 

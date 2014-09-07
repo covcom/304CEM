@@ -96,11 +96,6 @@ Once you are up to speed with the basics of JavaScript, you will want to begin u
 * appendix/JSON.html
 * appendix/events.html
 
-**modern_js/**
-
-* ch12/js/utilities.js
-
-
 #### Advanced
 
 * todomvc DOM and event wrappers in `vanilla_js/js/helpers.js`
@@ -131,3 +126,4 @@ Using JavaScript promises to build robust asynchronous code.
 [Javascript patterns collection]: http://shichuan.github.io/javascript-patterns/
 [Eloquent javascript]: http://eloquentjavascript.net/
 [Superhero JS]: http://superherojs.com/
+[You might not need jQuery]: http://youmightnotneedjquery.com/
