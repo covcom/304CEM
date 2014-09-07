@@ -20,8 +20,10 @@ The `data` directory contains the JSON data for this example. **NOTE:** read bel
 
 ## Running the Code
 
-Each of the HTML files contains a script calling `getJson()` on a URL. Due to browsers' [same origin security policy](http://en.wikipedia.org/wiki/Same-origin_policy) the code will fail if you are testing the page via a `file:\\` address in the browser, since the AJAX call will use `http:\\` whereas the relative link should come from a `file:\\` as well.
+Due to browsers' security policies the code will fail if you are testing the page via a `file:\\` address in the browser, since [cross origin requests](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) are only supported with `http(s):\\` and the relative URL supplied trips up the check.
 
 In other words, to use the JSON files in the `data` directory you will need to serve the page from a web server and access the HTML files via `http(s):\\`.
 
-_Alternatively_: swap in the suggested Github Gist URLs found in the comments within the HTML files, which allow cross domain requests.
+### _Alternatively_
+
+Swap in the suggested Github Gist URLs found in the comments within the HTML files, which will allow direct access to the JSON files from the web.
