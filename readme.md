@@ -100,13 +100,6 @@ Once you are up to speed with the basics of JavaScript, you will want to begin u
 
 * ch12/js/utilities.js
 
-**misc/**
-
-* ajax.html
-
-**html5rocks/**
-
-* ajax_sync.html
 
 #### Advanced
 
