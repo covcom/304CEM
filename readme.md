@@ -18,9 +18,6 @@ This repository contains lab code for weeks 1 to 5 of _305CDE Developing the Mod
 4. The DOM and AJAX
 5. Using promises for clean asynchronous code
 
-### Resources
-
-[Mozilla Developer Network](https://developer.mozilla.org/en/docs/Web/JavaScript)
 
 ## Week 1 - Basics
 
@@ -135,7 +132,8 @@ Using JavaScript promises to build robust asynchronous code.
 
 -----
 
-[MDN tutorial list]: https://developer.mozilla.org/en-US/docs/Web/Tutorials
+[MDN JavaScript]: https://developer.mozilla.org/en/docs/Web/JavaScript
+[MDN web tutorial list]: https://developer.mozilla.org/en-US/docs/Web/Tutorials
 [Learn javascript properly]: http://javascriptissexy.com/how-to-learn-javascript-properly/
 [Javascript patterns collection]: http://shichuan.github.io/javascript-patterns/
 [Eloquent javascript]: http://eloquentjavascript.net/
