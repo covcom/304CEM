@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>A Minimal jQuery Replacement</title>
+</head>
+<body>
+    <button id="hello">Hello All The Time</button>
+    <button id="hi">Hello Once</button>
+    <button id="write">Write Something</button>
+	<p id="output">Click button 3 to set this text.</p>
+    <script src="js/dom_utils.js"></script>
+    <script>
+        // here we will use the 'U' object defined in the utils script file
+
+        // first select the hello button
+        // then add a click listener
+        var helloButton = U.$('hello');
+        var clickAction = function() { alert('Well HELLO!'); };
+        U.addEvent(helloButton, 'click', clickAction);
+        
+        // this one removes the listener after a click
+        var helloOnce = U.$('hi');
+        var alertOnce = function() {
+            alert('Well HELLO!');
+            U.removeEvent(helloOnce, 'click', alertOnce);
+        };
+        U.addEvent(helloOnce, 'click', alertOnce);
+
+        var writeText = U.$('write');
+        U.addEvent(writeText, 'click', function() {
+            U.setText('output', "Writing some new text for you.");
+        });
+    </script>
+</body>
+</html>
