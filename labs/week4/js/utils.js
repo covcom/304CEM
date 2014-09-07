@@ -1,5 +1,7 @@
 var fakeSlowNetwork;
 
+// you can ignore this immediately-executing function
+// it is used to simulate a slow network to show you how AJAX and Promises work
 (function() {
   var lsKey = 'fake-slow-network';
   var networkFakeDiv = document.querySelector('.network-fake');
@@ -36,14 +38,6 @@ function getSync(url) {
 
 function getJsonSync(url) {
   return JSON.parse(getSync(url));
-}
-
-function getJsonCallback(url, callback) {
-  getJson(url).then(function(response) {
-    callback(undefined, response);
-  }, function(err) {
-    callback(err);
-  });
 }
 
 var storyDiv = document.querySelector('.story');

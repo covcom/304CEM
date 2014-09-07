@@ -1,5 +1,7 @@
 var fakeSlowNetwork;
 
+// you can ignore this immediately-executing function
+// it is used to simulate a slow network to show you how AJAX and Promises work
 (function() {
   var lsKey = 'fake-slow-network';
   var networkFakeDiv = document.querySelector('.network-fake');
