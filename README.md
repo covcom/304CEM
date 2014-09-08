@@ -38,17 +38,10 @@ Interacting with the browser, storing and manipulating JSON, and communicating w
 
 Once you are up to speed with the basics of JavaScript, you will want to begin using it to interact with _events_ and browser _documents_. Often this will involve storing or updating data in the browser or on a remote server.
 
-#### Resources
-
-[MDN AJAX Tutorial][]
-
 ## Week 5 - JavaScript Promises
 
 Using JavaScript promises to build robust asynchronous code.
 
-#### Resources
-
-[Introduction to Promises][]
 
 -----
 
