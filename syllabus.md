@@ -1,6 +1,4 @@
-% 305CDE Weeks 1-5
-% Javascript Introduction / Refresher
-
+# Indicative content for 305CDE lectures/labs
 
 Part 1 -- Fundamentals
 ======================
@@ -24,12 +22,8 @@ Week 1 -- JS Dev Basics
     + namespacing
     + immediate functions and immediate objects
 
-* https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
-    - concise review/introduction to all key aspects of JS
-
-
-Week 2 -- JS Objects
---------------------
+Week 2 -- JS Objects and Functions 1
+------------------------------------
 
 - Arrays and their built-in methods
 - Statements: while, do ... while, for, for ... in

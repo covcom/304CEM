@@ -22,12 +22,6 @@ This repository contains lab code for weeks 1 to 5 of _305CDE Developing the Mod
 
 This week covers the basics of JS and how to get up and running with your development. Code is fairly minimal while you get up to speed.
 
-**hfjs.git/**
-
-* chapter1/index.html
-* chapter2/battleship.*
-* chapter4/icecream.html
-
 ## Week 2 - Objects and Functions Part 1
 
 This week introduces the two key data types in JS: objects and functions. Get used to their basic syntax and common use cases.
