@@ -53,21 +53,12 @@ Objects and functions are extremely powerful. This week explores some of the mor
 
 **hfjs.git/**
 
-* chapter10/addN.html
-* chapter10/aloha.html
-* chapter10/cola.html
-* chapter10/plane.html
-* chapter11/chapter9WithClosure/imageClosure.html
-* chapter11/counterClosure.html
-* chapter11/divClosure.html
-* chapter12/cadi.html
-* chapter12/carAndDog.html
-* chapter12/coffee.html
+* chapter10/plane.html ** first class functions
+* chapter11/divClosure.html ** closures
+* chapter12/coffee.html ** functions for "JS classes"
 
-* chapter13/cliche.html
-* chapter13/dog5.html
-* chapter13/palindrome.html
-* chapter13/showdogsCleanup.html
+* chapter13/dog5.html ** prototype inheritance
+* chapter13/palindrome.html ** prototype extensions of JS types
 
 Advanced (explore how these files work together):
 

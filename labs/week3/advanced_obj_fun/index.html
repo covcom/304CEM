@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" data-framework="javascript">
+	<head>
+		<meta charset="utf-8">
+		<title>TodoApp - 305cde</title>
+		<link rel="stylesheet" href="css/base.css">
+	</head>
+	<body>
+		<!-- section contains the application -->
+		<section id="todoapp">
+
+			<!-- header allows new todos to be input -->
+			<header id="header">
+				<h1>todos</h1>
+				<input id="new-todo" placeholder="What needs to be done?" autofocus>
+			</header>
+
+			<!-- main section contains the unordered list of todo items -->
+			<section id="main">
+				<input id="toggle-all" type="checkbox">
+				<label for="toggle-all">Mark all as complete</label>
+				<ul id="todo-list"></ul>
+			</section>
+
+			<!-- footer contains filter links for active / completed todos -->
+			<footer id="footer">
+				<span id="todo-count"></span>
+				<ul id="filters">
+					<li>
+						<a href="#/" class="selected">All</a>
+					</li>
+					<li>
+						<a href="#/active">Active</a>
+					</li>
+					<li>
+						<a href="#/completed">Completed</a>
+					</li>
+				</ul>
+				<button id="clear-completed">Clear completed</button>
+			</footer>
+		</section>
+
+		<!-- page footer with information -->
+		<footer id="info">
+			<p>Double-click to edit a todo</p>
+		</footer>
+
+		<!-- load app scripts after everything else -->
+		<!-- for advanced functions and objects, have a look at 'store.js', 'model.js', and 'app.js' together -->
+		<script src="js/base.js"></script>
+		<script src="js/helpers.js"></script>
+		<script src="js/store.js"></script>
+		<script src="js/model.js"></script>
+		<script src="js/template.js"></script>
+		<script src="js/view.js"></script>
+		<script src="js/controller.js"></script>
+		<script src="js/app.js"></script>
+	</body>
+</html>
