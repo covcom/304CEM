@@ -32,42 +32,11 @@ This week covers the basics of JS and how to get up and running with your develo
 
 This week introduces the two key data types in JS: objects and functions. Get used to their basic syntax and common use cases.
 
-**hfjs.git/**
-
-* chapter3/thingamajig.html
-* chapter5/autoomatic.html
-* chapter5/carWithFuel.html
-* chapter5/prequal.html
-* chapter5/secret.html
-* chapter8/battleship.*
-
-**modern_js/**
-
-* ch14/tasks.html
-
 ## Week 3 - Objects and Functions Part 2
 
 More advanced uses of objects and functions in JS.
 
 Objects and functions are extremely powerful. This week explores some of the more advanced ways you can use both of them.
-
-**hfjs.git/**
-
-* chapter10/plane.html ** first class functions
-* chapter11/divClosure.html ** closures
-* chapter12/coffee.html ** functions for "JS classes"
-
-* chapter13/dog5.html ** prototype inheritance
-* chapter13/palindrome.html ** prototype extensions of JS types
-
-Advanced (explore how these files work together):
-
-**vanilla_js/** (model component of MVC)
-
-* index.html
-* js/store.js
-* js/model.js
-* js/app.js
 
 ## Week 4 - The DOM and AJAX
 
