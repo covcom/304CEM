@@ -18,6 +18,19 @@ This repository contains lab code for weeks 1 to 5 of _305CDE Developing the Mod
 4. The DOM and AJAX
 5. Using promises for clean asynchronous code
 
+### Lab Format
+
+Each 2 hour lab session will be divided into the following sequence of "mini sessions" of approximately 30 minutes each.
+
+1. Completion/review of the previous weeks' programming challenge
+	- you will receive formative feedback from your class tutors on what you have done / questions you have
+	- save or commit each completed challenge for submission at the end of the term
+2. Step-by-step worksheet introducing new code and concepts
+3. Short slide session introducing new concepts/theory
+	- used in the worksheet you just completed
+	- needed to complete the next programming challenge
+4. Programming challenge started (to be completed by next week)
+
 ## Week 1 - Basics
 
 This week covers the basics of JS and how to get up and running with your development. Code is fairly minimal while you get up to speed.
