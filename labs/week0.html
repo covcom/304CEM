@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Introduction to Labs 2014/15" />
+  <title>305CDE Developing the Modern Web 2</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">305CDE Developing the Modern Web 2</h1>
+  <p class="author">
+Introduction to Labs 2014/15
+  </p>
+  <p class="date"><script type="text/javascript">
+<!--
+h='&#x63;&#x6f;&#118;&#x65;&#110;&#116;&#114;&#x79;&#46;&#x61;&#x63;&#46;&#x75;&#x6b;';a='&#64;';n='&#x63;&#x6f;&#108;&#x69;&#110;&#46;&#x73;&#116;&#x65;&#112;&#104;&#x65;&#110;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+'Colin Stephen'+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#x43;&#x6f;&#108;&#x69;&#110;&#32;&#x53;&#116;&#x65;&#112;&#104;&#x65;&#110;&#32;&#40;&#x63;&#x6f;&#108;&#x69;&#110;&#46;&#x73;&#116;&#x65;&#112;&#104;&#x65;&#110;&#32;&#x61;&#116;&#32;&#x63;&#x6f;&#118;&#x65;&#110;&#116;&#114;&#x79;&#32;&#100;&#x6f;&#116;&#32;&#x61;&#x63;&#32;&#100;&#x6f;&#116;&#32;&#x75;&#x6b;&#x29;</noscript> and <script type="text/javascript">
+<!--
+h='&#x63;&#x6f;&#118;&#x65;&#110;&#116;&#114;&#x79;&#46;&#x61;&#x63;&#46;&#x75;&#x6b;';a='&#64;';n='&#x61;&#98;&#x37;&#56;&#x39;&#54;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+'Jianhua Yang'+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#74;&#x69;&#x61;&#110;&#104;&#x75;&#x61;&#32;&#x59;&#x61;&#110;&#x67;&#32;&#40;&#x61;&#98;&#x37;&#56;&#x39;&#54;&#32;&#x61;&#116;&#32;&#x63;&#x6f;&#118;&#x65;&#110;&#116;&#114;&#x79;&#32;&#100;&#x6f;&#116;&#32;&#x61;&#x63;&#32;&#100;&#x6f;&#116;&#32;&#x75;&#x6b;&#x29;</noscript></p>
+</div>
+<div id="schedule" class="slide section level1">
+<h1>Schedule</h1>
+<p>Lectures</p>
+<ul>
+<li>Tuesday 1-2pm, ECG-27</li>
+</ul>
+<p>Labs (one of)</p>
+<ul>
+<li>Monday 11am-1pm, ECG-14</li>
+<li>Wednesday 9-11am, ECG-14</li>
+</ul>
+</div>
+<div id="today" class="slide section level1">
+<h1>Today</h1>
+<ul>
+<li>15 minute introduction</li>
+<li>No lab work until next week!</li>
+</ul>
+</div>
+<div id="the-year-ahead---content" class="slide section level1">
+<h1>The Year Ahead - Content</h1>
+<p>Split in to four parts:</p>
+<ol style="list-style-type: decimal">
+<li>JavaScript</li>
+<li>JavaScript</li>
+<li>JavaScript</li>
+<li>JavaScript</li>
+</ol>
+</div>
+<div id="the-year-ahead---content-1" class="slide section level1">
+<h1>The Year Ahead - Content</h1>
+<p>In more detail:</p>
+<ol style="list-style-type: decimal">
+<li>Fundamentals of the JavaScript language (5 Weeks)</li>
+<li>Building client-side applications with AngularJS (6 Weeks)</li>
+<li>Designing server-side RESTful services (5 Weeks)</li>
+<li>Building server-side RESTful services with NodeJS (6 Weeks)</li>
+</ol>
+</div>
+<div id="the-year-ahead---assessment" class="slide section level1">
+<h1>The Year Ahead - Assessment</h1>
+<p>No exam.</p>
+<p>Two coursework assessments (one each term):</p>
+<ol style="list-style-type: decimal">
+<li>Individual 40%
+<ul>
+<li>Portfolio of code selected from 10 weekly challenges</li>
+<li>Video demonstrations of your code</li>
+</ul></li>
+<li>Individual 20%, Group 40%
+<ul>
+<li>RESTful API business pitch</li>
+<li>API design documentation</li>
+<li>Server-side code that implements your API</li>
+<li>Individual reflective report</li>
+</ul></li>
+</ol>
+</div>
+<div id="weekly-lab-format" class="slide section level1">
+<h1>Weekly Lab Format</h1>
+<p>What will we do in labs??</p>
+<p>2 hours split in to four parts:</p>
+<ol style="list-style-type: decimal">
+<li>JavaScript</li>
+<li>JavaScript</li>
+<li>JavaScript</li>
+<li>JavaScript</li>
+</ol>
+</div>
+<div id="weekly-lab-format-1" class="slide section level1">
+<h1>Weekly Lab Format</h1>
+<p>In more detail: WORKSHEETS + CHALLENGES</p>
+<ol style="list-style-type: decimal">
+<li>Review previous week's challenge
+<ul>
+<li>get formative feedback from tutors</li>
+<li>save or commit your solution to git version control</li>
+</ul></li>
+<li>New worksheet
+<ul>
+<li>work individually</li>
+</ul></li>
+<li>Presentation by tutors on <em>concepts and theory</em>
+<ul>
+<li>understand the worksheet you just did</li>
+<li>learn how to do the next challenge</li>
+</ul></li>
+<li>Next programming challenge issued</li>
+</ol>
+</div>
+<div id="get-prepared" class="slide section level1">
+<h1>Get Prepared</h1>
+<p>Before next week:</p>
+<ol style="list-style-type: decimal">
+<li>Get ready for version control with Git
+<ul>
+<li>Sign up for a free GitLab account at <a href="http://gitlab.com">http://gitlab.com</a></li>
+</ul></li>
+<li>Install development tools on your computer
+<ul>
+<li>Git client
+<ul>
+<li><a href="https://gitlab.com/c0lin/305cde">SourceTree</a> (Windows and OSX)</li>
+<li><a href="http://git-scm.com/download/linux">GIT-SCM</a> (Linux)</li>
+</ul></li>
+<li>Code editor
+<ul>
+<li><a href="http://brackets.io/?lang=en">Brackets</a></li>
+</ul></li>
+<li>Browser
+<ul>
+<li><a href="http://www.google.co.uk/intl/en_uk/chrome/browser/index.html#eula">Google Chrome</a></li>
+</ul></li>
+</ul></li>
+</ol>
+</div>
+<div id="get-inspired" class="slide section level1">
+<h1>Get Inspired</h1>
+<p>Before next week:</p>
+<ul>
+<li>Take a look at some badass JS on <a href="http://badassjs.com">http://badassjs.com</a>
+<ul>
+<li>control 3D holograms with hand gestures</li>
+<li>make voice and video calls in the browser</li>
+<li>do peer to peer networking in the browser</li>
+<li>collaborate on 3D designs</li>
+<li>visualise complex mathematics</li>
+</ul></li>
+</ul>
+<p>All of these and much more can be done with pure JavaScript!</p>
+</div>
+<div id="resources" class="slide section level1">
+<h1>Resources</h1>
+<ul>
+<li>All Slides, code, and documentation for the labs
+<ul>
+<li><a href="https://gitlab.com/c0lin/305cde">https://gitlab.com/c0lin/305cde</a></li>
+</ul></li>
+<li>Become a Git Guru
+<ul>
+<li><a href="https://www.atlassian.com/git/tutorials">https://www.atlassian.com/git/tutorials</a></li>
+</ul></li>
+</ul>
+</div>
+</body>
+</html>
