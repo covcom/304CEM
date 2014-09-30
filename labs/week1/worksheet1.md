@@ -165,7 +165,7 @@ Try the Brackets editor 'Live Preview' functionality as follows:
 * Load up `basic_math.html` in the editor and you will see a very simple HTML form
 * To the right hand side of the editor is a lightning bolt icon, click it to open a live preview of the page
 
-![Live preview of web page in Brackets editor](static/live-preview/png)
+![Live preview of web page in Brackets editor](static/live-preview.png)
 
 * The page uses `js/shopping.js` so load that up next to take a look at the code
 
