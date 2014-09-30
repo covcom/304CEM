@@ -17,7 +17,7 @@
 <li>Register for a user account on <a href="https://gitlab.com">GitLab</a></li>
 <li>Use Atlassian SourceTree to clone the 305CDE repository to your local machine / network drive</li>
 <li>Create a new repository for your solution to the first weekly challenge</li>
-<li>Clone it locally and test it works: modify, add, commit, push</li>
+<li>Test it works: modify, add, commit, push</li>
 <li>Get the first JS example running in your browser and try to understand the code</li>
 <li>Use the Chrome browser developer tools to fix bugs introduced in the second JS example</li>
 <li>Use the Brackets JSLint feedback to improve the code in the third JS example</li>
@@ -28,15 +28,81 @@
 <div class="figure">
 <img src="static/welcome-to-gitlab.png" alt="GitLab&#39;s dashboard for new users" /><p class="caption">GitLab's dashboard for new users</p>
 </div>
-<p>If you have never used git version control before, then read the quickstart <a href="http://rogerdudler.github.io/git-guide/">simple guide to git</a>. You can then <a href="https://www.atlassian.com/git/tutorials/">become a git guru</a>.</p>
+<p>If you have never used git version control before, then read the quickstart <a href="http://rogerdudler.github.io/git-guide/">simple guide to git</a>. You can then <a href="https://www.atlassian.com/git/tutorials/">become a git guru</a> in your own time between labs.</p>
 <h3 id="use-sourcetree-to-clone-the-305cde-repository">Use SourceTree to clone the 305CDE repository</h3>
 <p>Once you confirm your GitLab registration, you will be able to clone the 305CDE repository containing the materials for this module.</p>
 <p>There are many git clients to choose from, and we will be using the Atlassian <a href="http://www.sourcetreeapp.com/">SourceTree</a> application in labs (Windows or OSX). If you are using Linux on your own computer, there are several ways to install a <a href="http://git-scm.com/download/linux">command line client</a> or a <a href="http://git-scm.com/downloads/guis">gui client</a>.</p>
 <div class="figure">
 <img src="static/sourcetree.png" alt="SourceTree client running on Windows" /><p class="caption">SourceTree client running on Windows</p>
 </div>
-<blockquote>
-<p>Use SourceTree to clone the repository <code>https://gitlab.com/c0lin/305cde.git</code> to a local folder on your machine.</p>
-</blockquote>
+<h4 id="cloning-the-repository">Cloning the repository</h4>
+<p>If/when you are asked for a username/password, use your GitLab credentials.</p>
+<ul>
+<li>In SourceTree click on 'Clone/New'.</li>
+<li>In the URL field enter <code>https://gitlab.com/c0lin/305cde.git</code>.</li>
+<li>Change the destination path to a folder you will have access to later (such as a network drive).
+<ul>
+<li>The folder must be empty.</li>
+</ul></li>
+<li>Leave the bookmark box ticked.</li>
+<li>Click 'Clone'.</li>
+</ul>
+<p>You now have local copies of all the materials for 305CDE labs available so far, including this worksheet. You will be able to pull any additions or changes made in future to update the files you just created.</p>
+<h3 id="create-a-new-repository-for-challenge-1">Create a new repository for <em>Challenge 1</em></h3>
+<p>There are two ways to start new repositories, depending on whether you already have local files to commit or not. If you are starting from scratch, then you can just create a new project in GitLab and clone it to a local folder, as in the last task. If you already have files to commit you can initialise your repository locally and push it to an empty remote project.</p>
+<p>Either way, you need to create a new project on GitLab.</p>
+<ul>
+<li>On the GitLab dashboard screen, click &quot;New project&quot; or &quot;Add project&quot;</li>
+<li>Give your project a reasonable name such as &quot;305CDE Challenge 1&quot;</li>
+<li>Once created you will be presented with the project dashboard containing the repository URL</li>
+</ul>
+<div class="figure">
+<img src="static/new-git-repo.png" alt="New GitLab repository URL" /><p class="caption">New GitLab repository URL</p>
+</div>
+<p>Next you will need to clone the repo locally, if you are starting the project from scratch, or initialise a repo locally and push it to the one on GitLab you just created. We will step through the latter scenario, since it is more common to have some files you want to commit already.</p>
+<ul>
+<li>Create a new folder <code>challenge1</code> somewhere and add a test <code>test.md</code> file to it with some text</li>
+<li>In SourceTree click on 'Clone/New'</li>
+<li>Change to the 'Create new repository' tab</li>
+<li>Browse to the <code>challenge1</code> folder (the new root of your repository/project)</li>
+<li>Click 'Create' to set up the repo locally</li>
+</ul>
+<p>Next you wish to push the local files up to your remote (empty) project on GitLab, but SourceTree does not know about this remote project yet. Add the remote repo to the local one you just set up:</p>
+<ul>
+<li>In SourceTree click on 'Settings' at the top right</li>
+<li>In the 'Remotes' tab click 'Add'</li>
+<li>Tick the 'Default remote' box</li>
+<li>Paste the URL to your empty GitLab repository (don't forget the <code>.git</code> at the end)</li>
+<li>Click 'OK' to add the new origin to your list of remotes</li>
+</ul>
+<div class="figure">
+<img src="static/remote-origin.png" alt="Origin added to list of remotes" /><p class="caption">Origin added to list of remotes</p>
+</div>
+<ul>
+<li>Click on 'Add/Remove' to stage all of the files in your local repo</li>
+<li>Add a commit message at the bottom of the screen and click 'Commit'
+<ul>
+<li>If you get an error you may need to specify commit information, since commits require valid emails</li>
+<li>Go to 'Settings &gt; Advanced', untick 'Use global user settings' and add your name and an email address</li>
+<li>Committing should now work</li>
+</ul></li>
+<li>Next click 'Push' to send the commit to your GitLab project</li>
+<li>You want to push to repository 'origin' at the URL of your project</li>
+<li>Tick the 'master' branch tickbox then click 'OK'</li>
+</ul>
+<p>Your local repository should now be pushed up to the web. Refresh the GitLab project page to check that it worked.</p>
+<h3 id="test-versioning-for-challenge-1">Test versioning for <em>Challenge 1</em></h3>
+<p>Play around with changing the content of your test file, adding new files and folders to the root of your repository, staging, committing, and pushing the changes.</p>
+<p>In particular ensure you become happy with the following principles of version control for future weeks, in rough order of importance:</p>
+<ol style="list-style-type: decimal">
+<li>Add, Remove, and Add/Remove</li>
+<li>Commit</li>
+<li>Push</li>
+<li>Checkout</li>
+<li>Pull</li>
+<li>Stash</li>
+<li>Discard</li>
+</ol>
+<p>It is hard to completely mess up and lose work in a git repository as it remembers everything you ever commit including deleted files. This works in your favour if you follow the mantra &quot;commit early, and commit often&quot;.</p>
 </body>
 </html>
