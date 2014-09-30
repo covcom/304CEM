@@ -24,9 +24,11 @@ Aim for around 5 minutes per task.
 
 Tutorials
 
-* [Mozilla JS tutorial][]
+* [Mozilla JS tutorial][]: _A FANTASTIC, comprehensive, concise resource for learning JS quickly._
 * [Simple guide to git][]
 * [Become a git guru][]
+* [How to use Chrome Developer Tools][Dev Tools]
+* [Debugging JavaScript][Debugging]
 
 Web Services
 
@@ -49,7 +51,8 @@ Downloads
 [Git with GUI]: http://git-scm.com/downloads/guis
 [Brackets]: http://brackets.io/?lang=en
 [Mozilla JS tutorial]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
-
+[Dev Tools]: https://developer.chrome.com/devtools
+[Debugging]: https://developer.chrome.com/devtools/docs/javascript-debugging
 
 ## Step-by-Step
 
@@ -201,6 +204,8 @@ To follow this example, you will use the Chrome Developer Tools.
 
 #### Basic debugging
 
+For a much more detailed description read Google's [debugging JavaScript][Debugging] guide.
+
 Sometimes your attempts to change the code will introduce bugs. A bug is usually signalled by some kind of error message, usually RED in colour, appearing on the console. If you find a bug has appeared in your code do the following to help track it down:
 
 * Note the line number that caused the problem, if any is mentioned on the console output (sometimes it is not)
@@ -215,3 +220,23 @@ If your code is always perfect(!) then please introduce an intentional syntax er
 
 ### 7. JSLint Code Checking
 
+Writing clean, readable, and error-free high-quality code is essential to maintainability. Therefore most languages now have automated syntax and style "checkers" called [linters](http://en.wikipedia.org/wiki/Lint_(software)) that code editors and IDEs can use to alert potential problems to programmers immediately, when they are writing their code.
+
+One such linter for JavaScript is called [JSLint](http://www.jslint.com/lint.html), and it is built in to the Brackets editor to help you improve any code you work with.
+
+* Load up `switch_case.html` in Brackets
+* Click the yellow exclamation symbol at the bottom right of the editor
+* This loads up any warning issued by the linter
+* Click any warning to go to the appropriate line and correct it
+
+Note that many of the highlighted issues are about things like indentation, and consistency of style, as well as syntax. That is because linters take readable code very seriously, and so should you! You should aim to have no JSLint warnings when you write your JavaScript or other programming code.
+
+* Go to the live preview of the `switch_case.html` file to see what it does
+* Load the `js/membership.js` file and follow the code to determine how it works
+
+#### Test your understanding
+
+Once you have corrected for any JSLint errors found by the code linter, do the following.
+
+1. Add a payment method field to the form with options for "Debit Card, Credit Card, Cash, Gold Bullion"
+2. Add additional switch-case processing in the JavaScript to apply a 2% charge for Credit Card, and a 5% discount for Gold Bullion
