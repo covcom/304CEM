@@ -33,7 +33,7 @@ Implement a browser-based calculator.
 	* The calculator prevents invalid calculations being input.
 
 * The calculator has a "batch mode":
-	* It allows you to enter multiple calculations and queue them by pressing "Q" instead of "=".
+	* It allows you to enter multiple calculations and queue them by pressing a new button "Q" on the calculator instead of "=".
 	* All queued calculations are shown on the page.
 	* When the user presses "=" all the calculations are performed and the results ouput to the page.
 
