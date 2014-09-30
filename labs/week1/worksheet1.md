@@ -184,7 +184,7 @@ You will see a simple JavaScript function that interacts with the form and does 
 
 ### 6. Chrome Developer Tools
 
-To follow this example, you will use the Chrome Developer Tools.
+To follow this example, you will use the [Chrome Developer Tools][Dev Tools].
 
 #### Console output
 
