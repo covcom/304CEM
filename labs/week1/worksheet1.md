@@ -215,6 +215,8 @@ Sometimes your attempts to change the code will introduce bugs. A bug is usually
 * On the information tab on the right hand side you will see details about the call stack and currently scoped variables to help you pinpoint the state of your program
 * Use the "Step over / into / out of" buttons to execute your JS line by line and keep an eye on the stack and scope to catch anything unexpected
 
+![Chrome development tools with breakpoints set](static/dev-tools.png)
+
 If your code is always perfect(!) then please introduce an intentional syntax error in `contact.js` to practice the procedure above.
 
 
@@ -228,6 +230,8 @@ One such linter for JavaScript is called [JSLint](http://www.jslint.com/lint.htm
 * Click the yellow exclamation symbol at the bottom right of the editor
 * This loads up any warning issued by the linter
 * Click any warning to go to the appropriate line and correct it
+
+![JSLint integrated in to Brackets editor](static/jslint.png)
 
 Note that many of the highlighted issues are about things like indentation, and consistency of style, as well as syntax. That is because linters take readable code very seriously, and so should you! You should aim to have no JSLint warnings when you write your JavaScript or other programming code.
 
