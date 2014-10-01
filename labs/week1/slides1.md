@@ -47,13 +47,11 @@ var name = "simon";
 
 # Operators
 
-Operate on expressions
-
 * Numeric: `+`, `-`, `*`, `/` and `%` (remainder)
 * Assignment: `=`
 	* Set the value of a variable as in `x = "hi"`
 * Increment/decrement with assignment: `+=`, `-=`, `++`, `--`
-* Concatenate: `+` between strings as in `"hello" + "world"
+* Concatenate: `+` between strings as in `"hello" + "world"`
 * Comparison: `<`, `>`, `<=`, `>=`, `==`, `===`
 * Negation: `!=`, `!==`
 * Logical: `&&`, `||`
