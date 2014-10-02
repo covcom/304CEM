@@ -1,5 +1,6 @@
 # Indicative content for 305CDE lectures/labs
 
+
 Part 1 -- Fundamentals
 ======================
 
