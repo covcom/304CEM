@@ -8,7 +8,7 @@ Colin Stephen ([email](mailto:colin.stephen@coventry.ac.uk))
 
 ### About
 
-This repository contains lab code for weeks 1 to 5 of _305CDE Developing the Modern Web 2_ (full stack JavaScript with Node and Angular) at Coventry University.
+This repository contains lab code for weeks 1 to 5 of _305CDE Developing the Modern Web 2_ (full stack JavaScript with Node and Angular) at Coventry University. If you notice any problems with the material or code, or anything is unclear or missing, then please [raise an issue](https://gitlab.com/c0lin/305cde/issues) directly on this project.
 
 ## Weekly Schedule
 
