@@ -85,14 +85,14 @@ var flight = {
 
 Object values can be retrieved in two ways: 
 
-1. Use `[ ]` around a string with the name to retrieve as a suffix to the object name:
+* Use `[ ]` around a string with the name to retrieve as a suffix to the object name:
 
 ```javascript
 physicist["first-name"]  // returns "Albert"
 flight["number"]  // returns 882
 ```
 
-2. If the name is a legal JS name (and not a reserved word) then the `.` notation can also be used:
+* If the name is a legal JS name (and not a reserved word) then the `.` notation can also be used:
 
 ```javascript
 flight.airline  // returns 882
@@ -137,14 +137,14 @@ flight.capacity && flight.capacity.minimum  // undefined
 
 Object values are set in two ways:
 
-1. During object creation, unless your object is empty `{}`:
+* During object creation, unless your object is empty `{}`:
 
 ```javascript
 var employee = {name: "Colin"};
 employee.name  // returns "Colin"
 ```
 
-2. By assignment. This sets a new value if the name does not already exist. Otherwise, it updates the existing value:
+* By assignment. This sets a new value if the name does not already exist. Otherwise, it updates the existing value:
 
 ```javascript
 physicist["middle-name"]  // returns undefined
