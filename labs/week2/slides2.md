@@ -177,3 +177,25 @@ x.nickname = "Curly";
 var nick = stooge.nickname;
 nick  // returns "Curly"
 ```
+
+# Functions
+
+## What Are Functions?
+
+Sub-routines with a `return` value.
+
+## Function Creation
+
+Function literal.
+
+## Methods: Functions as Values
+
+Method invocation.
+
+## Constructors
+
+The `new` keyword.
+
+## Recursion in JavaScript
+
+## Function Scope
