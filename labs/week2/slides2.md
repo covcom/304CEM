@@ -284,9 +284,10 @@ myObject["methodName"](3, 4);
 
 ## `this` and `that`
 
-**PROBLEM:** function invocation binds `this` to the global object!!
+**PROBLEM:** Late binding of the keyword `this` can cause confusion. In particular, function invocation binds `this` to the global object!!
 
-* So methods cannot invoke inner functions to help do their work.
+* This is a bad design decision by the designers of JavaScript.
+* It means methods cannot invoke inner functions to help do their work.
 
 Why?
 
