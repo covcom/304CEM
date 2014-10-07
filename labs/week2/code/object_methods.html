@@ -18,7 +18,7 @@ var fiat = {
 
     start: function() {
 		if (this.fuel == 0) {
-			alert("The car is on empty, fill up before starting!");
+			console.log("The car is on empty, fill up before starting!");
 		} else {
 			this.started = true;
 		}
@@ -31,15 +31,15 @@ var fiat = {
 	drive: function() {
 		if (this.started) {
 			if (this.fuel > 0) {
-				alert(this.make + " " +
+				console.log(this.make + " " +
 				      this.model + " goes zoom zoom!");
 				this.fuel = this.fuel - 1;
 			} else {
-				alert("Uh oh, out of fuel.");
+				console.log("Uh oh, out of fuel.");
 				this.stop();
 			} 
 		} else {
-			alert("You need to start the engine first.");
+			console.log("You need to start the engine first.");
 		}
 	},
 
