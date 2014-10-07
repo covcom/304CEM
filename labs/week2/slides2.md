@@ -1,5 +1,5 @@
-% 305CDE Lab 2
-% JavaScript Objects and Functions: Part I
+% 305CDE Lab 2  
+% JavaScript Objects and Functions: Part I  
 % October 2014
 
 ## Overview
