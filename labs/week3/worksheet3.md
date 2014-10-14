@@ -16,7 +16,7 @@ Aim to complete these in roughly 60-80 minutes of lab time. Use SourceTree git c
 
 (For the adventurous!)
 
-4. Create a new JS module encapsulating functionality from task 3.
+4. Create a new JS module.
 
 ## Resources
 
