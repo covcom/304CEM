@@ -10,53 +10,67 @@ Objects and functions are extremely powerful. This week explores some of the mor
 
 Aim to complete these in roughly 30-60 minutes of lab time. Use SourceTree git client and Brackets editor, _or other equivalent software that you are familiar with_.
 
-1. Update your local repository by pulling any changes from GitLab.
+1. Set up a secondary remote repository to store your worksheet solutions.
 2. Write a simple function to remove duplicates from a task list.
 3. Nest objects to define the internal sub-components of a car and engine.
 4. Use an inner "helper function" to calculate fuel consumption.
 
 ## Resources
 
-* [305CDE Repository][]
-* [Mozilla JS tutorial][]: _A FANTASTIC, comprehensive, concise resource for learning JS quickly._
-
-[305CDE Repository]: https://gitlab.com/c0lin/305cde
-[Mozilla JS tutorial]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
-
+[Working with git remote repositories](http://git-scm.com/book/en/Git-Basics-Working-with-Remotes)
 
 ## Step-by-Step
 
-### 1. Pull From GitLab
+### 1. Set up a second remote repository
 
-It is good practice to check for any changes to repositories you work with, whenever you start a new work session. If changes exist, `git fetch` or `git pull` them so that you can work with them locally.
+#### Motivation
 
-* `git fetch` brings down any changes in the remote repository, but does NOT merge them with your local code. They remain in git until you explicitly `git merge` them with your own code.
-* `git pull` does a fetch then also attempts to merge any changes with your local code automatically. If any conflicts arise, you are notified.
+Now that the code you are writing in lab sessions is more complex, you may wish to keep track of your solutions to the tasks.
 
-Here we show a fetch and merge. Pull is quicker.
+Currently you are pulling changes from the remote origin on GitLab, containing the files for 305CDE. However, this repository is _read only_ and you cannot push any changes to the repository.
 
-* Open SourceTree and right click the origin of your repository. Choose "Fetch from origin".
+To enable you to work on the repository, keep it up to date, AND keep track of your versioned changes you need another read-write remote repository that you can push your changes to.
 
-![Fetch changes from origin](static/sourcetree-fetch.png)
+In this task you will use the _git shell/terminal_ to achieve this.
 
-* Enter your GitLab password if requested.
-* If there were any new changes, made by remote users, then your local files will be "behind" the origin as shown in the next screenshot.
+#### Fork the 305CDE repo
 
-![Master branch is behind origin](static/master-behind-origin.png)
+`Forking` allows you to copy an entire repository to your own account.
 
-You can look at any of the changes by scanning the newer commits. Typically you will wish to simply merge them in to your current files.
+* Log in to your GitLab account
+* Browse to the [305CDE repository]()
+* On the top right of the project screen click "Fork"
+* Load your GitLab dashboard and you will see `305CDE` in your list of projects
+* View the project page and note that it shows the original repo you forked from, as shown in the screenshot.
 
-* Click on "Merge" and choose the commit you wish to merge in to your current branch. Typically this will be the most recent one, at the top of the list.
-* **Advanced:** Optionally tick the box "Create a new commit even if fast-forward is available". This makes a separate entry in the git history log, explicitly capturing the application of your merge.
-	- This can be a good practice to get in to.
-	- It can make recovering from mistakes when merging easier.
-	- However you will have to push the additional commit back to origin, so you may not wish to do it when working with a single branch.
+![305CDE Repository forked to user account](static/gitlab-forked-project.png)
 
-![Pick a commit to merge locally](static/pick-commit-to-merge.png)
+* If you wish to keep your new copy private, view settings and set the "Visibility Level" to _Private_. 
+* Copy the project `https://` URL listed on the project page for the next steps.
 
-* Choose how to fix any code conflicts that arise (hopefully none!).
+#### Using the git shell
 
-Your local code is now up to date with the remote origin.
+Next you will configure your git client to push any changes to your fork of the repository
+
+* First select the git repo you are working on in the left hand column of SourceTree, if you have more than one  
+* Click on 'Terminal' in the toolbar of SourceTree to load a git shell
+	* The terminal provides a text-input interface to git
+	* All changes you do are reflected in the GUI later
+	* It is much faster to use than the GUI
+	* It will become easier to understand and use than the GUI too
+* For information, list the current remote origin by typing `git remote -v` in the terminal
+	* You will see the 305CDE repo origin listed for pushing and pulling, as shown in the screenshot.
+
+![Git remote origin in shell](static/git-remote-origin-305cde.png)
+
+* To add a new remote corresponding to your fork of the project
+	* `git remote add myfork https://your-https-url-for-the-fork`
+* Check that it was added correctly with `git remote -v` again
+	* This should now show a push and pull URL for `origin` and also for `myfork`
+
+Now you can push any changes you make in labs to your remote `myfork`. The GUI gives you an option to choose which remote to push or pull from. In the terminal, you can push to the fork with the command `git push myfork`. 
+
+NOTE: A simple `git push` will default to origin, which will fail.
 
 ### 2. Task List Manipulation
 
