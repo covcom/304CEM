@@ -161,7 +161,7 @@ Together these JS modules implement the "model" part of MVC (Model View Controll
 	- `store.js` and `model.js` both extend their constructor prototypes
 	- `store.js` and `model.js` both export their constructor to a global namespace at the end
 
-These things are all typical of the "module pattern" in JS. For ore on it, see the website linked to above.
+These things are all typical of the "module pattern" in JS. For more on it, see the website linked to above.
 
 #### Test your understanding
 
