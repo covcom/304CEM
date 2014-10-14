@@ -25,12 +25,14 @@ Aim to complete these in roughly 60-80 minutes of lab time. Use SourceTree git c
 * [JavaScript module discussion][]
 * [Object Oriented JavaScript][]
 * [JS module pattern][]
+* [Immediately-Invoked function expressions][]
 
 [Working with remote git repositories]: http://git-scm.com/book/en/Git-Basics-Working-with-Remotes
 [MDN guide to JS closures]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures
 [JavaScript module discussion]: http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html
 [Object Oriented JavaScript]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript
 [JS module pattern]: http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html
+[Immediately-Invoked function expressions]: http://benalman.com/news/2010/11/immediately-invoked-function-expression/
 
 ## Step-by-Step
 
@@ -137,7 +139,7 @@ Prototype inheritance applies to any JS data type / object, including objects cr
 
 ### 4. Create a JavaScript module (N.B.: advanced)
 
-See [JS module pattern][] for a good discussion.
+See [JS module pattern][] along with [Immediately-Invoked function expressions]() for a good discussion of what follows.
 
 This is more advanced but begins to show the power of JS as a fully fledged language for designing and building large-scale applications. In particular, function closures and immediate invocation allows us to define self-contained modules that do not pollute the global namespace. This is how libraries such as, for example, jQuery and YUI, are put together.
 
