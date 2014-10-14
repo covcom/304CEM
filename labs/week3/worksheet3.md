@@ -139,7 +139,7 @@ Prototype inheritance applies to any JS data type / object, including objects cr
 
 ### 4. Create a JavaScript module (N.B.: advanced)
 
-See [JS module pattern][] along with [Immediately-Invoked function expressions]() for a good discussion of what follows.
+See [JS module pattern][] along with [Immediately-Invoked function expressions][] for a good discussion of what follows.
 
 This is more advanced but begins to show the power of JS as a fully fledged language for designing and building large-scale applications. In particular, function closures and immediate invocation allows us to define self-contained modules that do not pollute the global namespace. This is how libraries such as, for example, jQuery and YUI, are put together.
 
