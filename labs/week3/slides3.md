@@ -7,11 +7,9 @@
 * Objects II
 * Functions II
 
-# Objects II
+## Reminder
 
-## Function Invocation and `this`
-
-Remember from last week:
+Function invocation and `this`.
 
 * The value of `this` inside the scope of the function _depends on how the function was invoked_:
     - method (last week)
@@ -19,9 +17,12 @@ Remember from last week:
     - constructor
     - `apply`
 
-## Constructor Functions
+# Objects II
 
-* JavaScript uses regular functions as classes, but uses `new` to create objects using them
+## Constructor Function Invocation (Creates Objects)
+
+* JavaScript actually uses functions to create "class-like objects"
+* JS uses the `new` keyword to invoke these special functions
 
 ```javascript
 function Person(first, last) {
@@ -31,19 +32,22 @@ function Person(first, last) {
 var s = new Person("Simon", "Willison");
 ```
 
-* `new` is strongly related to `this`:
-    * creates a brand new empty object
-    * calls the function specified
-    * sets `this` to the new object
-    * returns the new object
-* Functions that are designed to be called by 'new' are called "constructor functions".
+## Constructors 2
+
+`new` is strongly related to `this`:
+
+  * creates a brand new empty object
+  * calls the function specified
+  * sets `this` to the new object
+  * returns the new object
+
+Functions that are designed to be called by 'new' are called "constructor functions".
 
 ## Inheritance With Prototypes
 
-So how do we do inheritance in JS?
+If we can construct "classes", how do we do inheritance in JS?
 
 * JS is a "prototypal" inheritance language
-* Objects inherit properties _from other objects_:
 
 ```javascript
 Person.prototype.fullName = function() {
@@ -52,11 +56,17 @@ Person.prototype.fullName = function() {
 Person.prototype.fullNameReversed = function() {
     return this.last + ', ' + this.first;
 };
+s.fullName();  // returns "Simon Willison"
 ```
 
+## How does `prototype` work?
+
 * `Person.prototype` is an _object shared by all instances of `Person`_
-* JavaScript delegates to `Person.prototype` if a property is undefined on any `Person` instance
+    * Actually the `prototype` object is a property of all JS objects!
+* JavaScript _delegates_ to `Person.prototype` if a property is undefined on any `Person` instance
 * Anything assigned to `Person.prototype` is available to all instances via the `this` object
+    * Note that `var s = new Person("Simon", "Willison");` was executed _before_ the `fullName` method was defined 
+    * Also, the method contained a reference to `this` which picked out the `first` and `last` properties of the object.
 
 ## Prototypes at Runtime
 
@@ -109,21 +119,51 @@ avg(2, 3, 4, 5);  // returns 3.5
 
 ```javascript
 var raceTimes = {
-  first: "2:02:57",
-  second: "2:03:45",
-  third: "2:03:47"
+  first: 10.71,
+  second: 10.82
 };
-
-Person.prototype.fullName.apply(raceTimes);
-  // returns "2:02:57 2:03:45"
-  // because `this` is `raceTimes`
+var newWR = function(current) {
+  if (this.first < current) {
+    return true;
+  }
+  return false;
+};
+newWR.apply(raceTimes, [10.72]);  // returns true
 ```
 
+## Closure
 
-## IFFY Functions
+* Inner functions get access to parameters and variables of functions they are inside (except `this` and `arguments`)
+* The inner function can "live longer" than its container
+* Can be used to maintain state or to protect "private" data:
 
-* An anonymous function can be used anywhere that you would normally put an expression.
-* This allows you to emulate block scope by "hiding" local variables:
+```javascript
+var myObject = (function ( ) {
+  var value = 0;  // private data!
+  return {
+    increment: function (inc) {
+      value += inc || 1;
+    },
+    getValue: function ( ) {
+      return value;
+    }
+  };
+}( ));
+```
+
+## Closure Example
+
+* The previous example creates `myObject` by invoking a function that returns an object literal
+* The function defines `value`
+* That variable is available to the `increment()` and `getValue()` methods
+    * Even when the outer function has completed its execution!
+* The `value` is not available to the rest of the program
+
+
+## IIFE Functions
+
+* The previous example uses an _immediately-invoked function expression_ (IIFE, pronounced 'IFFY')
+* Here is a simpler use:
 
 ```javascript
 var a = 1;
@@ -136,33 +176,37 @@ a  // returns 4
 b  // returns 2
 ```
 
-* This example uses an _immediately-invoked function expression_ (IIFE, pronounced 'IFFY')
-* Very handy - particularly for defining JS "modules" such as jQuery, YUI, etc.
+## Defining Modules
 
-
-## Constructor Invocation
+* IIFEs are useful for defining JS "modules" such as jQuery, YUI, Underscore etc.
+* These are self-contained bits of code that can be "imported" into your programs to add functionality
+* Here's a little "Counter" module
 
 ```javascript
-var Quo = function(string) {
-  this.status = string;
-};
-
-Quo.prototype.get_status = function() {
-  return this.status;
-};
-
-var myQuo = new Quo("confused");
-myQuo.get_status();  // returns "confused"
+(function (window) {
+  function Counter(initialValue) {
+    this.value = initialValue;
+  }
+  Counter.prototype.increment = function(inc) {
+    this.value += inc || 1;
+  };
+  window.myApp = window.myApp || {};
+  window.myApp.Counter = Counter;
+})(window);
 ```
 
-* Keyword `new` used during function invocation
-* Creates a new object which includes a link to the function's `prototype` member
-* Keyword `this` becomes bound to the new object
-* Constructor invocation returns the object
+## Using Modules
 
-# References
+* Module code is used just like any other JS
+* Access its namespace to use its functionality
+* _Any JS program_ can include a module JS file, to add its functionality:
 
-## Check These For Further Details
+```javascript
+var myCounter1 = new myApp.Counter(10);
+var myCounter2 = new myApp.Counter(0);
 
-[Immediately-Invoked Function Expression](http://benalman.com/news/2010/11/immediately-invoked-function-expression/)
-[JavaScript Module Pattern: In-Depth](http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html)
+myCounter1.value; // returns 10
+myCounter2.increment(3);
+myCounter2.value;  // returns 3
+```
+
