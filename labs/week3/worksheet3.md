@@ -8,16 +8,23 @@ Objects and functions are extremely powerful. This week explores some of the mor
 
 ## Task List
 
-Aim to complete these in roughly 30-60 minutes of lab time. Use SourceTree git client and Brackets editor, _or other equivalent software that you are familiar with_.
+Aim to complete these in roughly 60-80 minutes of lab time. Use SourceTree git client and Brackets editor, _or other equivalent software that you are familiar with_.
 
 1. Set up a secondary remote repository to store your worksheet solutions.
-2. Write a simple function to remove duplicates from a task list.
-3. Nest objects to define the internal sub-components of a car and engine.
-4. Use an inner "helper function" to calculate fuel consumption.
+2. Write a closure to maintain the internal state of a counter.
+3. Define a constructor function and modify its prototype.
+
+(For the adventurous!)
+
+4. Create a new JS module encapsulating functionality from task 3.
 
 ## Resources
 
-[Working with git remote repositories](http://git-scm.com/book/en/Git-Basics-Working-with-Remotes)
+* [Working with remote git repositories][]
+* [MDN guide to JS closures][]
+
+[Working with remote git repositories]: http://git-scm.com/book/en/Git-Basics-Working-with-Remotes
+[MDN guide to JS closures]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures
 
 ## Step-by-Step
 
@@ -70,6 +77,5 @@ Next you will configure your git client to push any changes to your fork of the 
 
 Now you can push any changes you make in labs to your remote `myfork`. The GUI gives you an option to choose which remote to push or pull from. In the terminal, you can push to the fork with the command `git push myfork`. 
 
-NOTE: A simple `git push` will default to origin, which will fail.
+NOTE: A simple `git push` will default to origin, which will fail. See [Working with remote git repositories][] for much more detail on working effectively with multiple remotes.
 
-### 
