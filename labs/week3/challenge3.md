@@ -1,6 +1,6 @@
 # 305CDE Challenge 3
 
-This challenge should be attempted after you have attended the second lab and worked through Worksheet 3 (_Functions and Objects Part 3_). You may need to attend other labs to fulfil some of the requirements.
+This challenge should be attempted after you have attended the third lab and worked through Worksheet 3 (_Functions and Objects Part 2_). You may need to attend other labs to fulfil some of the requirements.
 
 ## Guidelines
 
@@ -16,17 +16,36 @@ This challenge should be attempted after you have attended the second lab and wo
 
 ## Specification
 
-Blah blah.
+Implement "Shopping Basket" functionality in JS, suitable for a basic e-Commerce web application.
 
 ## Requirements
 
 ### Minimal
 
-* Do something
+#### Items
+
+* Implement an `Item` constructor function that can be invoked with the `new` keyword to create shopping items
+* Each item object should have:
+	* Title
+	* Description
+	* Price
+* Invoke the constructor several times to create a number of objects
+* Each item should then be displayed on the page with its details and a "Add to basket" button
+
+#### Basket
+
+* The internal state of the basket should be maintained via a function closure
+* Basket state should include:
+	* list of items
+	* total number of items
+	* running total of cost
+* The current number of items in the basket should be displayed somewhere on the page
+* Include a "Show Basket" button on the page
+	* Clicking the button should pop up an alert showing the current Basket state
 
 ### Extended
 
-* Do it better
+* Implement your Basket as a module that can be added to any page with `Item` objects on it which contain `Title`, `Description` and `Price` properties.
 
 ## Constraints
 
