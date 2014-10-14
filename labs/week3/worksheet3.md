@@ -25,6 +25,7 @@ Aim to complete these in roughly 60-80 minutes of lab time. Use SourceTree git c
 
 [Working with remote git repositories]: http://git-scm.com/book/en/Git-Basics-Working-with-Remotes
 [MDN guide to JS closures]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures
+[JavaScript module discussion]: http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html
 
 ## Step-by-Step
 
@@ -78,4 +79,28 @@ Next you will configure your git client to push any changes to your fork of the 
 Now you can push any changes you make in labs to your remote `myfork`. The GUI gives you an option to choose which remote to push or pull from. In the terminal, you can push to the fork with the command `git push myfork`. 
 
 NOTE: A simple `git push` will default to origin, which will fail. See [Working with remote git repositories][] for much more detail on working effectively with multiple remotes.
+
+### 2. Use closure to maintain internal state
+
+[MDN guide to JS closures][]
+
+* Load the `function_closure.html` file in Brackets and take a look at the functionality using live preview
+* Observe that the `button.onclick` event handler is a function that uses the `count` variable
+* Observe also that this function does not specify any value for `count`
+* Instead, `count` inside the handler function is given its value _by the enclosing function context_
+
+Since the `window.onload` handler function encloses the `button.onclick` one, the latter has an "environment" of local variables that it can work with. The `onclick` function is therefore able to keep track of the state of a higher-level variable, namely `count`.
+
+#### Test your understanding
+
+* Add five buttons to the `function_closure.html` page: '-5', '-1', '0', '+1', '+5'
+	* You can think of these as the playback speed controls for a media player
+* Add a `<div>` with ID `playback-speed` to the page as well
+* Using the existing `onload` handler as an example, write another `window.onload` handler:
+	* This should have an internal state representing the current playback speed
+	* Clicking on one of the 4 '+' or '-' buttons should increment or decrement the current speed as appropriate
+	* Clicking on the '0' button should reset the current speed to 0
+	* The current speed should be updated in the `<div>` you added
+
+If you have time, use a single helper function to update the `<div>` rather than update it in each separate click handler.
 
