@@ -36,6 +36,7 @@ var U = {
     }, // End of setText() function.
     
     // Function for creating event listeners:
+    // The function 'fn' passed here is the callback - to be run later
     addEvent: function(obj, type, fn) {
         'use strict';
         if (obj && obj.addEventListener) { // W3C
