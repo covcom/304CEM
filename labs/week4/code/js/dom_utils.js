@@ -2,7 +2,7 @@
 // In particular it adds a DOM selector '$' like that in jQuery
 // It also allows setting text of an element, and adding/removing event listeners
 
-// Who needs jQuery?!
+// Who needs jQuery? You can now write your own!
 // See http://youmightnotneedjquery.com/ for further inspiration
 
 var U = {

@@ -38,11 +38,14 @@
         alert('Giving up :( Cannot create an XMLHTTP instance');
         return false;
       }
+
+      // set a callback function for when the httpRequest completes
       httpRequest.onreadystatechange = alertContents;
       httpRequest.open('GET', url);
       httpRequest.send();
     }
 
+    // this will be run when the request completes (see above)
     function alertContents() {
       if (httpRequest.readyState === 4) {
         if (httpRequest.status === 200) {
