@@ -18,16 +18,27 @@ var fakeSlowNetwork;
   });
 }());
 
+
+// here is where the "real" example code starts
+// it includes a few lines to "slow down" the AJAX calls
+//   to simulate a real network scenario which you can ignore for now
+//   but which will be relevant when we construct ASYNC callbacks next week
+
+// ******* 
+// AJAX STUFF
+// *******
 function getSync(url) {
-  var startTime = Date.now();
-  var waitTime = 3000 * Math.random() * fakeSlowNetwork;
 
   var req = new XMLHttpRequest();
   req.open('get', url, false);
   req.send();
 
+  // pause here to simulate slow network - IGNORE
+  var startTime = Date.now();
+  var waitTime = 3000 * Math.random() * fakeSlowNetwork;
   while (waitTime > Date.now() - startTime);
 
+  // now continue
   if (req.status == 200) {
     return req.response;
   }
@@ -40,6 +51,10 @@ function getJsonSync(url) {
   return JSON.parse(getSync(url));
 }
 
+
+// ******* 
+// DOM STUFF
+// *******
 var storyDiv = document.querySelector('.story');
 
 function addHtmlToPage(content) {

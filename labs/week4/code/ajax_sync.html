@@ -22,7 +22,7 @@
       addHtmlToPage(story.heading);
 
       story.chapterUrls.forEach(function(chapterUrl) {
-        var chapter = getJsonSync(chapterUrl);
+        var chapter = getJsonSync('data/'+chapterUrl);
         addHtmlToPage(chapter.html);
       });
 
