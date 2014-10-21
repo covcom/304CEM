@@ -8,6 +8,8 @@
 	function init() {
 		var map = document.getElementById("map");
 		map.onmousemove = showCoords;
+		var mydiv = document.getElementById("mydiv");
+		mydiv.onclick = addtext;
 	}
 	
 	function showCoords(eventObj) {
@@ -16,10 +18,21 @@
 		var y = eventObj.clientY;
 		coords.innerHTML = "Map coordinates: " + x + ", " + y;
 	}
+
+	function addtext(){
+		if (document.createTextNode){
+			var textToAdd = " Div was clicked! "
+			var newNode = document.createTextNode(textToAdd);
+			document.getElementById("mydiv").appendChild(newNode);
+		} else {
+			alert("Looks like you have an old browser!");
+		}
+	}
   </script>
 </head>
 <body>
 	<img id="map" src="data/map.jpg">
 	<p id="coords">Move mouse over map to find coordinates...</p>
+	<div id="mydiv" style="border:1px solid red">I am a DIV! Click me.</div>
 </body>
 </html>
