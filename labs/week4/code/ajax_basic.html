@@ -41,6 +41,8 @@
 
       // set a callback function for when the httpRequest completes
       httpRequest.onreadystatechange = alertContents;
+
+      // now do the actual AJAX request
       httpRequest.open('GET', url);
       httpRequest.send();
     }
