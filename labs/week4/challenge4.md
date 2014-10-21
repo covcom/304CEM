@@ -1,6 +1,6 @@
 # 305CDE Challenge 4
 
-This challenge should be attempted after you have attended the third lab and worked through Worksheet 4 (_The DOM and AJAX_). You may need to attend other labs to fulfil some of the requirements.
+This challenge should be attempted after you have attended the fourth lab and worked through Worksheet 4 (_The DOM and AJAX_). You may need to attend other labs to fulfil some of the requirements.
 
 ## Guidelines
 
