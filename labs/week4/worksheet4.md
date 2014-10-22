@@ -23,9 +23,9 @@ The tasks this week are split in to two "tracks" depending on your confidence wi
 * Follow "Track 1" if you are still building confidence with functions and objects.
 * Follow "Track 2" if you were able to complete most of the tasks on the previous weeks' worksheets (and wish to learn more advanced techniques for your Challenge assigments).
 
-Aim to complete these in roughly 60-80 minutes of lab time.
+Since this material is more advanced than previous weeks, aim to get as much understanding as possible during 60-80 minutes of lab time. Follow this up in your own time with trying to complete at least the tasks in "Track 1"
 
-**NOTE:** If you can't complete the tasks during the lab time, then commit your changes to a fork of the 305CDE git repository (see [last week's worksheet](https://gitlab.com/c0lin/305cde/blob/master/labs/week3/worksheet3.md)) so that you can continue later. The techniques and knowledge developed this week will be very useful later. 
+**NOTE:** Remember to commit your changes to a fork of the 305CDE git repository (see [last week's worksheet](https://gitlab.com/c0lin/305cde/blob/master/labs/week3/worksheet3.md)) so that you can continue later. The techniques and knowledge developed this week will be very useful later.
 
 ### Track 1
 
@@ -154,3 +154,77 @@ You can make a simple "404" checker as follows.
 * Define a new callback function, similar to `alertContents` which checks whether the requested URL has a "404" status or not.
 * If it does, pop up an alert saying "Site is DOWN!"
 * Adjust the appropriate event listener in the `makeRequest` function of `ajax_basic.html`, so that your new callback is set as the handler for all HTTP requests made by your checker page.
+
+
+# Track 2
+
+## 1. DOM Scripting
+
+There is a lot going on "behind the scenes" in libraries such as jQuery which abstract away many of the browser inconsistencies and deep hierarchies of objects, properties and methods relating to the DOM. You can review these DOM objects and their functionality on the [the MDN DOM API documentation](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model).
+
+This task involves a "helper script" that does some DOM and event manipulation for you. It is like a "mini jQuery" and even defines a utility DOM selector object called `$`.
+
+* Load up `dom_scripting.html` and `js/dom_utils.js` in Brackets and check the functionality.
+* Three things are being done:
+	1. A button is assigned an event handler (callback) which fires every time the button is clicked
+	2. A button is assigned a self-removing event handler which fires the _first_ time the button is clicked
+	3. A button is assigned a DOM manipulating event handler for its click events
+
+The actual code in `dom_scripting.html` is short and self contained, this is because the selectors `U.$()`, the event listeners and unlisteners `U.addEvent()` and `U.removeEvent()`, and the DOM manipulator `U.setText()` are defined in the separate utility code file `dom_utils.js`.
+
+* Have a look at the utility JavaScript
+* Note that `U` is simply an object with some useful methods which wrap native JS methods for achieving event interaction and DOM manipulation. An important thing to note is that where there exist browser incompatibilities, the utility methods defined on `U` need to conditionalise on the JS methods being available. For example, in `U.setText()`:
+
+```javascript
+if (output.textContent !== undefined) {
+	// use this property
+} else {
+	// use innerText instead
+}
+```
+
+### Test your understanding
+
+* Have a look at `dom_utils_global.js`, which is an implementation of a few additional DOM/event helpers
+	* In particular note that it is defined as a module.
+	* Carefully think about how `$live` is defined here:
+		- an immediately invoked function returns a (closure) function which adds handlers to events and which stores these associations in an object containing event handler arrays
+		- in addition, the `dispatchEvent()` is a closure over the `eventRegistry` object and is therefore able to be called against this registry whenever a listened-to event happens, _even when the event happens on an element that was not defined in the DOM when the event handler was added!_
+		- this is the power of closures
+* Adjust `dom_scripting.html` to include the `dom_utils_global.js` file (as well as the original `dom_utils.js`)
+* Now refactor the JS code in the HTML file to use `window.$live` to register the events and handlers previously dealt with by the `U` object.
+* Try adding a DOM element dynamically to the page, which has a "live" listener already defined earlier in your code. It should react to the listened-to event even though it was not present when you added the `$live` event association.
+
+## 2. AJAX processing
+
+NOTE: Also take a look at "Track 1" Part 4 to see how to conditionalise on the `XMLHttpRequest()` method being present.
+
+In this example you will do some first steps in JSON fetching, parsing, and acting on the information retrieved.
+
+* Load up `ajax_sync.html` and `js\ajax_utils.js` and preview the output.
+* Also look at the Chrome developer tools 'Network' tab and refresh the page, to see the various JSON files that come from the server
+* Note that the HTML file contains a `try` block which does something very simple:
+	* gets the result of `getJsonSync` on a particular URL
+	* adds an attribute `heading` of the story data to the page
+	* then cycles through a list defined in another data attribute to perform the same operations as above: get the result of a URL, and add one of its attributes to the page.
+
+Again, most of the work is in the utility file!
+
+* Look at the `ajax_utils.js` file.
+* Note there are two main blocks of functionality (ignoring the fake network delay)
+	1. AJAX stuff
+	2. DOM stuff
+* The `getSync()` function basically defines a new request object, opens the provided URL using this object, and sends the 'GET' request out
+* After some possible waiting time, the request will complete so the status is checked (200 means "OK") and the data in the request response `req.response` is returned to the caller
+
+Since we assume that `getSync` actually returns a JSON string in this case, there is an additional `get` function called `getJsonSync`. This simply "wraps" the regular `getSync` call with a function that parses the JSON data and returns a JavaScript object instead, ready for use in our calling code back in the HTML file.
+
+* Review the DOM stuff code at the bottom of the file
+* Note that this is straightforward: wrap some element creation and content setting in some function blocks that we can call quickly from elsewhere.
+
+### Test your understanding
+
+* Parse the content of the `chapter` objects returned by the `getJsonSync` as they come in from the server:
+	* If the html attribute contains the word "dictum" then make a AJAX call to a dictionary API that returns JSON, such as one of the API endpoints listed on the [Wordnik API documentation](http://developer.wordnik.com/docs.html#!/word/get_definitions)
+	* Parse the JSON response for a definition of the word and dynamically add a DOM element to the HTML page containing the term "dictum" along with the returned definition.
+* Now make your AJAX call and JSON response parsing dynamic, by allowing the user to double-click any word on the screen: double clicking it should provide a new entry in the "word dictionary list" somewhere on the page, containing the definition or "not found". You may find this [StackOverflow question on handling double-clicks on words](http://stackoverflow.com/questions/878637/how-to-make-a-click-or-double-click-on-a-word-on-a-webpage-to-trigger-an-event-h) useful.
