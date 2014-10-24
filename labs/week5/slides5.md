@@ -252,3 +252,15 @@ What if you just want to do something when an error occurs? Two possibilities:
 2. `myPromiseObject.catch(errorCallback);`
 
 These have slightly different behaviour: see the [HTML5Rocks Promises Blog Post](http://www.html5rocks.com/en/tutorials/es6/promises/) for details.
+
+## Additional Promise Methods
+
+There are a couple of additional `Promise` methods that you will find useful, both of which take _arrays_ as input:
+
+`Promise.all()`
+
+* Returns a promise that resolves when _all_ of the promises in the input array have resolved.
+
+`Promise.race()`
+
+* Returns a promise that resolves or rejects as soon as one of the promises in the input array resolves or rejects, with the value or reason from that promise
