@@ -4,6 +4,8 @@
 
 ## Overview
 
+Dealing with asynchronous code.
+
 * Callback Hell
 * "Future-Facing" Objects: Promises
 
@@ -14,22 +16,20 @@
 Remember that functions are _first class objects_ in JS. So they can be used as parameter values ("callbacks") for input to other functions.
 
 ```javascript
-function some_function(arg1, arg2, callback) {
-  var my_number = Math.ceil(Math.random() *
-    (arg1 - arg2) + arg2);
-  // more code here - may take a while
-  callback(my_number);
+function some_function(param, callback) {
+  // async code here - may take a while
+  callback(param);
 }
-some_function(5, 15, function(num) {
-  console.log("callback called! " + num);
+some_function("yay", function(value) {
+  console.log("callback called! " + value);
 });
 ```
 
-* Third input to `some_function()` is a callback function
+* Second input to `some_function()` is a callback function
 
 ## Nested Callbacks
 
-But what if `some_function()` itself uses a callback as one of its arguments?
+But what if `some_function()`'s _callback_ uses a callback as one of its arguments?
 
 * We get a _nested callback_
 * Unfortunately this pattern can continue for several layers
@@ -71,18 +71,18 @@ Common case: the function calls are _branched_ down the chain - i.e. at least on
 
 ## Branching Callbacks
 
-Real problems.
+Real problems!
 
 * If the callbacks branch, we can't know the order of the function calls
 * It can be very complex to "reassemble" data returned from the various branches correctly
 * Scoping becomes a challenge
 
-## Possible solution?
+## Possible solutions?
 
-* Avoid _anonymous_ function callbacks. Replace them with (un-nested) named functions defined in their own blocks. But:
-    * It is still almost impossible to quickly infer the "meaning" or "intention" of the code
+1. Avoid _anonymous_ function callbacks. Replace them with (un-nested) named functions defined in their own blocks. But:
+    * It is easier but still difficult to read the "meaning" or "intention" of the code
     * Branching and scoping are still challenges
-* Use event listeners when possible
+2. Use event listeners when possible
 
 ```javascript
 var img1 = document.querySelector('.img-1');
@@ -100,7 +100,7 @@ img1.addEventListener('error', function() {
 ## A Better Solution
 
 * Use callbacks in very simple (one or two nested layers) situations
-* Use listeners for events that can happen multiple times on the same object:
+* Use listeners mainly for events that can happen _multiple times on the same object_:
     - `keyup`
     - `click`
     - etc.
@@ -111,7 +111,7 @@ img1.addEventListener('error', function() {
 
 ## What Is A JS Promise?
 
-The core idea behind promises is that a **promise object** represents the result of an asynchronous operation. So a promise can be in one of three different states:
+The core idea behind promises is that a **promise object** represents the result of an asynchronous operation. The promise object can be in one of three different "states":
 
 1. pending - The initial state of a promise.
 2. fulfilled / resolved - The state of a promise representing a successful operation.
@@ -151,3 +151,104 @@ Inside the callback:
 3. If it fails, invoke `reject()`
 
 The latter two invocations pass their values "down the promise chain" to be used later...
+
+## Using Your Promise Object
+
+Usually, you will want to do something once the promise code completes, which depends on the result of the promise (e.g. the data passed back, or an error occurring).
+
+To do this you can use the `then()` method on promises.
+
+```javascript
+promise.then(function(result) {
+  console.log(result); // "Stuff worked!"
+}, function(err) {
+  console.log(err); // Error: "It broke"
+});
+```
+
+Note that `then()` takes _two_ callback arguments:
+
+1. A function to call when `resolve()` is invoked
+2. A function to call when `reject()` is invoked
+
+These are passed the values given during the invocations.
+
+# Chaining With Promises
+
+## Transforming Values
+
+You can attach multiple `then`'s to a promise object to transform returned values.
+
+```javascript
+var promise = new Promise(function(resolve, reject) {
+  resolve(1);
+});
+
+promise.then(function(val) {
+  console.log(val); // 1
+  return val + 2;
+}).then(function(val) {
+  console.log(val); // 3
+});
+```
+
+## For Example: Transforming Returned Data
+
+Transforming values with multiple `then`'s is handy when data needs to be transformed.
+
+* Suppose we have a `get(url)` function that returns a promise.
+* The promise resolves when the data is retreived from the URL.
+
+```javascript
+get('story.json')
+.then(function(response) {
+  return JSON.parse(response);
+})
+.then(function(response) {
+  console.log("Yey JSON!", response);
+});
+```
+
+* The first `then` transforms `response` to JSON
+* The JSON is passed to the second `then` as _its_ `response`
+
+## Queuing Async Actions
+
+You can attach multiple `then`'s to a promise object to run asynchronous actions in sequence.
+
+* Useful when one async action depends on the outcome of another!
+
+How do you do this?
+
+* Don't return a "value" from the `then`
+    - This is what you did to transform values
+* Instead, return a new `Promise()` object from the `then`
+
+## For Example: Multiple AJAX Calls
+
+Say you make an AJAX call that returns some data. Part of that data is another URL to be called using AJAX. How would you chain the AJAX calls? Return promises!
+
+* Suppose we have a `getJSON(url)` function that returns a promise.
+* The promise resolves when the data is retreived from the URL.
+
+```javascript
+getJSON('story.json')
+.then(function(story) {
+  // return another promise!
+  return getJSON(story.chapterUrls[0]);
+})
+.then(function(chapter1) {
+  console.log("Got chapter 1!", chapter1);
+});
+```
+
+## Catching Errors
+
+Recall: the second callback to the `then()` method on promises is invoked if and when the promise is _rejected_, otherwise the first callback is invoked.
+
+What if you just want to do something when an error occurs? Two possibilities:
+
+1. `myPromiseObject.then(undefined, errorCallback);`
+2. `myPromiseObject.catch(errorCallback);`
+
+These have slightly different behaviour: see the [HTML5Rocks Promises Blog Post](http://www.html5rocks.com/en/tutorials/es6/promises/) for details.
