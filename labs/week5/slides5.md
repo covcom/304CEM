@@ -253,6 +253,8 @@ What if you just want to do something when an error occurs? Two possibilities:
 
 These have slightly different behaviour: see the [HTML5Rocks Promises Blog Post](http://www.html5rocks.com/en/tutorials/es6/promises/) for details.
 
+# Bonus Material
+
 ## Additional Promise Methods
 
 There are a couple of additional `Promise` methods that you will find useful, both of which take _arrays_ as input:
@@ -264,3 +266,19 @@ There are a couple of additional `Promise` methods that you will find useful, bo
 `Promise.race()`
 
 * Returns a promise that resolves or rejects as soon as one of the promises in the input array resolves or rejects, with the value or reason from that promise
+
+## More Useful Array Methods
+
+Functional programming in JS is often made easier with a few key array methods, which are useful to learn about. Look them up: map, reduce, and filter.
+
+`Array.prototype.map()`
+
+* Creates a new array with the results of calling a provided function on every element in this array.
+
+`Array.prototype.reduce()`
+
+* Apply a function against an accumulator and each value of the array (from left-to-right) so as to reduce it to a single value.
+
+`Array.prototype.filter()`
+
+* Creates a new array with all of the elements of this array for which the provided filtering function returns true.
