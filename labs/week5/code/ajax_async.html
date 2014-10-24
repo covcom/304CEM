@@ -26,7 +26,7 @@
         // Once the last chapter's promise is doneâ€¦
         return chain.then(function() {
           // â€¦fetch the next chapter
-          return getJson(chapterUrl);
+          return getJson('data/'+chapterUrl);
         }).then(function(chapter) {
           // and add it to the page
           addHtmlToPage(chapter.html);

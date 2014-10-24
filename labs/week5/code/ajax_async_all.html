@@ -19,7 +19,9 @@
   <script>
     // Use Github Gist when no web server is available
     // getJson('https://gist.githubusercontent.com/c0lin/571d38b984d41b44aacf/raw/story.json').then(function(story) {
-    getJson('data/story.json').then(function(story) {
+    getJson('data/story.json')
+
+    .then(function(story) {
       addHtmlToPage(story.heading);
 
       // Take an array of promises and wait on them all
@@ -28,17 +30,23 @@
         // to an array of chapter json promises
         story.chapterUrls.map(getJson)
       );
-    }).then(function(chapters) {
-      // Now we have the chapters jsons in order! Loop thorughâ€¦
+    })
+
+    .then(function(chapters) {
+      // Now we have the chapters jsons in order! Loop thorugh...
       chapters.forEach(function(chapter) {
-        // â€¦and add to the page
+        // ..and add to the page
         addHtmlToPage(chapter.html);
       });
       addTextToPage("All done");
-    }).catch(function(err) {
+    })
+
+    .catch(function(err) {
       // catch any error that happened along the way
       addTextToPage("Argh, broken: " + err.message);
-    }).then(function() {
+    })
+
+    .then(function() {
       document.querySelector('.spinner').style.display = 'none';
     });
   </script>

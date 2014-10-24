@@ -18,6 +18,8 @@ var fakeSlowNetwork;
   });
 }());
 
+// Use a promise that resolves after a given waiting time
+// again, used to help simulate a slow network.
 function wait(ms) {
   return new Promise(function(resolve) {
     setTimeout(resolve, ms);
@@ -29,8 +31,10 @@ function get(url) {
   // We do all the work within the constructor callback.
   var fakeNetworkWait = wait(3000 * Math.random() * fakeSlowNetwork);
 
+  // HERE IS THE MAIN CODE...
   var requestPromise = new Promise(function(resolve, reject) {
     // Do the usual XHR stuff
+    // See Week 4 material
     var req = new XMLHttpRequest();
     req.open('get', url);
 
@@ -56,15 +60,21 @@ function get(url) {
     req.send();
   });
 
+  // the all() method just requires every promise to complete
+  // before it will resolve
   return Promise.all([fakeNetworkWait, requestPromise]).then(function(results) {
     return results[1];
   });
 }
 
+// the then() method gives a slick way to transform data
 function getJson(url) {
   return get(url).then(JSON.parse);
 }
 
+// ********
+// DOM code here
+// ********
 var storyDiv = document.querySelector('.story');
 
 function addHtmlToPage(content) {
