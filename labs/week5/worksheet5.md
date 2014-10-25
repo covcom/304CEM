@@ -94,4 +94,3 @@ throw(err);
 ```
 
 * Throwing an `err` object like this will pass it on to the `.catch()` method down the chain, which will show the message on the screen.
-
