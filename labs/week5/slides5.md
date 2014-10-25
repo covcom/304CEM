@@ -1,6 +1,11 @@
-% 305CDE Lab 5
-% JavaScript Promises
-% October 2014
+---
+title: 305CDE Lab 5
+subtitle: JavaScript Promises
+author: Colin Stephen
+date: October 2014
+header-includes:
+    - \usepackage[all]{xy}
+---
 
 ## Overview
 
@@ -67,7 +72,14 @@ $$func_1 \rightarrow func_2 \rightarrow func_3 \rightarrow \ldots \rightarrow fu
 
 Common case: the function calls are _branched_ down the chain - i.e. at least one function has two or more callbacks.
 
-![Branched Callbacks](static/branched_callbacks.png)
+$$
+\xymatrix{
+  func_1 \ar[d]\ar[dr] \\
+  func_2 \ar[d] & func_3 \ar[d]\ar[dr]\ar[drr] \\
+  func_4 \ar[d]\ar[dr] & func_5 & func_6 & func_7 \\
+  \cdots & \cdots \\
+}
+$$
 
 ## Branching Callbacks
 
@@ -88,9 +100,6 @@ Real problems!
 var img1 = document.querySelector('.img-1');
 img1.addEventListener('load', function() {
   // woo yey image loaded 
-});
-img1.addEventListener('error', function() {
-  // argh everything's broken
 });
 ```
 
