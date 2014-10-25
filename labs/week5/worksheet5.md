@@ -1,6 +1,20 @@
-# 305CDE Worksheet 5
+---
+title: 305CDE Worksheet 5
+author: Colin Stephen
+date: October 2014
+header-includes:
+	- \usepackage[margin=1.5in]{geometry}
+	- \usepackage{fancyhdr}
+    - \pagestyle{fancy}
+    - \lhead{305CDE Worksheet 5}
+    - \chead{}
+    - \rhead{\thepage}
+    - \lfoot{}
+    - \cfoot{}
+    - \rfoot{}
+---
 
-## About
+# About
 
 This week's lab tasks extend what you were working on in last week's tasks, namely:
 
@@ -15,20 +29,20 @@ The code here will take a while to fully understand. However, perseverance will 
 * They make your code more readable
 * They make your code asynchronous
 
-## Resources
+# Resources
 
-### Tutorials
+## Tutorials
 
 * [HTML5Rocks JavaScript Promises Overview](http://www.html5rocks.com/en/tutorials/es6/promises/)
 * [Using native JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_native_JSON)
 * [Getting Started with AJAX](https://developer.mozilla.org/en-US/docs/AJAX/Getting_Started)
 
-### Downloads
+## Downloads
 
 * [ES6 Promise Polyfill code](https://github.com/jakearchibald/es6-promise) - use for reverse compatibility in non ES6-compliant browsers.
 * [RSVP.js Asynchronous Library](https://github.com/jakearchibald/es6-promise) - contains ES6-promises and more!
 
-## Task List
+# Task List
 
 **NOTE:** Remember to commit your changes to a fork of the 305CDE git repository (see the [Week 3 worksheet](https://gitlab.com/c0lin/305cde/blob/master/labs/week3/worksheet3.md)) so that you can continue later. The techniques and knowledge developed this week will be very useful later.
 
