@@ -58,15 +58,17 @@ Each 2 hour lab session will be divided into 4 sections.
 
 ## Resources
 
+* [You might not need jQuery][]
+* [MDN JavaScript][]
+* [JavaScript the right way][]
+
 * [Introduction to Promises][]
 * [MDN AJAX Tutorial][]
-* [MDN JavaScript][]
 * [MDN web tutorial list][]
 * [Learn JavaScript properly][]
 * [JavaScript patterns collection][]
 * [Eloquent JavaScript][]
 * [Superhero JavaScript][]
-* [You might not need jQuery][]
 
 [Introduction to Promises]: http://www.html5rocks.com/en/tutorials/es6/promises/
 [MDN AJAX Tutorial]: https://developer.mozilla.org/en-US/docs/AJAX/Getting_Started
@@ -77,3 +79,4 @@ Each 2 hour lab session will be divided into 4 sections.
 [Eloquent JavaScript]: http://eloquentjavascript.net/
 [Superhero JavaScript]: http://superherojs.com/
 [You might not need jQuery]: http://youmightnotneedjquery.com/
+[JavaScript the right way]: http://jstherightway.org/
