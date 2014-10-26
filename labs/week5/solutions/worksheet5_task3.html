@@ -33,12 +33,12 @@
 				return clickPromise;
 			}
 
-			buttons.map(makeClickPromise).reduce(function(chain, buttonPromise){
+			buttons.map(makeClickPromise).reduce(function(chain, clickPromise){
 				// each button in the array adds a click promise and a display update
 				// to the chain built by this reduction
 				// -- the chain retains the order of the original array
 				return chain.then(function() {
-					return buttonPromise;
+					return clickPromise;
 				}).then(function(btn) {
 					output.innerHTML += btn.innerHTML;
 				})
