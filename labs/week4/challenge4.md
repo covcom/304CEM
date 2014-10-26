@@ -1,3 +1,38 @@
+---
+title: 305CDE Challenge 4
+author: Colin Stephen
+date: October 2014
+header-includes:
+	- \usepackage[margin=1.5in]{geometry}
+	- \usepackage{fancyhdr}
+    - \pagestyle{fancy}
+    - \lhead{305CDE Challenge 4}
+    - \chead{}
+    - \rhead{\thepage}
+    - \lfoot{}
+    - \cfoot{}
+    - \rfoot{}
+---
+
+-----
+
+# Edit 26.10.14
+
+You may find it a challenge to make calls directly to the Wikipedia API without some advanced CORS skills, or installing Chrome extensions. To make life easier you can do the following:
+
+* Use the following base URL for queries:
+	- `https://community-wikipedia.p.mashape.com/api.php`
+* Add the following lines _after_ `req.open('get', url);` in your `get(url)` function block:
+
+```javascript
+var key = "oCdV3MjLj1mshtyIXwBVzBqRKtY9p1XJNiajsn1vsCETYVLwK3";
+req.setRequestHeader("X-Mashape-Key", key);
+```
+
+These lines will authenticate your AJAX request, and the JSON response should come back as required. Note that the documentation referred to in the constraints below, regarding the valid API query parameters, is still valid for this endpoint.
+
+-----
+
 # 305CDE Challenge 4
 
 This challenge should be attempted after you have attended the fourth lab and worked through Worksheet 4 (_The DOM and AJAX_). You may need to attend other labs to fulfil some of the requirements.
