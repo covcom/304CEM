@@ -22,6 +22,8 @@
     getJson('data/story.json').then(function(story) {
       addHtmlToPage(story.heading);
 
+      // Update URLs for next fetch
+      story.chapterUrls = story.chapterUrls.map(function(url) { return "data/" + url; });
       // Map our array of chapter urls
       // to an array of chapter json promises
       return story.chapterUrls.map(getJson).reduce(function(chain, chapterPromise) {
