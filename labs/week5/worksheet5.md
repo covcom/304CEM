@@ -108,3 +108,123 @@ throw(err);
 ```
 
 * Throwing an `err` object like this will pass it on to the `.catch()` method down the chain, which will show the message on the screen.
+
+## 2. Async Fetch Data, and Post-Process
+
+The next file you will look at changes the order of activity a little bit. Above, the sequence was:
+
+1. Make an AJAX call for story data
+2. For each chapter in the story data:
+	- Make an AJAX call for chapter data
+	- Display the chapter data in DOM
+
+However, this means each of the chapters is being fetched one-by-one. When chapter 1 has been downloaded, it is displayed, then the next call to `getJson()` is passed the URL for chapter 2.
+
+So, while the code to fetch all the story and chapter data is asynchronous _with respect to the rest of the program_, each of the AJAX calls for chapter data is still forced to wait for the previous chapter to complete.
+
+This is wasting resources! The browser is perfectly capable of downloading ALL of the separate chapter files _at the same time_. So, we want to adjust the promises to exploit this.
+
+* Open `ajax_async_all.html` and `js/utils.js` in Brackets and live preview them in the browser
+* Click on "Fake network delay", hit F12 for the Network tab, and note the pattern of calls to the `chapter-n.json` files
+	- This time they take place _simultaneously_!
+	- Therefore the total completion time is shorter than when each was downloaded before the next.
+
+There is one stupendously powerful block of code that lets this happen:
+
+```javascript
+.then(function(story) {
+  addHtmlToPage(story.heading);
+  var chapterUrls = story.chapterUrls;
+  chapterUrls = chapterUrls.map(function(url){ return "data/"+url; });
+  
+  return Promise.all(
+    chapterUrls.map(getJson)
+  );
+})
+```
+
+* Note the final block of code executed here:
+	- `return Promise.all(chapterUrls.map(getJson));`
+	- This returns a promise which completes when `.all()` of the promises in its argument complete.
+	- The argument maps each chapter URL to a "promise to supply some JSON" (see lecture slides later)
+
+Basically an array of promises (each of which gets some JSON for a particular chapter) must complete before the next `then()` or `catch()` block in the chain will be executed. When the array completes, an array of the separate results is passed to the next block _in the same order_. So further blocks can process the `chapters` data returned by the various `getJson()`'s.
+
+### Test your understanding
+
+You will have done well to understand this code by the end of the lab!
+
+* Insert a new `.then()` block directly after the call to `getJson('data/story.json')`.
+* Your new `.then()` block should create a `Promise` object that:
+	* Prompts the user to break the promise or keep the promise.
+	* `resolve()`s itself if the user clicked "OK", and passes the `story` on to the next `then()` block.
+	* `reject()`s itself if the user clicked "Cancel", and passes an appropriate error object with a `message` key containing appropriate information.
+* The `then()` block should `return` the new `Promise` object that you created.
+
+## 3. Async Fetch Data, and Real-Time Process
+
+While getting all of the chapters JSON simultaneously over the network reduces the total elapsed time to display the entire story, there is a problem. There is a (potentially) long wait until the final chapter arrives before the display in the DOM can begin.
+
+To avoid this, it would be nice to put as much information on to the screen as possible, in the correct order, as the chapters arrive over the network.
+
+For example, say the AJAX calls to `getJson()` complete in the following order:
+
+$$chap_1 \rightarrow chap_4 \rightarrow chap_2 \rightarrow chap_5 \rightarrow chap_3$$
+
+Then there is no need to wait until the end of the queue to display chapter 1 in the DOM. This sequence of AJAX responses should ideally result in the following update of the DOM:
+
+$$chap_1 \rightarrow chap_2 \rightarrow (chap_3 + chap_4 + chap_5)$$
+
+In other words, the user sees the first chapter as soon as it has arrived, the second chapter as soon as the _first two_ chapters have arrived, the third chapter as soon as the _first three_ chapters have arrived, etc. etc..
+
+This "real time" update is what you will achieve in the final code file.
+
+* Open `async_ajax_best.html` in Brackets and preview it with the fake network delay
+* Refresh while looking at the Network tab in the browser development tools
+* Note that the DOM is updating with _as much of the story as possible_ when the various parts arrive.
+* Even though chapter 3 may arrive last (as in the above example), the DOM would still show chapters 1 and 2 for the user to read while it was being downloaded.
+
+How is this achieved?
+
+* Read through the code in `async_ajax_best.html`
+* Note the complex `return` statement within the first `then()` block
+	- This is where all the action happens.
+* The key is to use a combination of the functional programming constructs `map` and `reduce` which both operate on arrays.
+* However, here _the contents of the arrays are JavaScript promises_!
+	* The `map()` returns an array of promise objects corresponding to getting each of the chapters
+	* The `reduce()` accumulates a chain of `.then().then()` calls attached to an initially "pre-resolved" promise object
+		- This is where the use of `Promise.resolve()` comes in
+		- Two `then()`s are added to the chain for each chapter in the story  
+	* So when the array of `getJson()` promises is fully reduced, the result is a chain of the following form:
+
+```javascript
+Promise.resolve()
+.then(/* resolve getting chapter 1 */)
+.then(/* display chapter 1 */)
+.then(/* resolve getting chapter 2 */)
+.then(/* display chapter 2 */)
+	// repeat!
+.then(/* resolve getting chapter 5 */)
+.then(/* display chapter 5 */);
+```
+
+Now, the special thing about this chain is that the prior call to `story.chapterUrls.map(getJson)` has _already started to asynchronously resolve all of the chapter fetches in the `.then()` blocks here_.
+
+Complicated, but powerful.
+
+### Test Your Understanding
+
+Try to define a map-reduce chain of promises corresponding to button click events.
+
+* Add five buttons to an HTML page
+* Define five promise objects in JS that resolve when the corresponding button is clicked (the promises will probably contain listeners - ideally "one shot" listeners that remove themselves afterwards)
+	- NB: you will need to use a closure here to keep your code readable
+* Create an array of these promise objects
+* Apply map-reduce to the array such that the DOM is updated to display the longest sequence of buttons clicked so far (similar to the AJAX calls completing above). For example:
+	- User clicks `2, 1, 3, 5, 4`
+	- DOM updates `none, (1,2), (1,2,3), none, (1,2,3,4,5)`
+	- User clicks `5, 4, 3, 2, 1`
+	- DOM updates `none, none, none, none, (1,2,3,4,5)`
+	- etc.
+
+Don't look at the solutions on GitLab until you have tried this!
