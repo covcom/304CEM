@@ -1,10 +1,24 @@
-# 305CDE Worksheet 2
+---
+title: 305CDE Worksheet 2
+author: Colin Stephen
+date: October 2014
+header-includes:
+	- \usepackage[margin=1.5in]{geometry}
+	- \usepackage{fancyhdr}
+    - \pagestyle{fancy}
+    - \lhead{305CDE Worksheet 2}
+    - \chead{}
+    - \rhead{\thepage}
+    - \lfoot{}
+    - \cfoot{}
+    - \rfoot{}
+---
 
-## About
+# About
 
 This week introduces the two key data types in JS: objects and functions. Get used to their basic syntax and common use cases.
 
-## Task List
+# Task List
 
 Aim to complete these in roughly 30-60 minutes of lab time. Use SourceTree git client and Brackets editor, _or other equivalent software that you are familiar with_.
 
@@ -13,7 +27,7 @@ Aim to complete these in roughly 30-60 minutes of lab time. Use SourceTree git c
 3. Nest objects to define the internal sub-components of a car and engine.
 4. Use an inner "helper function" to calculate fuel consumption.
 
-## Resources
+# Resources
 
 * [305CDE Repository][]
 * [Mozilla JS tutorial][]: _A FANTASTIC, comprehensive, concise resource for learning JS quickly._
@@ -22,9 +36,9 @@ Aim to complete these in roughly 30-60 minutes of lab time. Use SourceTree git c
 [Mozilla JS tutorial]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
 
 
-## Step-by-Step
+# Step-by-Step
 
-### 1. Pull From GitLab
+## 1. Pull From GitLab
 
 It is good practice to check for any changes to repositories you work with, whenever you start a new work session. If changes exist, `git fetch` or `git pull` them so that you can work with them locally.
 
@@ -56,7 +70,7 @@ You can look at any of the changes by scanning the newer commits. Typically you 
 
 Your local code is now up to date with the remote origin.
 
-### 2. Task List Manipulation
+## 2. Task List Manipulation
 
 In this task you will write a simple function to detect and remove duplicates from a task list.
 
@@ -67,13 +81,13 @@ In this task you will write a simple function to detect and remove duplicates fr
 
 * Load the associated JS file `js/tasks.js` in Brackets and check you understand how it works.
 
-#### Test Your Understanding
+### Test Your Understanding
 
 1. Add a button to the html page labelled "Remove duplicates".
 2. When clicked, this button should trigger a new function `removeDuplicates()` against the `tasks` list.
 3. The removal function should parse the list and remove any identical copies of previous items (leaving at most one).
 
-### 3. Nested Sub-Object Assignment
+## 3. Nested Sub-Object Assignment
 
 In this task you will extend an existing JS object by nesting further object(s).
 
@@ -82,7 +96,7 @@ In this task you will extend an existing JS object by nesting further object(s).
 * Refresh the browser to see alternative outputs.
 * Review the JS in the html file and ensure you understand how it works.
 
-#### Test Your Understanding
+### Test Your Understanding
 
 1. Add a `makeEngine()` function that constructs and returns random engine objects. Engines might be characterised by:
 	* Cylinders
@@ -92,7 +106,7 @@ In this task you will extend an existing JS object by nesting further object(s).
 2. Use the new function inside the `makeCar()` function, to make an engine and add it to the car object returned by `makeCar()`.
 3. Ensure you include the engine details in the console log to show that it works.
 
-### 4. Nested Helper Functions
+## 4. Nested Helper Functions
 
 In this task you will modify an existing method of an object and "factor out" some of its code in to a separate internal "helper function" which does an intermediary calculation.
 
@@ -100,7 +114,7 @@ In this task you will modify an existing method of an object and "factor out" so
 * View the live preview and hit F12 to view the developer tools JS console. **NOTE:** all output from the JS appears on the console.
 * Review the JS in the html file and ensure you understand how it works.
 
-#### Test Your Understanding
+### Test Your Understanding
 
 1. Add an empty internal `updateFuel()` function within the `drive` method of the `fiat` object.
 2. Add code to the new helper function which updates the fuel by decrementing the fiat's fuel by 1.

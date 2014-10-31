@@ -1,6 +1,9 @@
-% 305CDE Developing the Modern Web 2
-% Introduction to Labs 2014/15
-% [Colin Stephen][] and [Jianhua Yang][]
+---
+title: 305CDE Developing the Modern Web 2
+subtitle: Introduction to Labs 2014/15
+author: Colin Stephen
+date: October 2014
+---
 
 # Schedule
 

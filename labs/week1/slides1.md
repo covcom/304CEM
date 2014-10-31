@@ -1,5 +1,9 @@
-% 305CDE Lab 1
-% JavaScript Language Basics
+---
+title: 305CDE Lab 1
+subtitle: JavaScript Language Basics
+author: Colin Stephen
+date: October 2014
+---
 
 # Overview
 

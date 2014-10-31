@@ -1,12 +1,26 @@
-# 305CDE Worksheet 3
+---
+title: 305CDE Worksheet 3
+author: Colin Stephen
+date: October 2014
+header-includes:
+	- \usepackage[margin=1.5in]{geometry}
+	- \usepackage{fancyhdr}
+    - \pagestyle{fancy}
+    - \lhead{305CDE Worksheet 3}
+    - \chead{}
+    - \rhead{\thepage}
+    - \lfoot{}
+    - \cfoot{}
+    - \rfoot{}
+---
 
-## About
+# About
 
 This week covers more advanced uses of objects and functions in JS.
 
 Objects and functions are extremely powerful. This week explores some of the more advanced ways you can use both of them.
 
-## Task List
+# Task List
 
 Aim to complete these in roughly 60-80 minutes of lab time. Use SourceTree git client and Brackets editor, _or other equivalent software that you are familiar with_.
 
@@ -18,7 +32,7 @@ Aim to complete these in roughly 60-80 minutes of lab time. Use SourceTree git c
 
 4. Create a new JS module.
 
-## Resources
+# Resources
 
 * [Working with remote git repositories][]
 * [MDN guide to JS closures][]
@@ -34,11 +48,11 @@ Aim to complete these in roughly 60-80 minutes of lab time. Use SourceTree git c
 [JS module pattern]: http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html
 [Immediately-Invoked function expressions]: http://benalman.com/news/2010/11/immediately-invoked-function-expression/
 
-## Step-by-Step
+# Step-by-Step
 
-### 1. Set up a second remote repository
+## 1. Set up a second remote repository
 
-#### Motivation
+### Motivation
 
 Now that the code you are writing in lab sessions is more complex, you may wish to keep track of your solutions to the tasks.
 
@@ -48,7 +62,7 @@ To enable you to work on the repository, keep it up to date, AND keep track of y
 
 In this task you will use the _git shell/terminal_ to achieve this.
 
-#### Fork the 305CDE repo
+### Fork the 305CDE repo
 
 `Forking` allows you to copy an entire repository to your own account.
 
@@ -63,7 +77,7 @@ In this task you will use the _git shell/terminal_ to achieve this.
 * If you wish to keep your new copy private, view settings and set the "Visibility Level" to _Private_. 
 * Copy the project `https://` URL listed on the project page for the next steps.
 
-#### Using the git shell
+### Using the git shell
 
 Next you will configure your git client to push any changes to your fork of the repository
 
@@ -87,7 +101,7 @@ Now you can push any changes you make in labs to your remote `myfork`. The GUI g
 
 NOTE: A simple `git push` will default to origin, which will fail. See [Working with remote git repositories][] for much more detail on working effectively with multiple remotes.
 
-### 2. Use closure to maintain internal state
+## 2. Use closure to maintain internal state
 
 [MDN guide to JS closures][]
 
@@ -100,7 +114,7 @@ Since the `window.onload` handler function encloses the `button.onclick` one, th
 
 This technique adds a lot of power to the language. For example, as we see here, state can be maintained in "private" scoped variables, even after the enclosing function has returned.
 
-#### Test your understanding
+### Test your understanding
 
 * Add three buttons to the `function_closure.html` page: '-', '0', '+'
 	* You can think of these as the playback speed controls for a media player
@@ -113,7 +127,7 @@ This technique adds a lot of power to the language. For example, as we see here,
 
 If you have time, use a single helper function to update the `<div>` rather than update it in each separate click handler.
 
-### 3. Use functions to construct objects and modify their prototype
+## 3. Use functions to construct objects and modify their prototype
 
 [Object Oriented JavaScript][]
 
@@ -127,7 +141,7 @@ If you have time, use a single helper function to update the `<div>` rather than
 
 Prototype inheritance applies to any JS data type / object, including objects created as instances of constructor functions like `Coffee()`. The prototype of an object can be modified or overridden by JS code at runtime. Any other object sharing this prototype is also modified in the same way.
 
-#### Test your understanding
+### Test your understanding
 
 * First, add a `Tea(type, ounces)` constructor function to the `js_classes.html` JavaScript.
 	* Add properties for `type` and `ounces`
@@ -137,7 +151,7 @@ Prototype inheritance applies to any JS data type / object, including objects cr
 * Once it is working, extend the `Tea` and `Coffee` prototypes by giving both a new method `sip()`
 	* Each invocation of `sip()` should simply log "Hmm, tasty" to the console
 
-### 4. Create a JavaScript module (N.B.: advanced)
+## 4. Create a JavaScript module (N.B.: advanced)
 
 See [JS module pattern][] along with [Immediately-Invoked function expressions][] for a good discussion of what follows.
 
@@ -165,7 +179,7 @@ Together these JS modules implement the "model" part of MVC (Model View Controll
 
 These things are all typical of the "module pattern" in JS. For more on it, see the website linked to above.
 
-#### Test your understanding
+### Test your understanding
 
 * Write a short module that exports a utility object called "$" to the global namespace.
 * This object should reimplement the JS `document.getElementById()` selector method using its own method `$.id()`.

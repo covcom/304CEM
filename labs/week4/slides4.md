@@ -1,6 +1,9 @@
-% 305CDE Lab 4
-% The DOM and AJAX
-% October 2014
+---
+title: 305CDE Lab 4
+subtitle: The DOM and AJAX
+author: Colin Stephen
+date: October 2014
+---
 
 ## Overview
 

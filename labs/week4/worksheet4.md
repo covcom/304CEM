@@ -1,6 +1,20 @@
-# 305CDE Worksheet 4
+---
+title: 305CDE Worksheet 4
+author: Colin Stephen
+date: October 2014
+header-includes:
+	- \usepackage[margin=1.5in]{geometry}
+	- \usepackage{fancyhdr}
+    - \pagestyle{fancy}
+    - \lhead{305CDE Worksheet 4}
+    - \chead{}
+    - \rhead{\thepage}
+    - \lfoot{}
+    - \cfoot{}
+    - \rfoot{}
+---
 
-## About
+# About
 
 This week's lab tasks will focus on two important areas where JS is used on the client side:
 
@@ -9,14 +23,14 @@ This week's lab tasks will focus on two important areas where JS is used on the 
 
 Note that AJAX technically uses XML as the data format, but we will be using JSON which is easier to parse, and becoming the defacto standard for much data on the web. The principles of asynchronous communication and client side _callback functions_ are effectively identical for XML and JSON though.
 
-## Resources
+# Resources
 
 * [Introduction to the DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction)
 * [The DOM API](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
 * [Using native JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_native_JSON)
 * [Getting Started with AJAX](https://developer.mozilla.org/en-US/docs/AJAX/Getting_Started)
 
-## Task List
+# Task List
 
 The tasks this week are split in to two "tracks" depending on your confidence with JS.
 
@@ -27,7 +41,7 @@ Since this material is more advanced than previous weeks, aim to get as much und
 
 **NOTE:** Remember to commit your changes to a fork of the 305CDE git repository (see [last week's worksheet](https://gitlab.com/c0lin/305cde/blob/master/labs/week3/worksheet3.md)) so that you can continue later. The techniques and knowledge developed this week will be very useful later.
 
-### Track 1
+## Track 1
 
 DOM:
 
@@ -39,7 +53,7 @@ AJAX:
 3. `JSON.html`
 4. `ajax_basic.html`
 
-### Track 2
+## Track 2
 
 The JavaScript on this track is a little more complex.
 

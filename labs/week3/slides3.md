@@ -1,6 +1,9 @@
-% 305CDE Lab 3
-% JavaScript Objects and Functions: Part II
-% October 2014
+---
+title: 305CDE Lab 3
+subtitle: "JavaScript Objects and Functions: Part II"
+author: Colin Stephen
+date: October 2014
+---
 
 ## Overview
 

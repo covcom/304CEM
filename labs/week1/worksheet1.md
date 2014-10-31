@@ -1,11 +1,25 @@
-# 305CDE Worksheet 1
+---
+title: 305CDE Worksheet 1
+author: Colin Stephen
+date: October 2014
+header-includes:
+	- \usepackage[margin=1.5in]{geometry}
+	- \usepackage{fancyhdr}
+    - \pagestyle{fancy}
+    - \lhead{305CDE Worksheet 1}
+    - \chead{}
+    - \rhead{\thepage}
+    - \lfoot{}
+    - \cfoot{}
+    - \rfoot{}
+---
 
-## About
+# About
 
 This week is mainly about getting started with JavaScript development. It will also cover some of the absolute basics of the language.
 
 
-## Task List
+# Task List
 
 Aim for around 5 minutes per task.
 
@@ -18,11 +32,11 @@ Aim for around 5 minutes per task.
 7. Use the Brackets JSLint feedback to improve the code in the third JS example 
 
 
-## Resources
+# Resources
 
 [305CDE Repository][]
 
-Tutorials
+### Tutorials
 
 * [Mozilla JS tutorial][]: _A FANTASTIC, comprehensive, concise resource for learning JS quickly._
 * [Simple guide to git][]
@@ -30,11 +44,11 @@ Tutorials
 * [How to use Chrome Developer Tools][Dev Tools]
 * [Debugging JavaScript][Debugging]
 
-Web Services
+### Web Services
 
 * [GitLab][]
 
-Downloads
+### Downloads
 
 * [SourceTree][]
 * [Git for Linux][]
@@ -54,9 +68,9 @@ Downloads
 [Dev Tools]: https://developer.chrome.com/devtools
 [Debugging]: https://developer.chrome.com/devtools/docs/javascript-debugging
 
-## Step-by-Step
+# Step-by-Step
 
-### 1. Register for a user account on Gitlab
+## 1. Register for a user account on Gitlab
 
 You will be using git version control for all of your code on this module. Register for a free account at [GitLab][]. This is an open source alternative to the more popular [GitHub][] which allows unlimited private repositories. Both of these are web front-ends for git repository management systems.
 
@@ -65,7 +79,7 @@ You will be using git version control for all of your code on this module. Regis
 If you have never used git version control before, then read the quickstart [simple guide to git][]. You can then [become a git guru][] in your own time between labs.
 
 
-### 2. Use SourceTree to clone the 305CDE repository
+## 2. Use SourceTree to clone the 305CDE repository
 
 Once you confirm your GitLab registration, you will be able to clone the 305CDE repository containing the materials for this module.
 
@@ -73,7 +87,7 @@ There are many git clients to choose from, and we will be using the Atlassian [S
 
 ![SourceTree client running on Windows](static/sourcetree.png)
 
-#### Cloning the repository
+### Cloning the repository
 
 If/when you are asked for a username/password, use your GitLab credentials.
 
@@ -87,7 +101,7 @@ If/when you are asked for a username/password, use your GitLab credentials.
 You now have local copies of all the materials for 305CDE labs available so far, including this worksheet. You will be able to pull any additions or changes made in future to update the files you just created.
 
 
-### 3. Create a new repository for *Challenge 1*
+## 3. Create a new repository for *Challenge 1*
 
 There are two ways to start new repositories, depending on whether you already have local files to commit or not. If you are starting from scratch, then you can just create a new project in GitLab and clone it to a local folder, as in the last task. If you already have files to commit you can initialise your repository locally and push it to an empty remote project.
 
@@ -129,7 +143,7 @@ Next you wish to push the local files up to your remote (empty) project on GitLa
 Your local repository should now be pushed up to the web. Refresh the GitLab project page to check that it worked.
 
 
-### 4. Test versioning for *Challenge 1*
+## 4. Test versioning for *Challenge 1*
 
 Play around with changing the content of your test file, adding new files and folders to the root of your repository, staging, committing, and pushing the changes.
 
@@ -146,15 +160,15 @@ In particular ensure you become happy with the following principles of version c
 It is hard to completely mess up and lose work in a git repository as it remembers everything you ever commit including deleted files. This works in your favour if you follow the mantra "commit early, and commit often".
 
 
-### 5. Live Preview
+## 5. Live Preview
 
 **NOTE:** If you wish to save your changes to code locally, ensure you do so on a newtork or removable drive, NOT on the C:\ drive of the lab machines.
 
-#### Reference
+### Reference
 
 Lots of the JavaScript you will encounter in this part of the course is nicely summarised on the Mozilla Developer Network [JS Tutorial][Mozilla JS Tutorial].
 
-#### Task
+### Task
 
 Fire up a suitable code editor and use it to explore the first example code files for this lab.
 
@@ -176,17 +190,17 @@ You will see a simple JavaScript function that interacts with the form and does 
 
 * Read through the code comments to understand what each part of the JavaScript code is doing.
 
-#### Test your understanding
+### Test your understanding
 
 1. modify the JS code to double the discount applied when the quantity ordered is greater than 100 items
 2. modify the HTML form to include a shipping field, and include this value in the total calculation in `shopping.js`
 
 
-### 6. Chrome Developer Tools
+## 6. Chrome Developer Tools
 
 To follow this example, you will use the [Chrome Developer Tools][Dev Tools].
 
-#### Console output
+### Console output
 
 * Load up `conditionals_booleans.html` and go to the live preview
 * Enter some valid inputs into the form and submit it
@@ -197,12 +211,12 @@ To follow this example, you will use the [Chrome Developer Tools][Dev Tools].
 * Click on the console tab and try submitting the form again (you can ignore errors at this point) to see output
 * Go back to Brackets and load `contact.js` to see where this output comes from
 
-#### Test your understanding
+### Test your understanding
 
 1. modify the HTML form to include a "Full Name" field
 2. add validation in `contact.js` to ensure that the name entered has at least two parts separated by a space, and is between 3 and 100 characters in length
 
-#### Basic debugging
+### Basic debugging
 
 For a much more detailed description read Google's [debugging JavaScript][Debugging] guide.
 
@@ -220,7 +234,7 @@ Sometimes your attempts to change the code will introduce bugs. A bug is usually
 If your code is always perfect(!) then please introduce an intentional syntax error in `contact.js` to practice the procedure above.
 
 
-### 7. JSLint Code Checking
+## 7. JSLint Code Checking
 
 Writing clean, readable, and error-free high-quality code is essential to maintainability. Therefore most languages now have automated syntax and style "checkers" called [linters](http://en.wikipedia.org/wiki/Lint_(software)) that code editors and IDEs can use to alert potential problems to programmers immediately, when they are writing their code.
 
@@ -238,7 +252,7 @@ Note that many of the highlighted issues are about things like indentation, and 
 * Go to the live preview of the `switch_case.html` file to see what it does
 * Load the `js/membership.js` file and follow the code to determine how it works
 
-#### Test your understanding
+### Test your understanding
 
 Once you have corrected for any JSLint errors found by the code linter, do the following.
 
