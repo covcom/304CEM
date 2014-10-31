@@ -96,7 +96,7 @@ The DOM is essentially a description of the elements on a web page along with th
 
 * Load `map.html` and preview the functionality via Brackets
 * Observe that the `showCoords()` function sets the `innerHTML` property of a DOM element
-* Also observe that the `addtext()` function _dynamically adds a new element to the DOM_ ( a "text node").
+* ~~Also observe that the `addtext()` function _dynamically adds a new element to the DOM_ ( a "text node").~~
 	* Similarly you can add other HTML tags such as `<a>` or `<p>` etc., or update their attributes 
 
 ### Test your understanding
