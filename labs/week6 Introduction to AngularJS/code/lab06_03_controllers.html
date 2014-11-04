@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="moduleToy">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.1/angular.min.js"></script>
+</head>
+
+<body ng-controller="controllerToy as ctrl">
+    <p>
+        Hello
+        <input type="text" ng-model="ctrl.name">
+    </p>
+    <button ng-click="ctrl.confirm()">
+        Click here
+    </button>
+    <p id="output" ng-bind="ctrl.message"></p>
+
+    <script type="text/javascript">
+        angular.module('moduleToy', []).controller('controllerToy', [
+
+                function () {
+                var self = this;
+                var lastName = 'my last';
+                self.confirm = function () {
+                    self.message = 'Hello ' + self.name;
+                };
+                }]);
+    </script>
+</body>
+
+</html>
