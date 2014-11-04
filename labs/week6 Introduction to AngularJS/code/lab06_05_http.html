@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" ng-app="weatherToy">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.1/angular.min.js"></script>
+</head>
+
+<body ng-controller="MainCtrl as mainCtrl">
+    <div>
+        City Weather
+    </div>
+    <div ng-repeat="item in mainCtrl.items" class="item">
+        <span ng-bind="item.name"></span>
+        <span ng-bind="item.weather[0].description"></span>
+    </div>
+
+    <script>
+        angular.module('weatherToy', []).controller('MainCtrl', ['$http',
+            function ($http) {
+                var self = this;
+                self.items = [];
+
+                $http.get('http://api.openweathermap.org/data/2.5/box/city?bbox=12,32,15,37,10&cluster=yes').then(function (response) {
+                    self.items = response.data.list;
+                    console.log(self.items);
+                }, function (errResponse) {
+                    console.error('Error while fetching notes');
+                });
+        }]);
+    </script>
+</body>
+
+</html>
