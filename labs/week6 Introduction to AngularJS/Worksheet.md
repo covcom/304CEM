@@ -10,8 +10,14 @@ COM Programming Support: ECG-03, Tues. 13:00-15:00
 ECG-14 05/11/2014
 
 ##OBJECTIVES
-This is the 1st of a series of 6 labs for module A202SGI, where we are going to spend most of our time on Angu- larJS. AngularJS is a JavaScript framework. It is quite new (since 2009) and is also becoming increasingly popu- lar. It demonstrates some useful concepts in modern web development e.g. model–view–controller (MVC).
-In this lab, we will introduce you AngularJS, get yourself familiar with basic directives and controllers. The objec- tives of this lab are: 1) Introduction of AngularJS; 2) Module and controller structure; 3) Some simple directives including ng-repeat; 4) First taste of server communication
+This is the 1st of a series of 6 labs for module **305CDE**, where we are going to spend most of our time using **AngularJS**. AngularJS is a JavaScript framework. It is quite new (since 2009) and is also becoming increasingly popu- lar. It demonstrates some useful concepts in modern web development e.g. model–view–controller (MVC).
+In this lab, we will introduce you AngularJS, get yourself familiar with basic directives and controllers. 
+The objectives of this lab are:
+
+1. Introduction of AngularJS
+2. Module and controller structure
+3. Some simple directives including `ng-repeat`
+4. First taste of server communication
 
 ##1 LAB STRUCTURE AND MATERIAL
 
