@@ -243,7 +243,7 @@ The source code is contained in file `lab06_05_http.html`.
 	<script>
 		angular.module('weatherToy', []).controller('MainCtrl', ['$http', function ($http) {
 			var self = this; self.items = [];
-			$http.get('http://api.openweathermap.org/data/2.5/box/city?bbox=12,32,15,37,10&clus ter=yes').then(function (response) {
+			$http.get('http://api.openweathermap.org/data/2.5/box/city?bbox=12,32,15,37,10&cluster=yes').then(function (response) {
 				self.items = response.data.list;
 				console.log(self.items);
 			}, function (errResponse) {
