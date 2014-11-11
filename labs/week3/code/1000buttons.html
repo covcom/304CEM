@@ -1,0 +1,41 @@
+<!doctype html>
+
+<html>
+<head>
+	<title>Closure Example</title>
+</head>
+<body>
+	<h1 id="title">Buttons</h1>
+	<div id="buttons"></div>
+</body>
+
+<script>
+	// this script adds buttons to the DOM
+	// each button is assigned a listener which reports its value
+	// closures are very useful here
+	
+	var div = document.getElementById("buttons");
+	var title = document.getElementById("title");
+	
+	function addButtons(number) {
+		for (var i = 0; i < number; i++) {
+			addButton(i);
+		}
+		title.innerHTML = [number, "Buttons"].join(" ");
+	}
+
+	function addButton(i) {
+		var btn = document.createElement("button");
+		btn.value = i;
+		btn.innerHTML = i;
+		btn.addEventListener("click", clicked);
+		div.appendChild(btn);	
+		
+		function clicked(e) {
+			alert("Button " + btn.value + " was clicked");
+		}
+	}
+	addButtons(1000);
+</script>
+
+</html>
