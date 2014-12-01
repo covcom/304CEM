@@ -1,0 +1,25 @@
+{
+	"docs" : [
+		{"name": "Charles Babbage", "born": 1791},
+    	{"name": "Tim Berners-Lee", "born": 1955},
+    	{"name": "George Boole", "born": 1815},
+		{"name": "Vinton Cerf", "born": 1943},
+		{"name": "John Presper Eckert", "born": 1919},
+		{"name": "Wil van der Aalst", "born": 1966, "fame": "business process management, process mining, Petri nets"},
+		{"name": "Hal Abelson", "born": 1947, "fame": "intersection of computing and teaching"},
+		{"name": "Serge Abiteboul", "born": 1953, "fame": "database theory"},
+		{"name": "Samson Abramsky", "born": 1953, "fame": "game semantics"},
+		{"name": "Leonard Adleman", "born": 1945, "fame": "RSA, DNA computing"},
+		{"name": "Manindra Agrawal", "born": 1966, "fame": "polynomial-time primality testing"},
+		{"name": "Luis von Ahn", "born": 1979, "fame": "human-based computation"},
+		{"name": "Alfred Aho", "born": 1941, "fame": "compilers book, the A in AWK"},
+		{"name": "Frances E. Allen", "born": 1932, "fame": "compiler optimization"},
+		{"name": "Gene Amdahl", "born": 1922, "fame": "supercomputer developer, founder of Amdahl Corporation"},
+		{"name": "David P. Anderson", "born": 1955, "fame": "volunteer computing"},
+		{"name": "Andrew Appel", "born": 1960, "fame": " compilers text books"},
+		{"name": "Bruce Arden", "born": 1927, "fame": "programming language compilers (GAT, MAD), virtual memory architecture, MTS"},
+		{"name": "Sanjeev Arora", "born": 1968, "fame": "PCP theorem"},
+		{"name": "John Vincent Atanasoff", "born": 1903, "fame": "computer pioneer"},
+		{"name": "Steve Jobs", "born": 1955, "fame": "co-founder of Apple Computers"}
+  	]
+}

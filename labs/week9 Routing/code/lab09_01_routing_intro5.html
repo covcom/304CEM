@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" ng-app="routeToy">
+
+<head>
+
+</head>
+
+<body ng-controller="MainCtrl as mainCtrl">
+
+    <span>A simple CouchDB Front-end</span>
+
+    <ul>
+        <li><a href="#/overview">DB Overview</a>
+        </li>
+        <div ng-hide="mainCtrl.userService.get().isLoggedIn">
+            <li><a href="#/login">Login page</a>
+            </li>
+        </div>
+        <div ng-show="mainCtrl.userService.get().isLoggedIn">
+            <li><a href="#/details">Detailed document</a>
+            </li>
+        </div>
+
+
+    </ul>
+
+    <div ng-view></div>
+
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.1/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.1/angular-route.js"></script>
+    <script src="lab09_01_routing_intro5.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+<p>This is the login page.</p>
+<form name="loginForm" ng-controller="LoginCtrl as loginCtrl" ng-submit="loginCtrl.login()">
+    <label for="username">Username</label>
+    <input type="text" ng-model="loginCtrl.username" id="username" placeholder="Enter username for your CouchDB account" required/>
+    <label for="password">Password</label>
+    <input type="password" ng-model="loginCtrl.password" id="password" placeholder="Enter password for your CouchDB account" required/>
+    <input type="submit" value="Login" ng-disabled="loginForm.$invalid">
+</form>
