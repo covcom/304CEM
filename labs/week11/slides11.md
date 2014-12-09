@@ -262,13 +262,16 @@ NB: all of this works on arrays of _any JS object_, for example __promises__!
 * You can just think of a CouchDB database like an _array of documents_!
     * (Actually it is a key/value store, but the same ideas apply).
 * Which means you can use map, reduce, and (indirectly) filter across the DB documents.
-* These functions are called _views_ by CouchDB.
-    * Map views `emit` key/value pairs rather than `return` arbitrary objects.
-        * Otherwise they are the same thing as described above.
-    * Reduce views have a `rereduce` flag to determine when to stop the reduction.
-        * Otherwise they are the same thing as described above.
 
 ## CouchDB Views
+
+* Map and reduce callbacks are stored in _views_ by CouchDB.
+* A map view will `emit` key/value pairs rather than `return` arbitrary objects.
+    * Otherwise they are the same thing as described above.
+* Reduce views have a `rereduce` flag to determine when to stop the reduction.
+    * Otherwise they are (basically) the same thing as described above.
+
+## Permanent vs Temporary
 
 Primary tool used for querying and reporting on CouchDB documents.
 
@@ -285,8 +288,6 @@ Primary tool used for querying and reporting on CouchDB documents.
 * HTTP POST request to `/{dbname}/_temp_view`
     * body of the request contains the code of the view function
     * Content-Type header is set to `application/json`.
-
-Remember: views are just special JS functions corresponding to maps and reductions.
 
 ## Map View Example
 
@@ -317,6 +318,8 @@ function(doc) {
   }
 }
 ```
+
+Here we have made the customer's LastName the key.
 
 ## Reduce View Example
 
