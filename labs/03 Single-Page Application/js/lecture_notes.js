@@ -10,14 +10,15 @@ if (window.location.hash == '#add' || notes.length === 0) {
 }
 
 document.querySelector('#addPage button').onclick = function() {
+	console.log('add note');
 	var title = document.querySelector('#addPage input').value;
 	var note = document.querySelector('#addPage textarea').value;
-	document.querySelector('#addPage input').value = '';
-	document.querySelector('#addPage textarea').value = '';
-	var newNote = {title: title, note: note};
-	notes.push(newNote);
+	//document.querySelector('#addPage input').value = '';
+	//document.querySelector('#addPage textarea').value = '';
+	//var newNote = {title: title, note: note};
+	//notes.push(newNote);
 	
-	loadList();
+	//loadList();
 };
 
 /*
@@ -25,17 +26,17 @@ document.querySelector('#addPage button').onclick = function() {
  */ 
 document.querySelector('nav > ul > li:nth-child(1)').onclick = function() {
 	console.log('first link clicked');
-	document.getElementById('addPage').style.display = 'block';
-	document.querySelector('#addPage input').select();
-	document.getElementById('editPage').style.display = 'none';
-	loadList();
+	//document.getElementById('addPage').style.display = 'block';
+	//document.querySelector('#addPage input').select();
+	//document.getElementById('editPage').style.display = 'none';
+	//loadList();
 };
 
 document.querySelector('nav > ul > li:nth-child(2)').onclick = function() {
 	console.log('second link clicked');
-	document.getElementById('addPage').style.display = 'none';
-	document.getElementById('editPage').style.display = 'block';
-	loadList();
+	//document.getElementById('addPage').style.display = 'none';
+	//document.getElementById('editPage').style.display = 'block';
+	//loadList();
 };
 
 /*
@@ -43,8 +44,8 @@ document.querySelector('nav > ul > li:nth-child(2)').onclick = function() {
  */
 // onkeypress won't detect backspace!
 // onkeydown triggers before new character is entered.
-document.querySelector('#editPage textarea').onkeyup = updateNote;
-document.querySelector('#editPage input').onkeyup = updateNote;
+//document.querySelector('#editPage textarea').onkeyup = updateNote;
+//document.querySelector('#editPage input').onkeyup = updateNote;
 
 function updateNote() {
 	console.log('update note');
