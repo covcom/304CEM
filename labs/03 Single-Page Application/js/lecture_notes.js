@@ -73,6 +73,14 @@ function rem(element) {
 	console.log(id);
 	notes.splice(id, 1);
 	loadList();
+	var editId = parseInt(document.querySelector('#editPage p').innerHTML, 10);
+	console.log('id: '+id);
+	console.log('editId: '+editId);
+	if (id == editId) {
+		console.log('deleted document being edited!');
+		document.querySelector('#editPage input').value = '';
+		document.querySelector('#editPage textarea').value = '';
+	}
 }
 
 function loadList() {

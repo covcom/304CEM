@@ -1,15 +1,13 @@
-h1 {
-	color: red;
+h1, h2 {
+	font-family: arial, sans-serif;
 }
 #addPage {
-	background-color: 300;
 	border: 1px solid red;
 	margin: 2em;
 	padding: 1em;
 }
 
 #editPage {
-	background-color: 003;
 	border: 1px solid blue;
 	margin: 2em;
 	padding: 1em;
@@ -22,10 +20,14 @@ h1 {
 textarea {
 	width: 600px;
 	height: 400px;
+	padding: 0.5em;
+	font-family: arial, sans-serif;
 }
 
 input {
 	display: block;
 	width: 600px;
 	margin-bottom: 1em;
+	padding: 0.5em;
+	font-family: arial, sans-serif;
 }
