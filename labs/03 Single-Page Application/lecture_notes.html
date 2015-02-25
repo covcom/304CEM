@@ -6,13 +6,28 @@
 </head>
 <body>
 	<h1>Lecture Notes</h1>
-	<textarea id="note"></textarea>
-	<p><button id="add">Add Note</button></p>
-	<table id="list">
-	</table>
-	<div id="details">
-		<p id="viewNote"></p>
-	</div>
+	<nav>
+		<ul>
+			<li><a href="#add">Add note</a></li>
+			<li><a href="#edit">Edit notes</a></li>
+		</ul>
+	</nav>
+	<main>
+		<div id="addPage">
+			<h2>Add a Note</h2>
+			<p><input type="text" placeholder="Title" autofocus /></p>
+			<textarea></textarea>
+			<p><button>Add Note</button></p>
+		</div>
+		<div id="editPage">
+			<h2>Edit a Note</h2>
+			<table id="list">
+			</table>
+			<input type="text" placeholder="Title" />
+			<textarea></textarea>
+			<p></p>
+		</div>
+	</main>
 </body>
 <script src="js/lecture_notes.js"></script>
 </html>

@@ -1,0 +1,16 @@
+h1 {
+	color: red;
+}
+#addPage {
+	background-color: 300;
+	border: 1px solid red;
+}
+
+#editPage {
+	background-color: 003;
+	border: 1px solid blue;
+}
+
+#editPage input {
+	display: block;
+}
