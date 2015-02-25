@@ -1,0 +1,47 @@
+{
+    "count": 5,
+    "books": [
+        {
+            "title": "Version Control with Git",
+			"year": 2012,
+			"isbn": 9781449316389,
+            "authors": [
+                "Jon Loeliger",
+                "Matthew McCullough"
+            ]
+        },
+		{
+            "title": "DOM Enlightenment",
+			"year": 2013,
+			"isbn": 9781449342845,
+            "authors": [
+                "Cody Lindley"
+            ]
+        },
+		{
+            "title": "JavaScript: The Good Parts",
+			"year": 2008,
+			"isbn": 9780596517748,
+            "authors": [
+                "Douglas Crockford"
+            ]
+        },
+		{
+            "title": "JavaScript Testing with Jasmine",
+			"year": 2013,
+			"isbn": 9781449356378,
+            "authors": [
+                "Evan Hahn"
+            ]
+        },
+		{
+            "title": "AngularJS: Up and Running",
+			"year": 2014,
+			"isbn": 9781491901946,
+            "authors": [
+                "Shyam Seshadri",
+				"Brad Green"
+            ]
+        }
+    ]
+}
