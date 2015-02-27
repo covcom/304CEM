@@ -1,4 +1,5 @@
 
+
 var db = openDatabase('todo', '1.0', 'simple todo list', 2 * 1024 * 1024);
 
 document.querySelector('button').onclick = function() {
