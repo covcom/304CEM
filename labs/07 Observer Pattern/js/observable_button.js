@@ -7,6 +7,7 @@
  * .map		apply a function to each element.
  */
 
+/*
 function CreateObservable(element, eventType) {
 	return Rx.Observable.create(function(observer) {
 		function eventHandler (eventObj) {
@@ -18,15 +19,23 @@ function CreateObservable(element, eventType) {
 		};
 	});
 }
+*/
 
 var btn = document.getElementById('button');
 
-var observable = CreateObservable(btn, 'click')
+var observable = Rx.Observable.fromEvent(btn, 'click')
 	.skip(2)
 	.take(2)
-	.map(function(evt){
-		return "button was clicked";
+	.map(function(evt) {
+		return 'button was clicked';
 	});
+
+//var observable = CreateObservable(btn, 'click')
+//	.skip(2)
+//	.take(2)
+//	.map(function(evt){
+//		return "button was clicked";
+//	});
 
 var observer = Rx.Observer.create(
 	function(evt) {
