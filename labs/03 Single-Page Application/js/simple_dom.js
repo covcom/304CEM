@@ -1,4 +1,6 @@
-console.log('page loaded');
+//console.log('page loaded');
+
+console.log(document);
 
 document.getElementById('save').onclick = save;
 document.querySelector('#userForm input[type="email"]').onkeypress = function() {
