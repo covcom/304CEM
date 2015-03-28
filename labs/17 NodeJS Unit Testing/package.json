@@ -1,0 +1,17 @@
+{
+  "name": "Testing",
+  "version": "1.0.0",
+  "description": "Simple API to teach TDD",
+  "main": "server.js",
+  "scripts": {
+    "test": "jasmine-node spec",
+    "start": "node server.js"
+  },
+  "author": "Mark J Tyers",
+  "license": "ISC",
+  "dependencies": {
+    "node-persist": "0.0.3",
+    "restify": "^3.0.1"
+  },
+  "devDependencies": {}
+}
