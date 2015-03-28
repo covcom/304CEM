@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" ng-app="selectToy">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.1/angular.min.js"></script>
+</head>
+
+<body ng-controller="MainCtrl as ctrl">
+
+    <div>
+        <select ng-model="ctrl.selectionId" ng-options="c.id as c.label for c in ctrl.accommodation">
+        </select>
+        Selected accommodation ID : {{ctrl.selectionId}}
+    </div>
+
+    <script type="text/javascript">
+        angular.module('selectToy', [])
+            .controller('MainCtrl', [
+
+                function () {
+                    this.accommodation = [
+                        {
+                            label: 'Singer Hall',
+                            id: 1
+                        },
+                        {
+                            label: 'Callice Court',
+                            id: 2
+                        },
+                        {
+                            label: 'Liberty Point',
+                            id: 3
+                        }
+      ];
+                    this.selectionId = 2;
+    }]);
+    </script>
+</body>
+
+</html>

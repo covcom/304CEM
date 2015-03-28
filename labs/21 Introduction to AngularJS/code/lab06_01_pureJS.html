@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <p>
+        Hello
+        <input type="text" id="input">
+    </p>
+    <button onclick="myFunction()">
+        Click here
+    </button>
+    <p id="output"></p>
+    <script>
+        function myFunction() {
+            var name = document.getElementById("input");
+            document.getElementById("output").innerHTML = "Hello " + name.value;
+        }
+    </script>
+</body>
+
+</html>

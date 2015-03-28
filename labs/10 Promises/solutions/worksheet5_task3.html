@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+	<title>Worksheet 5, Task 3</title>
+</head>
+	<body>
+		<button id="btn1">1</button>
+		<button id="btn2">2</button>
+		<button id="btn3">3</button>
+		<button id="btn4">4</button>
+		<button id="btn5">5</button>
+		<div id="longest_sequence"></div>
+
+		<script>
+			var btn1 = document.getElementById("btn1");
+			var btn2 = document.getElementById("btn2");
+			var btn3 = document.getElementById("btn3");
+			var btn4 = document.getElementById("btn4");
+			var btn5 = document.getElementById("btn5");
+			var output = document.getElementById("longest_sequence");
+			var buttons = [btn1, btn2, btn3, btn4, btn5];
+			
+			function makeClickPromise(btn) {
+				var clickPromise = new Promise(function(resolve, reject) {
+					btn.addEventListener("click", clicked);
+					// use a closure to return the correct button on resolve
+					// and to remove the listener from the correct button
+					function clicked() {
+						resolve(btn);
+						btn.removeEventListener("click", clicked);
+					}
+				});
+				return clickPromise;
+			}
+
+			buttons.map(makeClickPromise).reduce(function(chain, clickPromise){
+				// each button in the array adds a click promise and a display update
+				// to the chain built by this reduction
+				// -- the chain retains the order of the original array
+				return chain.then(function() {
+					return clickPromise;
+				}).then(function(btn) {
+					output.innerHTML += btn.innerHTML;
+				})
+			}, Promise.resolve());
+		</script>
+
+	</body>
+</html>
