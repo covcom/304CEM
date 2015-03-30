@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "node-persist": "0.0.3",
+    "request": "^2.54.0",
     "restify": "^3.0.1"
   },
   "devDependencies": {}
