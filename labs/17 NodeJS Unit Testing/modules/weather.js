@@ -5,6 +5,8 @@ var sync = require('sync-request');
 storage = require('node-persist');
 storage.initSync();
 
+//var exports = module.exports = {};
+
 exports.getGeo = function(city, callback) {
 	var data = getData(city);
 	callback(data.forecast.city.coord);
