@@ -6,7 +6,7 @@ describe("Weather Forecast", function(data) {
 	storage = require('node-persist');
 	storage.initSync();
 	
-	it('clear local cache', function(done) {
+	xit('clear local cache', function(done) {
 		storage.clear(function() {
 			//console.log('clear');
 			expect(storage.length()).toEqual(0);
@@ -15,7 +15,7 @@ describe("Weather Forecast", function(data) {
 		});
 	});
 	
-	it('should get lat and lon for London,UK', function(done) {
+	xit('should get lat and lon for London,UK', function(done) {
 		list.getGeo('London,UK', function(data) {
 			//console.log('test');
 			expect(data.lon).toEqual(-0.12574);
