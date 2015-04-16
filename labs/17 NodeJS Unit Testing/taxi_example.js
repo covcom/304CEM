@@ -28,11 +28,3 @@ taxi.getFare('Coventry University', function(data) {
 	console.log(data);
 	console.timeEnd('getFare');
 });
-
-/*
-Coventry University
-{ lat: '52.486243', lng: '-1.890401' }
-setHome: 265ms
-{ distance: '23.0 mi', duration: '31 mins', cost: NaN }
-getFare: 564ms
-*/

@@ -1,0 +1,13 @@
+{
+// Configure your Run and Preview buttons here.
+
+// Run button configuration
+  "commands": {
+        "Node Test": "npm test"
+  },
+
+// Preview button configuration
+  "preview": {
+	    "Node Debugger": "http://{{domain}}:8080/debug?port=5858"
+  }
+}

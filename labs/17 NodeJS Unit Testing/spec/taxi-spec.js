@@ -13,8 +13,10 @@ describe("Taxi Module", function () {
 	xit('should calculate the fare to Coventry', function(done) {
 		taxi.getFare('Coventry', function(data) {
 			expect(data.distance).toEqual(37.0);
-			expect(data.duration).toEqual(31);
-			expect(data.cost).toEqual(40.1);
+			expect(data.duration).toBeGreaterThan(30);
+			expect(data.duration).toBeLessThan(40);
+			expect(data.cost).toBeGreaterThan(40.0);
+			expect(data.cost).toBeLessThan(44.0);
 			done();
 		});
 	});
