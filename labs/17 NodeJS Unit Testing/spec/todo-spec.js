@@ -1,7 +1,7 @@
 
 var list = require("../modules/todo");
  
-describe("ToDo List", function () {
+describe('ToDo List', function () {
 	
 	list.add('foo', 1);
 	list.add('bar', 2);

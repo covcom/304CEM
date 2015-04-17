@@ -1,5 +1,6 @@
 
 var taxi = require('./modules/taxi');
+debugger;
 
 console.time('setHome');
 taxi.setHome('Birmingham', function(data) {

@@ -2,6 +2,7 @@
 var taxi = require("../modules/taxi");
 
 describe("Taxi Module", function () {
+	
 	xit('should set Birmingham as the current location', function(done) {
 		taxi.setHome('Birmingham', function(data) {
 			expect(data.lat).toEqual(52.486243);
