@@ -3,6 +3,9 @@ var list = require("../modules/todo");
  
 describe("ToDo List", function () {
 	
+	list.add('foo', 1);
+	list.add('bar', 2);
+	
 	xit('should clear the list before starting', function() {
 		list.clear();
 		expect(list.count()).toBe(0);
@@ -34,3 +37,4 @@ describe("ToDo List", function () {
 		expect(list.getAll()[1].title).toBe('cheese');
 	});
 });
+
