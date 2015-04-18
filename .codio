@@ -8,6 +8,7 @@
 
 // Preview button configuration
   "preview": {
+	    "Current File (static)": "https://{{domain}}/{{filepath}}",
 	    "Node Debugger": "http://{{domain}}:8080/debug?port=5858"
   }
 }
