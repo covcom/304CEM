@@ -164,6 +164,7 @@ app.get('/weather', function...
 * Inside the function you just added, send the response `"<h1>Weather Data</h1><br>"`
 * Now browse to `http://subdomain.codio.io:3000/weather` and check that your new response is shown.
 * If that works, then adapt the `/weather` route as follows:
+
 ```
 app.get('/weather', function(req, res) {
    checkWeather("coventry,uk", getWeatherDescription);
@@ -180,6 +181,7 @@ app.get('/weather', function(req, res) {
    }
 });
 ```
+
 * Test that this returns the weather data to the browser when you go to `http://subdomain.codio.io:3000/weather`.
 
 ![Final weather data application](/home/colin/coventry/1415/finland/hello_weather.png)
