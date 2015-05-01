@@ -1,0 +1,16 @@
+{
+  "name": "Uploader",
+  "version": "1.0.0",
+  "description": "Simple APi to upload images.",
+  "main": "image_upload.js",
+  "dependencies": {
+    "node-uuid": "^1.4.3",
+    "restify": "^3.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mark J Tyers",
+  "license": "ISC"
+}

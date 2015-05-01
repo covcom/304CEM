@@ -2,3 +2,5 @@ resources/*.git
 node_modules/
 labs/13 Introduction to NodeJS/node_modules/
 labs/16 File System/node_modules/
+labs/16 File System/Encoded Images/
+labs/16 File System/images/
