@@ -12,6 +12,7 @@ var uuid = require('node-uuid');
 var fs = require('fs');
 
 var uploadImage = function(path, mimeType, callback) {
+	console.log('uploadImage');
     var filename = 'images/'+uuid.v1()+'.'+mime.extension(mimeType);
 	console.log(path);
 	console.log(filename);
@@ -23,14 +24,10 @@ var uploadImage = function(path, mimeType, callback) {
     });
 };
 
-server.post('/images', function(req, res) {
-	console.log(req.files);
-	
-	for (var image in req.files) {
-		console.log(image);
-	}
-	console.log(req.files.myImage.type);
-    uploadImage(req.files.myImage.path, req.files.myImage.type, function(filename) {
+server.post('/', function(req, res, next) {
+	console.log('post');
+	//console.log(req.files.myImage.type);
+    uploadImage(req.files.image_id.path, req.files.image_id.type, function(filename) {
         res.send(filename);
         res.end();
     });
