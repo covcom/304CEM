@@ -28,7 +28,7 @@ server.get('/', function(req, res) {
 	console.log('GET');
 	fs.readdir('images/', function(err, files) {
 		var data = files.map(function(value) {
-			return req['headers.x-forwarded-proto']+'://'+req.headers.host+'/images/'+value;
+			return req.headers['x-forwarded-proto']+'://'+req.headers.host+'/images/'+value;
 		});
 		res.send(data);
 		res.end();
