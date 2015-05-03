@@ -23,10 +23,12 @@ var uploadImage = function(path, mimetype, callback) {
     });
 };
 
-server.post('/images', function(req, res) {
-    uploadImage(req.files.myImage.path, req.files.myImage.type, function(image_id) {
-        res.send(image_id);
-        res.end();
+server.post('/', function(req, res) {
+    uploadImage(req.files.image.path, req.files.image.type, function(image_id) {
+        //res.send(image_id);
+		var data = {status: 'success', image_id: image_id};
+        res.send(data);
+		res.end();
     });
 });
 
