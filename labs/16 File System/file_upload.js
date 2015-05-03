@@ -24,14 +24,20 @@ var uploadImage = function(path, mimetype, callback) {
     });
 };
 
-server.post('/', function(req, res) {
-    uploadImage(req.files.image.path, req.files.image.type, function(image_id) {
-        //res.send(image_id);
-		var data = {status: 'success', image_id: image_id};
-        res.send(data);
+server.get('/', function(req, res) {
+	console.log('GET');
+	fs.readdir('images/', function(err, files) {
+		var data = files.map(function(value) {
+			return req['headers.x-forwarded-proto']+'://'+req.headers.host+'/images/'+value;
+		});
+		res.send(data);
 		res.end();
-    });
+	});
 });
+
+server.get(/\/images\/?.*/, restify.serveStatic({
+    'directory': __dirname
+ }));
 
 server.del('/', function(req, res) {
 	console.log('DELETE');
