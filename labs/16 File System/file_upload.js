@@ -1,8 +1,9 @@
 
-//var fs = require('fs');
+var fs = require('fs');
 var mv = require('mv');
 var uuid = require('node-uuid');
 var mime = require('mime');
+var glob = require('glob');
 var restify = require('restify');
 var server = restify.createServer();
 server.use(restify.bodyParser({
@@ -30,6 +31,24 @@ server.post('/', function(req, res) {
         res.send(data);
 		res.end();
     });
+});
+
+server.del('/', function(req, res) {
+	console.log('DELETE');
+	console.log(req.body.image_id);
+	glob('images/'+req.body.image_id+'.*', function(err, files) {
+		console.log(files);
+		fs.unlink(files[0], function(err) {
+			console.log('attempting to delete file');
+			if (!err) {
+				console.log('file deleted');
+				var data = {status: 'success', image_id: req.body.image_id};
+				res.send(data);
+				res.end();
+			}
+		});
+	});
+	res.end();
 });
 
 server.listen(3000);

@@ -4,6 +4,7 @@
   "description": "Simple APi to upload images.",
   "main": "image_upload.js",
   "dependencies": {
+    "glob": "^5.0.5",
     "mime": "^1.3.4",
     "mv": "^2.0.3",
     "node-uuid": "^1.4.3",
