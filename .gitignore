@@ -5,3 +5,5 @@ labs/16 File System/node_modules/
 labs/16 File System/Encoded Images/
 labs/16 File System/images/
 .DS_Store
+.codio
+.settings
