@@ -1,4 +1,4 @@
-n#nii 305CDE Developing the Modern Web 2
+#305CDE Developing the Modern Web 2
 
 ## JavaScript Fundamentals
 
