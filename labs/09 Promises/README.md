@@ -33,3 +33,7 @@ Swap in the suggested Github Gist URLs _found in the comments within the HTML_ f
 
 [tutorial]: http://www.html5rocks.com/en/tutorials/es6/promises/
 [cors]: http://en.wikipedia.org/wiki/Cross-origin_resource_sharing
+
+Example in book **Async JavaScript** chapter 3:
+
+http://goo.gl/DWexMm

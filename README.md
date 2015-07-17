@@ -1,4 +1,4 @@
-# 305CDE Module Plan
+#305CDE Developing the Modern Web 2
 
 ## Pre-Learning
 
