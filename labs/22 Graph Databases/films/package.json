@@ -1,0 +1,16 @@
+{
+  "name": "films",
+  "version": "1.0.0",
+  "description": "",
+  "main": "get_film_ids.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^0.22.1",
+    "request": "^2.58.0",
+    "sync-request": "^2.0.1"
+  }
+}
