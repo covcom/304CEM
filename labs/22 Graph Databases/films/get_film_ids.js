@@ -10,19 +10,24 @@ function pad(num, size) {
 };
 // 1700000
 
-for (i=0; i <= 9999999; i++) {
+for (i=2634; i <= 9999999; i++) {
+    console.log(pad(i));
     var url = 'http://www.omdbapi.com/?i=tt'+pad(i)+'&y=&plot=short&r=json';
-    console.log(url);
-    var res = request('GET', url);
-    var json = JSON.parse(res.body);
-    if (json.imdbID) {
-        var film = {id: json.imdbID, title: json.Title, year: json.Year};
-        console.log(film);
-        films.push(film);
-        console.log('found '+films.length+' films.');
-        if (films.length % 5 == 0) {
-            console.log('saving');
-            fs.writeJsonSync('./films.json', {films: films});
+    //console.log(url);
+    try {
+        var res = request('GET', url);
+        var json = JSON.parse(res.body);
+        if (json.imdbID) {
+            var film = {id: json.imdbID, title: json.Title, year: json.Year};
+            console.log(film);
+            films.push(film);
+            console.log('found '+films.length+' films.');
+            if (films.length % 5 == 0) {
+                console.log('saving');
+                fs.writeJsonSync('./films.json', {films: films});
+            }
         }
+    } catch(err) {
+        console.log(err);
     }
 }
