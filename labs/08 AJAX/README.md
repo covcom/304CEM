@@ -32,3 +32,20 @@ Swap in the suggested Github Gist URLs _found in the comments within the HTML_ f
 
 
 [cors]: http://en.wikipedia.org/wiki/Cross-origin_resource_sharing
+
+## AJAX with Closures
+
+One common scenario is to encapsulate the AJAX calls within a closure. Because the AJAX calls are asyncronous the exported functions need to include a callback that gets triggered once the AJAX call has completed.
+
+Open up the `weather.html` file and locate its associated JavaScript file that contains an *IIFE*. Locate the two calls to the IIFE (these are located in the html file), notice how the `setTown()` method takes two parameters, the name of the town and an anonymous callback function.
+
+### Tasks
+
+Open the `weather.html` file in your web browser and examine the *JavaScript Console*. Note both the data displayed and the order in which this occurs. Can you explain this? Why does one method return *undefined* and how could you fix this? Make sure your code runs before continuing.
+
+Add a form to the html document to allow the user to enter a town. Display the town details in the web page. What happens if the user enters an unknown town? Can you modify the code to take this into account?
+
+### Test Your Knowledge
+
+1. Add two methods called `today()` and `tomorrow()`. These should return the weather for the appropriate days.
+2. At the moment the data contains unnecessary information, and the useful information is not clearly identifiable. Create a private function that takes the data for a day and returns a tidied version. Apply this to the data returned in the first challenge.

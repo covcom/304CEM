@@ -1,4 +1,4 @@
-# JavaScript Objects and Functions 2
+# Closures
 
 ## About
 
@@ -11,16 +11,12 @@ In particular, the todo app in the `advanced_obj_fun` directory contains some ex
 * Basics
 	- first_class_functions.html
 	- function_closure.html
-	- js_classes.html
-* Intermediate
-	- prototype_inheritance.html
-	- extending_js_types.html
-* Advanced
-	- advanced_obj_fun/
-		* js/
-			- model.js
-			- store.js
-			- app.js
-		* index.html
+    - iife.html
 
-For the advanced lab code, the application uses other files than those listed. However, by studying the four files listed above you will see how to implement the model part of __Model__ _View Controller_.
+## 3 Immediately-Invoked Function Expression
+
+If you recall, JavaScript uses function-scoping which means that any variable or function defined inside a function is only visible inside it (local variable/private scope). Whenever you invoke a JavaScript function you create a new execution context and this context will contain any private variables and functions.
+
+The *traditional* way to create this context is a two-step process, to *define* a function and then *call* it.
+
+The principle behind an **IIFE** is to call a function as part of its definition

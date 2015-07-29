@@ -2,7 +2,7 @@
 
 ## About
 
-This week covers objects and functions again, but with more advanced uses. These code patterns are what brings out the full power of JS and are essential for understanding JS code libraries that you might use for bigger projects.
+This week covers objects and functions again, but focuses on the advanced concepts of **prototypes** and **classes**. These code patterns are what brings out the full power of JS.
 
 In particular, the todo app in the `advanced_obj_fun` directory contains some example code that uses many of the key techniques you need to learn.
 
