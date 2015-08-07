@@ -1,0 +1,15 @@
+<html lang="en">
+    <head>
+        <title>Weather Forecast</title>
+        <script src="js/weather.js"></script>
+    </head>
+    <body>
+        
+    </body>
+    <script>
+        weather.setTown('Coventry', function(data) {
+            console.log('TOWN: ' + data);
+        });
+        console.log('FORECAST: ' + weather.getForecast());
+    </script>
+</html>
