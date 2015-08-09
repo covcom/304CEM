@@ -16,5 +16,5 @@
 	"unused": true,
 	"node": true,
 	"asi": true,
-    "predef": [ "describe", "it", "expect", "xit", "document", "Rx" ]
+    "predef": [ "describe", "it", "expect", "xit", "document", "Rx", "google" ]
 }
