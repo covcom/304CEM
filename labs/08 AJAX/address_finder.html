@@ -1,0 +1,21 @@
+<html lang="en">
+    <head>
+        <title>Address Finder</title>
+        <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+        <script src="js/geocoder.js"></script>
+    </head>
+    <body>
+        <h1>Address Finder</h1>
+        <input type="text" name="address" /><input type="button" value="search" />
+    </body>
+    <script>
+        
+        document.querySelector('input[type="button"]').onclick = function() {
+            console.log('button clicked');
+            var textbox = document.querySelector('input[name="address"]');
+            var data = geocoder.getAddress(textbox.value, function(data) {
+                console.log('DATA RETURNED: '+JSON.stringify(data, null, 2));
+            });
+        }
+    </script>
+</html>
