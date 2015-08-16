@@ -1,0 +1,16 @@
+<html lang="en">
+    <head>
+        <title>Taxi Journey Planner</title>
+        <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+        <script src="js/directions.js"></script>
+    </head>
+    <body>
+        <h1>Taxi Journey Planner</h1>
+        <input type="text" name="dest" /><input type="button" value="search" />
+    </body>
+    <script>
+        directions.getLocation(function(loc) {
+            console.log(JSON.stringify(loc, null, 2));
+        });
+    </script>
+</html>

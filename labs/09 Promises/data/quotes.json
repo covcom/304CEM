@@ -1,0 +1,63 @@
+{
+"authors": [
+{
+"name": "Alan Turing",
+"born": "1912-06-23",
+"quotes": [
+"We can only see a short distance ahead, but we can see plenty there that needs to be done",
+"We are not interested in the fact that the brain has the consistency of cold porridge",
+"A computer would deserve to be called intelligent if it could deceive a human into believing that it was human",
+"Science is a differential equation, religion is a boundary condition"
+]
+},
+{
+"name": "Steve Wozniak",
+"born": "1950-08-11",
+"quotes": [
+"Never trust a computer you can't throw out a window",
+"A lot of hacking is playing with other people, you know, getting them to do strange things",
+"In the end, I hope there's a little note somewhere that says I designed a good computer",
+"My whole life had been designing computers I could never build"
+]
+},
+{
+"name": "Edsger Dijkstra",
+"born": "1930-05-11",
+"quotes": [
+"Computer science is no more about comuters than astronomy is about telescopes",
+"Simplicity is prerequisite for reliability",
+"The lurking suspicion that something could be simplified is the world's richest source of rewarding challenges",
+"Perfecting oneself is as much unlearning as it is learning"
+]
+},
+{
+"name": "Isaac Asimov",
+"born": "1920-01-02",
+"quotes": [
+"The most exciting phrase to hear in science, the one that heralds the most discoveries, is not 'Eureka!' (I found it!) but 'That's funny...",
+"Life is pleasant. Death is peaceful. It's the transition that's troublesome",
+"Violence is the last refuge of the incompetent",
+"Those people who think they know everything are a great annoyance to those of us who do"
+]
+},
+{
+"name": "Ian Stewart",
+"born": "1945-09-24",
+"quotes": [
+"If our brains were simple enough for us to understand them, we'd be so simple that we couldn't",
+"SThere are 10 kinds of people in the world: those who understand binary numerals, and those who don't",
+"Religion hinges upon faith, politics hinges upon who can tell the most convincing lies or maybe just shout the loudest, but science hinges upon whether its conclusions resembe what actually happens"
+]
+},
+{
+"name": "Bill Gates",
+"born": "1955-10-28",
+"quotes": [
+"If you can't make it good, at least make it look good",
+"Success is a lousy teacher. It seduces smart people into thinking they can't lose",
+"Your most unhappy customers are your greatest source of learning",
+"The Internet is becoming the town square for the global village of tomorrow"
+]
+}
+]
+}

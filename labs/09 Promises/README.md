@@ -37,3 +37,9 @@ Swap in the suggested Github Gist URLs _found in the comments within the HTML_ f
 Example in book **Async JavaScript** chapter 3:
 
 http://goo.gl/DWexMm
+
+## Quotes
+```
+curl 'https://marktyers.firebaseio.com/people.json'
+curl 'https://marktyers.firebaseio.com/people/turing.json'
+```

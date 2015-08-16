@@ -41,6 +41,8 @@ In this second exercise you will be building a simple Closure (see previous week
 
 Callbacks are derived from a programming paradigm known as **functional programming** and makes use of a **callback** mechanism which forms a very important part of the JavaScript language and is essential to understand if you are to progress beyond the basics.
 
+
+
 ## 3. JSON Data
 
 As you have seen, most AJAX calls return data in JSON format and it is important that you know how to manipulate this to extract the data you need and render it to the user. You will learn how to make use of some of the built-in functionality of the JavaScript language to convert between objects and strings and learn how to extract objects and arrays.
