@@ -160,7 +160,7 @@ Lets take a look at the instructions. The first line names the container. The fu
 
 We want our API to be visible on the standard http port 80 but the script `index.js` runs it on port 8080. The ports entry maps external port 80 to internal port 8080.
 
-The final instruction is very important. Our server saves json files to its home directory `/home`. Every time we rebuild the container we would lose all this data. The **volumes** section maps a directory on the host to a directory in the container. In this case the data will be saved in the host directory `/home/docker`.
+The final instruction is very important. Our server saves json files to a data directory under its home directory `/home/data`. Every time we rebuild the container we would lose all this data. The **volumes** section maps a directory on the host to a directory in the container. In this case the data will be saved in the host directory `/home/docker`.
 
 ### 4.3 Building the Container
 
@@ -263,7 +263,7 @@ docker-machine ls
   google-machine   *        google       Running   tcp://146.148.67.253:2376
 
   docker-compose build && docker-compose up -d
-  curl -i 192.168.99.100
+  curl -i 146.148.67.253
     HTTP/1.1 200 OK
     Content-Type: application/json
     Content-Length: 26
