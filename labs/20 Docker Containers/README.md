@@ -154,7 +154,7 @@ api:
   ports:
     - "80:8080"
   volumes:
-    - /home/docker/:/home/
+    - /home/docker:/home/data
   ```
 Lets take a look at the instructions. The first line names the container. The full name of the container will be app_api_1 based on the directory name and the name provided here. The *build* instruction describes where the Dockerfile is located.
 
@@ -198,8 +198,20 @@ The nodejs script included commands that sent messages to the console but how ca
 docker logs app_api_1
   incoming request being handled
   GET request received
+  data/1439932715.json
+  The file was saved!
 ```
-### 4.4 Making Changes
+### 4.4 Data Persistence
+Lets return to the issue of data persistence. Each time you build and spin up a container, the old container is destroyed together with any data it contained. To prevent data loss we added a **volumes** mapping in the **docker-compose.yml** file. This mapped a directory in the host to one on the container (symlink) meaning any data saved into the `/home/data` directory in the container is actually being written to the `/home/docker` directory on the host. lets see if this is true. by loggin into the dev host using `docker-machine ssh dev`
+```
+pwd
+  /home/docker
+ls
+  1439932715.json  log.log
+```
+You can see that the current directory is `/home/docker` and that it does contain our .json document.
+
+### 4.5 Making Changes
 So far we have seen how to use the various docker commands to build an image and use this to spin up a container. Lets modify the index.js file and try rebuilding our container. Open **index.js** and change the message to read *Docker is great!*. Make sure the changes are saved. We can now build the new image and spin out a container.
 ```
 docker-compose build && docker-compose up -d
@@ -209,7 +221,55 @@ curl -i 192.168.99.100
   Content-Length: 26
   Date: Tue, 18 Aug 2015 20:19:10 GMT
   Connection: keep-alive
-  
+
   {"msg":"Docker is Great!"}
 ```
 Notice how the build was much quicker this time. Since the only change was that the index.js file had been modified, docker-compose used cached versions of the build up to this point.
+
+## 5. Deploying to the Cloud
+
+Now we have a working app running in a local container we can use the Docker tools to quickly deploy it to the cloud. For this tutorial we will deploy our app to **Google Cloud**.
+
+### 5.1 Creating a New Projects
+Go to the Google Developer's Console https://console.developers.google.com/
+
+Create a new project. Click on the project name to open the project dashboard. Make a note of the **project ID**.
+```
+Project ID: nuj-api
+```
+choose **APIs and Auth** then extend the *Google Cloud APIs* section to activate **Container Engine API**. Also activate **Google Compute Engine**. You will need to wait a few minutes for these settings to become active.
+
+You need to open *port 80* for http traffic. Choose **Networking > Firewall Rules** and create a **New Firewall Rule**.
+
+Give it a suitable name *(std http port)*, Source Filter *(Allow from any source (0.0.0.0/0))* and Allowed protocols and ports: *(tcp:80)*. Add the new rule.
+
+### 5.2 Creating a Docker Host
+You can now use the **docker-machine** tool to create the Docker Host. Remember to substutute your own project id instead of **nuj-api**.
+```
+docker-machine create --driver google --google-project nuj-api google-machine
+```
+Notice the similarity to the docker-machine command used to create the virtualbox host.
+
+You will be taken to the oauth authentication page. Accept and copy the code you are given
+
+Paste it into the terminal where prompted. This will then build your docker machine on the Google cloud. To configure your terminal to communicate with this machine.
+```
+docker-machine ip google-machine
+  146.148.67.253
+eval "$(docker-machine env google-machine)"
+docker-machine ls
+  NAME             ACTIVE   DRIVER       STATE     URL
+  dev                       virtualbox   Running   tcp://192.168.99.100:2376
+  google-machine   *        google       Running   tcp://146.148.67.253:2376
+
+  docker-compose build && docker-compose up -d
+  curl -i 192.168.99.100
+    HTTP/1.1 200 OK
+    Content-Type: application/json
+    Content-Length: 26
+    Date: Tue, 18 Aug 2015 20:19:10 GMT
+    Connection: keep-alive
+
+    {"msg":"Docker is Great!"}
+```
+As you can see, by using Docker, deployment to the cloud becomes very simple. You will need to use these techniques to deploy both your API and client as part of your module assignment.

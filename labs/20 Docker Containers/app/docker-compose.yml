@@ -6,9 +6,10 @@ api:
   ports:
     - "80:8080"
     # the external port 80 is mapped to the internal port 8080
-  #volumes:
-  #  - /home/docker/:/home/
+  volumes:
+    - /home/docker:/home/data
     # the /home/docker directory on the host is mapped to
-    # the /home directory in the container.
+    # the /home/data directory in the container that we created
+    # in the Dockerfile.
     # this means that any files saved to /home/ will be stored
     # on the docker host.
