@@ -41,3 +41,8 @@ http://goo.gl/DWexMm
 Trampolining:
 
 http://tobyho.com/2010/12/10/trampolines-in-javascript-and/
+## Quotes
+```
+curl 'https://marktyers.firebaseio.com/people.json'
+curl 'https://marktyers.firebaseio.com/people/turing.json'
+```

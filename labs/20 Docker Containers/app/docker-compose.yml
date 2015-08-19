@@ -1,0 +1,15 @@
+# the name of the container will be app_api_1
+# this is based on the directory name plus the name here
+api:
+  build: .
+  # build from a Dockerfile in the current directory (.)
+  ports:
+    - "80:8080"
+    # the external port 80 is mapped to the internal port 8080
+  volumes:
+    - /home/docker:/home/data
+    # the /home/docker directory on the host is mapped to
+    # the /home/data directory in the container that we created
+    # in the Dockerfile.
+    # this means that any files saved to /home/ will be stored
+    # on the docker host.
