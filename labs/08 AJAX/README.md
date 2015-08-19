@@ -1,5 +1,99 @@
 # JavaScript AJAX and DOM manipulation
 
+## Introduction
+
+Much of the functionality we see in modern web apps derives from online data sources called **Application Programming Interfaces (APIs)**. Later in this module you will be developing your own custom API however in this worksheet you will be creating a simplified version so that you can learn how to interact with it.
+
+## 1 Creating a Simple API
+
+We will be using an online tool called **FireBase** so your first task is to create an account and log on. Once you are logged on you can create a new API by entering a name and clicking on *create new app* (in this example I have used my name but you can choose anything you wish).
+
+![Creating a new FireBase project](images/firebase_new.png)
+
+Once the app has been created you can click on the **Manage App** button to view its contents.
+
+Now you can import a dataset by clicking on the **Import Data** button located in the top-right of the screen and choosing the `quotes.json` file located in the `08 AJAX/data` directory. This will import a base dataset to work with. You should now be able to browse the data in your API.
+
+![Browsing the records in FireBase](images/firebase_browse.png)
+
+## 2 Interacting Using Chrome Postman
+
+Before attempting to interact with an API using code you should always try out the requests using an interactive tool such as the **Postman** plugin for Google Chrome. If this is not currently installed you should do so now.
+
+RESTful APIs provide interaction with online resources through the concepts of **resources** which are represented by *URLs* and **actions** which are represented by *HTTP methods*. We will look at how these can be combined.
+
+### 2.1 GET
+
+We will start by accessing existing resources using the GET method. The combination of url and method can be represented as shown. Note that the asimov node has been selected and we are requesting the response in *json* format. Remember to substitute your own database name in the url.
+
+`GET https://databasename.firebaseio.com/asimov.json`
+
+And here is how the request looks in Postman. Notice the GET method is selected at the left-hand side.
+
+![Using the GET method in Postman](images/postman_get.png)
+
+Check your understanding by working out what the following requests will return. Then try them out to see if you are correct.
+```
+GET https://marktyers.firebaseio.com/asimov/name.json
+GET https://marktyers.firebaseio.com/asimov/quotes.json
+GET https://marktyers.firebaseio.com/asimov/quotes/0.json
+```
+
+### 2.2 PUT
+
+The **PUT** method is used to add a **named resource**. You need to specify the resource name in the URL and the resource itself in the *request body*. Lets walk through this process a step at a time. We will try adding another famous person to the API. You can find plenty of candidates in the `morequotes.json` file. We will add **George Boole**. The request details are shown below (note the quotes have been truncated to make it more readable in the worksheet).
+
+```
+PUT https://marktyers.firebaseio.com/boole.json
+{
+    "name": "George Boole",
+    "born": "1815-11-02",
+    "quotes": [
+        "It is not of the essence of mathematics to be conversant...",
+        "Probability is expectation founded upon partial knowledge...",
+        "No matter how correct a mathematical theorem may appear to..."
+    ]
+}
+```
+And here is how this is entered into *Postman*. Notice that the method is set to **PUT**, and the json data is added to the request *body* as *raw* data in *JSON* format (see the four arrows).
+
+![Using the PUT method in Postman](images/postman_put.png)
+
+### 2.3 POST
+
+The **POST** method is used to add a new item to a collection. Collections are represented as arrays in our data. As you can see, the list of quotes forms a collection. Lets add  a new quote to the asimov/quotes collection.
+```
+POST https://marktyers.firebaseio.com/asimov/quotes.json
+"Creationists make it sound as though a theory is something you dreamt up after being drunk all night."
+```
+And here is how the request is made in *Postman*. Notice the data is sent as **text** and enclosed in double-quotes.
+
+![Using the POST method in Postman](images/postman_post.png)
+
+We can issue a **GET** request to display the `asimov/quotes` collection to make sure the new quote has been added.
+
+### 2.4 DELETE
+
+The final HTTP method we will examine will be **DELETE**. This is used to remove resources and collections. We specify the resource to delete through its URL. Lets delete the document representing *Ian Stewart*.
+```
+DELETE https://marktyers.firebaseio.com/stewart.json
+```
+And this is how it looks in Postman.
+
+![Using the DELETE method in Postman](images/postman_delete.png)
+
+## 3 XMLHttpRequest
+
+By now we have a basic understanding of how to carry out CRUD operations on a RESTful API. In this section of the worksheet we will learn how to make HTTP requests from a JavaScript application.
+
+In the previous examples the people collection was accessed directly off the domain root. Unfortunately this prevents us accessing the authors collection. Start by deleting the documents by clicking on the red cross next to the root node. Now import the data from `data/quotes2.json`. This will add a root `people` node as shown.
+
+![Browsing FireBase with root people node](images/firebase_browse_2.png)
+
+Open the file `08 AJAX/quotes.html` and its accompanying JavaScript file. Modify the base URL on line 3 of the JavaScript file to match your FireBase API.
+
+
+
 ## About
 
 This week covers two big JS topics, so there are examples of each.

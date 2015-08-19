@@ -1,0 +1,41 @@
+{
+    "boole": {
+        "name": "George Boole",
+        "born": "1815-11-02",
+        "quotes": [
+                "It is not of the essence of mathematics to be conversant with the ideas of number and quantity.",
+                "Probability is expectation founded upon partial knowledge. A perfect acquaintance with all the circumstances affecting the occurrence of an event would change expectation into certainty, and leave nether room nor demand for a theory of probabilities.",
+                "No matter how correct a mathematical theorem may appear to be, one ought never to be satisfied that there was not something imperfect about it until it also gives the impression of being beautiful."
+        ]
+    },
+    "jobs": {
+        "name": "Steve Jobs",
+        "born": "2011-10-05",
+        "quotes": [
+            "Design is not just what it looks like and feels like. Design is how it works.",
+            "Be a yardstick of quality. Some people aren't used to an environment where excellence is expected.",
+            "Innovation distinguishes between a leader and a follower.",
+            "Sometimes life hits you in the head with a brick. Don't lose faith."
+        ]
+    },
+    "ritchie": {
+        "name": "Dennis Ritchie",
+        "born": "1941-09-09",
+        "quotes": [
+            "For infrastructure technology, C will be hard to displace.",
+            "The kind of programming that C provides will probably remain similar absolutely or slowly decline in usage, but relatively, JavaScript or its variants, or XML, will continue to become more central.",
+            "UNIX is basically a simple operating system, but you have to be a genius to understand the simplicity.",
+            "C++ and Java, say, are presumably growing faster than plain C, but I bet C will still be around."
+        ]
+    },
+    "bernerslee": {
+        "name": "Tim Berners-Lee",
+        "born": "1955-06-08",
+        "quotes": [
+            "Anyone who has lost track of time when using a computer knows the propensity to dream, the urge to make dreams come true and the tendency to miss lunch.",
+            "Web users ultimately want to get at data quickly and easily. They don't care as much about attractive sites and pretty design.",
+            "Intellectual property is an important legal and cultural issue. Society as a whole has complex issues to face here: private ownership vs. open source, and so on.",
+            "Data is a precious thing and will last longer than the systems themselves."
+        ]
+    }
+}
