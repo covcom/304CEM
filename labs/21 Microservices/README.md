@@ -146,16 +146,18 @@ docker logs chat_logs_1
 
   DATA APPENDED TO LOG
 
+docker exec -ti chat_logs_1 ls /home/data/
+  logs.csv
+
 docker exec -ti chat_logs_1 tail /home/data/logs.csv
   1440013064,"JohnDoe","HelloWorld"
 
 docker-machine ssh chat
 ls
   logs/  mysql/
-cd logs/
-ls
+ls logs/
   logs.csv
-tail logs.csv
+tail logs/logs.csv
   1440013064,"JohnDoe","HelloWorld"
 q
 exit
@@ -186,6 +188,10 @@ You can carry out further tests on the **mysql** container based on those used t
 3. check that these same files are being mapped to the docker host
 
 In the previous section you implemented a **couchdb** container. How could you test that it is functioning correctly?
+
+## 5. Retrieving the Conversation
+
+If you examine the api/index.js file you will see that the GET / route is incomplete. Your final challenge is to apply all that you have learned from this worksheet to implement the missing functionality. It should return an array of messages in time order, recreating the message thread. You may choose to use the data in either the **MySQL** database or the **CouchDB** database.
 
 ## References
 
