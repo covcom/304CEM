@@ -11,7 +11,7 @@ server.listen(8080, function() {
       fs.writeFile(filename, {msg: 'Docker is Great!'}, function() {
         console.log("The file was saved!");
         res.setHeader('content-type', 'application/json');
-        res.send({msg: 'Docker is Great!'});
+        res.send({msg: 'Hello World!'});
         res.end();
       });
     });
