@@ -191,25 +191,56 @@ In the previous section you implemented a **couchdb** container. How could you t
 
 ## 5. Retrieving the Conversation
 
-If you examine the api/index.js file you will see that the GET / route is incomplete. Your final challenge is to apply all that you have learned from this worksheet to implement the missing functionality. It should return an array of messages in time order, recreating the message thread. You may choose to use the data in either the **MySQL** database or the **CouchDB** database.
+If you examine the api/index.js file you will see that the GET / route is incomplete. Apply all that you have learned from this worksheet to implement the missing functionality. It should return an array of messages in time order, recreating the message thread. You may choose to use the data in either the **MySQL** database or the **CouchDB** database.
 
+## 6. Clustering
 
-## 6.  Benchmarking
+Up until this point you have been deploying your apps to a single server instance but how would you scale up your app? One option would be to deply each of the containers to different servers and then communicate between these servers using http. Another issue is how to handle server failure. At the moment if the server fails your website would be brought down. xxx describes this as **pet** architecture where you need to carefully support your system to prevent it from failing. A better alternative he refers to as **cattle** acrchitecture. Here, if a server fails there are plenty of others to take its place. Welcome to **Clustering**.
 
-As you develop your apps you need to check that they perform in a satisfactory manner under load. This means measuring how well it can handle multiple concurrent requests from different users. Doing this manually would require you to get lots of users to send requests at the same time or wait until the app goes live and see how it can handle the load.
+In clustering we group together multiple different servers which are then treated as a single *node*. if a server fails, the rest of them take up the load. Servers can be added as required to boost the provision and older ones can be removed for repairs and upgrades. Docker contains full support for clustering which it refers to as a **Docker Swarm**. You will learn how to build and support these. For the purposes of this worksheet you will be working with VirtualBox instances however later you will be encouraged to employ the same concepts to cloud instances and even Raspberry PIs!
 
-Thankfully there are a number of tools available to simulate multiple connections to the server and the most popular one is called **Apache Bench**. This is an open source tool which will need to be installed on your development machine. Once installed we can quickly run benchmarking tests. In the example we ask the tool to make 2000 requests with 500 happening concurrently (at the same time). Finally we run the same test again using a POST request but with fewer concurrent requests.
+### 6.1 Generating a Cluster ID
+
+Each **Docker Swarm** is generated using a unique **cluster id**. This ID needs to be generated within a Docker Host and so we need to create a temporary host on VirtualBox and use this to generate the ID. You’ll need this ID when starting the Docker Swarm agent on a node.
 ```
-sudo apt-get install apache2-utils
-ab -n 2000 -c 500 http://192.168.99.100/
-ab -n 20 -c 2 -p post_data -m POST http://192.168.99.100/
+docker-machine create -d virtualbox local
+eval "$(docker-machine env local)"
+
+docker run swarm create
 ```
-### 6.1 Documentation
+Keep a copy of this **cluster id** safe, you will need it for the next steps.
 
-You will be expected not only to build online apps but also to run benchmarks with appropriate values and interpret the results. You should take the time to read the documentation. As with most open-source tools this is available at two levels.
+### 6.2 Creating a Swarm Manager
 
-1. you can use the **--help** flag, `ab --help` to get a quick summary of the options
-2. you can access the full manual `man ab` as well. The space bar moves forward a page, the *b* key moves back and the *q* key quits.
+Now we have the **cluster id** we can use this to create our **Swarm Manager**. The Swarm Manager is responsible for scheduling the system **agents**. An Agent is also referred to as a **Docker Node**. In this exercise both the Swarm Manager and the agents will appear as virtual machines in VirtualBox. We will call this **swarm-master**. Remember to use the cluster id you generated earlier.
+```
+docker-machine create -d virtualbox --swarm --swarm-master --swarm-discovery token://c951e431d4c302fa350c9fb4f009d07e swarm-master
+docker-machine ls
+  NAME             ACTIVE   DRIVER       STATE     URL                         SWARM
+  local                     virtualbox   Running   tcp://192.168.99.104:2376
+  swarm-master              virtualbox   Running   tcp://192.168.99.105:2376   swarm-master (master)
+```
+### 6.3 Creating the Agents
+
+Now we have built the *swarm master* we can build the agents. In this example you will build two agents however in a real environment you might create 10, 100 or thousands!
+```
+docker-machine create -d virtualbox --swarm --swarm-discovery token://c951e431d4c302fa350c9fb4f009d07e swarm-agent-00
+docker-machine create -d virtualbox --swarm --swarm-discovery token://c951e431d4c302fa350c9fb4f009d07e swarm-agent-01
+```
+Now we can point the Docker environment to the machine running the swarm master and then get information about your new swarm (notice the **--swarm** flag, this is important).
+```
+eval $(docker-machine env --swarm swarm-master)
+docker info
+```
+### 6.4 Building and Launching Containers
+
+Once we are pointing to our *Docker Swarm* we can deploy our app in the standard way using docker-compose. Navigate to the `Microservices/simple/` directory containing a *docker-compose.yml* file and then build and launch a container on the cluster. Locate the cluster IP address and try running a GET request using cURL or other tool.
+```
+docker-compose build
+docker-compose up -d
+docker ps -a
+curl 192.168.99.106
+```
 
 ## References
 
