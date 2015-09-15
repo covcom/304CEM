@@ -22,23 +22,47 @@ This will pull down any new files or changes from the GitHub repository.
 
 For a much more detailed description read Google’s debugging JavaScript guide.
 
-Sometimes your attempts to change the code will introduce bugs. A bug is usually signalled by some kind of error message, usually RED in colour, appearing on the console. If you find a bug has appeared in your code do the following to help track it down:
+For simple bugs it is possible to use `console.log()` to print out the values of varlables at key points in the program however it is far more effective to make use of the built-in debugger found in the Chrome Developer Tools.
 
-1. Note the line number that caused the problem, if any is mentioned on the console output (sometimes it is not)
-2. Load the ‘Sources’ tab in the developer tools area and select the JS file
-3. Click in the margin next to any line number to add a code break (add it
-near but before the suspect line); you can add several if you wish
-4. Now refresh the page and proceed as normal until the code execution stops
-at the line break you created
-5. On the information tab on the right hand side you will see details about
-the call stack and currently scoped variables to help you pinpoint the state
-of your program
-6. Use the “Step over / into / out of” buttons to execute your JS line by line
-and keep an eye on the stack and scope to catch anything unexpected
+Start by opening the file `tip_calculator_naive.html` and running it. Try inserting different values into the text boxes and checking the answer. It's clear that something is not quite right!
 
-If your code is always perfect(!) then please introduce an intentional syntax
-error in contact.js to practice the procedure above.
+### 2.1 Using the Debugger
 
+Start by opening the **Chrome Developer Tools** and selecting the **Sources** tab. You should see the html document in the left-hand pane. Click on this to open it. We want to start debugging our code on line 15, where we assign a value to the **bill** variable. Click on the line number to add a breakpoint. This will add the breakpoint to the **Breakpoints** section in the right-hand panel (see below). Now we have selected the file we can close the *navigator* by clicking on the button shown.
+
+![Developer Tools](images/debugger.png)
+
+Now enter the value 100 for the bill and 10 for the tip. Click on the **Calculate Cost** button. Notice that the main browser window greys out and the first line of the function is highlighted. The highlighted line is the next one to be executed. Also notice that all local variables are listed in the **Debugger** panel.
+
+![Developer Tools](images/breakpoint.png)
+
+Now we will see the power of the debugger. Click on the **Step Over** button (shown below) until the program execution is stopped at line 16. Since line 15 assigns a value to the bill variable this now stores a value. Continue to step over the code line by line, checking the contents of all three variables. Once line 20 has executed you will be passed back to the app running in the web browser.
+
+![Developer Tools](images/step_over.png)
+
+You should make use of the debugger whenever you write JavaScript code. Practice by using it for all the remaining exercises in this worksheet.
+
+### 2.2 Test Your Knowledge
+
+1. Based on the information supplied by the debugger, modify the app to return the correct value (you may need to investigate some additional JavaScript features to be able to do this)
+2. What happens if the user enters a non-number in one or both boxes?
+3. Modify the app to display a useful message to the user if they enter invalid data
+
+## 3 Exception Handling
+
+Often during the development of apps you will need to respond to **exceptions**, anomalous conditions that need to be handled. JavaScript includes a powerful set of tools to manage exception handling.
+
+Open the file `tip_calculator_better.html` and try to understand the program flow.
+
+1. Use the debugger to watch the execution flow when you enter two numbers.
+2. Now run it again but enter blank fields for both, can you see how the program flow changes?
+
+Now compare the code with your solution to the previous example. Notice how the correct use of exception handling makes your code shorter, cleaner and easier to follow. You should make use of this technique in every program you write.
+
+### 3.1 Test Your Knowledge
+
+1. Modify the code so that a warning message is displayed if either field is blank
+2. Modify the code so a warning message is displayed if either field contains a non-number
 
 ## 3 Nested Sub-Object Assignment
 
