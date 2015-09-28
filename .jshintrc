@@ -16,5 +16,6 @@
 	"unused": true,
 	"node": true,
 	"asi": true,
+	"esnext": true,
     "predef": [ "describe", "it", "expect", "xit", "document", "Rx", "google", "XMLHttpRequest", "navigator", "Promise" ]
 }
