@@ -3,15 +3,6 @@
 ## About
 
 This week covers objects and functions again, but with more advanced uses. These code patterns are what brings out the full power of JS and are essential for understanding JS code libraries that you might use for bigger projects.
-
-In particular, the todo app in the `advanced_obj_fun` directory contains some example code that uses many of the key techniques you need to learn.
-
-## Priority of Labs
-
-* Basics
-	- first_class_functions.html
-	- function_closure.html
-    - iife.html
     
 ## 1 Closure to Maintain Internal State
 
@@ -35,28 +26,7 @@ window.onload handler: This one should have an internal state representing the c
 4. Clicking on one of the ‘+’ or ‘-’ buttons should increment or decrement the current speed as appropriate. Clicking on the ‘0’ button should reset the current speed to 0 – The current speed should be displayed in the **&lt;div&gt;** you added
 5. use a single helper function to update the &lt;div&gt; rather than update it in each separate click handler.
 
-## 2 Object Oriented JavaScript
-
-In this task we will use functions to construct objects and modify their prototype.
-
-Load the `js_classes.html` file and view it in a browser. All output is to the console so make sure this is visible as well. Note the creation of three “coffee objects” in the JS code, using the new keyword and a constructor function called Coffee
-
-Now open `extending_js_types.html` to see the use of JavaScript’s inheritance mechanism: the prototype. Live preview the page and note the console output.
-
-Note that the prototype object of the built-in String JS data type has allowed us to “extend” the functionality of strings by adding a new string method called palindrome.
-
-Prototype inheritance applies to any JS data type / object, including objects created as instances of constructor functions like `Coffee()`. The prototype of an object can be modified or overridden by JS code at runtime. Any other object sharing this prototype is also modified in the same way.
-
-### 2.1 Test Your Understanding
-
-1. Add a Tea(type, ounces) constructor function to the js_classes.html JavaScript.
-  - Add properties for type and ounces
-  - Add methods: getSteepTime() and order(), and use appropriate code within them
-2. Now create some new Tea instance objects and invoke the order() method to check that it works
-3. Once it is working, extend the Tea and Coffee prototypes by giving both a new method sip()
-  - Each invocation of sip() should simply log “Hmm, tasty” to the console
-
-## 3 Immediately-Invoked Function Expression
+## 2 Immediately-Invoked Function Expression
 
 If you recall, JavaScript uses function-scoping which means that any variable or function defined inside a function is only visible inside it (local variable/private scope). Whenever you invoke a JavaScript function you create a new execution context and this context will contain any private variables and functions.
 

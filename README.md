@@ -75,7 +75,7 @@ git remote -v
 ```
 Before you start each worksheet take a few moments to sync your fork which will keep it up to date with the original.
 ```
-git pull upstream
+git pull upstream master
 ```
 This will pull down any new files or changes from the GitHub repository and merge them into your local copy. In this way you will always have the latest versions of the teaching materials.
 
@@ -95,3 +95,13 @@ git log origin/master..HEAD
 git push origin --all
 git log origin/master..HEAD
 ```
+
+# Homework
+
+Git is an important tool for any programmer and it is at the heart of what we do in this module. It is important that you become familiar with it by understanding how it works and practicing the core git commands.
+
+Your homework is to read about the core Git concepts ready to answer questions in your second lab. You should read and understand the first two chapters from this free online book.
+
+https://git-scm.com/book/en/v2
+
+You can either read it online or download an ebook to install on your ebook reader, phone or tablet.
