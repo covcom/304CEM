@@ -1,9 +1,9 @@
 
-# About
+# Classes and Modules
 
-This worksheet covers objects and functions again, but focuses on the advanced concepts of **prototypes** and **classes**. These code patterns are what brings out the full power of JS.
+This worksheet covers objects and functions again, but focuses on the advanced concepts of **prototypes** and **classes**. These code patterns are what brings out the full power of JS. Finally you will be introduced to the **AMD** module loader.
 
-In particular, the todo app in the `advanced_obj_fun` directory contains some example code that uses many of the key techniques you need to learn.
+In particular, the **todo** app in the `advanced_obj_fun` directory contains some example code that uses many of the key techniques you need to learn.
 
 ## 1 Object Oriented JavaScript
 
