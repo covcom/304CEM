@@ -1,5 +1,7 @@
 <img align="right" src="labs/01 JavaScript Language/01 Tools/images/uni_logo.png">
 .
+
+.
 #305CDE
 
 Welcome to the first worksheet covering **full-stack Javascript development**. You are probably viewing this via **GitHub** so one of the first tasks we will be carrying out is showing you how to fork your own copy of the code and maintain it on your own Git repository.
@@ -63,14 +65,43 @@ git push origin master
 ```
 If you now open the *GitLab* repository you will see a **files** link down the left-hand side of the screen. If you click on this you will see all the project files on your GitLab repository.
 
-## 1.4 Merging
+## 1.4 Pulling Changes
 
-Over the course of the module there will be changes made to the original read-only repository on GitHub. Luckily Git keeps track of the original repository it was forked from. This is referred to as **upstream/master**. Before you start each worksheet take a few moments to sync your fork which will keep it up to date with the original.
+Over the course of the module there will be changes made to the original read-only repository on GitHub. To allow access to these changes you will need to add a second remote to your local Cloud 9 repository (we will label this as the *upstream* repository).
 ```
-git fetch upstream
-git checkout master
-git merge upstream/master
+git remote -v
+git remote add upstream https://github.com/covcom/305CDE.git
+git remote -v
 ```
-This will pull down any new files or changes from the GitHub repository.
+Before you start each worksheet take a few moments to sync your fork which will keep it up to date with the original.
+```
+git pull upstream master
+```
+This will pull down any new files or changes from the GitHub repository and merge them into your local copy. In this way you will always have the latest versions of the teaching materials.
 
+## 1.5 Commiting Working Code
 
+At the end of each exercise you should get into the habit of commiting your working code.
+```
+git status
+git commit -a -m 'finished exercise xxxx'
+```
+
+## 1.6 Pushing to Your Remote
+
+At the end of your programming session you should push all these new commits back to your GitLab repository.
+```
+git log origin/master..HEAD
+git push origin --all
+git log origin/master..HEAD
+```
+
+# Homework
+
+Git is an important tool for any programmer and it is at the heart of what we do in this module. It is important that you become familiar with it by understanding how it works and practicing the core git commands.
+
+Your homework is to read about the core Git concepts ready to answer questions in your second lab. You should read and understand the first two chapters from this free online book.
+
+https://git-scm.com/book/en/v2
+
+You can either read it online or download an ebook to install on your ebook reader, phone or tablet.
