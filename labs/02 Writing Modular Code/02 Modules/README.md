@@ -57,12 +57,12 @@ These things are all typical of the “module pattern” in JS. For more on it, 
 
 ### 2.1 Test your understanding
 
-- Write a short module that exports a utility object called “$” to the global namespace.
+- Write a short module that exports a utility object called **"$"** to the global namespace.
 - This object should reimplement the JS `document.getElementById()` selector method using its own method `$.id()`.
 
 In other words, any page that includes your new module JS file should be able to call `$.id("myButton")` and this will return a reference to the DOM element with ID **“myButton”** (if any).
 
-By doing this you should start to see how libraries such as jQuery add to or simplify the standard functionality of core JavaScript!
+By doing this you should start to see how libraries such as *jQuery* add to or simplify the standard functionality of core JavaScript!
 
 ## 3 AMD Modules
 
@@ -80,10 +80,10 @@ Open the  `js/today.js`  script and see if you can understand its structure. The
 
 In the main code body you should notice that each module becomes a *JavaScript object*, we can then create instances of them and access their properties and methods.
 
-Locate the module to be loaded ( modules/time.js ), open it and study it carefully to understand its structure. The structure should be familiar to you from your previous lab. Note that it returns a single method called  showTime()  which returns a string representing the current time.
+Locate the module to be loaded (`modules/time.js`), open it and study it carefully to understand its structure. The structure should be familiar to you from your previous lab. Note that it returns a single method called  showTime()  which returns a string representing the current time.
 
 ### 3.1 Test Your Knowledge
 
-1. Use your knowledge of the JavaScript Date object to return the time in the format 5.45pm.
-2. Create a second method called  show24hrTime()  that returns the time in the format 17:45
+1. Use your knowledge of the JavaScript Date object to return the time in the format **5.45pm**.
+2. Create a second method called `show24hrTime()` that returns the time in the format **17:45**.
 3. Create a second module called `date` which returns the *current date*. You will need to load *both* modules into your main script.
