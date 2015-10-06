@@ -58,7 +58,7 @@ Now compare the code with your solution to the previous example. Notice how the 
 
 In this task you will extend an existing JS object by nesting further object(s).
 
-1. Open the `function_returns_object.html` file in Brackets.
+1. Open the `function_returns_object.html` file in the editor.
 2. View the live preview and hit F12 to view the developer tools JS console.
 NOTE: all output from the JS appears on the console.
 3. Refresh the browser to see alternative outputs.
