@@ -8,16 +8,6 @@ Aim to complete these in roughly 30-60 minutes of lab time.
 1. Nest objects to define the internal sub-components of a car and engine.
 2. Use an inner “helper function” to calculate fuel consumption.
 
-## 1 Merging 
-
-Over the course of the module there will be changes made to the original read-only repository on GitHub. Luckily Git keeps track of the original repository it was forked from. This is referred to as **upstream/master**. Before you start this worksheet take a few moments to sync your fork which will keep it up to date with the original.
-```
-git fetch upstream
-git checkout master
-git merge upstream/master
-```
-This will pull down any new files or changes from the GitHub repository.
-
 ## 2 Basic Debugging
 
 For a much more detailed description read Google’s debugging JavaScript guide.
