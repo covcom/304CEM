@@ -14,7 +14,7 @@ You will be shown how to use an online IDE called **Cloud 9**, however you are f
 
 ## 1.1 Creating a Cloud9 Workspace
 
-Start by creating yourself an account on **Cloud 9** (https://c9.io) and logging in. Create a new workspace by clicking on the *create a new workspace* button. Give it the name **305CDE** and the  description *Developing the Modern Web 2*. Choose the **private** option and the default **custom** template.
+Start by creating yourself an account on **Cloud 9** (https://c9.io) and logging in. Create a new workspace by clicking on the *create a new workspace* button. Give it the name **COVUNI** and the  description *Developing the Modern Web 2*. Choose the **private** option and the default **custom** template.
 
 The most important step is to enter the 305CDE Git Repository URL in the box *Clone from Git or Mercurial URL*. You should enter:
 

@@ -2,7 +2,7 @@
 
 In your previous labs you have been working solely with data provided as part of the application however most of the time your app will make use of external data sources.
 
-Most of this data is supplied through RESTful web APIs which provide a simple machanism that supplies data in a machine-readable format. In this worksheet you will complete three important exercises that cover the following subjects.
+Most of this data is supplied through RESTful web APIs which provide a simple mechanism that supplies data in a machine-readable format. In this worksheet you will complete three important exercises that cover the following subjects.
 
 1. **Making AJAX Calls**: this exercise covers how to use JavaScript to request data from online APIs. This forms the core knowledge required to develop even the simplest useful app.
 2. ** IIFEs with Callbacks**: the second exercise shows you how to hide the details of your API calls inside a module (modules were covered last week). As part of this you will learn how to write methods that take a callback parameter.
