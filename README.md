@@ -97,6 +97,10 @@ git push origin --all
 git log origin/master..HEAD
 ```
 
+## 1.7 Next Steps
+
+Now you are ready to start learning. Open the **labs** directory and follow the instructions given.
+
 # Homework
 
 Git is an important tool for any programmer and it is at the heart of what we do in this module. It is important that you become familiar with it by understanding how it works and practicing the core git commands.
