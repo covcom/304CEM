@@ -94,3 +94,9 @@ In this task you will modify an existing method of an object and â€œfactor outâ€
 3. In the original `drive()` method, instead of the assignment `this.fuel = this.fuel - 1`, invoke your new function.
 4. Refresh the page and ensure that the console output is exactly the same as before
 5. Also test it by adding an appropriate code break in the *Sources* tab of your file in Chrome developer tools, and watch the value of `fiat.fuel` change as you step through the calls to the `fiat.drive()` method.
+
+## Presentation
+
+The lab slides can be accessed below:
+
+https://goo.gl/pWrQNY

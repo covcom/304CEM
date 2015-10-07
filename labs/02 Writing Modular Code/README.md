@@ -8,3 +8,9 @@ In this second topic you will be extending your knowledge of the JavaScript lang
 3. in the final worksheet **03 ECMA6 Modules** you will learn about how native modules will be implemented in the next generation of JavaScript and will be shown how to use these using a third party library.
 
 Before starting this topic you should make sure you have completed topic 1 and fully understand the materials it presents. Remember you are expected to spend **18 hours per week** working on these materials and reading around the topics covered. Make sure you don't start falling behind and ask for help if you need it.
+
+## Presentation
+
+The lecture presentation can be accessed below:
+
+https://goo.gl/hWDqlk

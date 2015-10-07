@@ -57,3 +57,7 @@ Modify the form by removing the button and performing the address lookup every t
 
 1. The JSON data returned comprises an array with each index containing the information for a possible match. For each array index, use the JSON data to construct a properly formatted address.
 2. Display these formatted addressed in an html table underneath the textbox.
+
+## Presentation
+
+The lab slides can be accessed below:

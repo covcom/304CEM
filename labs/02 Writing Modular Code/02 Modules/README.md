@@ -92,3 +92,9 @@ Locate the module to be loaded (`modules/time.js`), open it and study it careful
 1. Use your knowledge of the JavaScript Date object to return the time in the format **5.45pm**.
 2. Create a second method called `show24hrTime()` that returns the time in the format **17:45**.
 3. Create a second module called `date` which returns the *current date*. You will need to load *both* modules into your main script.
+
+## Presentation
+
+The lab slides can be accessed below:
+
+https://goo.gl/dkUJnv
