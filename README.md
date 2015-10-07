@@ -4,11 +4,11 @@
 .
 #305CDE
 
-Welcome to the first worksheet covering **full-stack Javascript development**. You are probably viewing this via **GitHub** so one of the first tasks we will be carrying out is showing you how to *clone* your own copy of the code and maintain it on your own Git repository.
+Welcome to **full-stack Javascript development**. You are probably viewing this via **GitHub** so one of the first tasks we will be carrying out is showing you how to *clone* your own copy of the code and maintain it on *your own Git repository*.
 
 Before we get started it is worth reiterating that the module covers some advanced programming concepts which you will be required to demonstrate in your assignment which is entirely assessed through a practical coursework assignment. The module comprises twelve topics, each containing three worksheets. You will spend all semester *writing complex JavaScript applications*.
 
-You will be shown how to use an online IDE called **Cloud 9**, however you are free to make use of any other tools if you wish.
+You will be shown how to use an online IDE called **Cloud 9**, however you are encouraged to make use of any other platforms and tools.
 
 # 1 Getting Started
 
