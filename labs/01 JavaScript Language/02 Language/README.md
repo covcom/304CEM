@@ -2,6 +2,11 @@
 
 This worksheet continues the work started in the **JavaScript Basics** worksheet. You should ensure this has been completed before starting this one.
 
+Before you start this or any other worksheet you should make sure you have the latest commits from the upstream repository on **GitHub**.
+```
+git pull upstream master
+```
+
 ## Task List
 Aim to complete these in roughly 30-60 minutes of lab time.
 
@@ -59,10 +64,10 @@ Now compare the code with your solution to the previous example. Notice how the 
 In this task you will extend an existing JS object by nesting further object(s).
 
 1. Open the `function_returns_object.html` file in the editor.
-2. View the live preview and hit F12 to view the developer tools JS console.
-NOTE: all output from the JS appears on the console.
-3. Refresh the browser to see alternative outputs.
-4. Review the JS in the html file and ensure you understand how it works.
+2. Run it in a new Chrome tab and open the **console** tab in the *Developer Tools* pane.
+3. NOTE: all output from the JS appears on the console.
+4. Refresh the browser to see alternative outputs.
+5. Review the JS in the html file and ensure you understand how it works.
 
 ### 3.1 Test Your Understanding
 
@@ -77,10 +82,10 @@ NOTE: all output from the JS appears on the console.
 ## 3. Nested Helper Functions
 
 In this task you will modify an existing method of an object and “factor out” some of its code in to a separate internal “helper function” which does an intermediary calculation.
-1. Open the object_methods.html file in Brackets.
-2. View the live preview and hit F12 to view the developer tools JS console.
-NOTE: all output from the JS appears on the console.
-3. Review the JS in the html file and ensure you understand how it works.
+1. Open the `object_methods.html` file.
+2. Run it in a new Chrome tab and open the **console** tab in the *Developer Tools* pane.
+3. NOTE: all output from the JS appears on the console.
+4. Review the JS in the html file and ensure you understand how it works.
 
 ### 3.1 Test Your Understanding
 

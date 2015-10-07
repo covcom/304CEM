@@ -1,6 +1,8 @@
 # Closures
 
-This week covers objects and functions again, but with more advanced uses. These code patterns are what brings out the full power of JS and are essential for understanding JS code libraries that you might use for bigger projects. Before you start this or any other worksheet you should make sure you have the latest commits from the upstream repository on **GitHub**.
+This week covers objects and functions again, but with more advanced uses. These code patterns are what brings out the full power of JS and are essential for understanding JS code libraries that you might use for bigger projects.
+
+Before you start this or any other worksheet you should make sure you have the latest commits from the upstream repository on **GitHub**.
 ```
 git pull upstream master
 ```

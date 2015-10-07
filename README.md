@@ -81,10 +81,11 @@ This will pull down any new files or changes from the GitHub repository and merg
 
 ## 1.5 Commiting Working Code
 
-At the end of each exercise you should get into the habit of commiting your working code.
+At the end of each exercise you should get into the habit of committing your working code.
 ```
 git status
-git commit -a -m 'finished exercise xxxx'
+git add .
+git commit -m 'finished exercise xxxx'
 ```
 
 ## 1.6 Pushing to Your Remote

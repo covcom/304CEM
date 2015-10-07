@@ -5,6 +5,11 @@ This worksheet covers objects and functions again, but focuses on the advanced c
 
 In particular, the **todo** app in the `advanced_obj_fun` directory contains some example code that uses many of the key techniques you need to learn.
 
+Before you start this or any other worksheet you should make sure you have the latest commits from the upstream repository on **GitHub**.
+```
+git pull upstream master
+```
+
 ## 1 Object Oriented JavaScript
 
 In this exercise we will be constructing objects and modifying their prototypes.
