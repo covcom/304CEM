@@ -46,3 +46,7 @@ http://tobyho.com/2010/12/10/trampolines-in-javascript-and/
 curl 'https://marktyers.firebaseio.com/people.json'
 curl 'https://marktyers.firebaseio.com/people/turing.json'
 ```
+
+## Presentation
+
+The lab slides can be accessed below:

@@ -1,7 +1,8 @@
 <html lang="en">
     <head>
         <title>Address Finder</title>
-        <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+         <meta charset="UTF-8"> 
+        <script src="https://maps.googleapis.com/maps/api/js?sensor=false&region=uk"></script>
         <script src="js/geocoder.js"></script>
     </head>
     <body>
@@ -9,7 +10,7 @@
         <input type="text" name="address" /><input type="button" value="search" />
     </body>
     <script>
-        
+
         document.querySelector('input[type="button"]').onclick = function() {
             console.log('button clicked');
             var textbox = document.querySelector('input[name="address"]');

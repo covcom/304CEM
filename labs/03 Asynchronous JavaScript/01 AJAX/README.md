@@ -1,3 +1,4 @@
+
 # AJAX
 
 This week’s lab tasks will focus on two important areas where JS is used on the client side:
@@ -181,4 +182,7 @@ Since we assume that `getSync` actually returns a JSON string in this case, ther
   - If the html attribute contains the word “dictum” then make a AJAX call to a dictionary API that returns JSON, such as one of the API endpoints listed on the [Wordnik API documentation](http://developer.wordnik.com/docs.html#!/word/get_definitions)
   - Parse the JSON response for a definition of the word and dynamically add a DOM element to the HTML page containing the term “dictum” along with the returned definition.
 - Now make your AJAX call and JSON response parsing dynamic, by allowing the user to double-click any word on the screen: double clicking it should provide a new entry in the “word dictionary list” somewhere on the page, containing the definition or “not found”. You may find this [StackOverflow question on handling double-clicks on words](http://stackoverflow.com/questions/878637/how-to-make-a-click-or-double-click-on-a-word-on-a-webpage-to-trigger-an-event-h) useful.
-9
+
+## Presentation
+
+The lab slides can be accessed below:
