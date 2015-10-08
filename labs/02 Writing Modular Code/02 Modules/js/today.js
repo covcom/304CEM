@@ -7,4 +7,3 @@ require(['modules/time'], function(TheTime) {
 		document.getElementById('time').innerHTML = currentTime;
 	};
 });
-
