@@ -1,52 +1,204 @@
-# JavaScript Promises
+# Promises
 
-## About
+This week’s lab tasks extend what you were working on in the core AJAX worksheet, namely responding to asynchronous events in your program.
 
-This example code is based on the [HTML5Rocks JavaScript Promises Tutorial][tutorial]. It builds on the synchronous JS example from Week 4. Read the tutorial for a really good explanation of how it works.
+The difference is that we will use a programming pattern that differs from nested callbacks due to limitations of the latter.
 
-The code applies promises in an increasingly efficient way.
+We will employ a pattern that uses future-facing objects called **Promises**, designed to deal with things that happen at any time in the future. See the [HTML5Rocks blog post](http://www.html5rocks.com/en/tutorials/es6/promises/) in the resources for further discussion of the type of code you will be working with in this lab.
 
-## Order of Labs
+The code here will take a while to fully understand. However, perseverance will pay off as promises are a very powerful pattern to invoke in event-based programming with JavaScript.
 
-1. `ajax_async.html`
-2. `ajax_async_all.html`
-3. `ajax_async_best.html`
+- They make your code more readable
+- They make your code asynchronous
 
-## Files
+## Task List
 
-The `js` directory contains a shim for browsers not supporting ECMAScript6 natively, called `promise-2.0.4.min.js`. You can generally ignore the shim.
+1. Use promises to get a series of URLs and display their content.
+2. Chain promises (that get URLs) together, then post-process their data in bulk.
+3. Chain promises (that get URLs) together, while processing their data in real-time.
 
-Non-promise related functionality, i.e. the AJAX itself, is inside the `utils.js` file.
+These three stages mirror the development of code in the [HTML5Rocks blog post on JS promises](http://www.html5rocks.com/en/tutorials/es6/promises/) so you can read that too, to aid understanding.
 
-The `data` directory contains the JSON data for this example. **IMPORTANT NOTE:** read below if you are not using a web server.
+## 1 Using promises to get a series of URLs
 
-## Running the Code
+Here we begin to move from synchronous programming to asynchronous programming by introducing Promise objects.
+- Begin with a quick review of the *Core Worksheet* which contains analysis of `ajax_sync.html`. That file contains code which synchronously gets URLs and popu- lates the DOM with the contents parsed from the returned JSON data.
+  - To show that the AJAX get request “blocks” other operations, add the following line before the final `</script>` closing tag in the `ajax_sync.html` file: `addTextToPage("Hi from the end of the code")`;
+  - Tick the “Fake network delay” box and notice that the newly added text only appears after a few seconds, once the AJAX requests have completed.
 
-Due to browsers' security policies the code will fail if you are testing the page via a `file:\\` address in the browser, since [cross origin requests][cors] are only supported with `http(s):\\` and the relative URL supplied trips up the check.
+The code you will look at this week gets and processes AJAX data *outside of the function execution chain* - in other words “in the background” or asynchronously. That means your code does not get “blocked” from doing useful things while the data is still downloading.
 
-In other words, to use the JSON files in the `data` directory you will need to serve the page from a web server and access the HTML files via `http(s):\\`.
+- Open `ajax_async.html` and `js/utils.js` and preview the functionality.
+- To simulate a more realistic scenario, tick the **"Fake network delay"** box and watch the page reload
+  - Note that each chapter text arrives after some delay
+- Open the “Network” tab then reload the page to view the files being fetched using AJAX calls
+- Refresh the page again
+  - In the development tools, note the large gaps between the files being received (simulated network traffic).
+- This is what causes the slow chapter-by-chapter loading of the text on to the screen.
 
-#### Workaround
+The loading of the text and its presentation in the DOM happens “chapter by chapter” here. This is similar to the sync version you looked at last week. However, *this time there is no blocking of other code in your program*. To see that your AJAX requests no longer block other code:
 
-Swap in the suggested Github Gist URLs _found in the comments within the HTML_ files, which will allow direct access to the JSON files from the web.
+- As before, add the following line before the final `</script>` closing tag in the `ajax_async.html` file: `addTextToPage("Hi from the end of the code");`
+- Refresh the page
+  - Note that the newly added text appears immediately! The AJAX calls are left to execute in the background.
+  
+### 1.1 Understanding how promises work
 
+Promises essentially define actions to perform once other actions complete, whether successfully or not.
+- Read through the JS code in `ajax_async.html`
+- Note that there is only one big chain of code:
+  - begins with `getJson(url)`
+  - chains various `.then()` methods as well as a `.catch()` method
 
-[tutorial]: http://www.html5rocks.com/en/tutorials/es6/promises/
-[cors]: http://en.wikipedia.org/wiki/Cross-origin_resource_sharing
+The chain of `then()` and `catch()` methods indicates that the `getJson()` call returns an object with these methods available. The object returned is called a “JavaScript promise object”, and the methods set out what to do *when the action associated with the promise completes successfully or fails to complete*.
 
-Example in book **Async JavaScript** chapter 3:
+- To confirm that `getJson()` returns one of these “promise” objects, look in `js/utils.js` at the definition of the function `getJson()`
+- Note that it is a wrapper for a call to `get()` which also has a `then()` method.
+- This indicates that `get()` returns a “promise” object. To verify this, look at the
+definition of `get()` and you will see that it does indeed:
+  - *construct* a new `Promise()` object
+  - returns a promise (actually one composed of two actions)
+  
+### 1.2 Test your Understanding
 
-http://goo.gl/DWexMm
-
-Trampolining:
-
-http://tobyho.com/2010/12/10/trampolines-in-javascript-and/
-## Quotes
+- Add an additional `then()` call at an appropriate place in `ajax_async.html` (you will need to be careful with nesting) which pops up a confirmation dialog after each new chapter is displayed.
+- The confirmation should ask whether the user wishes to continue downloading the next chapter
+  - if so, progress as normal
+  - if not, throw an exception, for example:
+  ```
+var err = {message: "User aborted download"};
+throw(err);
 ```
-curl 'https://marktyers.firebaseio.com/people.json'
-curl 'https://marktyers.firebaseio.com/people/turing.json'
+- Throwing an **err** object like this will pass it on to the `.catch()` method down the chain, which will show the message on the screen.
+
+## 2 Async Fetch Data, and Post-Process
+
+The next file you will look at changes the order of activity a little bit. Above, the sequence was:
+
+1. Make an AJAX call for story data
+2. For each chapter in the story data:
+  - Make an AJAX call for chapter data
+  - Display the chapter data in DOM
+  
+However, this means each of the chapters is being fetched one-by-one. When chapter 1 has been downloaded, it is displayed, then the next call to `getJson()` is passed the URL for chapter 2.
+
+So, while the code to fetch all the story and chapter data is asynchronous *with respect to the rest of the program*, each of the AJAX calls for chapter data is still forced to wait for the previous chapter to complete.
+
+This is wasting resources! The browser is perfectly capable of downloading ALL of the separate chapter files *at the same time*. So, we want to adjust the promises to exploit this.
+
+- Open `ajax_async_all.html` and `js/utils.js` preview in the browser
+- Click on “Fake network delay”, open the network tab, reload the page and note the pattern of calls to the `chapter-n.json` files
+  - This time they take place *simultaneously!*
+  - Therefore the total completion time is shorter than when each was downloaded
+before the next.
+
+There is one stupendously powerful block of code that lets this happen:
+```
+.then(function(story) {
+  addHtmlToPage(story.heading);
+  var chapterUrls = story.chapterUrls;
+  chapterUrls = chapterUrls.map(function(url){ 
+    return "data/"+url;
+  });
+  return Promise.all(
+    chapterUrls.map(getJson)
+  );
+})
+```
+- Note the final block of code executed here:
+  - `return Promise.all(chapterUrls.map(getJson));`
+  - This returns a promise which completes when `.all()` of the promises in its argument complete.
+  - The argument maps each chapter URL to a “promise to supply some JSON” (see lecture slides later)
+  
+Basically an array of promises (each of which gets some JSON for a particular chapter) must complete before the next `then()` or `catch()` block in the chain will be executed. When the array completes, an array of the separate results is passed to the next block in the same order. So further blocks can process the chapters data returned by the various getJson()’s.
+
+### 2.1 Test your understanding
+
+You will have done well to understand this code by the end of the lab!
+
+- Insert a new `.then()` block directly after the call to `getJson('data/story.json')`.
+- Your new `.then()` block should create a **Promise** object that:
+  - Prompts the user to break the promise or keep the promise.
+  - `resolve()`s itself if the user clicked “OK”, and passes the story on to the next
+`then()` block.
+  - `reject()`s itself if the user clicked “Cancel”, and passes an appropriate error
+object with a message key containing appropriate information.
+- The `then()` block should return the new Promise object that you created.
+
+## 3 Async Fetch Data, and Real-Time Process
+
+While getting all of the chapters JSON simultaneously over the network reduces the total elapsed time to display the entire story, there is a problem. There is a (potentially) long wait until the final chapter arrives before the display in the DOM can begin.
+
+To avoid this, it would be nice to put as much information on to the screen as possible, in the correct order, as the chapters arrive over the network.
+
+For example, say the AJAX calls to `getJson()` complete in the following order:
+
+**chap1 → chap4 → chap2 → chap5 → chap3**
+
+Then there is no need to wait until the end of the queue to display chapter 1 in the DOM. This sequence of AJAX responses should ideally result in the following update of the DOM:
+
+**chap1 → chap2 → (chap3 + chap4 + chap5)**
+
+In other words, the user sees the first chapter as soon as it has arrived, the second chapter as soon as the *first two* chapters have arrived, the third chapter as soon as the *first three* chapters have arrived, etc. etc..
+
+This “real time” update is what you will achieve in the final code file.
+
+- Open `async_ajax_best.html` and preview it with the fake network delay
+- Refresh while looking at the Network tab in the browser development tools
+- Note that the DOM is updating with as much of the story as possible when the various
+parts arrive.
+- Even though chapter 3 may arrive last (as in the above example), the DOM would still
+show chapters 1 and 2 for the user to read while it was being downloaded.
+
+How is this achieved?
+
+- Read through the code in `async_ajax_best.html`
+- Note the complex `return` statement within the first `then()` block
+  - This is where all the action happens.
+- The key is to use a combination of the functional programming constructs map and reduce which both operate on arrays.
+- However, here *the contents of the arrays are JavaScript promises!*
+  - The `map()` returns an array of promise objects corresponding to getting each of the chapters
+  - The `reduce()` accumulates a chain of `.then().then()` calls attached to an initially “pre-resolved” promise object
+    - This is where the use of `Promise.resolve()` comes in
+    - Two `then()`s are added to the chain for each chapter in the story
+  - So when the array of `getJson()` promises is fully reduced, the result is a chain of the following form:
+```
+Promise.resolve()
+.then(/* resolve getting chapter 1 */)
+.then(/* display chapter 1 */)
+.then(/* resolve getting chapter 2 */)
+.then(/* display chapter 2 */)
+// repeat!
+.then(/* resolve getting chapter 5 */)
+.then(/* display chapter 5 */);
 ```
 
-## Presentation
+Now, the special thing about this chain is that the prior call to story.chapterUrls.map(getJson) has *already started to asynchronously resolve all of the chapter fetches in the `.then()` blocks* here.
 
-The lab slides can be accessed below:
+Complicated, but powerful.
+
+### 3.1 Test Your Understanding
+
+Try to define a map-reduce chain of promises corresponding to button click events.
+
+- Add five buttons to an HTML page
+- Define five promise objects in JS that resolve when the corresponding button is clicked
+(the promises will probably contain listeners - ideally “one shot” listeners that remove themselves afterwards)
+  - NB: you will need to use a closure here to keep your code readable
+- Create an array of these promise objects
+- Apply map-reduce to the array such that the DOM is updated to display the longest
+sequence of buttons clicked so far (similar to the AJAX calls completing above). For example:
+  - User clicks 2, 1, 3, 5, 4
+  - DOM updates none, (1,2), (1,2,3), none, (1,2,3,4,5) – User clicks 5, 4, 3, 2, 1
+  - DOM updates none, none, none, none, (1,2,3,4,5)
+  - etc.
+  
+Don’t look at the solutions on GitLab until you have tried this!
+
+## Resources
+- [HTML5Rocks JavaScript Promises Overview](http://www.html5rocks.com/en/tutorials/es6/promises/)
+- [Using native JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)
+- [Getting Started with AJAX](https://developer.mozilla.org/en-US/docs/AJAX/Getting_Started)
+- [ES6 Promise Polyfill code](https://github.com/jakearchibald/es6-promise) - use for reverse compatibility in non ES6-compliant browsers.
+- [RSVP.js Asynchronous Library](https://github.com/jakearchibald/es6-promise) - contains ES6-promises and more!
+￼
