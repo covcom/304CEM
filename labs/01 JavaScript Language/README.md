@@ -20,3 +20,9 @@ Your homework is to read about the core Git concepts ready to answer questions i
 https://git-scm.com/book/en/v2
 
 You can either read it online or download an ebook to install on your ebook reader, phone or tablet.
+
+## Presentation
+
+The lecture presentation can be accessed below:
+
+https://goo.gl/fYorTz

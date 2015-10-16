@@ -99,3 +99,9 @@ In this task you will write a simple function to detect and remove duplicates fr
 2. when clicked the new item should only be added to the list if it is not already in it (prevent duplicates being added)
 3. add a new button called **Capitalise**.
 4. when clicked this should trigger a new function that loops through the list items and makes them all upper-case.
+
+## Presentation
+
+The lab slides can be accessed below:
+
+https://goo.gl/YMWU2s

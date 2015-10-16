@@ -71,7 +71,11 @@ Reload the page and add a few items. There is an event handler attached to the &
 
 1. Add a method to your IIFE to remove specific list items then make use of event delegation to allow the user to click on any of the lists items to remove it.
 
+## Presentation
 
+The lab slides can be accessed below:
+
+https://goo.gl/8VvYbR
 
 ## References
 
