@@ -48,6 +48,20 @@ Try to implement the three changes listed in the previous *Test Your Knowledge* 
 
 One of the strengths of NodeJS is the large number of third-party modules available as installable packages. In this exercise you will learn how to manage and install packages as well as how to manage your app using a config file.
 
+Start by opening the `weather/index.js` and `weather/package.json` files. Note:
+1. the `package.json` file contains the project *metadata*. Use the [interactive tutorial](http://browsenpm.org/package.json) to understand the purpose of each of the keys.
+2. the **scripts** field contains any *aliases* you want to set up. You can see that a **start** alias has been defined. Try running your app by entering `npm start`. If you try this now you get an error, can you understand why?
+3. the app requires the **request** package of around version *2.65.0*.
+4. to install all the pre-requisites you should enter `npm install`. Once this has run you should have a new directory called `node_modules`. This contains the code for the module packages you have installed.
+5. try running the app.
+6. public modules/packages can be found in the [Node Package Manager](https://www.npmjs.com). Search for the **node-persist** package. Install it by running `npm install node-persist --save`. The `--save` flag (long flags have _two_ dashes) adds the package to the dependency list in `package.json`. You should check that the package has been added to the `node_modules` directory and the `package.json` file has been updated.
+
+### 3.1 Test Your Knowledge
+
+1. move the application logic into its own `weather.js` module. Since the API call is *async* you will need to implement a callback.
+2. extract and display the wind speed and temperature.
+3. use the **node-persist** module to store the weather forecast for a given location. Each location is given a unique **id** which can be found in the JSON data. Use this as the storage key.
+
 ## Presentation
 
 https://goo.gl/PYDXAI

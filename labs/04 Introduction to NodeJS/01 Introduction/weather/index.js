@@ -33,6 +33,3 @@ stdin.on('data', function(chunk) {
     }
   })
 })
-
-//44c39f3fa462f86b3fc88f5678e5c5ff
-//http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=44c39f3fa462f86b3fc88f5678e5c5ff
