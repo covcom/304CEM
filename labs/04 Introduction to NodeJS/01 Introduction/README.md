@@ -43,3 +43,11 @@ Run the index.js file and try adding and listing items. The functionality should
 ### 2.1 Test Your Knowledge
 
 Try to implement the three changes listed in the previous *Test Your Knowledge* section. You should be able to copy and paste most of the code with only minor changes being required.
+
+## 3 Node Package Manager
+
+One of the strengths of NodeJS is the large number of third-party modules available as installable packages. In this exercise you will learn how to manage and install packages as well as how to manage your app using a config file.
+
+## Presentation
+
+https://goo.gl/PYDXAI
