@@ -62,6 +62,7 @@ Start by opening the `weather/index.js` and `weather/package.json` files. Note:
 1. move the application logic into its own `weather.js` module. Since the API call is *async* you will need to implement a callback.
 2. extract and display the wind speed and temperature.
 3. use the **node-persist** module to store the weather forecast for a given location. Each location is given a unique **id** which can be found in the JSON data. Use this as the storage key.
+4. add another module function to retrieve a 7 day forecast for the specified location. You will need to read the [API documentation](http://openweathermap.org/forecast16) to discover the URL format and that data it returns.
 
 ## Presentation
 
