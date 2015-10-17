@@ -49,6 +49,7 @@ Try to implement the three changes listed in the previous *Test Your Knowledge* 
 One of the strengths of NodeJS is the large number of third-party modules available as installable packages. In this exercise you will learn how to manage and install packages as well as how to manage your app using a config file.
 
 Start by opening the `weather/index.js` and `weather/package.json` files. Note:
+
 1. the `package.json` file contains the project *metadata*. Use the [interactive tutorial](http://browsenpm.org/package.json) to understand the purpose of each of the keys.
 2. the **scripts** field contains any *aliases* you want to set up. You can see that a **start** alias has been defined. Try running your app by entering `npm start`. If you try this now you get an error, can you understand why?
 3. the app requires the **request** package of around version *2.65.0*.
