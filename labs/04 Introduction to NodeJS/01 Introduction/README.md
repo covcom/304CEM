@@ -7,6 +7,11 @@ It uses an event-driven, non-bocking I/O model which makes it very efficient whe
 
 The runtime uses a single thread running an *event loop* to to handle **all** incoming requests. When a connection is received we typically fire a callback to handle the request, returning control to the main thread once the work is done. This is termed **non-blocking** because the callback is used to handle the work leaving the main event loop free to deal with other requests.
 
+Before you start this or any other worksheet you should make sure you have the latest commits from the upstream repository on **GitHub**.
+```
+git pull upstream master
+```
+
 ## 1 A Simple Example
 
 Load up the `todo/index.js` script and read through it to understand how it works. There are lots of code comments to assist you. Note:
@@ -21,8 +26,22 @@ add bread
 add butter
 list
 ```
+### 1.1 Cloud9 Debugger
 
-### 1.1 Test Your Knowledge
+The **Cloud9** IDE includes a powerful debugger. Lets test how this works. You should then make use of it when attempting the *Test Your Knowledge* tasks.
+
+Stop the script using `ctrl+C` and restart it. In Cloud9 you can either use the `node index.js` command or click on the **Run** button. By stopping and restarting the script it will have lost the list items you typed in previously.
+
+1. add the cheese item to the list (see above)
+2. add a breakpoint to the code just inside the callback by clicking in the left margin next to `console.log(typeof chunk)`. Breakpoints are indicated by red circles.
+3. add the *bread* item. Notice that the program execution stops on `console.log(typeof chunk)` without executing it.
+4. notice all the script's variables are listed as *undefined* in the right-hand pane.
+5. click on the **step over** button (indicated in the screenshot below) twice to execute lines 11 and 12. The local text variable should now contain the string you typed in. Locate this in the *local variables* pane. Now hover your mouse pointer over the variable name.
+6. practice using the debugger buttons *Resume*, *Step Into*, *step out* until you understand their function.
+
+![Cloud9 Debugger](images/node_debugger.png)
+
+### 1.2 Test Your Knowledge
 
 1. modify the code to prevent duplicate items being added. You will need to use the [`Array.indexOf()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) method.
 2. create a **remove** option so an item such as *cheese* can be removed using the syntax `remove cheese`. You may need to use the [`Array.splice()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) method.
