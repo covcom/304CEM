@@ -2,6 +2,9 @@
 var restify = require('restify')
 var server = restify.createServer()
 
+server.use(restify.fullResponse())
+server.use(restify.bodyParser())
+
 var lists = require('./lists.js');
 
 server.get('/lists/:listID', function(req, res) {
