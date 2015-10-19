@@ -18,15 +18,6 @@ stdin.on('data', function(chunk) {
     console.log('adding "'+item+'"')
     items.push(item)
   }
-  if (text.indexOf('remove') === 0) {
-    console.log('removing item')
-    var item2 = text.substring(text.indexOf(' '))
-    if (items.indexOf(item2) >= 0) {
-      console.log('item found')
-      const i = items.indexOf(item2)
-      items.splice(i, 1)
-    }
-  }
   if (text.indexOf('list') === 0) {
     items.forEach(function(item, index) {
       console.log(index+'. '+item)
