@@ -11,7 +11,7 @@ stdin.on('data', function(chunk) {
   var city = chunk.toString().trim()
   console.log('City: '+city)
 
-  const query_string = {q: city, units: "metric", appid: "44c39f3fa462f86b3fc88f5678e5c5ff"};
+  const query_string = {q: city, units: "metric", appid: "44c39f3fa462f86b3fc88f5678e5c5ff"}
   request.get({url: url, qs: query_string}, function(err, res, body) {
     if (err) {
       console.log(err)
