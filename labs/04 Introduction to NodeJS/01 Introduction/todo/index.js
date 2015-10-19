@@ -20,7 +20,7 @@ stdin.on('data', function(chunk) {
   }
   if (text.indexOf('remove') === 0) {
     console.log('removing item')
-    var item2 = text.substring(text.indexOf(' ')).trim()
+    var item2 = text.substring(text.indexOf(' '))
     if (items.indexOf(item2) >= 0) {
       console.log('item found')
       const i = items.indexOf(item2)
