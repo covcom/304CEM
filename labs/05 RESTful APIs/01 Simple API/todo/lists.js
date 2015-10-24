@@ -6,17 +6,18 @@ var lists = []
 
 /* this is a private function that can only be accessed from inside the module. It checks that the json data supplied in the request body comprises a single array of strings. The parameter contains the string passed in the request body. */
 function validateJson(json) {
-  console.log(json)
-  /* returns false if the data is not an Array */
-  if (!Array.isArray(json)) {
-    console.log('not an array')
+  if (typeof json.name !== 'string') {
+    console.log('name not a string')
     return false
   }
-  console.log('array length: '+json.length)
-  for(var i=0; i<json.length; i++) {
-    console.log(json[i])
-    console.log(typeof json[i])
-    if (typeof json[i] !== 'string') {
+  /* returns false if the list key is not an Array */
+  if (!Array.isArray(json.list)) {
+    console.log('json.list is not an array')
+    return false
+  }
+  console.log('array length: '+json.list.length)
+  for(var i=0; i<json.list.length; i++) {
+    if (typeof json.list[i] !== 'string') {
       console.log('not a string')
       return false
     }
@@ -35,17 +36,20 @@ exports.getByID = function(listID) {
   return {code:404, response:{status:'error', contentType:'application/json', message:'list not found', data: listID}}
 }
 
-exports.getAll = function() {
+exports.getAll = function(host) {
   console.log('getAll')
   if (lists.length === 0) {
     return {code: 404, contentType:'application/json', response:{ status:'error', message:'no lists found' }}
   }
-  return {code:200, contentType:'application/json', response:{status:'success', message:'lists found', data: lists}}
+  var notes = lists.map(function(item) {
+    return {name: item.name, link: 'http://'+host+'/lists/'+item.id}
+  })
+  return {code:200, contentType:'application/json', response:{status:'success', message:lists.length+' lists found', data: notes}}
 }
 
-exports.getAllXML = function() {
+exports.getAllXML = function(host) {
   console.log('getAllXML')
-  var xml = builder.create('root')
+  var xml = builder.create('root', {version: '1.0', encoding: 'UTF-8', standalone: true})
   if (lists.length === 0) {
     xml.ele('message', {status: 'error'}, 'no lists found')
   } else {
@@ -53,24 +57,29 @@ exports.getAllXML = function() {
     var xmlLists = xml.ele('lists', {count: lists.length})
     for(var i=0; i < lists.length; i++) {
       var list = xmlLists.ele('list', {id: lists[i].id})
-      for(var j=0; j<lists[i].list.length; j++) {
-        list.ele('item', lists[i].list[j])
-      }
+      list.ele('name', lists[i].name)
+      list.ele('link', {href:'http://'+host+'/lists/'+lists[i].id})
     }
   }
   xml.end({pretty: true})
-  return {code: 200, contentType:'application/json', contentType:'application/xml', response: xml}
+  return {code: 200, contentType:'application/xml', response: xml}
 }
 
-exports.addNew = function(body) {
+exports.addNew = function(auth, body) {
   console.log('addNew')
+  if (auth.basic === undefined) {
+    return {code: 401, contentType:'application/json', response:{ status:'error', message:'missing basic auth' }}
+  }
+  if (auth.basic.username !== 'testuser' || auth.basic.password !== 'p455w0rd') {
+    return {code: 401, contentType:'application/json', response:{ status:'error', message:'invalid credentials' }}
+  }
   const json = JSON.parse(body)
   const valid = validateJson(json)
   if (valid === false) {
-    return {code: 400, response:{ status:'error', contentType:'application/json', message:'JSON data missing in request body' }}
+    return {code: 400 ,contentType:'application/json', response:{ status:'error', message:'JSON data missing in request body' }}
   }
   const newId = rand(160, 36)
-  const newList = {id: newId, list: json}
+  const newList = {id: newId, name:  json.name, list: json.list}
   lists.push(newList)
-  return {code: 201, response:{ status:'success', contentType:'application/json', message:'new list added', data: newList }}
+  return {code: 201, contentType:'application/json', response:{ status:'success', message:'new list added', data: newList }}
 }
