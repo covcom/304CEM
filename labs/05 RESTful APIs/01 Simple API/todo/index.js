@@ -26,7 +26,8 @@ server.get('/lists', function(req, res) {
 
 server.post('/lists', function(req, res) {
   console.log('adding a new list')
-  const data = lists.addNew()
+  const body = req.body
+  const data = lists.addNew(body)
   res.setHeader('content-type', 'application/json')
   res.send(data.code, {status: data.status, message: data.message})
   res.end()
