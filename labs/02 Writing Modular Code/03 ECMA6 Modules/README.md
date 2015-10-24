@@ -7,3 +7,7 @@ For your advanced challenge you will be required to use the **require-hm** plugi
 https://github.com/jrburke/require-hm
 
 http://www.2ality.com/2013/07/es6-modules.html
+
+## 2 Classes
+
+ECMA6 also introduces [classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) to JavaScript for the first time. This is a simpler way to implement object prototypes. 

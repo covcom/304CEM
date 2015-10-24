@@ -1,5 +1,6 @@
 
 var rand = require('csprng')
+var builder = require('xmlbuilder')
 
 var lists = []
 
@@ -8,11 +9,15 @@ function validateJson(json) {
   console.log(json)
   /* returns false if the data is not an Array */
   if (!Array.isArray(json)) {
+    console.log('not an array')
     return false
   }
-  /* returns false if any index doesn't contain a String */
-  for (const item in json) {
-    if (typeof item !== String) {
+  console.log('array length: '+json.length)
+  for(var i=0; i<json.length; i++) {
+    console.log(json[i])
+    console.log(typeof json[i])
+    if (typeof json[i] !== 'string') {
+      console.log('not a string')
       return false
     }
   }
@@ -22,25 +27,26 @@ function validateJson(json) {
 
 exports.getByID = function(listID) {
   console.log('getById: '+listID)
+  for(var i=0; i < lists.length; i++) {
+    if (lists[i].id === listID) {
+      return {code:200, response:{status:'success', message:'list found', data: lists[i]}}
+    }
+  }
+  return {code:404, response:{status:'error', message:'list not found', data: listID}}
 }
-
-/* this anonymous function is an 'Arrow Function Expression'. This uses a syntax which is new to ECMA6. It is functionally equivalent to the version above. */
-/*exports.getByID = listID => {
-  console.log('getById: '+listID)
-}*/
 
 exports.getAll = function() {
   console.log('getAll')
   if (lists.length === 0) {
-    return {code: 400, response:{ status:'error', message:'no lists found' }}
+    return {code: 404, response:{ status:'error', message:'no lists found' }}
   }
-  return {code: 200, response:{ status:'success', message:'lists found', data: lists }}
+  return {code:200, response:{status:'success', message:'lists found', data: lists}}
 }
 
-/* Here is another Arrow Function Expression with no parameters. It is functionally equivalent to the version above. */
-/*exports.getAll = () => {
+exports.getAllXML = function() {
+  console.log('getAllXML')
 
-}*/
+}
 
 exports.addNew = function(body) {
   console.log('addNew')

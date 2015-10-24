@@ -7,7 +7,7 @@ The weekly worksheets have been carefully graded:
 
 1. the worksheet **01 Tools** is considered *core knowledge* and needs to be understood if you are to pass the module.
 2. the worksheet **02 Language** contains the intermediate skills and knowledge to boost your understanding and grade.
-3. the other worksheets cover the advanced material and, if you master these you will be able to push your grade even higher.
+3. the **03 ECMA6** worksheet introduces a number of new features that form the ECMA6 update. You should learn about these if you are to get the highest grade.
 
 You should be attending at least two practical lab sessions per week but you may, if you wish, attend more.
 
