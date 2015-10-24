@@ -14,12 +14,14 @@ server.get('/', function(req, res, next) {
 
 server.get('/lists', function(req, res) {
   console.log('getting a list of all the lists')
-  if (req..header('Accepts') === '') {
-    const data = lists.getAllXML()
+  var data, type
+  if (req.header('Accept') === 'application/xml') {
+    data = lists.getAllXML()
   } else {
-    const data = lists.getAll()
+    data = lists.getAll()
   }
-  res.setHeader('content-type', 'application/json')
+  console.log(data)
+  res.setHeader('content-type', data.contentType)
   res.send(data.code, data.response)
   res.end()
 })
@@ -43,18 +45,14 @@ server.post('/lists', function(req, res) {
 })
 
 server.put('/lists/:listID', function(req, res) {
-  const listID = req.params.listID
-  const data = lists.updateByID(listID)
   res.setHeader('content-type', 'application/json')
-  res.send(data.code, {status: data.status, message: data.message})
+  res.send(data.code, {status: data.status, message: 'this should update the specified resource'})
   res.end()
 })
 
 server.del('/lists/:listID', function(req, res) {
-  const listID = req.params.listID
-  const data = lists.deleteByID(listID)
   res.setHeader('content-type', 'application/json')
-  res.send(data.code, {status: data.status, message: data.message})
+  res.send(data.code, {status: data.status, message: 'this should delete the specified resource'})
   res.end()
 })
 

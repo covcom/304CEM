@@ -29,23 +29,37 @@ exports.getByID = function(listID) {
   console.log('getById: '+listID)
   for(var i=0; i < lists.length; i++) {
     if (lists[i].id === listID) {
-      return {code:200, response:{status:'success', message:'list found', data: lists[i]}}
+      return {code:200, response:{status:'success', contentType:'application/json', message:'list found', data: lists[i]}}
     }
   }
-  return {code:404, response:{status:'error', message:'list not found', data: listID}}
+  return {code:404, response:{status:'error', contentType:'application/json', message:'list not found', data: listID}}
 }
 
 exports.getAll = function() {
   console.log('getAll')
   if (lists.length === 0) {
-    return {code: 404, response:{ status:'error', message:'no lists found' }}
+    return {code: 404, contentType:'application/json', response:{ status:'error', message:'no lists found' }}
   }
-  return {code:200, response:{status:'success', message:'lists found', data: lists}}
+  return {code:200, contentType:'application/json', response:{status:'success', message:'lists found', data: lists}}
 }
 
 exports.getAllXML = function() {
   console.log('getAllXML')
-
+  var xml = builder.create('root')
+  if (lists.length === 0) {
+    xml.ele('message', {status: 'error'}, 'no lists found')
+  } else {
+    xml.ele('message', {status: 'success'}, 'lists found')
+    var xmlLists = xml.ele('lists', {count: lists.length})
+    for(var i=0; i < lists.length; i++) {
+      var list = xmlLists.ele('list', {id: lists[i].id})
+      for(var j=0; j<lists[i].list.length; j++) {
+        list.ele('item', lists[i].list[j])
+      }
+    }
+  }
+  xml.end({pretty: true})
+  return {code: 200, contentType:'application/json', contentType:'application/xml', response: xml}
 }
 
 exports.addNew = function(body) {
@@ -53,18 +67,10 @@ exports.addNew = function(body) {
   const json = JSON.parse(body)
   const valid = validateJson(json)
   if (valid === false) {
-    return {code: 400, response:{ status:'error', message:'JSON data missing in request body' }}
+    return {code: 400, response:{ status:'error', contentType:'application/json', message:'JSON data missing in request body' }}
   }
   const newId = rand(160, 36)
   const newList = {id: newId, list: json}
   lists.push(newList)
-  return {code: 201, response:{ status:'success', message:'new list added', data: newList }}
-}
-
-exports.updateByID = function(listID) {
-  console.log('updateById: '+listID)
-}
-
-exports.deleteByID = function(listID) {
-  console.log('deleteById: '+listID)
+  return {code: 201, response:{ status:'success', contentType:'application/json', message:'new list added', data: newList }}
 }
