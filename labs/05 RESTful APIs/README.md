@@ -9,3 +9,7 @@ Now you have learned about the JavaScript language and the purpose of NodeJS it 
 ## Homework
 
 Your Homework is to learn the principles behind API design. You should start by reading [Web API Design](https://goo.gl/0Av46O) which covers the principles in a clear manner. Follow this by reading the free O'Reilly book [RESTful Web Services](http://goo.gl/SMZEmK).
+
+## Presentation
+
+https://goo.gl/ePDNom
