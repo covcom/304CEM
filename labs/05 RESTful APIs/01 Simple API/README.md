@@ -19,10 +19,10 @@ REST is an *architectural style* that defines a series of *principles* that defi
 The `todo/` directory contains a simple API that demonstrates these key concepts. The first step is to run it and interact with it to understand these REST principles and how they are implemented.
 
 1. use the **terminal** to navigate to the `todo` directory and install the module dependencies using `npm install`. This will install the [restify](http://restify.com/), [xmlbuilder](https://github.com/oozcitak/xmlbuilder-js) and [csprng](https://www.npmjs.com/package/csprng) modules. Take a few moments to read through their documentation.
-2. run the `index.js` script using node.
+2. open `index.js` then click on the **Run** button in the cloud 9 toolbar to run the nodejs script and run it in a preview tab.
 3. launch **Chrome** and install the **Postman** REST plugin.
-4. use *Postman* to access the API root URL, the format will be similar to `xxx`.
-5. now try the `xxx/lists` URL. Why does it return the same result (study `index.js` carefully).
+4. use *Postman* to access the API root URL, the format will be similar to `https://project-username.c9.io` where *project* is your Cloud 9 project and *username* is your Cloud 9 username. You should be able to copy and paste this from the Cloud 9 preview tab.
+5. now try the `https://project-username.c9.io/lists` URL. Why does it return the same result (study `index.js` carefully).
 6. each request returns a [response code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Response_codes) that indicates its success or failure. Look up the response code to find out more.
 7. the response also includes a **body** which contains any data returned from the API. Notice that the data is returned in **JSON** format. The data returned is known as its **representation**.
 
@@ -30,7 +30,7 @@ The `todo/` directory contains a simple API that demonstrates these key concepts
 
 You need to fully understand the concepts of *Collections*, *Resources* and their *Representations*. We will learn about these by interacting with the lists API.
 
-The `xxx/lists` url represents a _collection_ of lists. We can add, view, update and delete individual lists. These actions correspond to standard database [CRUD operations](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete). lets investigate how this works. As you complete each activity, read the source code to make sure you understand how it works.
+The `https://project-username.c9.io/lists` url represents a _collection_ of lists. We can add, view, update and delete individual lists. These actions correspond to standard database [CRUD operations](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete). lets investigate how this works. As you complete each activity, read the source code to make sure you understand how it works.
 
 1. perform a `GET /lists` operation. This is what you did in step 5 in the previous activity. Notice that this returns an error (we haven't added any items yet!)
 2. perform a `POST /lists` request. the POST method indicates we want to _add a resource to a collection_. In the request body you need to include some json data in the request body (choose the **raw** tab and paste in the json data below). Notice the response includes a list **id**. You will get an **Unauthorized** error. Study `lists.js` to find out where this error is being generated.
