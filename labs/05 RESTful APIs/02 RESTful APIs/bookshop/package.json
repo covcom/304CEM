@@ -1,0 +1,19 @@
+{
+  "name": "bookshop",
+  "version": "1.0.0",
+  "description": "Simple Bookshop API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "bookshop",
+    "api"
+  ],
+  "author": "Mark J Tyers",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.65.0",
+    "restify": "^4.0.3"
+  }
+}
