@@ -15,9 +15,9 @@ exports.search = function(query, callback) {
       callback({code:500, response:{status:'error', message:'search failed', data:err}})
     }
     console.log(typeof body)
-    let json = JSON.parse(body)
-    let items = json.items
-    let books = items.map(function(element) {
+    const json = JSON.parse(body)
+    const items = json.items
+    const books = items.map(function(element) {
       return {id:element.id, title:element.volumeInfo.title, authors:element.volumeInfo.authors}
     })
     console.log(books)

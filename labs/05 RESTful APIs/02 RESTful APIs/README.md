@@ -29,3 +29,6 @@ CORS
 upload images
 
 user registration
+
+
+coupling and cohesion.

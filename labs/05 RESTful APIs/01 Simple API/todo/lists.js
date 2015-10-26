@@ -1,8 +1,9 @@
-/*  */
+
+/* We import the packages needed for this module. These should be listed in the 'package.json' file and can then be imported automatically using 'npm install' */
 var rand = require('csprng')
 var builder = require('xmlbuilder')
 
-/*  */
+/* This array is used to store the lists. In a production system you would need to implement some form of data persistence such as a database. */
 var lists = []
 
 /* this is a private function that can only be accessed from inside the module. It checks that the json data supplied in the request body comprises a single array of strings. The parameter contains the string passed in the request body. */
@@ -39,7 +40,7 @@ exports.getByID = function(listID) {
     }
   }
   /* If there are no matching lists a 'resource not found' error is returned. */
-  return {code:404, response:{status:'error', contentType:'application/json', message:'list not found', data: listID}}
+  return {code:406, response:{status:'error', contentType:'application/json', message:'list not found', data: listID}}
 }
 
 /* This public property contains a function that returns an array containing summaries of each list stored. The summary contains the list name and also the URL of its full resource. This is an important feature of RESTful APIs. */
