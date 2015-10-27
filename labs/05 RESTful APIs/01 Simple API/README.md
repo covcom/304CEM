@@ -18,6 +18,8 @@ REST is an *architectural style* that defines a series of *principles* that defi
 
 The `todo/` directory contains a simple API that demonstrates these key concepts. The first step is to run it and interact with it to understand these REST principles and how they are implemented.
 
+Before starting this worksheet you should update the node installation to the latest version. Instructions can be found in the previous worksheet (04 Introduction to NodeJS).
+
 1. use the **terminal** to navigate to the `todo` directory and install the module dependencies using `npm install`. This will install the [restify](http://restify.com/), [xmlbuilder](https://github.com/oozcitak/xmlbuilder-js) and [csprng](https://www.npmjs.com/package/csprng) modules. Take a few moments to read through their documentation.
 2. open `index.js` then click on the **Run** button in the cloud 9 toolbar to run the nodejs script and run it in a preview tab.
 3. launch **Chrome** and install the **Postman** REST plugin.
