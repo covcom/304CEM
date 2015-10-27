@@ -29,7 +29,15 @@ nvm install 4.2.1
 node -v
   v4.2.1
 ```
-Now we have upgraded Node we are ready to start the tasks.
+Try closing the current terminal window and opening another one. If you check the current version on Node you will see that it has reverted back to the previously installed one! This is because the old version is flagged as the _default_. To fix this we need to set our new version as default.
+```
+node -v
+  v0.10.35
+nvm alias default 4.2.1
+node -v
+  v4.2.1
+```
+To check that this has has the desired effect, close the current terminal window, open a new one and check the current node version.
 
 ## 2 A Simple Example
 
