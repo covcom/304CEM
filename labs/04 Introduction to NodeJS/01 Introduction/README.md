@@ -12,7 +12,26 @@ Before you start this or any other worksheet you should make sure you have the l
 git pull upstream master
 ```
 
-## 1 A Simple Example
+## 1 Configuring Node
+
+Before we start learning about NodeJS we should take a few moments to check which version of Node is installed on Cloud9 and make sure this is up to date. Node is being developed at a fast rate so we need to update our installed version regularly.
+
+To manage and upgrade Node we use the **nvm**  (Node Version Manager). By default this is not installed. Start by installing it using **npm** (Node Package Manager). The _-g_ flag tells npm to install this module globally as a _tool_ rather than locally as a _module_.
+```
+npm install -g nvm
+```
+After checking the current version, our next task is to list all the versions we can install and install the latest version. As of writing (October 2015) the latest version was v4.2.1. Finally we check that we are now using the latest version.
+```
+node -v
+  v0.10.35
+nvm list-remote
+nvm install 4.2.1
+node -v
+  v4.2.1
+```
+Now we have upgraded Node we are ready to start the tasks.
+
+## 2 A Simple Example
 
 Load up the `todo/index.js` script and read through it to understand how it works. There are lots of code comments to assist you. Note:
 1. the use of **const** instead of var. Node already supports many ECMA6 features, there is a full [list](https://nodejs.org/en/docs/es6/) available so you know what is supported.
@@ -26,7 +45,7 @@ add bread
 add butter
 list
 ```
-### 1.1 Cloud9 Debugger
+### 2.1 Cloud9 Debugger
 
 The **Cloud9** IDE includes a powerful debugger. Lets test how this works. You should then make use of it when attempting the *Test Your Knowledge* tasks.
 
@@ -41,13 +60,13 @@ Stop the script using `ctrl+C` and restart it. In Cloud9 you can either use the 
 
 ![Cloud9 Debugger](images/node_debugger.png)
 
-### 1.2 Test Your Knowledge
+### 2.2 Test Your Knowledge
 
 1. modify the code to prevent duplicate items being added. You will need to use the [`Array.indexOf()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) method.
 2. create a **remove** option so an item such as *cheese* can be removed using the syntax `remove cheese`. You may need to use the [`Array.splice()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) method.
 3. The current version is case sensitive. Modify the code so that items are converted to lowercase before being added or searched for. You will need to use the [`String.toLowerCase()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase) method.
 
-## 2 Modules
+## 3 Modules
 
 NodeJS already supports **CommonJS** modules which will eventually become the *defacto* module standard in ECMA6. Functionality is exported from a module by adding keys to the `exports` object which is then imported into a script using the `require` function.
 
@@ -59,13 +78,13 @@ Open the `modules/index.js` script and the `modules/todo.js` module. Notice:
 
 Run the index.js file and try adding and listing items. The functionality should mirror the previous version.
 
-### 2.1 Test Your Knowledge
+### 3.1 Test Your Knowledge
 
 Try to implement the three changes listed in the previous *Test Your Knowledge* section. You should be able to copy and paste most of the code with only minor changes being required.
 
-## 3 Node Package Manager
+## 4 Node Package Manager
 
-One of the strengths of NodeJS is the large number of third-party modules available as installable packages. In this exercise you will learn how to manage and install packages as well as how to manage your app using a config file.
+One of the strengths of NodeJS is the large number of third-party modules available as installable packages. In this exercise you will learn how to manage and install packages as well as how to manage your app using a config file. We have already used _npm_ to install the global **nvm** tool, we will now use the same tool to install a _local_ module.
 
 Start by opening the `weather/index.js` and `weather/package.json` files. Note:
 
@@ -76,7 +95,7 @@ Start by opening the `weather/index.js` and `weather/package.json` files. Note:
 5. try running the app.
 6. public modules/packages can be found in the [Node Package Manager](https://www.npmjs.com). Search for the **node-persist** package. Install it by running `npm install node-persist --save`. The `--save` flag (long flags have _two_ dashes) adds the package to the dependency list in `package.json`. You should check that the package has been added to the `node_modules` directory and the `package.json` file has been updated.
 
-### 3.1 Test Your Knowledge
+### 4.1 Test Your Knowledge
 
 1. move the application logic into its own `weather.js` module. Since the API call is *async* you will need to implement a callback.
 2. extract and display the wind speed and temperature.
