@@ -41,8 +41,6 @@ function checkUniqueUsername(auth) {
   })
 }
 
-/* C: images module */
-
 /* D */
 function checkBody(body) {
   console.log('CHECK BODY')
@@ -77,10 +75,9 @@ function addAccount(user) {
   })
 }
 
-/* G: images module */
-
+/* This function handles adding a new user account. This is a complex process that requires a lot of different steps. Many steps have the chance of failure. If a step fails the entire process should fail. If we didn't use promises the level of nesting would be unmanageable. */
 exports.add = function(auth, body, files, callback) {
-  var doc, id
+  var doc, id  // these variables will be used to store data returned by step in the process.
   console.log('A')
   authorisationSent(auth).then(function() {
     console.log('B')
@@ -97,14 +94,12 @@ exports.add = function(auth, body, files, callback) {
   }).then(function(data) {
     console.log('F')
     doc = data.response.data
-    //console.log(doc)
   }).then(function() {
     console.log('G')
-    return addAccount(doc) // returns the unique id, needed to save image
+    return addAccount(doc)
   }).then(function(data) {
     console.log('H')
     id = data.response.data.id
-    //console.log(id)
   }).then(function() {
     console.log('I')
     return images.save(id, files)
@@ -118,7 +113,6 @@ exports.add = function(auth, body, files, callback) {
     console.log('L')
     console.log('MAIN CATCH')
     console.log(data)
-    //console.log('MAIN CATCH: '+JSON.stringfy(data, null, 2))
     callback(data)
   })
 }

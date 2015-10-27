@@ -1,4 +1,5 @@
 
+var fs = require('fs')
 var im = require('imagemagick')
 
 exports.check = function(files) {
@@ -45,8 +46,7 @@ exports.save = function(filename, files) {
       const oldImg = image.path
       const newImg = 'images/'+filename+'.png'
       console.log('  d3')
-      //console.log(oldImg)
-      //console.log(im.identify.path)
+      fs.makedirSync('images')
       im.resize({srcPath: oldImg, dstPath: newImg, width: 200}, function(err) {
         if (err) {
           console.log('   h')
