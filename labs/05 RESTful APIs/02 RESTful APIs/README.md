@@ -29,9 +29,11 @@ Open the `promises/index.js` file and study the code carefully.
 3. finally add this third function to each of the four promise chains.
 4. how could you achieve the same result without needing a third function (hint: you can add the same promise multiple times).
 
-## Modular NodeJS
+## Application of Promises
 
-In this activity you will learn more about how NodeJS can be used to develop more sophisticated APIs. One of the key techniques is the use of _promises_ which you covered in **topic 2**.
+In this activity you will learn more about how NodeJS can be used to develop more sophisticated APIs. One of the key techniques is the use of _promises_ which you covered in **topic 2**. You will start by creating user accounts by adding a new resource to the _accounts_ collection.
+
+The sample code makes clever use of promises.
 
 Navigate to the `bookshop/` directory and install all the required modules. Next open `bookshop/index/js` and run the script using the **Run** button. Copy the URL you are given into an instance of **Postman**. If you make the API call you will get a response:
 ```
@@ -40,7 +42,12 @@ Navigate to the `bookshop/` directory and install all the required modules. Next
     "message": "/ does not exist"
 }
 ```
-1. Make a `POST /accounts` request and note the response code. 
+Open the script files and study them carefully to understand the program flow as you complete the tasks below.
+
+1. make a `POST /accounts` request and note the response code. Where is this error being generated? How does it get returned to the client?
+2. add the correct username and password to the request and try again. You will receive a different error message. 
+3. you should now get an error indicating that the image is missing. Click on the **Form Data** button and switch the first field from _text_ to _file_. You can now select a **png** image to upload.
+4. next you will need to supply more data.
 
 promises
 

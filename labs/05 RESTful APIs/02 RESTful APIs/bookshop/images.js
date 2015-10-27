@@ -45,6 +45,7 @@ exports.save = function(filename, files) {
       const oldImg = image.path
       const newImg = 'images/'+filename+'.png'
       console.log('  d3')
+      console.log('newImg: '+newImg)
       im.resize({srcPath: oldImg, dstPath: newImg, width: 200}, function(err) {
         if (err) {
           console.log('   h')

@@ -39,6 +39,12 @@ node -v
 ```
 To check that this has has the desired effect, close the current terminal window, open a new one and check the current node version.
 
+Node is based on the Chrome v8 runtime and supports any features supported by that runtime. Sometimes its helpful to know which runtime version is included in the NodeJS install. Thankfully this is straightforward to find out.
+```
+node -p process.versions.v8
+  4.5.103.35
+```
+
 ## 2 A Simple Example
 
 Load up the `todo/index.js` script and read through it to understand how it works. There are lots of code comments to assist you. Note:
