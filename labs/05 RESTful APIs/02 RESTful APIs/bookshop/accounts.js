@@ -76,7 +76,7 @@ function addAccount(user) {
 }
 
 /* This function handles adding a new user account. This is a complex process that requires a lot of different steps. Many steps have the chance of failure. If a step fails the entire process should fail. If we didn't use promises the level of nesting would be unmanageable. */
-exports.add = function(auth, body, files, callback) {
+exports.add = function(host, auth, body, files, callback) {
   var doc, id  // these variables will be used to store data returned by step in the process.
   console.log('A')
   authorisationSent(auth).then(function() {
@@ -108,11 +108,13 @@ exports.add = function(auth, body, files, callback) {
     console.log(JSON.stringify(accounts, null, 2))
   }).then(function(data) {
     console.log('K')
+    doc.id = id
+    doc.img = 'http://'+host+'/images/'+id+'.png'
     callback({code:201, response:{status:'success', message:'account created', data: doc}})
   }).catch(function(data) {
     console.log('L')
     console.log('MAIN CATCH')
-    console.log(data)
+    //console.log(data)
     callback(data)
   })
 }

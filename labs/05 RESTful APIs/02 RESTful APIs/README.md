@@ -1,22 +1,20 @@
 # RESTful APIs
 
-handling errors
-
 promises
 
-status codes
+upload images
 
-versioning
+user registration
 
-specifying format (headers/extension)
+coupling and cohesion.
 
-pagination and partial response, sepcifying fields
+serving static files
 
-responses without resources
+## To Be Added
 
-search
+cURL with jq for pretty printing via pipe and current directory.
 
-oauth
+curl 192.168.99.100/phones/123 | jq .
 
 conditional get: server.use(restify.conditionalRequest());
 
@@ -24,11 +22,22 @@ Last-Modified / If-Modified-Since
 
 ETag / If-None-Match
 
+specifying format (headers/extension) - show extension using regex...
+
+## Not Covered
+
+handling errors
+
+status codes
+
+versioning
+
+pagination and partial response, specifying fields
+
+responses without resources
+
+search
+
+oauth
+
 CORS
-
-upload images
-
-user registration
-
-
-coupling and cohesion.

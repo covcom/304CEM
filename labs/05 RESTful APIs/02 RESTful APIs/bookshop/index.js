@@ -1,6 +1,8 @@
 
 /* BOOKSHOP API */
 
+var fs = require('fs')
+
 var restify = require('restify')
 var server = restify.createServer()
 
@@ -29,14 +31,26 @@ server.post('/accounts', function(req, res) {
   console.log('POST /accounts')
   const auth = req.authorization
   const body = req.body
+  const host = req.headers.host
   console.log(typeof req.files)
-  accounts.add(auth, body, req.files, function(data) {
+  accounts.add(host, auth, body, req.files, function(data) {
     console.log('DATA RETURNED')
     console.log(data)
     res.setHeader('content-type', 'application/json');
     res.send(data.code, data.response);
     res.end();
   })
+})
+
+server.get(/images\/?.*/, restify.serveStatic({
+    directory: __dirname
+}))
+
+fs.mkdir('images', function(err) {
+  if (err) {
+    console.log('error creating images directory')
+  }
+  console.log('images directory created')
 })
 
 var port = process.env.PORT || 8080;
