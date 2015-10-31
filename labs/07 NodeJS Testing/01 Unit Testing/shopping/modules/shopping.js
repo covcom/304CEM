@@ -32,15 +32,15 @@ exports.getAll = () => {
 }
 
 exports.getItem = item => {
-	return data = storage.getItemSync(item)
+	return 'stub'
 }
 
-// removes the item with the corresponding name
+// removes the item with the corresponding numerical index
 exports.removeIndex = index => {
 	console.log('removeIndex')
 }
 
-// removes item with the corresponding index.
+// removes item with the corresponding name
 exports.removeItem = item => {
 	console.log('removeItem')
 }
