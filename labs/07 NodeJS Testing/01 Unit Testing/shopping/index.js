@@ -1,5 +1,5 @@
 
-var list = require('./modules/todo')
+var list = require('./modules/shopping')
 
 const stdin = process.openStdin()
 

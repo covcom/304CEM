@@ -4,7 +4,8 @@
   "description": "simple todo list",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine-node spec"
+    "test": "jasmine-node spec --color --verbose --autotest --watch .",
+    "coverage": "istanbul cover -x **/spec/** -x **index.js** --include-all-sources jasmine-node spec"
   },
   "keywords": [
     "list",
@@ -14,6 +15,7 @@
   "author": "Mark J Tyers",
   "license": "ISC",
   "dependencies": {
+    "istanbul": "^0.4.0",
     "jasmine-node": "^1.14.5",
     "node-persist": "0.0.8"
   }
