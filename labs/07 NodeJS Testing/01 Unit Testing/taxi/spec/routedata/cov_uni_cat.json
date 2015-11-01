@@ -1,0 +1,327 @@
+{
+    "geocoded_waypoints": [
+        {
+            "geocoder_status": "OK",
+            "place_id": "EjI4IENoYXJ0ZXJob3VzZSBSZCwgQ292ZW50cnksIFdlc3QgTWlkbGFuZHMgQ1YxLCBVSw",
+            "types": [
+                "street_address"
+            ]
+        },
+        {
+            "geocoder_status": "OK",
+            "place_id": "ChIJJwRfs7tLd0gR7AmZx2aFwmk",
+            "types": [
+                "street_address"
+            ]
+        }
+    ],
+    "routes": [
+        {
+            "bounds": {
+                "northeast": {
+                    "lat": 52.4077306,
+                    "lng": -1.4959289
+                },
+                "southwest": {
+                    "lat": 52.40312549999999,
+                    "lng": -1.5090762
+                }
+            },
+            "copyrights": "Map data ©2015 Google",
+            "legs": [
+                {
+                    "distance": {
+                        "text": "1.7 km",
+                        "value": 1700
+                    },
+                    "duration": {
+                        "text": "5 mins",
+                        "value": 291
+                    },
+                    "end_address": "24 Bayley Ln, Coventry, West Midlands CV1 5RJ, UK",
+                    "end_location": {
+                        "lat": 52.4077306,
+                        "lng": -1.5071756
+                    },
+                    "start_address": "8 Charterhouse Rd, Coventry, West Midlands CV1, UK",
+                    "start_location": {
+                        "lat": 52.4058994,
+                        "lng": -1.4959289
+                    },
+                    "steps": [
+                        {
+                            "distance": {
+                                "text": "0.4 km",
+                                "value": 422
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 80
+                            },
+                            "end_location": {
+                                "lat": 52.4041836,
+                                "lng": -1.5013684
+                            },
+                            "html_instructions": "Head <b>west</b> on <b>Gulson Rd</b> towards <b>Vecqueray St</b>",
+                            "polyline": {
+                                "points": "{oz~HpdcHRhBRfBPz@R~@VrALn@p@hDFRt@`Db@hBNl@@@BLDZJf@@@@BBB^V"
+                            },
+                            "start_location": {
+                                "lat": 52.4058994,
+                                "lng": -1.4959289
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.1 km",
+                                "value": 131
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 22
+                            },
+                            "end_location": {
+                                "lat": 52.4042584,
+                                "lng": -1.502777
+                            },
+                            "html_instructions": "At the roundabout, take the <b>1st</b> exit onto <b>Short St</b>",
+                            "maneuver": "roundabout-left",
+                            "polyline": {
+                                "points": "cez~HpfdHLJPNHJFJDLDR@XAN?JAHCJCHCFMXIPSTGHEJEL"
+                            },
+                            "start_location": {
+                                "lat": 52.4041836,
+                                "lng": -1.5013684
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.2 km",
+                                "value": 158
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 13
+                            },
+                            "end_location": {
+                                "lat": 52.4044801,
+                                "lng": -1.5050599
+                            },
+                            "html_instructions": "Take the slip road on the <b>right</b> to <b>A45</b>/<b>City Centre</b>/<b>Ring Road</b>/<b>Birmingham</b>",
+                            "polyline": {
+                                "points": "sez~HjodHCPCJAJAJ?JANAv@CfAC`BA~@AVCNKj@"
+                            },
+                            "start_location": {
+                                "lat": 52.4042584,
+                                "lng": -1.502777
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "44 m",
+                                "value": 44
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 3
+                            },
+                            "end_location": {
+                                "lat": 52.40447080000001,
+                                "lng": -1.5057057
+                            },
+                            "html_instructions": "Merge onto <b>Ringway St Johns</b>/<b>A4053</b>",
+                            "maneuver": "merge",
+                            "polyline": {
+                                "points": "_gz~Hr}dH?NAX@T?`@@^"
+                            },
+                            "start_location": {
+                                "lat": 52.4044801,
+                                "lng": -1.5050599
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.2 km",
+                                "value": 171
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 16
+                            },
+                            "end_location": {
+                                "lat": 52.4036568,
+                                "lng": -1.5077488
+                            },
+                            "html_instructions": "At junction <b>5</b>, take the <b>New Union St</b> exit to <b>Barracks</b>/<b>Coventry University</b>/<b>Council House</b>/<b>Police Station</b>/<b>Law Courts</b>/<b>Tech Park</b>/<b>Service Areas</b>",
+                            "maneuver": "ramp-left",
+                            "polyline": {
+                                "points": "}fz~HtaeHJXDNDNDRJx@Hj@Hh@Jf@Lb@Rn@HVHJNNPH"
+                            },
+                            "start_location": {
+                                "lat": 52.40447080000001,
+                                "lng": -1.5057057
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.2 km",
+                                "value": 246
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 37
+                            },
+                            "end_location": {
+                                "lat": 52.4044562,
+                                "lng": -1.5089504
+                            },
+                            "html_instructions": "At the roundabout, take the <b>4th</b> exit onto <b>New Union St</b>",
+                            "maneuver": "roundabout-left",
+                            "polyline": {
+                                "points": "{az~HlneHh@FTBFBHDDDDFBLBLBN?F@F?F?FAD?BCLCDADEFQLEDEDMFMFIDE@C@C?C?EAKAMAKCKAUCM?MBMDKFQLMN"
+                            },
+                            "start_location": {
+                                "lat": 52.4036568,
+                                "lng": -1.5077488
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.2 km",
+                                "value": 244
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 44
+                            },
+                            "end_location": {
+                                "lat": 52.4064844,
+                                "lng": -1.5084757
+                            },
+                            "html_instructions": "Turn <b>right</b> onto <b>Little Park St</b>/<b>B4544</b>",
+                            "maneuver": "turn-right",
+                            "polyline": {
+                                "points": "{fz~H|ueHOXMUYy@GGQMGA}@@_@?sBEe@AaAI"
+                            },
+                            "start_location": {
+                                "lat": 52.4044562,
+                                "lng": -1.5089504
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "61 m",
+                                "value": 61
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 14
+                            },
+                            "end_location": {
+                                "lat": 52.4069663,
+                                "lng": -1.5081887
+                            },
+                            "html_instructions": "Slight <b>left</b> to stay on <b>Little Park St</b>/<b>B4544</b>",
+                            "maneuver": "turn-slight-left",
+                            "polyline": {
+                                "points": "osz~H~reH_@@WAKKKMIOGO"
+                            },
+                            "start_location": {
+                                "lat": 52.4064844,
+                                "lng": -1.5084757
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "58 m",
+                                "value": 58
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 11
+                            },
+                            "end_location": {
+                                "lat": 52.406971,
+                                "lng": -1.507342
+                            },
+                            "html_instructions": "Slight <b>right</b> onto <b>Earl St</b>/<b>B4544</b>",
+                            "maneuver": "turn-slight-right",
+                            "polyline": {
+                                "points": "qvz~HdqeHCOAU?U@c@BiA"
+                            },
+                            "start_location": {
+                                "lat": 52.4069663,
+                                "lng": -1.5081887
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "54 m",
+                                "value": 54
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 11
+                            },
+                            "end_location": {
+                                "lat": 52.4069016,
+                                "lng": -1.5065598
+                            },
+                            "html_instructions": "Keep <b>left</b> to stay on <b>Earl St</b>/<b>B4544</b>",
+                            "maneuver": "keep-left",
+                            "polyline": {
+                                "points": "qvz~HzkeHDuAD}@@G"
+                            },
+                            "start_location": {
+                                "lat": 52.406971,
+                                "lng": -1.507342
+                            },
+                            "travel_mode": "DRIVING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.1 km",
+                                "value": 111
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 40
+                            },
+                            "end_location": {
+                                "lat": 52.4077306,
+                                "lng": -1.5071756
+                            },
+                            "html_instructions": "Turn <b>left</b> onto <b>Bayley Ln</b><div style=\"font-size:0.9em\">Destination will be on the right</div>",
+                            "maneuver": "turn-left",
+                            "polyline": {
+                                "points": "cvz~H~feHI?I@gATQDKDKFIFIHGLAHAH?Z"
+                            },
+                            "start_location": {
+                                "lat": 52.4069016,
+                                "lng": -1.5065598
+                            },
+                            "travel_mode": "DRIVING"
+                        }
+                    ],
+                    "via_waypoint": []
+                }
+            ],
+            "overview_polyline": {
+                "points": "{oz~HpdcHf@pEd@zB~A`IjBzHVrAr@j@ZZLXFl@AZETGPWj@[^KXG\\Er@K`HEf@Kz@@pBPh@Jb@TdBTpA`@rARb@`@X~@JPHJLJr@?\\I\\c@`@k@VQ?q@Ic@C[H]T]h@g@oAYUeA?sCEgBKw@?WYQ_@Ee@@y@PeFS@yAZWLSPIVAd@"
+            },
+            "summary": "Gulson Rd",
+            "warnings": [],
+            "waypoint_order": []
+        }
+    ],
+    "status": "OK"
+}

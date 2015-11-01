@@ -1,0 +1,24 @@
+{
+  "name": "shopping",
+  "version": "1.0.0",
+  "description": "simple shopping list",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine-node spec --color --verbose --autotest --watch .",
+    "coverage": "istanbul cover -x **/spec/** -x **index.js** --include-all-sources jasmine-node spec"
+  },
+  "keywords": [
+    "list",
+    "jasmine",
+    "module"
+  ],
+  "author": "Mark J Tyers",
+  "license": "ISC",
+  "dependencies": {
+    "node-persist": "0.0.8"
+  },
+  "devDependencies": {
+    "jasmine-node": "^1.14.5",
+    "istanbul": "^0.4.0"
+  }
+}
