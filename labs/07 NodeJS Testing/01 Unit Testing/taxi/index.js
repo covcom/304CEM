@@ -1,31 +1,37 @@
 
-var taxi = require('./modules/taxi');
-debugger;
+var taxi = require('./modules/taxi')
+debugger
 
-console.time('setHome');
-taxi.setHome('Birmingham', function(data) {
-	console.log('Birmingham');
-	console.log(data);
-	console.log(data.lat);
-	console.timeEnd('setHome');
-});
+console.time('set ecb as home')
+taxi.setHome('Gulson Road, Coventry', function(data) {
+	console.log('Setting ECB as home')
+	console.log(data)
+	console.log(data.lat)
+	console.timeEnd('set ecb as home')
+})
 
-console.time('getFare');
-taxi.getFare('Coventry', function(data) {
-	console.log(data);
-	console.timeEnd('getFare');
-});
+console.time('standard fare')
+taxi.getFare('University Road, Coventry', function(data) {
+	console.log(data)
+	console.timeEnd('standard fare')
+})
 
-console.time('setHome');
+console.time('set cathedral as home')
 taxi.setHome('Coventry Cathedral', function(data) {
-	console.log('Coventry Cathedral');
-	console.log(data);
-	console.log(data.lat);
-	console.timeEnd('setHome');
-});
+	console.log('Coventry Cathedral')
+	console.log(data)
+	console.log(data.lat)
+	console.timeEnd('set cathedral as home')
+})
 
-console.time('getFare');
-taxi.getFare('Coventry University', function(data) {
-	console.log(data);
-	console.timeEnd('getFare');
-});
+console.time('long fare');
+taxi.getFare('Warwick Castle', function(data) {
+	console.log(data)
+	console.timeEnd('long fare')
+})
+
+console.time('short fare')
+taxi.getFare('Broadgate, Coventry', function(data) {
+	console.log(data)
+	console.timeEnd('short fare')
+})

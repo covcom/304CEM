@@ -4,26 +4,19 @@ var sync = require('sync-request');
 var home
 
 exports.setHome = (location, callback) => {
-	console.log('location: '+location)
 	const loc = getLatLon(location)
-	console.log(loc)
-	this.home = getLatLon(location)
-	console.log('home set: '+this.home)
-	var latLng = this.home.split(',')
+	home = getLatLon(location)
+	var latLng = home.split(',')
 	callback({lat:parseFloat(latLng[0]), lng:parseFloat(latLng[1])})
 }
 
 exports.getFare = function(destination, callback) {
 	var dest = getLatLon(destination)
-	console.log('home: '+this.home)
-	console.log('dest: '+destination)
-	const data = getRouteData(this.home, dest) // this is making the live API call
+	const data = getRouteData(home, dest) // this is making the live API call
 	var distance = data.routes[0].legs[0].distance.value
-	console.log('distance: '+distance)
 	var duration = data.routes[0].legs[0].duration.value
-	console.log('duration: '+duration)
 	var cost = calculateFare(distance, duration)
-	callback({distance: distance, duration: duration, cost:cost})
+	callback({distance: distance, duration: duration, cost:parseFloat(cost)})
 }
 
 /* this function returns API data but the data won't vary between calls. We could get away without mocking this call. */
@@ -46,6 +39,6 @@ var getRouteData = function(start, end) {
 }
 
 function calculateFare(distance, duration) {
-	var cost = distance*1 + duration*0.1
+	var cost = distance/127*0.2
 	return cost.toFixed(2)
 }

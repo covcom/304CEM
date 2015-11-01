@@ -10,7 +10,7 @@ Open the `shopping/` directory and examine the files and directory structure.
 .
 ├── index.js
 ├── modules
-│   └── shopping.js
+│   └── shopping.js
 ├── package.json
 └── spec
     └── shopping-spec.js
@@ -47,11 +47,21 @@ Make sure your IDE is configured so you can see access all of the following file
 
 In the previous section all module calls resolved immediately however it is often the case that a call may take a callback parameter to be executed in a different thread. Obviously we need to be able to test this type of code.
 
-In this task we will be testing and debugging a module that uses third-party APIs to calculate taxi fares between named places. Taxi fares are calculated according to an [agreed formula](https://yourtaximeter.com/local-authorities/view/london-black-cabs).
+The module you will be testing and debugging should calculate taxi fares for any given start and end point. The fare is calculated based on an [agreed formula](https://yourtaximeter.com/local-authorities/view/london-black-cabs)
 
-1. install the module dependencies and read through the documentation for [rewire](https://www.npmjs.com/package/rewire) and [sync-request](https://www.npmjs.com/package/sync-request) to understand how the module works.
-2. run the `index.js` script and use it to interact with the module, ensure you understand fully how it works.
-3. launch the test-runner in a new terminal window and
+Start by examining the project files:
+```
+.
+├── index.js
+├── modules
+│   └── taxi.js
+├── package.json
+└── spec
+    ├── routedata
+    │   └── cov_war_uni.json
+    └── taxi-spec.js
+```
+The files are similar to those in the previous exercise with the addition of a routedata file containing a single json document. We will use this later in the exercise. Open all the files and get familiar with their content. Use the `index.js` file to see how the module works.
 
 ## Presentation
 

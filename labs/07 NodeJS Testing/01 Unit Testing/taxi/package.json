@@ -4,7 +4,7 @@
   "description": "taxi fare calculator",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine-node spec --color --verbose --autotest --watch .",
+    "test": "jasmine-node spec --color --verbose --noStack --autotest --watch .",
     "coverage": "istanbul cover -x **/spec/** -x **index.js** --include-all-sources jasmine-node spec"
   },
   "keywords": [
