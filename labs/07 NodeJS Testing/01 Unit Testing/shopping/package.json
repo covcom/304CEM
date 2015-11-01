@@ -1,7 +1,7 @@
 {
-  "name": "todo",
+  "name": "shopping",
   "version": "1.0.0",
-  "description": "simple todo list",
+  "description": "simple shopping list",
   "main": "index.js",
   "scripts": {
     "test": "jasmine-node spec --color --verbose --autotest --watch .",
@@ -15,8 +15,10 @@
   "author": "Mark J Tyers",
   "license": "ISC",
   "dependencies": {
-    "istanbul": "^0.4.0",
-    "jasmine-node": "^1.14.5",
     "node-persist": "0.0.8"
+  },
+  "devDependencies": {
+    "jasmine-node": "^1.14.5",
+    "istanbul": "^0.4.0"
   }
 }

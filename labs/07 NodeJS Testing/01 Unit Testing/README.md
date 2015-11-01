@@ -19,7 +19,8 @@ Notice that there is a `modules/` directory that contains the _NodeJS module_ we
 
 Finally there is the _package_ file and a simple script, `index.js` for you to use to get comfortable with the module.
 
-1. install the module dependencies using `npm install` and read through the documentation for the [node-persist](https://www.npmjs.com/package/node-persist) module to understand how it works.
+1. read through the `package.json` file and notice the `devDependencies` object which lists any modules used for debugging and testing.
+2. install the module dependencies using `npm install` and read through the documentation for the [node-persist](https://www.npmjs.com/package/node-persist) module to understand how it works.
 2. run the `index.js` script and use it to interact with the module, ensure you are clear on how it works.
 3. launch a new terminal window and launch the _test runner_ with `npm test`.Open the `package.json` file to understand what is happening.
 4. open the `shopping-spec.js` file and read through the tests so you understand the results of running them.
