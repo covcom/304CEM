@@ -25,6 +25,7 @@ Finally there is the _package_ file and a simple script, `index.js` for you to u
 3. launch a new terminal window and launch the _test runner_ with `npm test`.Open the `package.json` file to understand what is happening.
 4. open the `shopping-spec.js` file and read through the tests so you understand the results of running them.
 5. open a new terminal and execute `npm run coverage` to run the code coverage tests, this displays a coverage summary and creates a `coverage/` directory.
+  - if you get errors you should install **istanbul** globally using `sudo npm install -g istanbul` and then run `istanbul cover -x **/spec/** -x **index.js** jasmine-node spec`
 6. open the `coverage/` directory and preview the `index.html` file it contains and navigate to the  `modules/shopping/` web page.
 7. try to understand what information it telling you about the state of code coverage.
 
