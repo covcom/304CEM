@@ -88,14 +88,21 @@ exports.addNew = function(auth, body) {
   console.log('addNew')
   /* The first parameter should contain the authorization data. We check that it contains an object called 'basic' */
   if (auth.basic === undefined) {
+    console.log('missing basic auth')
     return {code: 401, contentType:'application/json', response:{ status:'error', message:'missing basic auth' }}
   }
+  console.log("A")
   /* In this simple example we have hard-coded the username and password. You should be storing this somewhere are looking it up. */
   if (auth.basic.username !== 'testuser' || auth.basic.password !== 'p455w0rd') {
+    console.log('invalid credentials')
     return {code: 401, contentType:'application/json', response:{ status:'error', message:'invalid credentials' }}
   }
+  console.log("B")
+  console.log(body)
   /* The second parameter contains the request body as a 'string'. We need to turn this into a JavaScript object then pass it to a function to check its structure. */
-  const json = JSON.parse(body)
+  const json = body
+  console.log("C")
+  console.log(json)
   const valid = validateJson(json)
   /* If the 'validateJson()' function returns 'false' we need to return an error. */
   if (valid === false) {
