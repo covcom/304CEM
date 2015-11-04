@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jasmine-node spec --color --verbose --autotest --watch .",
-    "coverage": "istanbul cover -x **/spec/** -x **index.js** --include-all-sources jasmine-node spec"
+    "coverage": "istanbul cover -x **spec/** -x **index.js** --include-all-sources jasmine-node spec"
   },
   "keywords": [
     "list",

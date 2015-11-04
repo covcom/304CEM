@@ -1,6 +1,7 @@
+/*global storage*/
 
-storage = require('node-persist');
-storage.initSync();
+var storage = require('node-persist')
+storage.initSync()
 
 /* add a new item to the todo list. Notice that we are using the new 'Arrow Function' syntax from the ECMA6 specification. */
 exports.add = item => {
@@ -17,30 +18,30 @@ exports.add = item => {
 };
 
 // calculates and returns the number of items in the list
-exports.count = () => {
+exports.count = function() {
 	return storage.length()
 };
 
 // empties the list10
-exports.clear = () => {
+exports.clear = function() {
 	storage.clearSync()
 }
 
 // returns an array containing all todo items
-exports.getAll = () => {
+exports.getAll = function() {
 	return storage.values()
 }
 
-exports.getItem = item => {
+exports.getItem = function(item) {
 	return 'stub'
 }
 
 // removes the item with the corresponding numerical index
-exports.removeIndex = index => {
+exports.removeIndex = function(index) {
 	console.log('removeIndex')
 }
 
 // removes item with the corresponding name
-exports.removeItem = item => {
+exports.removeItem = function(item) {
 	console.log('removeItem')
 }
