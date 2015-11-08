@@ -2,6 +2,7 @@ resources/*.git
 node_modules/
 persist/
 coverage/
+data/
 npm-debug.log
 labs/13 Introduction to NodeJS/node_modules/
 labs/16 File System/node_modules/
