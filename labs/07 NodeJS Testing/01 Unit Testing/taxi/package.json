@@ -1,0 +1,25 @@
+{
+  "name": "taxi",
+  "version": "1.0.0",
+  "description": "taxi fare calculator",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine-node spec --color --verbose --noStack --autotest --watch .",
+    "coverage": "istanbul cover -x **/spec/** -x **index.js** --include-all-sources jasmine-node spec"
+  },
+  "keywords": [
+    "taxi",
+    "fare",
+    "testing"
+  ],
+  "author": "Mark J Tyers",
+  "license": "ISC",
+  "dependencies": {
+    "sync-request": "^2.1.0"
+  },
+  "devDependencies": {
+    "jasmine-node": "^1.14.5",
+    "istanbul": "^0.4.0",
+    "rewire": "^2.3.4"
+  }
+}

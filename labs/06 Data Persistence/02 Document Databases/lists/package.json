@@ -1,0 +1,16 @@
+{
+  "name": "lists",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mongo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^2.0.48",
+    "mongoose": "^4.2.4",
+    "mongoskin": "^2.0.3"
+  }
+}

@@ -1,9 +1,12 @@
 
 // weather-spec.js
+
+/* global expect */
+
 var list = require("../modules/weather");
 
 describe("Weather Forecast", function(data) {
-	storage = require('node-persist');
+	var storage = require('node-persist');
 	storage.initSync();
 	
 	xit('clear local cache', function(done) {

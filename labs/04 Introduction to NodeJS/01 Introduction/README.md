@@ -39,6 +39,12 @@ node -v
 ```
 To check that this has has the desired effect, close the current terminal window, open a new one and check the current node version.
 
+Node is based on the Chrome v8 runtime and supports any features supported by that runtime. Sometimes its helpful to know which runtime version is included in the NodeJS install. Thankfully this is straightforward to find out.
+```
+node -p process.versions.v8
+  4.5.103.35
+```
+
 ## 2 A Simple Example
 
 Load up the `todo/index.js` script and read through it to understand how it works. There are lots of code comments to assist you. Note:
@@ -65,8 +71,11 @@ Stop the script using `ctrl+C` and restart it. In Cloud9 you can either use the 
 4. notice all the script's variables are listed as *undefined* in the right-hand pane.
 5. click on the **step over** button (indicated in the screenshot below) twice to execute lines 11 and 12. The local text variable should now contain the string you typed in. Locate this in the *local variables* pane. Now hover your mouse pointer over the variable name.
 6. practice using the debugger buttons *Resume*, *Step Into*, *step out* until you understand their function.
+7. the `lists` array is not a local variable and so doesn't appear in the right-hand pane. To keep track of this we can add it as a _watch expression_. In the **Watch Expressions** pane type in `lists` and press enter. You can now see the contents of the array change as the program executes. You can of course also hover over the variable name in the code...
 
 ![Cloud9 Debugger](images/node_debugger.png)
+
+You can read more about Cloud9 debugger capabilities in their [online documentation](https://docs.c9.io/docs/running-and-debugging-code). You should take time to get familiar with its capabilities.
 
 ### 2.2 Test Your Knowledge
 

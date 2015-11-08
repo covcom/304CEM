@@ -18,7 +18,10 @@ REST is an *architectural style* that defines a series of *principles* that defi
 
 The `todo/` directory contains a simple API that demonstrates these key concepts. The first step is to run it and interact with it to understand these REST principles and how they are implemented.
 
+Before starting this worksheet you should update the node installation to the latest version. Instructions can be found in the previous worksheet (04 Introduction to NodeJS).
+
 1. use the **terminal** to navigate to the `todo` directory and install the module dependencies using `npm install`. This will install the [restify](http://restify.com/), [xmlbuilder](https://github.com/oozcitak/xmlbuilder-js) and [csprng](https://www.npmjs.com/package/csprng) modules. Take a few moments to read through their documentation.
+2. make your API **public** by clicking on the **share** button in the top-right corner of the cloud 9 window. Make sure you make the _application_ public by checking the **Application: Public** checkbox.
 2. open `index.js` then click on the **Run** button in the cloud 9 toolbar to run the nodejs script and run it in a preview tab.
 3. launch **Chrome** and install the **Postman** REST plugin.
 4. use *Postman* to access the API root URL, the format will be similar to `https://project-username.c9.io` where *project* is your Cloud 9 project and *username* is your Cloud 9 username. You should be able to copy and paste this from the Cloud 9 preview tab.

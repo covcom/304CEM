@@ -1,11 +1,17 @@
 resources/*.git
 node_modules/
+persist/
+coverage/
+data/
+npm-debug.log
 labs/13 Introduction to NodeJS/node_modules/
 labs/16 File System/node_modules/
 labs/16 File System/Encoded Images/
 labs/16 File System/images/
 labs/04 Introduction to NodeJS/01 Introduction/weather/node_modules/
 labs/05 RESTful APIs/02 RESTful APIs/bookshop/images/
+labs/07 NodeJS Testing/01 Unit Testing/todo/persist/
+labs/07 NodeJS Testing/01 Unit Testing/todo/coverage/
 .DS_Store
 .codio
 .settings
