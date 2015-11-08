@@ -71,4 +71,13 @@ dropping the collection.
 ```
 db.lists.drop()
 ```
-## 3 Native NodeJS Mongo Driver
+## 3 Connecting to NodeJS
+
+There are a number of different packages to allow NodeJS to communicate with a MongoDB database. The most popular are:
+- [mongodb](https://www.npmjs.com/package/mongodb)
+- [mongoskin](https://www.npmjs.com/package/mongoskin)
+- [mongoose](https://www.npmjs.com/package/mongoose)
+
+In this exercise we will use the mongoskin driver as it works in a similar manner to running the commands in mongo shell.
+
+Open the
