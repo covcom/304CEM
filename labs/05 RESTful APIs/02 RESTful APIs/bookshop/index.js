@@ -31,6 +31,7 @@ server.post('/accounts', function(req, res) {
   console.log('POST /accounts')
   const auth = req.authorization
   const body = req.body
+  console.log(body)
   const host = req.headers.host
   console.log(typeof req.files)
   accounts.add(host, auth, body, req.files, function(data) {

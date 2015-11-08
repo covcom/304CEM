@@ -8,7 +8,6 @@ var accounts = []
 /* A */
 function authorisationSent(auth) {
   console.log('CHECK AUTH PRESENT')
-  console.log(auth)
   return new Promise(function(resolve, reject) {
     console.log('  a')
     if (auth.scheme !== 'Basic') {
@@ -46,6 +45,7 @@ function checkBody(body) {
   console.log('CHECK BODY')
   return new Promise(function(resolve, reject) {
     console.log('  a')
+    console.log(JSON.stringify(body, null, 2))
     if (typeof body.name !== 'string' || typeof body.email !== 'string') {
       console.log('  b')
       return reject({code: 400, response:{status:'error', message:'name and email body fields required'}})
@@ -82,7 +82,7 @@ exports.add = function(host, auth, body, files, callback) {
   authorisationSent(auth).then(function() {
     console.log('B')
     return checkUniqueUsername(auth)
-  }).then(function() {
+  }).then(() => {
     console.log('C')
     return images.check(files)
   }).then(function() {
@@ -109,7 +109,7 @@ exports.add = function(host, auth, body, files, callback) {
   }).then(function(data) {
     console.log('K')
     doc.id = id
-    doc.img = 'http://'+host+'/images/'+id+'.png'
+    doc.img = 'http://'+'/images/'+id+'.png'
     callback({code:201, response:{status:'success', message:'account created', data: doc}})
   }).catch(function(data) {
     console.log('L')

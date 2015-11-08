@@ -97,6 +97,25 @@ git push origin --all
 git log origin/master..HEAD
 ```
 
+## 1.7 Updating the Cloud Server
+
+Finally, before starting the labs you should ensure that the required packages are installed on your cloud server. This is running **Ubuntu** and so we can use the built-in _package manager_ (apt) for this. Cloud 9 comes with several languages pre-installed (PHP, Python and Java). Lets search for any packages linked to these three languages.
+```
+dpkg --get-selections | grep php
+dpkg --get-selections | grep python
+pkg --get-selections | grep jre
+```
+We should now remove the software we don't need. This will both increase the space available on the disk and also increase the server performance. _Autoremove_ removes any packages no longer required and cleans up the server.
+```
+sudo apt-get remove php5 python3 openjdk-7-jre
+sudo apt-get autoremove
+```
+Next we need to install the _Kerberos_ dev libraries. These will be needed for our server-side scripts to communicate with various databases.
+```
+sudo apt-get update
+sudo apt-get install -y libkrb5-dev
+```
+
 ## 1.7 Next Steps
 
 Now you are ready to start learning. Open the **labs** directory and follow the instructions given.
