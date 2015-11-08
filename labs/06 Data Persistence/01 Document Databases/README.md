@@ -4,24 +4,33 @@ In this worksheet you will install the MongoDB database and learn how to query i
 
 ## 1 Installation
 
-install mongodb
+The first step is to configure the **Cloud 9** server and install the latest version of _MongoDB_.
 
-Use the terminal to navigate to the root of your project and create a data directory.
-
+Use the terminal to install the latest version of the _Kerberos_ dev tools.
 ```
+sudo apt-get update
+sudo apt-get install -y libkrb5-dev
+```
+Next navigate to the root of your project and create a data directory.
+```
+cd ~
 mkdir data
+```
+Finally you need to create a _MongoDB launch script_, give yourself execute permissions and use it to start the database server.
+```
 echo 'mongod --bind_ip=$IP --dbpath=data --smallfiles --nojournal journal = false --rest "$@"' > mongod
+chmod a+x mongod
 mongod --smallfiles
 ```
 ## 2 Mongo Shell
 
-Launch Mongo Shell
+Next we will launch the **Mongo Shell** which is a command-line tool for intracting with the running database.
 
-new terminal window, enter commands at the mongo prompt `>`.
+Open a new terminal window and launch the shell.
 ```
 mongo
 ```
-type in `help` to see the options.
+You will enter commands at the mongo prompt `>`, type in `help` to see the options.
 
 switch to the **api** database with `use api`. This will create the database if it does not exist already.
 
@@ -70,6 +79,14 @@ dropping the collection.
 ```
 db.lists.drop()
 ```
+
+### 2.1 Test Your Knowledge
+
+1. create an `address` collection to store names and addresses
+2. add 5 documents to this new collection
+3. try running a database search
+4. update one of the addresses
+
 ## 3 Connecting to NodeJS
 
 There are a number of different packages to allow NodeJS to communicate with a MongoDB database. The most popular are:
@@ -77,8 +94,26 @@ There are a number of different packages to allow NodeJS to communicate with a M
 - [mongoskin](https://www.npmjs.com/package/mongoskin)
 - [mongoose](https://www.npmjs.com/package/mongoose)
 
-In this exercise we will use the mongoskin driver as it works in a similar manner to running the commands in mongo shell.
+The **Mongoose** package is by far the most popular and so we will cover this.
 
-1. Open the `todo/` directory and install the required packages.
+1. Open the `lists/` directory and install the required packages.
 2. Make sure mongo is still running in one of the terminals
-3. 
+3. Run the `index.js` script:
+  - enter `list` to see the documents currently in the collection.
+  - enter `get xxx` where xxx is one of the long id strings returned in the previous task
+  - enter `add databases:mysql,mongodb,neo4j`
+  - use `list` again to see the updated document collection
+  - use `clear` to remove all the lists and check they are gone
+4. open the `mongo.js` file and read through the code and comments to ensure you understand how it works.
+  - notice the schema it defines
+  - see how the `List` object is used to add and remove items
+
+### 3.1 Test Your Knowledge
+
+1. modify the schema to include a description field
+2. modify the app to send this data through to the database
+3. implement a way to retrieve a list by its name
+
+### 3.2 Advanced Challenge
+
+Can you work out a way to _update_ either the name of a list or append new items to it? You will need a good grasp of the _mongo shell_ update syntax as well as finding out how to implement it using Mongoose. Good luck!
