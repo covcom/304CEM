@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "csprng": "^0.1.1",
-    "mongodb": "^2.0.47",
+    "mongodb": "^2.0.48",
     "mongoose": "^4.2.4",
     "mongoskin": "^2.0.3",
     "restify": "^4.0.3",

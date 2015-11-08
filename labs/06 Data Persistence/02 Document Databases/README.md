@@ -9,7 +9,6 @@ install mongodb
 Use the terminal to navigate to the root of your project and create a data directory.
 
 ```
-cd ~
 mkdir data
 echo 'mongod --bind_ip=$IP --dbpath=data --smallfiles --nojournal journal = false --rest "$@"' > mongod
 mongod --smallfiles
@@ -80,4 +79,6 @@ There are a number of different packages to allow NodeJS to communicate with a M
 
 In this exercise we will use the mongoskin driver as it works in a similar manner to running the commands in mongo shell.
 
-Open the
+1. Open the `todo/` directory and install the required packages.
+2. Make sure mongo is still running in one of the terminals
+3. 
