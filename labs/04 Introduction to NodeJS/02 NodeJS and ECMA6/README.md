@@ -32,4 +32,7 @@ Open the `promises.js` file and study the code carefully.
 2. write another function that capitalises the last letter in the string using the _arrow function_ syntax.
 3. finally add this third function to each of the four promise chains.
 4. how could you achieve the same result without needing a third function (hint: you can add the same promise multiple times).
-5. 
+
+## Presentation
+
+https://goo.gl/pvGpT4

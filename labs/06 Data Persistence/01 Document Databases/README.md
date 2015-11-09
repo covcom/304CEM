@@ -110,10 +110,15 @@ The **Mongoose** package is by far the most popular and so we will cover this.
 
 ### 3.1 Test Your Knowledge
 
-1. modify the schema to include a description field
-2. modify the app to send this data through to the database
-3. implement a way to retrieve a list by its name
+1. ensure each list has a unique name
+2. modify the schema to include a description field
+3. modify the app to send this data through to the database
+4. implement a way to retrieve a list by its name
 
 ### 3.2 Advanced Challenge
 
 Can you work out a way to _update_ either the name of a list or append new items to it? You will need a good grasp of the _mongo shell_ update syntax as well as finding out how to implement it using Mongoose. Good luck!
+
+## Presentation
+
+https://goo.gl/MfCLqi
