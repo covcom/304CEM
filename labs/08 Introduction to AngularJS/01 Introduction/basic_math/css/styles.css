@@ -6,7 +6,7 @@ html {
 	padding:1em;
 	background:#B9C2CC;
 }
-form {
+#theForm {
 	background:#fff;
 	padding:1em;
 	border:1px solid #eee;
@@ -17,7 +17,7 @@ fieldset div {
 	clear:both;
 }
 
-form {
+#theForm {
 	margin:1em;
 	width:15em;
 }
