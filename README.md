@@ -119,3 +119,10 @@ sudo apt-get install -y libkrb5-dev
 ## 1.7 Next Steps
 
 Now you are ready to start learning. Open the **labs** directory and follow the instructions given.
+
+## Presentation
+
+This is the presentation for the API completion week.
+
+https://goo.gl/ig5Ak5
+ safa
