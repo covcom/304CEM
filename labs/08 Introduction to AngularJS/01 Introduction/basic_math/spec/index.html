@@ -36,15 +36,36 @@
           $scope.getTotal()
           expect($scope.total).toBe('100.00')
         })
-        it('10 items costing 10 with 0 tax and 0 discount should cost 100', function () {
+        it('10 items costing 15 with 15% tax and 0 discount should cost 172.50', function () {
           var $scope = {}
           var controller = $controller('shopController', { $scope: $scope })
           $scope.quantity = 10
-          $scope.price = 10
-          $scope.tax = 0.0
+          $scope.price = 15
+          $scope.tax = 15
           $scope.discount = 0.0
           $scope.getTotal()
-          expect($scope.total).toBe('100.00')
+          expect($scope.total).toBe('172.50')
+        })
+        it('10 items costing 15 with 15% tax and 20 discount should cost 152.50', function () {
+          var $scope = {}
+          var controller = $controller('shopController', { $scope: $scope })
+          $scope.quantity = 10
+          $scope.price = 15
+          $scope.tax = 15
+          $scope.discount = 20
+          $scope.getTotal()
+          expect($scope.total).toBe('152.50')
+        })
+        /* this spec is set to pending. To make it active remove the leading 'x' character and refresh the browser. */
+        xit('2000 items costing 15 with 15% tax and 200 discount should cost 3050.00', function () {
+          var $scope = {}
+          var controller = $controller('shopController', { $scope: $scope })
+          $scope.quantity = 200
+          $scope.price = 15
+          $scope.tax = 15
+          $scope.discount = 200
+          $scope.getTotal()
+          expect($scope.total).toBe('3050.00')
         })
       })
     })

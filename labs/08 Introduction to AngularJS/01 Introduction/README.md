@@ -4,8 +4,6 @@ Welcome to the third section of the module. By now you should be comfortable wri
 
 This worksheet will introduce you to a powerful framework which will allow you to create interactive JavaScript apps that run in the web browser. You will be using these skills to create an interactive client that makes use of your API.
 
-## AngularJS
-
 AngularJS is a modern opinionated client-side JavaScript framework developer by Google. It supports a number of powerful features:
 
 - two-way data-binding
@@ -15,259 +13,89 @@ AngularJS is a modern opinionated client-side JavaScript framework developer by 
 - simple API handling
 - directives: allow you to define new html syntax and create re-usable components
 
-Start by opening the `data_binding.html` document and reading through the code. Note the following:
+## 1 Data Binding
 
-1. the `ng-app` attribute defines the boundaries of the AngularJS application
-2. the `ng-controller` defines the html block to be controlled by the specified controller
-3. xxx
+We will start our exploration with a very simple _AngularJS_ application. Open the `data_binding.html` in a new browser tab. Enter some values in the fields and click the button. The app combines the username and password fields and generates a Base64 hash, useful for basic http authentication headers. Notice:
 
-This is the 1st of a series of 6 labs for module **305CDE**, where we are going to spend most of our time using **AngularJS**. AngularJS is a JavaScript framework. It is quite new (since 2009) and is also becoming increasingly popular. It demonstrates some useful concepts in modern web development e.g. model–view–controller (MVC).
+1. As you enter a value in the username field it automatically gets added to the page heading.
+  - this is called data binding
+2. After entering a username and password clicking on the button generates and displays the encoded data.
+  - this triggers a function that calculates the base64 string
+  - the string is passed back to the page for display.
+3. The function updates the `encoded` property which automatically updates the view.
 
-In this lab, you will be introduced to _AngularJS_ and become familiar with the use of basic directives and controllers. 
-The objectives of this lab are:
+Open the script and read through it to fully understand the structure of an _AngularJS_ app.
 
-1. Introduction of AngularJS
-2. Module and controller structure
-3. Some simple directives including `ng-repeat`
-4. First taste of server communication
+1. Notice the `{{user}}` field in the `<h1>` tag, this is bound to the **user** property.
+2. Notice the `ng-model` attributes in the `input` tags. These are bound to the named properties.
+  - because two fields the `<h1>` and `<input>` are bound to the same property they are _bound_ to each other.
+  - this is why the heading updates automatically!
+3. There is a function stored in the encode property, this is referenced in the `ng-click` attribute gets called when the button is pressed.
 
-## Overview
+### 1.1 Test Your Knowledge
 
-These labs are divided into four (roughly) equal length parts:
+1. Add another button labelled **Decode**.
+2. When clicked it decodes the Base64-encoded string and displays the result in a new paragraph (use the `atob()` function.
 
-1. review of previous challenge
-2. some new exercises based on the lab sheet
-3. presentations given on theoretical backgrounds
-4. a challenge for you to do in the lab and later in your own time.
+## 2 Model-View-Controller
 
-Lab sheets (the current document), presentation slides, and program source codes can be found on Colin’s GitLab repository at https://gitlab.com/c0lin/305cde.git.
-Lab sheets and presentation slides are also available on Moodle.
-￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼
-￼##2 ANGULARJS EXTENDS HTML WITH NEW ATTRIBUTES
+In the first example all the code was in the same html page. This is useful to understand how _AngularJS_ works but should be avoided for more complex apps.
 
-###2.1 AngularJS vs pure JS
+### 2.1 View
 
-AngularJS offers many advantages over pure JavaScript, one of which is two-way data binding. 
-Before we dive into AngularJS, let’s look at an example in pure JavaScript.
+1. Open the `basic_math/` directory and open `index.html` in a new tab in your browser.
+2. Try modifying the values in the form, what happens?
+  - you are seeing the two-way data binding feature of AngularJS
+3. Open the code in the `index.html` file and examine the `<body>` tag.
+  - the `ng-app` attribute defines the boundaries of the _AngularJS application_, in this case it is enclosed in the _body_ section of the page.
+  - the `ng-controller` defines the html block to be controlled by the specified controller
+4. Examine the `<input>` tags.
+  - the `ng-model` binds the the text input to the specified property on the controller scope.
+  - the `ng-change` attribute specifies the property of the controller scope to be called when the contents of the textbox change.
+  
+One of the powerful features of AngularJS is it support for the **MVC** (Model-View-Controller) pattern. This separates the app into three key parts:
+- the **model** stores data which is accessed by the _controller_.
+- the **view** generates output to the user and provides means for interaction.
+- the **controller** listens for messages from the view, interacts with the model and sends data back to the view.
 
-1. Create a new folder at where you normally save your work for 305CDE, give it a proper name for example week6.
-2. Create a new html file named `lab06_01_pureJS.html`
-3. Now open this file in Brackets, copy and paste the following code into this newly created file
+### 2.2 Controller
 
-```html
-￼<!DOCTYPE html>
-<html lang="en">
-	<body>
-		<p>Hello <input type="text" id="input"></p>
-		<button onclick="myFunction()">Click here</button>
-		<p id="output"></p>
-		<script>
-			function myFunction() {
-				var name = document.getElementById("input"); document.getElementById("output").innerHTML = "Hello " + name.value; }
-		</script>
-	</body>
-</html>
-```
+In our application the view is represented by the `index.html` document which displays the form to the user and allows them to interact with it. The controller is the `js/shopping.js` file. Open this to understand how it works.
 
-Click the **Live Preview** button, input something into the text box for example your own name and then click **Click here**. 
-Now you should be able to see what you just entered into the textbox.
+Open `js/shopping.js` and read through the code to understand how it works.
 
-This is a simple example, but it gives us a typical scenario of how JS works – the browser load HTML and JS codes,
-but it waits for further instructions on what to do! Now let’s give a solution using AngularJS.
+1. Notice the two-step creation process
+2. Notice how we can access the form data
+3. Can you see how AngularJS updates the view?
 
-1. Create a file called `lab06_02_angular_intro.html`.
-2. Copy and paste the following code into the file, and click Live Preview:
-```
-￼<!DOCTYPE html>
-<html lang="en">
-	<head>
-    	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.1/angular.min.js"></script >
-	</head>
-￼￼		<body>
-		<div ng-app="">
-			<p>Name:<input type="text" ng-model="name"></p>
-			<p>Hello, {{name}}!</p>
-		</div>
-	</body>
-</html>
-```
-What you can see now is that once you key in something into the text box, the result gets automatically updated!
-This is one of the advantages offered by AngularJS over pure JS– we as programmers concentrate on programming, 
-while updating UI is done by AngularJS.
+### 2.3 Unit Tests
 
-There are some concepts involved in the example above, e.g. separation of model–view–controller (MVC) and two-way data binding. 
-We will come to that in the presentation section of the lab. Note here, 
-however, how the AngularJS scripts was included within the HTML. 
-It was included in the `<head>` section of the file. 
-Below are some explanations why this is recommended, quoted from
+By implementing the _MVC_ pattern we make it easy to write unit tests. We should write tests to check the functionality of the _controller_. Start by opening the `spec/index.html` in a new web browser tab. This runs the test suite.
 
->A common advise for HTML applications, is to place all scripts at the very bottom of the `<body>` element. 
-But, in many AngularJS examples, you will see the library in the `<head>` element. 
-This is because calls to angular.module can only be compiled after the library has been loaded. 
-Another solution is to load the AngularJS library in the `<body>` element, but before your own AngularJS scripts.
+1. Notice that there are four specs and all of these pass.
+2. Notice that one of these is 'pending' (the last one shown in orange).
+3. The four specs are inside a _test suite_ 'placing an order'
+4. This is nested inside another _test suite_.
 
->http://www.w3schools.com/angular/angular_modules.asp
+Open the `spec/index.html` file and read through it to understand how it works.
 
-Also note that we used angular.min.js in the previous example, which is (you guessed it!) a minimized version of the file. 
-You can also use angular.min.js instead. 
-For a full list of what’s available and the differences, go to the reference page at https://docs.angularjs.org/misc/downloading. 
-Some of the differences are copied below for your convenience.
+### 2.4 Test Your Knowledge
 
-- angular.js — This is the human-readable, non-minified version, suitable for web development.
-- angular.min.js — This is the minified version, which we strongly suggest you use in production.
+1. The discount should double if the quantity is over 100, remove the pending status from the last spec and run the test suite, the last spec will fail.
+2. Modify the **model** to correctly apply this discount (all the tests will pass).
+3. Add a shipping field to the form and wire it up to the controller
+4. Write another test spec to check the shipping costs are being applied
+5. Wire up the controller and modify the calculation to return the correct total.
 
-Both `ng-app` and `ng-model` are examples of directives. 
-The `ng-app` directive initializes an AngularJS application; while the `ng-model` directive binds the value of HTML controls
-(input, select, textarea) to application data, in our case a variable named **"name"**. 
-The part between two double braces is an expression – it is more or less like an ordinary JS expression, 
-where the statement is evaluated and the results are given back. 
-An alternative way to doing expression is using the `ng-bind` directive, as follows:
-```
-<span ng-bind="name"></span>
-```
-A less commonly used directive is `ng-init`, which often goes with `ng-app` to initialize variable such as
-```
-<div ng-app="" ng-init="Name='John'">
-```
 
-###2.2 Test your understanding
 
-Now it’s time to do some little exercises. Using the directives mentioned above, take user inputs of their first and last 
-name separately to give their full name. 
-Within your text box, you should let the users know whether they need to key in first or last name using some pre-defined hints.
+## 4 Challenge
 
-##3 ORGANIZING DEPENDENCIES WITH MODULES
+If you think you have understood these basic _AngularJS_ concepts why not attempt this challenge.
 
-The previous example doesn’t have many variables or functions. 
-But once your program grows bigger, you’ll need a way to control and organize. 
-Here we introduce modules and controllers – this is the recommended way of doing things even for small applications.
-
-###3.1 Modules and controllers
-
-You have seen the ng-app directive already. The purposes of this directive are:
-
-1. Put the current HTML element and all children elements under the control of AngularJS. This means that
-other outsider elements are not affected.
-2. Specify an AngularJS module to be used as the roo tmodule for the application. 
-A module is a way to group dependencies and define controllers etc. You’ll see an example later.
-
-Controllers are the main body of any AngularJS application. As the name suggests, it controls how the data (your model) are being presented, and how users interact with your application. A module can have many controllers.
-
-Now let’s look at an example. The source code below can be found in `lab06_03_controllers.html`.
-```
-￼<!DOCTYPE html>
-<html lang="en" ng-app="moduleToy" >
-	<head>
-    	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.1/angular.min.js"></script >
-	</head>
-	<body ng-controller="controllerToy as ctrl">
-	<p>Hello<input type="text" ng-model="ctrl.name"></p>
-	<button ng-click="ctrl.confirm()"> Click here</button>
-	<p id="output" ng-bind="ctrl.message"></p>
-	<script type="text/javascript">
-		angular.module('moduleToy', []).controller('controllerToy', [
-			function () {
-				var self = this;
-				var lastName = 'last name is';
-				self.confirm = function () {
-					self.message = 'Hello ' + self.name;
-				};
-￼￼			   }
-		]);
-	</script>
-</body>
-</html>
-```
-
-If you run this file, you’ll see that the result look like the pure JS example. But indeed there are quite a lot going on.
-
-1. We start the application in the `html` tag, and pass to `ng-app` directive a module name `moduleToy`
-2. This module is defined using `angular.module('moduleToy', [])`, where the square brackets specify dependencies. 
-Note this is not to be confused with `angular.module('moduleToy')`, where you simply retrieving a module instead of defining it.
-3. In a similar manner, you declare controller using `ng-controller` directive 
-and define controller using `controller('controllerToy', [])`
-4. Note that the second argument to controller is actually an array containing dependencies and controller function definition.
-In our case, we don’t have any dependencies, so it’s a single-element array.
-5. As a good practice, we use `self` to point to this to avoid confusion. 
-If you remembered it, we mentioned `this` and `that` already in previous lectures. Now you have `self`!
-
-###3.2 Test your understanding
-
-When you run the previous example, without putting anything in the textbox, if you click `Click here` it gives you `undefined`. 
-Why is this? How would you correct it?
-
-In the HTML, try to access the variable named `lastName`, what happens? How to make this variable accessible?
-
-##4 THE REALLY HEAVY LIFTING
-
-###4.1 Working with arrays
-
-We have so far been working with very simple data. Now let’s turn to arrays, this is where things become very exciting.
-Take a look at the example below. This source code is in lab06_04_arrays.html.
-This example is adapted from the AngularJS online documentation at https://docs.angularjs.org/api/ng/directive/ngRepeat.
-￼￼
-```
-<!doctype html>
-<html lang="en">
-	<head>
-    	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.1/angular.min.js"></script >
-	</head>
-	<body>
-		<div ng-app="" ng-init="friends = [
-				{name:'John', age:25, gender:'boy'},
-				{name:'Jessie', age:30, gender:'girl'},
-				{name:'Johanna', age:28, gender:'girl'}
-			]">
-￼￼		  <p>I have {{friends.length}} friends. They are:</p>
-		<ul>
-			<li ng-repeat="friend in friends">
-				[{{$index + 1}}] {{friend.name}} who is {{friend.age}} years old.
-			</li>
-		</ul>
-    </div>
-</body>
-</html>
-```
-There are several things to note in this example:
-1. The `ng-repeat` directive defines a scope where we can use the syntax `singleItem in array` to denote each member of the array.
-2. This `singleItem` variable only exists within the scope of the defining `ng-repeat` element
-3. `$index` is a helper variable, which gives the position of the array item. Similar helper variables exist e.g.
-`$first`, `$middle`, and `$last` which all return Boolean.
-
-###4.2 Test your understanding
-
-- Move the array initialization into a module. What advantages do we have using a module instead of `ng-init` directive?
-- Hide the array item if is not the first or last
-
-##5 SERVER COMMUNICATION USING $HTTP
-
-In AngularJS, fetching data with $http is relatively easily. The code below shows an example of getting some wheather data 
-from `http://openweathermap.org/`. We will go through this again in later labs. 
-For the moment just remember basic syntax of retrieving remote JSON data. 
-The source code is contained in file `lab06_05_http.html`.
-￼￼
-```
-<!doctype html>
-<html lang="en" ng-app="weatherToy">
-	<head>
-    	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.1/angular.min.js"></script >
-	</head>
-	<body ng-controller="MainCtrl as mainCtrl">
-	<div>City Weather</div>
-	<div ng-repeat="item in mainCtrl.items" class="item">
-		<span ng-bind="item.name"></span>
-		<span ng-bind="item.weather[0].description"></span>
-	</div>
-	<script>
-		angular.module('weatherToy', []).controller('MainCtrl', ['$http', function ($http) {
-			var self = this; self.items = [];
-			$http.get('http://api.openweathermap.org/data/2.5/box/city?bbox=12,32,15,37,10&cluster=yes').then(function (response) {
-				self.items = response.data.list;
-				console.log(self.items);
-			}, function (errResponse) {
-				console.error('Error while fetching notes');
-			});
-		}]); </script>
-</body>
-</html>
-￼```
+- Implement a user registration system, using AngularJS and HTML.
+- The system allows inputs of new user data e.g. name/age etc.
+- The system contains a list of currently registered users.
+- The system contains a search box to search the name field. It should updates its search results instantly based on search inputs.
+- Only AngularJS allowed, no pure JavaScript or jQuery etc.
+- AngularJS filters are not allowed.

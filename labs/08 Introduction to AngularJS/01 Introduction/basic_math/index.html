@@ -15,23 +15,23 @@
       <p>Calculate a bulk book order.</p>
 			<div>
         <label for="quantity">Quantity</label>
-        <input ng-model="quantity" ng-change="getTotal()" type="number" value="1">
+        <input type="number" ng-model="quantity" ng-change="getTotal()">
       </div>
 			<div>
         <label for="price">Price Per Unit</label>
-        <input ng-model="price" ng-change="getTotal()" type="text">
+        <input type="text" ng-model="price" ng-change="getTotal()">
       </div>
 			<div>
         <label for="tax">VAT (%)</label>
-        <input ng-model="tax" ng-change="getTotal()" type="text">
+        <input type="text" ng-model="tax" ng-change="getTotal()">
       </div>
 			<div>
         <label for="discount">Discount</label>
-        <input ng-model="discount" ng-change="getTotal()" type="text">
+        <input type="text" ng-model="discount" ng-change="getTotal()">
       </div>
 			<div>
         <label for="total">Total</label>
-        <input ng-model="total" type="text">
+        <input type="text" ng-model="total">
       </div>
     </fieldset>
   </div>
