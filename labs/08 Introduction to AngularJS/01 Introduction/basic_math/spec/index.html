@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <title>Bulk Order Tests</title>
+    <!-- Jasmine References -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine-html.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/boot.min.js"></script>
+      
+    <!-- Angular and Angular Mock references -->
+    <script type="text/javascript" src="https://code.angularjs.org/1.4.0-rc.2/angular.min.js"></script>
+    <script type="text/javascript" src="https://code.angularjs.org/1.4.0-rc.2/angular-mocks.js"></script>
+    <!-- AngularJS module reference -->
+    <script src="../js/shopping.js"></script>
+  </head>
+  <body>
+  </body>
+  <script type="text/javascript">  
+    describe('shipping calculator', function () {
+      /* using ngMock we can register an instance of our app. */
+      beforeEach(angular.mock.module('myApp'))
+      var $controller
+      /* once the app module is initialised we call the 'inject' function to get a reference to the $controller service. */
+      beforeEach(angular.mock.inject(function(_$controller_){ $controller = _$controller_}))
+      describe('placing an order', function () {
+        it('10 items costing 10 with 0 tax and 0 discount should cost 100', function () {
+          /* in our tests the $scope object can be represented by a simple JS object. */
+          var $scope = {}
+          /* once the app is loaded and the 'inject' function called we can use $controller to get an instance of our controller service. */
+          var controller = $controller('shopController', { $scope: $scope })
+          /* now we can set some properties on the $scope object. */
+          $scope.quantity = 10
+          $scope.price = 10
+          $scope.tax = 0.0
+          $scope.discount = 0.0
+          $scope.getTotal()
+          expect($scope.total).toBe('100.00')
+        })
+        it('10 items costing 10 with 0 tax and 0 discount should cost 100', function () {
+          var $scope = {}
+          var controller = $controller('shopController', { $scope: $scope })
+          $scope.quantity = 10
+          $scope.price = 10
+          $scope.tax = 0.0
+          $scope.discount = 0.0
+          $scope.getTotal()
+          expect($scope.total).toBe('100.00')
+        })
+      })
+    })
+  </script>
+</html>
