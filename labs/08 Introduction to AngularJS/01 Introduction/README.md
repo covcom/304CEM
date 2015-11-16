@@ -1,17 +1,29 @@
-#305CDE Developing the Modern Web 2
-##Lab 6: Introduction to AngularJS
+# Introduction to AngularJS
 
-Lecturer: Dr. Jianhua Yang
+Welcome to the third section of the module. By now you should be comfortable writing JavaScript applications and have experience developing an API using NodeJS to run server-side JavaScript.
 
-Email: Jianhua.Yang@coventry.ac.uk
+This worksheet will introduce you to a powerful framework which will allow you to create interactive JavaScript apps that run in the web browser. You will be using these skills to create an interactive client that makes use of your API.
 
-COM Programming Support: ECG-03, Tues. 13:00-15:00
+## AngularJS
 
-ECG-14 05/11/2014
+AngularJS is a modern opinionated client-side JavaScript framework developer by Google. It supports a number of powerful features:
 
-##OBJECTIVES
-This is the 1st of a series of 6 labs for module **305CDE**, where we are going to spend most of our time using **AngularJS**. AngularJS is a JavaScript framework. It is quite new (since 2009) and is also becoming increasingly popu- lar. It demonstrates some useful concepts in modern web development e.g. model–view–controller (MVC).
-In this lab, we will introduce you AngularJS, get yourself familiar with basic directives and controllers. 
+- two-way data-binding
+- model-view-controller pattern
+- deep linking
+- form validation
+- simple API handling
+- directives: allow you to define new html syntax and create re-usable components
+
+Start by opening the `data_binding.html` document and reading through the code. Note the following:
+
+1. the `ng-app` attribute defines the boundaries of the AngularJS application
+2. the `ng-controller` defines the html block to be controlled by the specified controller
+3. xxx
+
+This is the 1st of a series of 6 labs for module **305CDE**, where we are going to spend most of our time using **AngularJS**. AngularJS is a JavaScript framework. It is quite new (since 2009) and is also becoming increasingly popular. It demonstrates some useful concepts in modern web development e.g. model–view–controller (MVC).
+
+In this lab, you will be introduced to _AngularJS_ and become familiar with the use of basic directives and controllers. 
 The objectives of this lab are:
 
 1. Introduction of AngularJS
@@ -19,9 +31,9 @@ The objectives of this lab are:
 3. Some simple directives including `ng-repeat`
 4. First taste of server communication
 
-##1 LAB STRUCTURE AND MATERIAL
+## Overview
 
-The overall structure of these labs is the same as before – it is divided into four (roughly) equal length parts:
+These labs are divided into four (roughly) equal length parts:
 
 1. review of previous challenge
 2. some new exercises based on the lab sheet
