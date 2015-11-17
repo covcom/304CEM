@@ -6,10 +6,13 @@
     <script src="js/todo.js"></script>
 	</head>
 	<body ng-app="myApp" ng-controller="todoController">
+    <!-- the $event object contains details of the triggered event, this information can be passed to the controller. -->
 		<p><input type="text" ng-model="newItem" ng-keydown="add($event)" autofocus></p>
     <ol>
+      <!-- the 'ng-repeat' attribute iterates over the 'items' array and instantiates a template once for each item. The item string is passed to the delete function in the controller. -->
       <li ng-repeat="item in items" ng-click="delete(item)">
-        {{item}}
+        <!-- 'item' contains the data at the specified array index which can be accessed via the $index variable. -->
+        {{item}} is at index {{$index}}
       </li>
     </ol>
 	</body>

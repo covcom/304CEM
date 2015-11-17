@@ -13,12 +13,14 @@ AngularJS is a modern opinionated client-side JavaScript framework developer by 
 - simple API handling
 - directives: allow you to define new html syntax and create re-usable components
 
-## 1 Data Binding
+## 1 Data Binding and Directives
+
+In this first task you will learn about two of the most important features of AngularJS apps, [data binding](https://docs.angularjs.org/guide/databinding) and [directives](https://docs.angularjs.org/guide/directive). As you read through the instructions take time to click on the links provided to view the official [AngularJS documentation](https://docs.angularjs.org/api).
 
 We will start our exploration with a very simple _AngularJS_ application. Open the `data_binding.html` in a new browser tab. Enter some values in the fields and click the button. The app combines the username and password fields and generates a Base64 hash, useful for basic http authentication headers. Notice:
 
 1. As you enter a value in the username field it automatically gets added to the page heading.
-  - this is called data binding
+  - this is called **data binding**
 2. After entering a username and password clicking on the button generates and displays the encoded data.
   - this triggers a function that calculates the base64 string
   - the string is passed back to the page for display.
@@ -26,11 +28,12 @@ We will start our exploration with a very simple _AngularJS_ application. Open t
 
 Open the script and read through it to fully understand the structure of an _AngularJS_ app.
 
-1. Notice the `{{user}}` field in the `<h1>` tag, this is bound to the **user** property.
-2. Notice the `ng-model` attributes in the `input` tags. These are bound to the named properties.
+1. Notice the `{{user}}` field in the `<h1>` tag, this is bound to the **user** property which can also be achieved using the [ng-bind](https://docs.angularjs.org/api/ng/directive/ngBind) directive.
+  - a _directive_ allows you to use custom html attributes to add additional meaning and functionality to the web page.
+2. Notice the [ng-model](https://docs.angularjs.org/api/ng/directive/ngModel) attributes in the `input` tags. These are bound to the named properties.
   - because two fields the `<h1>` and `<input>` are bound to the same property they are _bound_ to each other.
   - this is why the heading updates automatically!
-3. There is a function stored in the encode property, this is referenced in the `ng-click` attribute gets called when the button is pressed.
+3. There is a function stored in the encode property, this is referenced in the [ng-click](https://docs.angularjs.org/api/ng/directive/ngClick) directive gets called when the button is pressed.
 
 ### 1.1 Test Your Knowledge
 
@@ -81,13 +84,38 @@ Open the `spec/index.html` file and read through it to understand how it works.
 
 ### 2.4 Test Your Knowledge
 
+Work through the following tasks, use the _test suite_ to check your solutions work.
+
 1. The discount should double if the quantity is over 100, remove the pending status from the last spec and run the test suite, the last spec will fail.
 2. Modify the **model** to correctly apply this discount (all the tests will pass).
 3. Add a shipping field to the form and wire it up to the controller
 4. Write another test spec to check the shipping costs are being applied
 5. Wire up the controller and modify the calculation to return the correct total.
 
+## 3 Repeating Elements
 
+In this third, and final, task you will learn how AngularJS handles repeated elements such as lists and table cells using the [ng-repeat](https://docs.angularjs.org/api/ng/directive/ngRepeat) directive. Start by opening the `todo/index.html` script and identifying familiar AngularJS directives (covered in the previous tasks). Keep the console window open as you test the app.
+
+1. The form field uses the [ng-keydown](https://docs.angularjs.org/api/ng/directive/ngKeydown) directive. This detects every key press in the field and triggers the function in the controller.
+2. Notice the `<li>` element contains two directives.
+  - the [ng-repeat](https://docs.angularjs.org/api/ng/directive/ngRepeat) directive will run the `<li>` template once for each item in the `lists` array.
+  - within this loop the current lists item is stored in the `item` variable
+  - the `$index` variable contains the current array index
+  - the [ng-click](https://docs.angularjs.org/api/ng/directive/ngClick) directive calls the `delete() function` which is passed the `item` string as a parameter
+
+Now open the `js/todo.js` controller.
+
+1. The list items are being stored in an array declared at the top of the controller.
+2. The `$event` parameter is an object containing details of the event that was triggered.
+  - depending on the browser it will either have a `.which` or `.keyCode` property which returns an integer
+  - code 13 corresponds to the enter key.
+
+### 3.1 Test Your Knowledge
+
+Work through the following tasks, use the _test suite_ to check your solutions work.
+
+1. modify the controller to prevent duplicate items being added.
+2. implement the `delete()` function to delete list items when they are clicked
 
 ## 4 Challenge
 
@@ -99,3 +127,7 @@ If you think you have understood these basic _AngularJS_ concepts why not attemp
 - The system contains a search box to search the name field. It should updates its search results instantly based on search inputs.
 - Only AngularJS allowed, no pure JavaScript or jQuery etc.
 - AngularJS filters are not allowed.
+
+## Presentation
+
+https://goo.gl/VXwvwq

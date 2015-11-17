@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Bulk Order Tests</title>
+    <title>To Do Tests</title>
     <!-- Jasmine References -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine.min.js"></script>
@@ -15,22 +15,90 @@
   </head>
   <body>
   </body>
-  <script type="text/javascript">  
-    describe('todo list', function () {
+  <script type="text/javascript">
+    
+    
+    describe('todo list', function() {
       beforeEach(angular.mock.module('myApp'))
       var $controller
-      beforeEach(angular.mock.inject(function(_$controller_){ $controller = _$controller_}))
-      describe('adding an item', function () {
+      
+      beforeEach(angular.mock.inject(function(_$controller_){ 
+        $controller = _$controller_
+      }))
+
+      describe('Adding Items', function() {
+        var $scope = {}
+        var controller
+        var event = { which: 13 }
+
+        beforeEach(function() {
+          controller = $controller('todoController', { $scope: $scope })
+          $scope.newItem = 'bread'
+          $scope.add(event)
+          $scope.newItem = 'butter'
+          $scope.add(event)
+        })
+
+        it('adding "cheese" should result in 3 items in the list', function() {
+          $scope.newItem = 'cheese'
+          $scope.add(event)
+          expect($scope.items.length).toBe(3)
+          expect($scope.items[2]).toBe('cheese')
+        })
         
-        it('adding "bread" should result in a singe item in the list', function () {
-          var $scope = {}
-          var controller = $controller('todoController', { $scope: $scope })
-          $scope.newItem = 10
-          $scope.getTotal()
-          expect($scope.total).toBe('172.50')
+        it('adding "cheese" and "jam" should result in 4 items in the list', function() {
+          $scope.newItem = 'cheese'
+          $scope.add(event)
+          $scope.newItem = 'jam'
+          $scope.add(event)
+          expect($scope.items.length).toBe(4)
+          expect($scope.items[2]).toBe('cheese')
+          expect($scope.items[3]).toBe('jam')
+        })
+        
+        xit('duplicate items should not be added', function() {
+          $scope.newItem = 'butter'
+          $scope.add(event)
+          expect($scope.items.length).toBe(2)
+        })
+        
+        xit('empty items should not be added', function() {
+          $scope.newItem = ''
+          $scope.add(event)
+          expect($scope.items.length).toBe(2)
+        })
+        
+      })
+
+      describe('Deleting Items', function() {
+        var $scope = {}
+        var controller
+        var event = { which: 13 }
+
+        beforeEach(function() {
+          controller = $controller('todoController', { $scope: $scope })
+          $scope.newItem = 'bread'
+          $scope.add(event)
+          $scope.newItem = 'butter'
+          $scope.add(event)
+          $scope.newItem = 'cheese'
+          $scope.add(event)
+          $scope.newItem = 'jam'
+          $scope.add(event)
+        })
+
+        xit('deleting "butter" should result in 3 items in the list', function() {
+          $scope.delete('butter')
+          expect($scope.items.length).toBe(3)
+        })
+        
+        xit('deleting a non-existent item should result in 4 items in the list', function() {
+          $scope.delete('salami')
+          expect($scope.items.length).toBe(4)
         })
         
       })
     })
+
   </script>
 </html>
