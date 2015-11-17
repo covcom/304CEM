@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Books</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+  <!-- to use the 'ngRoute' module you need to load the angular-route library. -->
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.min.js"></script>
+	<script src="js/books.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+    
+<body ng-app="myApp">
+	<h2>Books</h2>
+	<p>Jump to the <a href="#search">search</a> or <a href="#favourites">favourites</a> page</p>
+	<div ng-view>
+	</div>
+</body>
+</html>
+
+<!-- http://www.webcodegeeks.com/javascript/angular-js/angular-js-routing-example/ -->
+<!-- http://viralpatel.net/blogs/angularjs-routing-and-views-tutorial-with-example/ -->

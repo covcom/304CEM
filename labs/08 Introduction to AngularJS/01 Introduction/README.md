@@ -73,7 +73,7 @@ Open `js/shopping.js` and read through the code to understand how it works.
 
 ### 2.3 Unit Tests
 
-By implementing the _MVC_ pattern we make it easy to write unit tests. We should write tests to check the functionality of the _controller_. Start by opening the `spec/index.html` in a new web browser tab. This runs the test suite.
+By implementing the _MVC_ pattern we make it easy to write [unit tests](https://docs.angularjs.org/guide/unit-testing). We should write tests to check the functionality of the _controller_. Start by opening the `spec/index.html` in a new web browser tab. This runs the test suite.
 
 1. Notice that there are four specs and all of these pass.
 2. Notice that one of these is 'pending' (the last one shown in orange).
