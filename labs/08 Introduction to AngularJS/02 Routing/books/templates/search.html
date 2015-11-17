@@ -1,2 +1,10 @@
 <h1>Search Page</h1>
 <p>{{ message }}</p>
+
+<p><input type="text" ng-model="searchTerm" ng-keydown="search($event)" autofocus></p>
+
+<table>
+  <tr ng-repeat="book in books">
+    <td>{{book.id}}</td><td>{{ book.volumeInfo.title }}</td><td><a href="#detail/{{book.id}}">view</a></td>
+  </tr>
+</table>
