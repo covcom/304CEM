@@ -9,6 +9,7 @@
   "author": "Mark J Tyers",
   "license": "ISC",
   "dependencies": {
+    "node-persist": "0.0.8",
     "request": "^2.67.0"
   }
 }

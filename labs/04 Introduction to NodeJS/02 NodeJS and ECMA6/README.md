@@ -6,7 +6,7 @@ git pull upstream master
 ```
 You should also make sure you are running the latest version of NodeJS. Instructions on how to check this and upgrade the installation are in topic 4.
 
-NodeJS is based on the latest Chrome V8 runtime and, as such, already supports many important ECMA6 features. In thiw worksheet you will be exploring several of these and seeing how they will help you write clearer, more robust code.
+NodeJS is based on the latest Chrome V8 runtime and, as such, already supports many important ECMA6 features. In this worksheet you will be exploring several of these and seeing how they will help you write clearer, more robust code. If you get errors running these examples you should use _NVM_ to upgrade NodeJS, instructions can be found in the first worksheet in **topic 5**.
 
 ## 1 Promises Revisited
 
@@ -67,7 +67,24 @@ When calling a synchronous function (one with a return value) you should always 
 
 ### 2.2 Asynchronous Errors
 
+JavaScript handles long-running processes in their own threads to prevent blocking the main thread. This is handled using _callbacks_. You have already used many built-in functions that take a callback parameter, these use a consistent format.
+- The first parameter is the error `err` which is set to `null` if there is no error.
+- The second parameter is the data we were expecting.
+
+1. Open `errors/index.js` and locate the call to the function in the `books.search` property.
+  - notice the we check to see if the `err` parameter is not `null`. If this is the case we have an error and need to handle it. In this situation the second `data` parameter is null.
+	- if the first parameter is `null`, the second `data` parameter contains the data we were expecting.
+2. Open `errors/books.js` and study the function stored in the `search` property.
+  - notice that if a problem is detected we run the callback and pass it a single `Error` object.
+	- notice that if there is _no problem_ we set the first parameter to `null` and pass the data to the second parameter
+	- both these actions are consistent with the correct JavaScript approach.
+
 #### 2.2.1 Test Your Knowledge
+
+1. Create a new function in `errors/books.js` to take a book id and return information about it.
+  - https://www.googleapis.com/books/v1/volumes?q=tBbsAgAAQBAJ
+2. Make sure you handle any possible errors such as an invalid id.
+3. Modify the `errors/index.js` file so you can test it by using the _describe_ command.
 
 ## Presentation
 

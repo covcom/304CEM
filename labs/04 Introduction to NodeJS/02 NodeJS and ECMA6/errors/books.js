@@ -7,7 +7,7 @@ var bookList = []
 /* The standard pattern for asynchronous callbacks is for the first parameter to be the error, this should be null if no error is thrown with the second parameter being the data. */
 exports.search = (query, callback) => {
   if (typeof query !== 'string' || query.length === 0) {
-    callback({code:400, response:{status:'error', message:'missing query (q parameter)'}})
+    callback(new Error('missing query parameter'))
   }
   const url = 'https://www.googleapis.com/books/v1/volumes'
   const query_string = {q: query, maxResults: 3, fields: 'items(id,volumeInfo(title,authors))'}
