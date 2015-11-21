@@ -20,6 +20,11 @@ To manage and upgrade Node we use the **nvm**  (Node Version Manager). By defaul
 ```
 npm install -g nvm
 ```
+If this fails to install nvm you may need to run the command as sudo. If this fails you will need to install it manually using _curl_, try the following.
+```
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
+```
+
 After checking the current version, our next task is to list all the versions we can install and install the latest version. As of writing (October 2015) the latest version was v4.2.1. Finally we check that we are now using the latest version.
 ```
 node -v
