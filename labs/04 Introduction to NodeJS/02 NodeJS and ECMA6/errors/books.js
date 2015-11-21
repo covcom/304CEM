@@ -30,14 +30,20 @@ exports.search = (query, callback) => {
   })
 }
 
-/* a synchronous function will either return data or an Error */
+/* a synchronous function will either return data or throw an error */
 exports.add = bookId => {
   if (bookId.length != 12) {
-    return new Error('bookId should be 12 character long')
+    /* this throws a user-defined exception. */
+    throw('bookId should be 12 character long')
   }
   if (bookList.indexOf(bookId) != -1) {
-    return new Error('book has already been added to the list')
+    throw('book has already been added to the list')
   }
   bookList.push(bookId)
+  //console.log(bookList.length)
   return 'book '+bookId+' added'
+}
+
+exports.bookCount = () => {
+  return bookList.length
 }

@@ -49,21 +49,26 @@ Make a note of the app's behaviour.
 
 ### 2.1 Synchronous Errors
 
-When calling a synchronous function (one with a return value) you should always return a JavaScript **Error** if the operation is not successful. Open the `errors/index.js` file and locate the line where `books.add()` is called.
+When calling a synchronous function (one with a return value) you should always throw a JavaScript **exception** if the operation is not successful rather then returning an arbitrary valu to indicate failure. This exception can then be handled by the calling code.
 
-1. Notice that we store the returned value.
-2. We now check to see if this is an `Error` object, if so we deal with it appropriately
-  - JavaScript errors contain a _message_ property that stores the description of the error.
-	- It also contains a `fileName` and a `lineNumber` property to pinpoint where the error occurred.
-	- Finally the `stacktrace` property allows the developer to see the full list of functions that were called when the error was thrown.
-3. If the returned value was not an Error object, no error was thrown and program execution can continue.
-4. Open the `errors/books.js` file and read through the function stored in its `add` property, notice that it includes a number of checks and throws an error if any check fails. This error is returned from the function.
+Open the `errors/books.js` file and locate the `exports.add` function.
+
+1. There are two possible problems identified, the id might ne the wrong length or it might already have been added to the array.
+2. If either of these two situations arise an exception is _thrown_.
+  - this stops execution of the function immediately
+	- the exception is passed back to the caller `index.js` which should handle it
+	- if it is not handled the program will crash.
+3. Open the `errors/index.js` file and locate where the function is called.
+  - Notice that the call to `books.search` is contained within a `try {} catch {}` block.
+	- if an exception is thrown, control passes immediately to the `catch {}` block
+	- the error information is stored in the `err` parameter and can be accessed.
+	- the code in the `finally {}` block is always executed whether an exception has been thrown or not.
+	- the `finally {}` block is optional.
 
 #### 2.1.1 Test Your Knowledge
 
 1. Create a new function that deletes the specified book, it should return the id of the book deleted or throw an error if the book can't be found.
 2. Modify the `index.js` file so you can test its functionality
-3. Create a new function that returns the number of books in the list or an error if the list is empty.
 
 ### 2.2 Asynchronous Errors
 

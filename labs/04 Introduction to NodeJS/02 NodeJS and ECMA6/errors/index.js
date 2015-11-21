@@ -21,13 +21,15 @@ input.on('data', chunk => {
   }
   if (text.indexOf('add ') === 0) {
     console.log('adding "'+item+'"')
-    /* we call the synchronous function and assign its return value to a variable. */
-    const result = books.add(item)
-    /* we can then see if the returned object is an Error. */
-    if (result instanceof Error) {
-      console.log(result.message)
-    } else {
+    /* we wrap our code in a 'try' block */
+    try {
+      const result = books.add(item)
       console.log(result)
+    } catch (err) {
+      /* if an exception is thrown the program flow jumps to the 'catch' block, the exception is stored in the 'err' parameter. */
+      console.log(err)
+    } finally {
+      console.log('the list contains '+books.bookCount()+' books')
     }
   }
 })
