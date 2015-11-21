@@ -37,7 +37,7 @@ Open the `promises.js` file and study the code carefully.
 
 You have already used a number of built-in functions that can return an error. All these functions use a common approach and in this exercise you will learn how to write your own functions that handle error conditions in the same manner. By correctly handling errors and ensuring your own code uses them correctly your apps will be more robust and crash less frequently.
 
-You will be working with a simple app that can search an existing API for books and add book id values to a list. Start by running the `errors/index.js` script then try out the following commands:
+You will be working with a simple app that can search an existing API for books and add book id values to a list. Start by running the `books/index.js` script then try out the following commands:
 ```
 search javascript
 search ???????
@@ -51,14 +51,14 @@ Make a note of the app's behaviour.
 
 When calling a synchronous function (one with a return value) you should always throw a JavaScript **exception** if the operation is not successful rather then returning an arbitrary valu to indicate failure. This exception can then be handled by the calling code.
 
-Open the `errors/books.js` file and locate the `exports.add` function.
+Open the `books/books.js` file and locate the `exports.add` function.
 
 1. There are two possible problems identified, the id might ne the wrong length or it might already have been added to the array.
 2. If either of these two situations arise an exception is _thrown_.
   - this stops execution of the function immediately
 	- the exception is passed back to the caller `index.js` which should handle it
 	- if it is not handled the program will crash.
-3. Open the `errors/index.js` file and locate where the function is called.
+3. Open the `books/index.js` file and locate where the function is called.
   - Notice that the call to `books.search` is contained within a `try {} catch {}` block.
 	- if an exception is thrown, control passes immediately to the `catch {}` block
 	- the error information is stored in the `err` parameter and can be accessed.
@@ -76,20 +76,20 @@ JavaScript handles long-running processes in their own threads to prevent blocki
 - The first parameter is the error `err` which is set to `null` if there is no error.
 - The second parameter is the data we were expecting.
 
-1. Open `errors/index.js` and locate the call to the function in the `books.search` property.
+1. Open `books/index.js` and locate the call to the function in the `books.search` property.
   - notice the we check to see if the `err` parameter is not `null`. If this is the case we have an error and need to handle it. In this situation the second `data` parameter is null.
 	- if the first parameter is `null`, the second `data` parameter contains the data we were expecting.
-2. Open `errors/books.js` and study the function stored in the `search` property.
+2. Open `books/books.js` and study the function stored in the `search` property.
   - notice that if a problem is detected we run the callback and pass it a single `Error` object.
 	- notice that if there is _no problem_ we set the first parameter to `null` and pass the data to the second parameter
 	- both these actions are consistent with the correct JavaScript approach.
 
 #### 2.2.1 Test Your Knowledge
 
-1. Create a new function in `errors/books.js` to take a book id and return information about it.
+1. Create a new function in `books/books.js` to take a book id and return information about it.
   - https://www.googleapis.com/books/v1/volumes?q=tBbsAgAAQBAJ
 2. Make sure you handle any possible errors such as an invalid id.
-3. Modify the `errors/index.js` file so you can test it by using the _describe_ command.
+3. Modify the `books/index.js` file so you can test it by using the _describe_ command.
 
 ## Presentation
 
