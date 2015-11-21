@@ -91,6 +91,11 @@ JavaScript handles long-running processes in their own threads to prevent blocki
 2. Make sure you handle any possible errors such as an invalid id.
 3. Modify the `books/index.js` file so you can test it by using the _describe_ command.
 
+### 2.3 Advanced Challenge
+
+1. There is no check to see if a book exists before being added to the list. Create a new function and store it in the `validateBookId` property. This should check whether the book id being added is valid.
+2. Use this new functionality to only add valid books to the list.
+
 ## Presentation
 
 https://goo.gl/pvGpT4
