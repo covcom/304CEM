@@ -33,6 +33,42 @@ Open the `promises.js` file and study the code carefully.
 3. finally add this third function to each of the four promise chains.
 4. how could you achieve the same result without needing a third function (hint: you can add the same promise multiple times).
 
+## 2 Handling Errors
+
+You have already used a number of built-in functions that can return an error. All these functions use a common approach and in this exercise you will learn how to write your own functions that handle error conditions in the same manner. By correctly handling errors and ensuring your own code uses them correctly your apps will be more robust and crash less frequently.
+
+You will be working with a simple app that can search an existing API for books and add book id values to a list. Start by running the `errors/index.js` script then try out the following commands:
+```
+search javascript
+search ???????
+add JV6rpwAACAAJ
+add xxxxx
+add JV6rpwAACAAJ
+```
+Make a note of the app's behaviour.
+
+### 2.1 Synchronous Errors
+
+When calling a synchronous function (one with a return value) you should always return a JavaScript **Error** if the operation is not successful. Open the `errors/index.js` file and locate the line where `books.add()` is called.
+
+1. Notice that we store the returned value.
+2. We now check to see if this is an `Error` object, if so we deal with it appropriately
+  - JavaScript errors contain a _message_ property that stores the description of the error.
+	- It also contains a `fileName` and a `lineNumber` property to pinpoint where the error occurred.
+	- Finally the `stacktrace` property allows the developer to see the full list of functions that were called when the error was thrown.
+3. If the returned value was not an Error object, no error was thrown and program execution can continue.
+4. Open the `errors/books.js` file and read through the function stored in its `add` property, notice that it includes a number of checks and throws an error if any check fails. This error is returned from the function.
+
+#### 2.1.1 Test Your Knowledge
+
+1. Create a new function that deletes the specified book, it should return the id of the book deleted or throw an error if the book can't be found.
+2. Modify the `index.js` file so you can test its functionality
+3. Create a new function that returns the number of books in the list or an error if the list is empty.
+
+### 2.2 Asynchronous Errors
+
+#### 2.2.1 Test Your Knowledge
+
 ## Presentation
 
 https://goo.gl/pvGpT4
