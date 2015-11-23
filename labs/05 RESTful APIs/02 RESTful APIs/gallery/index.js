@@ -6,6 +6,7 @@ server.use(restify.bodyParser({ mapFiles: true }))
 const gallery = require('./gallery')
 
 server.post('/gallery', (req, res) => {
+  /* addPhoto takes the entire 'request' object as a parameter and returns an Error if something goes wrong. */
   gallery.addPhoto(req, (err, data) => {
     res.setHeader('content-type', 'application/json')
     if (err) {
@@ -27,6 +28,7 @@ server.get('/gallery', (req, res) => {
   })
 })
 
+/* we set up a route to serve static files from the 'photos/' directory. */
 server.get(/photos\/?.*/, restify.serveStatic({
     directory: __dirname
 }))

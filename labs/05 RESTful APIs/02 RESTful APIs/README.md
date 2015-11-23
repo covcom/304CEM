@@ -84,7 +84,7 @@ In the previous exercises we have sent _json formatted_ data in our request body
 3. Set the second row's _Key_ to caption and enter a suitable caption for your photo.
 4. Send the request.
   - notice that the response includes both information about the image/caption and a link to the image
-	- the link won't work (the url doesn't match your server name).
+	- the link won't work (the url doesn't match your server name), modify the gallery script to correct this.
 	- what route allows us to view static content?
 5. Read the `gallery.js` script.
   - try and identify where the console output comes from
