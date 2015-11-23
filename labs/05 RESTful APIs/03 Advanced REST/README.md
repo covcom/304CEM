@@ -9,3 +9,37 @@ Example in book **Async JavaScript** chapter 2:
 http://goo.gl/DWexMm
 
 Example of Async in chapter 4.
+
+## To Be Added
+
+user registration
+
+cURL with jq for pretty printing via pipe and current directory.
+
+curl 192.168.99.100/phones/123 | jq .
+
+conditional get: server.use(restify.conditionalRequest());
+
+Last-Modified / If-Modified-Since
+
+ETag / If-None-Match
+
+specifying format (headers/extension) - show extension using regex...
+
+## Not Covered
+
+handling errors
+
+status codes
+
+versioning
+
+pagination and partial response, specifying fields
+
+responses without resources
+
+search
+
+oauth
+
+CORS

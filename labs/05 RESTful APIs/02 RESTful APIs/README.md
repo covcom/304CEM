@@ -102,40 +102,6 @@ In the previous exercises we have sent _json formatted_ data in our request body
 2. Modify the app to reject files if they are larger than 3MB
 3. Modify the app to reject any files that are not valid images
 
-## To Be Added
-
-user registration
-
-cURL with jq for pretty printing via pipe and current directory.
-
-curl 192.168.99.100/phones/123 | jq .
-
-conditional get: server.use(restify.conditionalRequest());
-
-Last-Modified / If-Modified-Since
-
-ETag / If-None-Match
-
-specifying format (headers/extension) - show extension using regex...
-
-## Not Covered
-
-handling errors
-
-status codes
-
-versioning
-
-pagination and partial response, specifying fields
-
-responses without resources
-
-search
-
-oauth
-
-CORS
-
 ## Presentation
 
 https://goo.gl/2mgcLc
