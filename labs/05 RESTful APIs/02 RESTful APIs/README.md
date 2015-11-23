@@ -102,14 +102,9 @@ In the previous exercises we have sent _json formatted_ data in our request body
 2. Modify the app to reject files if they are larger than 3MB
 3. Modify the app to reject any files that are not valid images
 
-
-promises
+## To Be Added
 
 user registration
-
-serving static files
-
-## To Be Added
 
 cURL with jq for pretty printing via pipe and current directory.
 
