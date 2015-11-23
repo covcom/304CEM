@@ -60,7 +60,7 @@ Try running the app (index.js). Notice we get an error:
 const [name, ext] = photo.name.split('.')
 	      ^
 ```
-It ooks like Node doesn't like the use of the **destructuring assignment**. This is an ECMA6 construct to simplify splitting arrays. Many of these new features are optionally supported through the use of _startup flags_. To see a list of all the _ECMA6 (Harmony)_ flags you need to list all the flags then apply a filter to these using _grep_:
+It looks like Node doesn't like the use of the **destructuring assignment**. This is an ECMA6 construct to simplify splitting arrays. Many of these new features are optionally supported through the use of _startup flags_. To see a list of all the _ECMA6 (Harmony)_ flags you need to list all the flags then apply a filter to these using _grep_:
 ```
 node --v8-options | grep harmony
 ```
@@ -86,10 +86,13 @@ In the previous exercises we have sent _json formatted_ data in our request body
   - notice that the response includes both information about the image/caption and a link to the image
 	- the link won't work (the url doesn't match your server name), modify the gallery script to correct this.
 	- what route allows us to view static content?
-5. Read the `gallery.js` script.
+5. Try sending the request without either the file or caption.
+  - what response do you get?
+  - where is this triggered from?
+6. Read the `gallery.js` script.
   - try and identify where the console output comes from
 	- open the `photos/` and `persist/` directories, how is this data generated?
-6. upload two images with the same name, what happens?
+7. upload two images with the same name, what happens?
 
 ### 3.2.1 Test Your Knowledge
 
