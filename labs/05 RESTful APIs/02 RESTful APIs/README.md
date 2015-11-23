@@ -29,7 +29,7 @@ Open the `promises/index.js` file and study the code carefully.
 3. finally add this third function to each of the four promise chains.
 4. how could you achieve the same result without needing a third function (hint: you can add the same promise multiple times).
 
-## Application of Promises
+## 2 Application of Promises
 
 In this activity you will learn more about how NodeJS can be used to develop more sophisticated APIs. One of the key techniques is the use of _promises_ which you covered in **topic 2**. You will start by creating user accounts by adding a new resource to the _accounts_ collection.
 
@@ -49,13 +49,60 @@ Open the script files and study them carefully to understand the program flow as
 3. you should now get an error indicating that the image is missing. Click on the **Form Data** button and switch the first field from _text_ to _file_. You can now select a **png** image to upload.
 4. next you will need to supply more data.
 
+## 3 Uploading Files
+
+It is often a requirement to upload files to an API. In the **gallery** example you will see how this can be achieved. Open the `gallery/` directory and read through the `index.js` _route_ file.
+
+### 3.1 Startup Flags
+
+Try running the app (index.js). Notice we get an error:
+```
+const [name, ext] = photo.name.split('.')
+	      ^
+```
+It ooks like Node doesn't like the use of the **destructuring assignment**. This is an ECMA6 construct to simplify splitting arrays. Many of these new features are optionally supported through the use of _startup flags_. To see a list of all the _ECMA6 (Harmony)_ flags you need to list all the flags then apply a filter to these using _grep_:
+```
+node --v8-options | grep harmony
+```
+In our app we would like to make use of the _destructuring assignment_, lets search for the appropriate flag.
+```
+node --v8-options | grep destructuring
+  --harmony_destructuring (enable "harmony destructuring" (in progress))
+```
+So now we know which flag to use we can add this when we run our script.
+```
+node --harmony_destructuring index.js
+```
+And now the app runs without errors.
+
+### 3.2 Uploading 
+
+In the previous exercises we have sent _json formatted_ data in our request body. To upload files we need to switch to _enctype=multipart/form-data_. In **Postman** make sure you have chosen POST then:
+
+1. switch the body type from _raw_ to _form-data_ by selecting the first radio button.
+2. Set the first row's _Key_ to `photo` and choose **File** from the dropdown list. Browse to a suitable image.
+3. Set the second row's _Key_ to caption and enter a suitable caption for your photo.
+4. Send the request.
+  - notice that the response includes both information about the image/caption and a link to the image
+	- the link won't work (the url doesn't match your server name).
+	- what route allows us to view static content?
+5. Read the `gallery.js` script.
+  - try and identify where the console output comes from
+	- open the `photos/` and `persist/` directories, how is this data generated?
+6. upload two images with the same name, what happens?
+
+### 3.2.1 Test Your Knowledge
+
+1. Use the `csprng` module to generate unique names for each uploaded file
+  - how can you control the length of the filename?
+	- what would you consider a suitable length?
+2. Modify the app to reject files if they are larger than 3MB
+3. Modify the app to reject any files that are not valid images
+
+
 promises
 
-upload images
-
 user registration
-
-coupling and cohesion.
 
 serving static files
 
