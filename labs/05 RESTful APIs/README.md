@@ -19,4 +19,4 @@ https://goo.gl/ePDNom
 Use the following table to quickly find the information you need.
 
 saving objects to the filesystem
-> 2.3 gallery
+- 2.3 gallery
