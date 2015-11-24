@@ -101,6 +101,38 @@ In the previous exercises we have sent _json formatted_ data in our request body
 2. Modify the app to reject files if they are larger than 3MB
 3. Modify the app to reject any files that are not valid images
 
+## 4 Authentication
+
+In this activity you will be learning about how to implement Basic HTTP authentication. Start by running the `auth/index.js` script and accessing the running API using _Chrome Postman_.
+
+We can create an account by making a `POST /accounts` request, passing the username and password in the `Authorization` header. You can generate the Basic auth hash using the _Postman_ interface but lets understand how this can be done manually.
+
+1. we take the username and password eg. `testuser` and `p455w0rd`
+2. we combine these into a single string separated by a colon (:) eg. `testuser:p455w0rd`
+3. we then base64 encode this string, eg. `dGVzdHVzZXI6cDQ1NXcwcmQ=`
+4. we prepend this with the string `Basic `, eg. `Basic dGVzdHVzZXI6cDQ1NXcwcmQ=`
+5. we add this value to the request as the `Authorization` header.
+
+Lets try to add some accounts:
+
+1. create an account:
+  - try making the request without the `Authorization` header.
+  - with username: testuser and password: p455w0rd
+  - try creating the same account again.
+  - create a second account with username: uniuser password: rubbishpass
+2. open the `persist/` directory and examine the two files.
+3. now make a `GET /accounts` request:
+  - make the request without the `Authorization` header.
+  - try using valid credentials
+  - try with invalid credentials
+
+### 4.1 Test Your Knowledge
+
+1. implement a `PUT /accounts` route which allows the user to upload more account details such as:
+  - name
+  - email address
+2. implement a `DELETE /accounts` route to allow the user the delete their account.
+
 ## Presentation
 
 https://goo.gl/2mgcLc
