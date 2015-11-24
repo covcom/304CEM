@@ -12,7 +12,9 @@ Example of Async in chapter 4.
 
 ## To Be Added
 
-user registration
+user registration (worksheet 2)
+
+search using url attributes (worksheet 2) - books example
 
 cURL with jq for pretty printing via pipe and current directory.
 
@@ -26,6 +28,8 @@ ETag / If-None-Match
 
 specifying format (headers/extension) - show extension using regex...
 
+pagination and partial response, specifying fields
+
 ## Not Covered
 
 handling errors
@@ -34,11 +38,7 @@ status codes
 
 versioning
 
-pagination and partial response, specifying fields
-
 responses without resources
-
-search
 
 oauth
 
