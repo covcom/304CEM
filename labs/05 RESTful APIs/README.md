@@ -13,3 +13,10 @@ Your Homework is to learn the principles behind API design. You should start by 
 ## Presentation
 
 https://goo.gl/ePDNom
+
+## Content
+
+Use the following table to quickly find the information you need.
+
+| Subject | Worksheet | Exercise |
+| saving objects to the filesystem | 2.3 | gallery |
