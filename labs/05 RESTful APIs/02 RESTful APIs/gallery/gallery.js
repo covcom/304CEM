@@ -33,11 +33,11 @@ exports.addPhoto = (request, callback) => {
 	console.log(JSON.stringify(data, null, 2))
 	/* and we then save the object to the filesystem. */
 	storage.setItem(name, data)
-	/* finally we send the data back with a link to the image. The first parameter is used for the error so it is set to null. */
-	callback(null, {url: 'http://localhost:8080/photos/'+photo.name, data: data})
+	/* finally we send the data back with a link to the image using the 'host' property to ensure the url matches the server the script is running on. The first parameter is used for the error so it is set to null. */
+	callback(null, {url: 'http://'+request.headers.host+'/photos/'+photo.name, data: data})
 }
 
-exports.getAllPhotos = callback => {
+exports.getAllPhotos = (request, callback) => {
 	console.log('getAll')
 	/* We retrieve the array of stored items then use the 'map()' function to add the image url. */
 	const data = storage.values().map( item => {

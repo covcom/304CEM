@@ -4,6 +4,7 @@
   "description": "Allows photos to be uploaded to an online gallery",
   "main": "index.js",
   "scripts": {
+    "start": "node --harmony_destructuring index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Mark J Tyers",

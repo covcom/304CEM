@@ -18,7 +18,7 @@ server.post('/gallery', (req, res) => {
 })
 
 server.get('/gallery', (req, res) => {
-  gallery.getAllPhotos((err, data) => {
+  gallery.getAllPhotos(req, (err, data) => {
     res.setHeader('content-type', 'application/json')
     if (err) {
       res.send(400, {status: 'error', message: err.message })

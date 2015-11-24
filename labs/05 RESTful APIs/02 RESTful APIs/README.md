@@ -73,7 +73,7 @@ So now we know which flag to use we can add this when we run our script.
 ```
 node --harmony_destructuring index.js
 ```
-And now the app runs without errors.
+And now the app runs without errors. Since you may need multiple flags the start command can become quite long and it is easy to forget a flag and cause the app to throw errors. To avoid this you should always add a _start_ key to the _scripts_ object in your `package.json` and run your app using `npm start`. Locate this command in the file.
 
 ### 3.2 Uploading 
 
@@ -84,7 +84,6 @@ In the previous exercises we have sent _json formatted_ data in our request body
 3. Set the second row's _Key_ to caption and enter a suitable caption for your photo.
 4. Send the request.
   - notice that the response includes both information about the image/caption and a link to the image
-	- the link won't work (the url doesn't match your server name), modify the gallery script to correct this.
 	- what route allows us to view static content?
 5. Try sending the request without either the file or caption.
   - what response do you get?
