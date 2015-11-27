@@ -125,4 +125,7 @@ Now you are ready to start learning. Open the **labs** directory and follow the 
 This is the presentation for the API completion week.
 
 https://goo.gl/ig5Ak5
- safa
+
+## Video
+
+https://youtu.be/yV0Z8g5QWZ0
