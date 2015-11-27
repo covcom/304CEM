@@ -17,5 +17,5 @@
 	"node": true,
 	"asi": true,
 	"esnext": true,
-    "predef": [ "describe", "it", "expect", "xit", "document", "Rx", "google", "XMLHttpRequest", "navigator", "Promise", "process", "storage" ]
+    "predef": [ "describe", "it", "expect", "xit", "document", "Rx", "google", "XMLHttpRequest", "navigator", "Promise", "process", "storage", "angular" ]
 }
