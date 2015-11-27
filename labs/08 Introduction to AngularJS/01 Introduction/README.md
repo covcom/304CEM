@@ -17,14 +17,26 @@ AngularJS is a modern opinionated client-side JavaScript framework developer by 
 
 In this first task you will learn about two of the most important features of AngularJS apps, [data binding](https://docs.angularjs.org/guide/databinding) and [directives](https://docs.angularjs.org/guide/directive). As you read through the instructions take time to click on the links provided to view the official [AngularJS documentation](https://docs.angularjs.org/api).
 
-We will start our exploration with a very simple _AngularJS_ application. Open the `data_binding.html` in a new browser tab. Enter some values in the fields and click the button. The app combines the username and password fields and generates a Base64 hash, useful for basic http authentication headers. Notice:
+We will start our exploration with a very simple _AngularJS_ application.
 
-1. As you enter a value in the username field it automatically gets added to the page heading.
+### 1.1 Viewing an AngularJS Page
+
+Assuming you are using Cloud 9 as your IDE there are a number of ways to run an AngularJS app. You should try each approach.
+
+1. The simplest way is to right-click on the `index.html` file and choose _preview_. This will open a new tab in Cloud9 and run the page. The downside of this is that you will not have access to the debugger or the console.
+2. A better way is to launch the built-in Apache web server which will allow you to access the page in a new tab in the Chrome Browser. This will give you access to the full suite of developer tools. Open the `index.html` file then click on the **Run** button. After starting the _Apache_ server you will be shown a link which you can paste into a new browser tab.
+
+Open the `data_binding/index.html` script in a new browser tab and open the console so you can see any messages printed. Enter some values in the fields and click the button. The app combines the username and password fields and generates a Base64 hash, useful for basic http authentication headers. Notice:
+
+1. There are two versions of the AngularJS code.
+  - the standard version `angular.js` should be used when debugging your scripts, this is currently being loaded. The current version (1.4.8) is 1.1MB in size.
+  - the _minified_ version is 148KB and shound be used in your live site.
+2. As you enter a value in the username field it automatically gets added to the page heading.
   - this is called **data binding**
-2. After entering a username and password clicking on the button generates and displays the encoded data.
+3. After entering a username and password clicking on the button generates and displays the encoded data.
   - this triggers a function that calculates the base64 string
   - the string is passed back to the page for display.
-3. The function updates the `encoded` property which automatically updates the view.
+4. The function updates the `encoded` property which automatically updates the view.
 
 Open the script and read through it to fully understand the structure of an _AngularJS_ app.
 
@@ -48,7 +60,7 @@ In the first example all the code was in the same html page. This is useful to u
 
 1. Open the `basic_math/` directory and open `index.html` in a new tab in your browser.
 2. Try modifying the values in the form, what happens?
-  - you are seeing the two-way data binding feature of AngularJS
+  - remember this is an example of AngularJS two-way data-binding.
 3. Open the code in the `index.html` file and examine the `<body>` tag.
   - the `ng-app` attribute defines the boundaries of the _AngularJS application_, in this case it is enclosed in the _body_ section of the page.
   - the `ng-controller` defines the html block to be controlled by the specified controller

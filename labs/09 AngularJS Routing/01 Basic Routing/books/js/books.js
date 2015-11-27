@@ -1,5 +1,9 @@
+/*global angular  */
+
+/* we 'inject' the ngRoute module into our app. This makes the routing functionality to be available to our app. */
 var myApp = angular.module('myApp', ['ngRoute'])
 
+/* the config function takes an array. */
 myApp.config( ['$routeProvider', function($routeProvider) {
   $routeProvider
     .when('/search', {
