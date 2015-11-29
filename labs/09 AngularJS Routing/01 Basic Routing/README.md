@@ -2,16 +2,14 @@
 
 Now you have mastered the concepts of binding and directives we can learn about how AngularJS can be used to develop complex [single-page applications](https://en.wikipedia.org/wiki/Single-page_application) (SPA). A single-page application behaves like a desktop app where content is dynamically loaded as needed without the entire page being downloaded and replaced. You will have already experienced SPAs through tools such as _Google Drive_ and _Outlook_.
 
-AngularJS is designed to support the development of SPAs and in this worksheet you will get hands-on experience with the technologies that make this happen. These are:
-1. Routing
-2. Deep Linking
-3. Web Storage (this is a native HTML5 technology)
+AngularJS is designed to support the development of SPAs and in this worksheet you will get hands-on experience with the technologies that make this happen. These are **Routing** and the **Web Storage API**
 
 You will be using the **Books App** to learn about theses important concepts. Locate the `books/index.html` file and open the app in a new Chrome browser tab. You should also open the _console window_ to allow you to view any messages.
 
 ## 1 Routing
 
 Open the `books/index.html` file.
+
 1. this needs both the standard `angular.js` file and the `angular-routes.js` file.
   - the second file is required to support the development of SPAs
   - both files are hosted locally.
