@@ -2,9 +2,9 @@
 <html>
 <head>
   <title>Books</title>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<script src="js/angular.js"></script>
   <!-- to use the 'ngRoute' module you need to load the angular-route library. -->
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.min.js"></script>
+	<script src="js/angular-route.js"></script>
 	<script src="js/books.js"></script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -13,9 +13,7 @@
 	<h2>Books</h2>
 	<p>Jump to the <a href="#search">search</a> or <a href="#favourites">favourites</a> page</p>
 	<div ng-view>
+		<!-- this is where the content will be displayed... -->
 	</div>
 </body>
 </html>
-
-<!-- http://www.webcodegeeks.com/javascript/angular-js/angular-js-routing-example/ -->
-<!-- http://viralpatel.net/blogs/angularjs-routing-and-views-tutorial-with-example/ -->
