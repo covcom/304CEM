@@ -5,7 +5,7 @@ const readline = require('readline-sync')
 var items = []
 
 do {
-	var input = String(readline.question('enter command: ')).trim() // try switching for a let...
+	var input = String(readline.question('enter command: ')).trim() // try switching for a let... or a const...
 	if (input.indexOf('add ') === 0) {
     let space = input.indexOf(' ')
     let item = input.substring(space).trim()
