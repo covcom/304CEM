@@ -3,7 +3,7 @@ const readline = require('readline-sync')
 const request = require('request')
 const url = 'http://api.openweathermap.org/data/2.5/weather'
 
-const location = String(readline.question('location: ')).trim()+',GB'
+const location = String(readline.question('location: ')).trim()+',GB' //otherwise defaults to the US...
 const query_string = {q: location, units: "metric", appid: "44c39f3fa462f86b3fc88f5678e5c5ff"}
 request.get({url: url, qs: query_string}, function(err, res, body) {
   try {
