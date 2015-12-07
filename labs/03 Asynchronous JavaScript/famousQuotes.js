@@ -7,7 +7,7 @@ const cheerio = require('cheerio')
 const author = String(readline.question('author name: ')).trim()
 
 var page = 1
-const url = 'http://www.quotationspage.com/search.php3?startsearch=Search&homesearch='+author+'page='+page
+const url = 'http://www.quotationspage.com/search.php3?startsearch=Search&homesearch='+author+'&page='+page
 console.log(url)
 
 request(url, function(err, res, body) {
