@@ -9,8 +9,8 @@ try {
 		throw 'missing parameter'
 	}
 	let address = process.argv[2]
-	const url_string = 'https://maps.googleapis.com/maps/api/geocode/json?region=gb&address='+address
-	const query_string = {units: "metric", appid: "44c39f3fa462f86b3fc88f5678e5c5ff"}
+	const url_string = 'https://maps.googleapis.com/maps/api/geocode/json'
+	const query_string = {region: 'gb', address: address, units: "metric", appid: "44c39f3fa462f86b3fc88f5678e5c5ff"}
 	request.get({url: url_string, qs: query_string}, function(err, res, body) {
 	if (err) {
 		throw 'could not complete request'
