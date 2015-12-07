@@ -52,6 +52,8 @@ node -p process.versions.v8
 
 ## 2 A Simple Example
 
+In the following examples we will be using a _node module_ to capture user input.
+
 Load up the `todo.js` script and read through it to understand how it works. There are lots of code comments to assist you. Note:
 1. the use of **const** instead of var. Node already supports many ECMA6 features, there is a full [list](https://nodejs.org/en/docs/es6/) available so you know what is supported.
 2. the work is handled by a callback to avoid blocking the main thread.
