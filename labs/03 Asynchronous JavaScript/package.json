@@ -11,6 +11,7 @@
   "dependencies": {
     "cheerio": "^0.19.0",
     "readline-sync": "^1.2.21",
-    "request": "^2.67.0"
+    "request": "^2.67.0",
+    "sync-request": "^2.1.0"
   }
 }
