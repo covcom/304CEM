@@ -58,13 +58,16 @@ Load up the `todo.js` script and read through it to understand how it works. The
 1. the use of **const** instead of var. Node already supports many ECMA6 features, there is a full [list](https://nodejs.org/en/docs/es6/) available so you know what is supported.
 2. the work is handled by a callback to avoid blocking the main thread.
 
-Run the script by clicking on the **Run** button in the top toolbar. Once running you can use the `add` command to add new items to the list and the `list` command to print out the list items. To quit the script and return to the terminal prompt press `ctrl+C`.
+Before you can run the script you need to install the _module dependencies_. These are listed in the `package.json` file. This is formatted as a `json` document, you will learn mre about this in a later topic. Open this up and look for the `dependences` array, it specifies that we need to install the `readline-sync` module. To install this you need to use the _terminal_ to navigate to the directory then run `npm install`. Notice that you now have a new directory called `node_modules/`.
+
+Return to the `todo.js` script and run it by clicking on the **Run** button in the top toolbar. Once running you can use the `add` command to add new items to the list and the `list` command to print out the list items. The final command will terminate the application.
 ```
 node index.js
 add cheese
 add bread
 add butter
 list
+exit
 ```
 ### 2.1 Cloud9 Debugger
 
@@ -89,3 +92,20 @@ You can read more about Cloud9 debugger capabilities in their [online documentat
 1. modify the code to prevent duplicate items being added. You will need to use the [`Array.indexOf()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) method.
 2. create a **remove** option so an item such as *cheese* can be removed using the syntax `remove cheese`. You may need to use the [`Array.splice()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) method.
 3. The current version is case sensitive. Modify the code so that items are converted to lowercase before being added or searched for. You will need to use the [`String.toLowerCase()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase) method.
+
+## 3 Exception Handling
+
+When JavaScript executes code errors and exceptions may occur. These may be due to incorrect user input or a broken network connection for example. JavaScript includes a rich set of tools for handling these.
+
+1. Errors are serious problems that normally mean the application will terminate
+2. Exceptions on the other hand are problems that can be handled by the program logic and thus prevent the application from terminating. In this task we will be focussing on _exception handling_.
+
+Open the `contact.js` script and study it carefully, as before, the code includes detailed comments to explain how it works.
+
+### 3.1 Test Your Knowledge
+
+
+## 4 Switch Statements
+
+
+### 4.1 Test Your Knowledge

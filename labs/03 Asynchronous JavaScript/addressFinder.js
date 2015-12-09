@@ -11,7 +11,7 @@ try {
 	let address = process.argv[2]
 	const url_string = 'https://maps.googleapis.com/maps/api/geocode/json'
 	const query_string = {region: 'gb', address: address, units: "metric", appid: "44c39f3fa462f86b3fc88f5678e5c5ff"}
-	request.get({url: url_string, qs: query_string}, function(err, res, body) {
+	request.get({url: url_string, qs: query_string}, (err, res, body) => {
 		if (err) {
 			throw 'could not complete request'
 		} else {
