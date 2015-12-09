@@ -9,7 +9,7 @@ const author = String(readline.question('author name: ')).trim()
 const url = 'http://www.quotationspage.com/search.php3?startsearch=Search&homesearch='+author+'&page='+1
 console.log(url)
 
-request(url, function(err, res, body) {
+request(url, (err, res, body) => {
 	try {
 		const $ = cheerio.load(body, {decodeEntities: false})
 		const quoteCount = $('small').text().match(/\d+/g).pop()
@@ -20,6 +20,6 @@ request(url, function(err, res, body) {
 			console.log(element.children[0].data)
 		})
 	} catch(err) {
-		
+		console.log(err)
 	}
 })

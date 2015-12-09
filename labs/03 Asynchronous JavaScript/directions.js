@@ -9,7 +9,7 @@ const destination = String(readline.question('finish address: ')).trim()
 const url = 'https://maps.googleapis.com/maps/api/directions/json?region=gb&origin='+origin+'&destination='+destination
 console.log(url)
 
-request.get(url, function(err, res, body) {
+request.get(url, (err, res, body) => {
 		if (err) {
 			throw 'could not complete request'
 		} else {
