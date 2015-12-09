@@ -138,3 +138,26 @@ https://goo.gl/ig5Ak5
 ## Video
 
 https://youtu.be/yV0Z8g5QWZ0
+
+## Not Using Cloud9?
+
+It is assumed that you will complete the worksheets and write your assignment using the _Cloud9_ IDE. You may however prefer to work locally on your computer. This section contains hints and tips to help you do this.
+
+### Visual Studio Code
+
+One of the best cross-platform code editors is [Visual Studio Code](https://code.visualstudio.com) by Microsoft. If you are planning on using it to develop _NodeJS_ apps you need to complete the following steps.
+
+Install the **Typescript Definition Language** tool and use it to install the _NodeJS_ definitions. This will add node to the autocomplete.
+```
+npm install tsd -g
+tsd query -r -o -a install node
+```
+Add support for ECMA6 by creating a `jsconfig.json` file and adding the following:
+```
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "commonjs"
+    }
+}
+```

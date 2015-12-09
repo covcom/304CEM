@@ -30,24 +30,24 @@ After checking the current version, our next task is to list all the versions we
 node -v
   v0.10.35
 nvm list-remote
-nvm install 5.1.0
+nvm install 5.2.0
 node -v
-  v5.1.0
+  v5.2.0
 ```
 Try closing the current terminal window and opening another one. If you check the current version on Node you will see that it has reverted back to the previously installed one! This is because the old version is flagged as the _default_. To fix this we need to set our new version as default.
 ```
 node -v
   v0.10.35
-nvm alias default 4.2.1
+nvm alias default 5.2.0
 node -v
-  v4.2.1
+  v5.2.0
 ```
 To check that this has has the desired effect, close the current terminal window, open a new one and check the current node version.
 
 Node is based on the Chrome v8 runtime and supports any features supported by that runtime. Sometimes its helpful to know which runtime version is included in the NodeJS install. Thankfully this is straightforward to find out.
 ```
 node -p process.versions.v8
-  4.5.103.35
+  4.6.85.31
 ```
 
 ## 2 A Simple Example
