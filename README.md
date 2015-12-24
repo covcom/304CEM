@@ -1,4 +1,4 @@
-<img align="right" src="labs/01 JavaScript Language/01 Tools/images/uni_logo.png">
+<img align="right" src="01 Introduction to JavaScript/images/uni_logo.png">
 .
 
 .
@@ -14,17 +14,36 @@ You will be shown how to use an online IDE called **Cloud 9**, however you are e
 
 ## 1.1 Creating a Cloud9 Workspace
 
-Start by creating yourself an account on **Cloud 9** (https://c9.io) and logging in. Create a new workspace by clicking on the *create a new workspace* button. Give it the name **COVUNI** and the  description *Developing the Modern Web 2*. Choose the **private** option and the default **custom** template.
+Start by creating yourself an account on **Cloud 9** (https://c9.io) and logging in. Create a new workspace by clicking on the *create a new workspace* button. Give it the name **covuni** and the  description *Full-Stack Development*. Choose the **private** option and the default **custom** template.
 
-The most important step is to enter the 305CDE Git Repository URL in the box *Clone from Git or Mercurial URL*. You should enter:
+Now click on the **Create Workspace** button. This will create a new project.
 
-`https://github.com/covcom/305CDE.git`
+Take a moment to configure your Cloud 9 editor. Open the preferences screen from the **Cloud 9 > Preferences** menu.
 
-Now click on the **Create Workspace** button. This will create a new project and clone the contents of the 305CDE GitHub repository.
+1. in the **Code Editor** section
+  - uncheck the _soft tabs_ box and set the tab size to 2.
+  - switch off **Autodetect tab size on load**.
+  - switch on **On save strip whitespace**
+2. in the **Hints and Warnings** section
+  - switch off **Mark missing optional semicolons**
+  - make sure **customise javascript warnings with .eshintrc** is switched on
+
+Locate the _Terminal_ window at the bottom of the screen. We will use this to work with the _Git_ version control system. Start by cloning the lab materials:
+```
+git clone https://github.com/covcom/305CDE.git
+```
+This will clone the remote repository containing the lab materials into a directory called `305CDE/`, you should be able to see this in the workspace filetree. To run Git commands we need to be in the new `305CDE/` directory.
+```
+cd 305CDE/
+git status
+```
+This command prints a status message from the Git repository.
 
 ## 1.2 Creating a New Repository
 
-Now create an account and log into **GitLab** (https://gitlab.com). Create yourself a new empty repository by clicking on the green **New project** button in the top-right corner of the page. In the *project path* you should enter **305CDE** and in the *Description* field enter *Developing the Modern Web 2*. Set the *visibility level* to **Private** and click on **Create Project*. You will be taken to the project home screen.
+At the moment we are working on a copy of the repository hosted on GitHub. As we complete the lab activities it is important to keep a backup copy of our files. This can't be backed up on the GitHub repository since it is read-only. The solution is to create our own remote repository (on GitLab) and push the changes to this.
+
+Create an account and log into **GitLab** (https://gitlab.com). Create yourself a new empty repository by clicking on the green **New project** button in the top-right corner of the page. In the *project path* you should enter **305CDE** and in the *Description* field enter *Developing the Modern Web 2*. Set the *visibility level* to **Private** and click on **Create Project*. You will be taken to the project home screen.
 
 Next you need to copy the repository URL to your clipboard. It should be similar to:
 
@@ -99,13 +118,13 @@ git log origin/master..HEAD
 
 ## 1.7 Updating the Cloud Server
 
-Finally, before starting the labs you should ensure that the required packages are installed on your cloud server. This is running **Ubuntu** and so we can use the built-in _package manager_ (apt) for this. Cloud 9 comes with several languages pre-installed (PHP, Python and Java). Lets search for any packages linked to these three languages.
+Finally, before starting the labs you should ensure that any unnecessary packages are removed on your cloud server. This is running **Ubuntu** and so we can use the built-in _package manager_ (apt) for this. Cloud 9 comes with several languages pre-installed (PHP, Python and Java). Lets search for any packages linked to these three languages.
 ```
 dpkg --get-selections | grep php
 dpkg --get-selections | grep python
 pkg --get-selections | grep jre
 ```
-We should now remove the software we don't need. This will both increase the space available on the disk and also increase the server performance. _Autoremove_ removes any packages no longer required and cleans up the server.
+We should now remove the software we _don't_ need. This will both increase the space available on the disk and also increase the server performance. _Autoremove_ removes any packages no longer required and cleans up the server.
 ```
 sudo apt-get remove php5 python3 openjdk-7-jre
 sudo apt-get autoremove
@@ -118,14 +137,10 @@ sudo apt-get install -y libkrb5-dev
 
 ## 1.7 Next Steps
 
-Now you are ready to start learning. Open the **labs** directory and follow the instructions given.
+Now you are ready to start learning. Open the directory containing the first topic and follow the instructions given.
 
 ## Presentation
 
 This is the presentation for the API completion week.
 
 https://goo.gl/ig5Ak5
-
-## Video
-
-https://youtu.be/yV0Z8g5QWZ0

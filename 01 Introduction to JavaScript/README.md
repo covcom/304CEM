@@ -50,13 +50,11 @@ node -p process.versions.v8
   4.6.85.31
 ```
 
-## 2 A Simple Example
+## 2 Variables and Scope
 
 In the following examples we will be using a _node module_ to capture user input.
 
-Load up the `todo.js` script and read through it to understand how it works. There are lots of code comments to assist you. Note:
-1. the use of **const** instead of var. Node already supports many ECMA6 features, there is a full [list](https://nodejs.org/en/docs/es6/) available so you know what is supported.
-2. the work is handled by a callback to avoid blocking the main thread.
+Load up the `todo.js` script and read through it to understand how it works. There are lots of code comments to assist you.
 
 Before you can run the script you need to install the _module dependencies_. These are listed in the `package.json` file. This is formatted as a `json` document, you will learn mre about this in a later topic. Open this up and look for the `dependences` array, it specifies that we need to install the `readline-sync` module. To install this you need to use the _terminal_ to navigate to the directory then run `npm install`. Notice that you now have a new directory called `node_modules/`.
 
@@ -70,9 +68,26 @@ list
 exit
 ```
 
+### 2.1 Variables and Constants
+
+There are three ways to declare a variable in the latest version of JavaScript (ECMA6).
+
+1. Standard variables are _function scoped_ which means they are available anywhere within the function in which they are declared. These are declared with the `var` keyword.
+2. Immutable variables (constants) are also function scoped. These are declared using the `const` keyword.
+3. Finally, any variable declared with the `let` keyword is _block scoped_. This means the variable is only visible within its block (defined by curly braces).
+
+### 2.2 Test Your Knowledge
+
+1. locate the `input` variable declaration (just inside the `do` loop)
+  - substitute it for a constant by replacing the `var` with `const`, what effect does this have.
+  - now substitute a block-scoped variable by substituting `const` for `let`, what effect does this have?
+2. the array at the top of the script is defined using `var`. What happens if you make this immutable (use `const`)?
+3. Items are added to the array using its `push()` method.
+  - substute the [unshift](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift) method. How does this change the script?
+
 ## 3 Linting
 
-JavaScript is a pwerful language and includes a number of powerful features but it also includes features that, whilst they may produce working code, will make your code difficult to read and debug! A **linter** is a program that analyses your scripts for _programmatic_ and _stylistic_ errors and will flag up anything that may cause problems. They define a _professional subset_ of the language and reject any code that doesn't meet that standard.
+JavaScript is a powerful language and includes a number of powerful features but it also includes features that, whilst they may produce working code, will make your code difficult to read and debug! A **linter** is a program that analyses your scripts for _programmatic_ and _stylistic_ errors and will flag up anything that may cause problems. They define a _professional subset_ of the language and reject any code that doesn't meet that standard.
 
 There are a number of _linters_ available for the JavaScript language. The original one was written by Douglas Crockford (the author of JavaScript: The Good Parts). This enforced _his_ idea  of good JavaScript and was notorously not configurable! There are now a number of popular linters available, your choice should be based on what will run in your IDE as well as your personal preferences. The most popular linters are:
 
@@ -82,13 +97,21 @@ There are a number of _linters_ available for the JavaScript language. The origi
 
 ### 3.1 Linter Configuration
 
-ESLint is completely configurable through the `package.json` file you examined earlier. Locate the `eslintConfig` object.
+ESLint is completely configurable through a configuration file `.eslintrc` which is located in the `01 Introduction to NodeJS` directory. By default any file or directory starting with the period (.) character is hidden. To display hidden files and directories click on the **gear icon** at the top of the _Documents Tree_ and choose _Show Hidden Files_.
 
 1. the **env** object imports groups of pre-defined global variables based on the _environment_ they are used in. In our example we will be writing scripts using the NodeJS environment so we want the linter to recognise any NodeJS global variables.
 2. the **rules** object defines any additional rules we want to enforce. In this example we are specifying that we _don't want semicolons_ at the end of each line, that we will use a 2 space tab for indenting, we will use single quotes for strings and that we are using UNIX line endings.
 
+### 3.2 Test Your Knowledge
 
-## 2.1 Cloud9 Debugger
+Open the `membership.js` file. Run the script, it works correctly.
+
+Notice the _red error circles_ and _yellow warning triangles_ in the left margin. If you hover the mouse pointer over these you can find out more. These
+
+1. locate any _errors_ in the script and fix
+2. locate the _warnings_ and fix the code to remove these
+
+## 4 Cloud9 Debugger
 
 The **Cloud9** IDE includes a powerful debugger. Lets test how this works. You should then make use of it when attempting the *Test Your Knowledge* tasks.
 
@@ -124,7 +147,3 @@ Open the `contact.js` script and study it carefully, as before, the code include
 ### 3.1 Test Your Knowledge
 
 
-## 4 Switch Statements
-
-
-### 4.1 Test Your Knowledge
