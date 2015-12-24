@@ -23,3 +23,24 @@ There are a number of editors you could use to write your JavaScript apps. Curre
 1. [Visual Studio Code](https://code.visualstudio.com)
 2. [Atom](https://atom.io)
 3. [Brackets](http://brackets.io) (download the version _without_ extract)
+
+### Visual Studio Code
+
+To add editor support for ECMA6 you need to create a file called `jsconfig.json` in the root of your project (the `305CDE/` directory) which should contain:
+
+```
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "commonjs"
+    }
+}
+```
+The editor supports **TypeScript Definition Files** which allow you to add _intellisense_ support for additional languages and frameworks.
+
+1. Make sure you have updated **NodeJS** to the latest version before you start
+2. Globally install the [TSD](http://definitelytyped.org/tsd/) package using `npm install tsd -g`.
+3. install support for NodeJS using `tsd query node --action install`.
+4. install support for the Jasmine testing framework using `tsd query jasmine --action install`
+
+Visual Studio Code also includes a powerful debugger available through the Debug tab.
