@@ -18,3 +18,4 @@ labs/07 NodeJS Testing/01 Unit Testing/todo/coverage/
 .settings
 .vscode/
 mongod
+jsconfig.json
