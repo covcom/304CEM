@@ -2,6 +2,7 @@ resources/*.git
 node_modules/
 persist/
 coverage/
+out/
 data/
 photos/
 npm-debug.log
