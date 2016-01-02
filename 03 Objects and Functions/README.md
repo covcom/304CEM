@@ -1,2 +1,0 @@
-
-# Objects and Functions
