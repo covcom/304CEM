@@ -30,17 +30,17 @@ After checking the current version, our next task is to list all the versions we
 node -v
   v0.10.35
 nvm list-remote
-nvm install 5.2.0
+nvm install 5.4.1
 node -v
-  v5.2.0
+  v5.4.1
 ```
 Try closing the current terminal window and opening another one. If you check the current version on Node you will see that it has reverted back to the previously installed one! This is because the old version is flagged as the _default_. To fix this we need to set our new version as default.
 ```
 node -v
   v0.10.35
-nvm alias default 5.2.0
+nvm alias default 5.4.1
 node -v
-  v5.2.0
+  v5.4.1
 ```
 To check that this has has the desired effect, close the current terminal window, open a new one and check the current node version.
 
