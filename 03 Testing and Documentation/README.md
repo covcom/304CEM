@@ -9,7 +9,7 @@ cd 305CDE
 git pull upstream
 ```
 
-## 1 Unit Testing
+## 1 The Debugger
 
 Building robust code is vitally important which means it should be frequently tested against the agreed spec. You will have already been shown the principles of Test-Driven Development (TDD) in the module 205CDE but in this module you will be taking your skills to an entirely new level and building the process into everything you do.
 
