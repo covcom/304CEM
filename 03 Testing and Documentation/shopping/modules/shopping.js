@@ -77,9 +77,9 @@ exports.decrement = (item, count) => {
 		throw new Error('item not in list')
 	}
 	if (isNaN(count)) {
-    throw new Error('second parameter should be a number')
-  }
-  count = parseInt(count)
+		throw new Error('second parameter should be a number')
+	}
+	count = parseInt(count)
 	let current = data.get(item)
 	if (current.qty <= count) {
 		data.delete(item)
