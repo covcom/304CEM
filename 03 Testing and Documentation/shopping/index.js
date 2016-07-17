@@ -14,11 +14,12 @@ do {
 	}
 	if (input.indexOf('list') === 0) {
 		const items = list.getAll()
+		console.log(`ITEMS ${items[0]}`)
 		let i = 1
-		for (var value of items.values()) {
+		for (var value of items) {
 			/* process.stdout.write prints to the terminal without adding a newline character at the end. the \t character inserts a tab and the \n character inserts a newline */
 			process.stdout.write(i+'. '+value.title)
-			process.stdout.write("\t x"+value.qty+"\n")
+			process.stdout.write(`\t${value.qty}\n`)
 			i++
 		}
 	}
