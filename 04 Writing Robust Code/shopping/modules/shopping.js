@@ -48,7 +48,7 @@ exports.getAll = () => {
 /**
  * Returns details for the named item.
  * @param   {string} item - The item name to retrieve.
- * @returns {string}
+ * @returns {string} The name of the item
  * @throws  {InvalidItem} item not in list.
  */
 exports.getItem = item => {

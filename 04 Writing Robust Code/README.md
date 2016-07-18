@@ -67,7 +67,40 @@ lets install, configure and run the console-based linter.
 5. Now run the same command but this time pass the `fix` flag, `node_modules/.bin/eslint --fix .`
 6. Open the `index.js` file and notice that most of the issues have gone. The fix tool is not perfect, it may have introduced new errors so use it with caution!
 
-## 2 The Debugger
+## 2 Project Metadata
+
+Applications written in NodeJS typically contain a file called `package.json` which contains the _metadata_ associated with the project. This includes:
+
+- information about the project such as name, description, keywords and author
+- information about the remote repository where the project is hosted
+- any modules needed for the project to run (dependencies)
+- any modules needed to support development (devDependencies)
+- aliases to any useful commands and scripts (scripts)
+
+When you create a new project you should run the `npm init` command to run a wizard. This will build a skeleton `package.json` file for you.
+
+### 2.1 Adding Third-Party Modules
+
+You are already familiar with the process of importing modules into your projects however if you are using a metadata file you need to make sure any modules you import are listed. This is achieved by using _flags_.
+
+- To add a module to the `dependencies` list you need to use the `--save` flag. For example to import the _request_ module and add a reference into your `package.json` file you would run `npm install request --save`.
+- To add a module to the `devDependencies` list you use the --save-dev flag instead.
+
+Open the `package.json` file and read it carefully.
+
+1. the `scripts` section defines four script shortcuts
+2. the `dependencies` section defines the same dependencies as were used in the previous lab
+3. the `dev-dependencies` section defines any dependencies required as part of the _development process_
+
+Now install all the dependencies using `npm install`.
+
+### 2.2 Test Your Knowledge
+
+1. modify the `package.json` file and change the version to 1.0.1
+2. install the **request** module, making sure it is referenced in the `dependencies` object in your `package.json` file.
+3. install the **forever** module, making sure it is referenced in the `devDependencies` object.
+
+## 3 Writing Modular Code
 
 Building robust code is vitally important which means it should be frequently tested against the agreed spec. You will have already been shown the principles of Test-Driven Development (TDD) in the module 205CDE but in this module you will be taking your skills to an entirely new level and building the process into everything you do.
 
@@ -85,15 +118,7 @@ Open the `shopping/` directory and examine the files and directory structure.
 ```
 Notice that there is a `modules/` directory. Unit testing is carried out on _units_ of code. In NodeJS we capture functionality in **modules** and these are what we will run the tests on. Each module should be self-contained. _All_ the application _business logic_ should be moved into modules.
 
-Open the `package.json` file and read it carefully.
-
-1. the `scripts` section defines four script shortcuts
-2. the `dependencies` section defines the same dependencies as were used in the previous lab
-3. the `dev-dependencies` section defines any dependencies required as part of the _development process_
-
-Now install all the dependencies using `npm install`.
-
-### 2.1 NodeJS Modules
+### 3.1 NodeJS Modules
 
 Open the `modules/shopping.js` script and read it carefully.
 
@@ -117,7 +142,7 @@ There is a shortcut defined to run this script, run it now and see what happens.
 npm run debug
 ```
 
-### 2.2 Test Your Knowledge
+### 3.2 Test Your Knowledge
 
 1. Open the `debug.js` script and place a breakpoint on the line `list.add('cheese')`.
 2. Use the **Run** button to run the script and open the debugger tools when the script stops on the breakpoint.
@@ -127,7 +152,7 @@ npm run debug
   - once in the module use _Step Over_ to run each line
   - as you step through watch the program flow and contents of the local variables
 
-## 3 Unit Testing
+## 4 Unit Testing
 
 _Unit testing_ is a vital skill if you are planning a career in software development. It is also a key part of your module assessment. In this exercise you will be using a framework called [Jasmine](http://jasmine.github.io/2.0/introduction.html). In this exercise you will learn how to run tests.
 
@@ -149,7 +174,7 @@ _Unit testing_ is a vital skill if you are planning a career in software develop
   - remove the pending status from the 'should throw an error if item not in list' spec. Notice that as soon as you save the changes the tests run automatically.
   - notice that this spec _fails_.
 
-### 3.1 Test Your Knowledge
+### 4.1 Test Your Knowledge
 
 1. Implement the `getItem()` function in `shopping.js` so that the new test passes (you will need to use the `get()` method that forms part of the [Map](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Map) prototype)
 2. Uncomment the next spec (should throw an error if item not in list) and modify the `getItem()` function in `shopping.js`. You will need to correctly implement _exception handling_ which was covered in the previous lab.
@@ -157,7 +182,7 @@ _Unit testing_ is a vital skill if you are planning a career in software develop
 4. Uncomment the next spec (should delete last item) and make sure the tests pass.
 5. Finally Uncomment the last spec (should throw error if item not in list) and implement error handling so that the test passes.
 
-## 4 Code Coverage
+## 5 Code Coverage
 
 If we are going to rely on our automated tests to guarantee our code runs as expected we need to check that these tests are _comprehensive_. There are two aspects we need to check:
 
@@ -166,7 +191,7 @@ If we are going to rely on our automated tests to guarantee our code runs as exp
 2. Do the automated tests test _every line of our code_ including all conditional branches.
   - this is called code coverage and there are automated tools to help us with this.
 
-### 4.1 Running the Code Coverage Test
+### 5.1 Running the Code Coverage Test
 
 Start by installing the node **Istanbul** module has already been installed so we can run our coverage tests. Note that any command-line tools installed by a package can be found in the `node_modules/.bin` directory.
 ```
@@ -193,7 +218,7 @@ npm run coverage
   ==============================================================================
 ```
 
-### 4.2 Analysing the Code Coverage Report
+### 5.2 Analysing the Code Coverage Report
 
 When the coverage test has finished it generates a report in a `coverage/` directory.
 ```
@@ -218,7 +243,7 @@ When the coverage test has finished it generates a report in a `coverage/` direc
   - any line in red has never been called by the test suite and so has not been tested.
 ![Code Coverage of the Module](.images/code_coverage_by_line.png)
 
-### 4.3 Test Your Knowledge
+### 5.3 Test Your Knowledge
 
 It is immediately clear from the coverage report that there is a large chunk of code that is not being tested! If we are not testing code we have no confidence that it is working. The detailed report flags up the `decrement()` function.
 
@@ -227,7 +252,7 @@ It is immediately clear from the coverage report that there is a large chunk of 
 2. Periodically re-run the coverage tool and refresh the report page.
 3. You are aiming for 100% code coverage.
 
-## 5 Documentation
+## 6 Documentation
 
 Whenever we write a program it is important that it is fully documented. A simple solution is to add comments to the code which can then be read by anyone who opens the script. A better solution would be to write up detailed _human readable_ documentation.
 
@@ -264,7 +289,7 @@ Right-click on the `index.html` file and choose _preview_. This will open the ho
 
 There are a lot more features that can be added to this, you should take time to read the full [documentation](http://usejsdoc.org) to find out what _block tags_ can be used.
 
-### 5.1 Test Your Knowledge
+### 6.1 Test Your Knowledge
 
 1. Your challenge is to complete the documentation for the `shopping.js` module. You should use the `getItem()` documentation as a guide.
 2. The _Linter_ tool (see section 1) will help you identify where you need to add additional JSDoc comments.
