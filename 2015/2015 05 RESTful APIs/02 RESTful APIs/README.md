@@ -45,7 +45,7 @@ Navigate to the `bookshop/` directory and install all the required modules. Next
 Open the script files and study them carefully to understand the program flow as you complete the tasks below.
 
 1. make a `POST /accounts` request and note the response code. Where is this error being generated? How does it get returned to the client?
-2. add the correct username and password to the request and try again. You will receive a different error message. 
+2. add the correct username and password to the request and try again. You will receive a different error message.
 3. you should now get an error indicating that the image is missing. Click on the **Form Data** button and switch the first field from _text_ to _file_. You can now select a **png** image to upload.
 4. next you will need to supply more data.
 
@@ -75,7 +75,7 @@ node --harmony_destructuring index.js
 ```
 And now the app runs without errors. Since you may need multiple flags the start command can become quite long and it is easy to forget a flag and cause the app to throw errors. To avoid this you should always add a _start_ key to the _scripts_ object in your `package.json` and run your app using `npm start`. Locate this command in the file.
 
-### 3.2 Uploading 
+### 3.2 Uploading
 
 In the previous exercises we have sent _json formatted_ data in our request body. To upload files we need to switch to _enctype=multipart/form-data_. In **Postman** make sure you have chosen POST then:
 

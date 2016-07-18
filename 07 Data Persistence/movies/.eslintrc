@@ -1,0 +1,13 @@
+
+{
+	"env": {
+		"node": true,
+		"jasmine": true,
+		"es6": true
+	},
+	"rules": {
+		"indent": [1, "tab"],
+		"quotes": [1, "single"],
+		"semi": [1, "never"]
+	}
+}
