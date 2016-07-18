@@ -12,7 +12,7 @@ do {
 		/* Let's echo the item details back to the user before adding it. Notice the use of Template Literals (https://goo.gl/Yjxa5o), a part of ECMA6. This allows you to include placeholders for variables without the need for concatenation. The string must be enclosed by backticks (`) */ 
 	console.log(`adding "${item}"`)
         list.add(item)
-	}
+	} 
 	if (input.indexOf("list") === 0) {
 		const items = list.getAll()
         let i = 1   

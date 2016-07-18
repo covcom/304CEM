@@ -1,9 +1,9 @@
 
-# Objects and Functions
+# Development Tools
 
-This is the second lab. Before starting make sure you have completed lab 1 (Introduction to JavaScript) and _fully understand_ the concepts presented.
+In this worksheet you will be introduced to the tools and techniques you will need to successfully complete your work. If you learn and apply these to your assignment you will increase your chances of gaining a much higher grade.
 
-The lab materials are frequently updated to fix bugs and improve your experiences. Before starting any lab you should use the Termonal to navigate to your local repository directory pull any updates from the _upstream remote_.
+The lab materials are frequently updated to fix bugs and improve your experiences. Before starting any lab you should use the Terminal to navigate to your local repository directory pull any updates from the _upstream remote_.
 ```
 cd 305CDE
 git pull upstream
@@ -267,4 +267,6 @@ There are a lot more features that can be added to this, you should take time to
 ### 5.1 Test Your Knowledge
 
 1. Your challenge is to complete the documentation for the `shopping.js` module. You should use the `getItem()` documentation as a guide.
-2. To check your results, run the documentation tool and reload the documentation web page.
+2. The _Linter_ tool (see section 1) will help you identify where you need to add additional JSDoc comments.
+3. To check your results, run the documentation tool and reload the documentation web page.
+4. Carefully read through the generated documentation to ensure it is both complete and makes sense.
