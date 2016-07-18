@@ -50,6 +50,7 @@ Open the `index.js` file and fix all the _whitespace_ and _indentation_ issues.
 ### 1.3 Running ESLint From the Terminal
 
 ESLint is available as a NodeJS package which allows you to run it from the terminal. Since there is already support built-in, why would you want to do this?
+
 1. Some editors don't have ESLint support.
 2. Running ESLint in the Terminal gives a summary of the linting errors.to check if _all the scripts_ are fixed.
 3. It can be configured to fix many of the most common error such as whitespace and semicolon usage.
@@ -144,7 +145,7 @@ Open the `debug.js` script and study it carefully.
   - the file extension does not need to be included
 2. Any functions in our module that are _exported_ can be accessed through the immutable variable.
 
-There is a shortcut defined to run this script, run it now and see what happens.
+Run the script and see what happens.
 ```
 npm run debug
 ```
@@ -170,6 +171,8 @@ To start debugging you need to use Node Inspector to run your script.
 ```
 ./node_modules/.bin/node-inspector debug.js
 ```
+If you have completed all the tasks so far in this worksheet you will have set up a _script alias_ in the `package.json` file which means you can run the debugger using `npm run debug` instead.
+
 Now you can open a tab and enter the debug URL of your script. This gives you access to a full visual debugger in a Chrome tab.
 
 ### 4.4 Console Debugger
@@ -180,9 +183,11 @@ NodeJS also contains a fully [documented](https://nodejs.org/api/debugger.html) 
 1. Open the `debug.js` file and remove all the breakpoints from the previous exercise.
 2. Add a new line just before the `list.add('cheese')` instruction and add the `debugger` command.
 3. Run the script using the NodeJS debug sub-command like this `node debug debug.js`, this will run the script in debug mode and pause execution on the first executable line in the script.
-4. use the `c` command to continue execution until you see the line containing the debugger command you entered.
-5. to explore the variables we need to enter **repl** mode then we can run any JavaScript command. Enter `repl`, the cursor will change to `>`.
-6. Now grab a reference to the items in the list using `var a = items.getAll()`. Now you can use `console.log(a)` to print to the terminal.
+4. To see a list of all the commands type `help`.
+5. use the `c` command to continue execution until you see the line containing the debugger command you entered.
+6. to explore the variables we need to enter **repl** mode then we can run any JavaScript command. Enter `repl`, the cursor will change to `>`.
+7. Now print the items in the list using `console.log(list.getAll())`.
+8. Press ctrl+C to return to the debugger then the same twice to exit the debugger.
 
 ## 5 Unit Testing
 
