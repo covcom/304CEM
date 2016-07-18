@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "app": "node index.js",
-    "debug": "node debug.js",
+    "debug": "./node_modules/.bin/node-inspector debug.js",
     "test": "node_modules/.bin/jasmine-node spec --color --verbose --autotest --watch .",
     "coverage": "./node_modules/.bin/istanbul cover -x **spec/** -x **index.js** -x **debug.js** jasmine-node spec",
     "doc": "node_modules/.bin/jsdoc modules/"
@@ -24,6 +24,7 @@
     "eslint": "^3.1.0",
     "istanbul": "^0.4.0",
     "jasmine-node": "^1.14.5",
-    "jsdoc": "^3.4.0"
+    "jsdoc": "^3.4.0",
+    "node-inspector": "^0.12.8"
   }
 }

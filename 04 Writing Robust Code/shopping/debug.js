@@ -5,6 +5,7 @@ const list = require('./modules/shopping')
 
 list.add('bread')
 list.add('butter')
+debugger
 list.add('cheese')
 list.add('bread')
 list.add('bread')

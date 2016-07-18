@@ -84,7 +84,7 @@ When you create a new project you should run the `npm init` command to run a wiz
 You are already familiar with the process of importing modules into your projects however if you are using a metadata file you need to make sure any modules you import are listed. This is achieved by using _flags_.
 
 - To add a module to the `dependencies` list you need to use the `--save` flag. For example to import the _request_ module and add a reference into your `package.json` file you would run `npm install request --save`.
-- To add a module to the `devDependencies` list you use the --save-dev flag instead.
+- To add a module to the `devDependencies` list you use the `--save-dev` flag instead.
 
 Open the `package.json` file and read it carefully.
 
@@ -98,7 +98,8 @@ Now install all the dependencies using `npm install`.
 
 1. modify the `package.json` file and change the version to 1.0.1
 2. install the **request** module, making sure it is referenced in the `dependencies` object in your `package.json` file.
-3. install the **forever** module, making sure it is referenced in the `devDependencies` object.
+3. install the **node-inspector** module, making sure it is referenced in the `devDependencies` object.
+4. add a new script alias called `debug` and set its value to `./node_modules/.bin/node-inspector debug.js`, you will be using this later in the worksheet.
 
 ## 3 Writing Modular Code
 
@@ -130,7 +131,13 @@ Open the `modules/shopping.js` script and read it carefully.
   - the other functions take a single parameter, listed before the `=>` arrow
 3. Some functionality has been completed but there are some [stub functions](https://en.wikipedia.org/wiki/Method_stub) which represent functionality we have not yet implemented.
 
-Next open the `debug.js` script and study it carefully.
+## 4 Debugging
+
+Sometimes its tricky to locate bugs in your code. Debuggers can help. Once you have identified where the problem may be in your code you place one or more **breakpoints** then run your project in **debug mode**.
+
+As soon as the execution reaches the first _breakpoint_ it will pause and allow you to view the values of all the variables in scope. At this point you can either resume the script or step through the code line by line. To demonstrate this you will be working with a script called `debug.js` which uses our shopping module.
+
+Open the `debug.js` script and study it carefully.
 
 1. Notice that it _imports_ our **shopping** module into an _immutable variable_
   - the relative path needs to be included (its in the `modules` directory)
@@ -142,9 +149,12 @@ There is a shortcut defined to run this script, run it now and see what happens.
 npm run debug
 ```
 
-### 3.2 Test Your Knowledge
+### 4.1 Visual Debugger
+The first debugger is a visual one built into Cloud9.
 
-1. Open the `debug.js` script and place a breakpoint on the line `list.add('cheese')`.
+### 4.2 Test Your Knowledge
+
+1. Open the `debug.js` script and place a breakpoint on the line `list.add('cheese')` by clicking in the left gutter just to the left of the line number.
 2. Use the **Run** button to run the script and open the debugger tools when the script stops on the breakpoint.
 3. Add `data` to the _Watch Expressions_.
 4. Single-step through the code.
@@ -152,7 +162,29 @@ npm run debug
   - once in the module use _Step Over_ to run each line
   - as you step through watch the program flow and contents of the local variables
 
-## 4 Unit Testing
+### 4.3 Node Inspector
+
+An alternative to using the Cloud9 debugger is to use the **Node Inspector** tool. This would normally needs to be installed, however you installed it earlier in the tutorial. It is designed for development on a _local computer_ so you won't be able to complete this section.
+
+To start debugging you need to use Node Inspector to run your script.
+```
+./node_modules/.bin/node-inspector debug.js
+```
+Now you can open a tab and enter the debug URL of your script. This gives you access to a full visual debugger in a Chrome tab.
+
+### 4.4 Console Debugger
+NodeJS also contains a fully [documented](https://nodejs.org/api/debugger.html) debugger controlled from the console (terminal).
+
+### 4.5 Test Your Knowledge
+
+1. Open the `debug.js` file and remove all the breakpoints from the previous exercise.
+2. Add a new line just before the `list.add('cheese')` instruction and add the `debugger` command.
+3. Run the script using the NodeJS debug sub-command like this `node debug debug.js`, this will run the script in debug mode and pause execution on the first executable line in the script.
+4. use the `c` command to continue execution until you see the line containing the debugger command you entered.
+5. to explore the variables we need to enter **repl** mode then we can run any JavaScript command. Enter `repl`, the cursor will change to `>`.
+6. Now grab a reference to the items in the list using `var a = items.getAll()`. Now you can use `console.log(a)` to print to the terminal.
+
+## 5 Unit Testing
 
 _Unit testing_ is a vital skill if you are planning a career in software development. It is also a key part of your module assessment. In this exercise you will be using a framework called [Jasmine](http://jasmine.github.io/2.0/introduction.html). In this exercise you will learn how to run tests.
 
@@ -174,7 +206,7 @@ _Unit testing_ is a vital skill if you are planning a career in software develop
   - remove the pending status from the 'should throw an error if item not in list' spec. Notice that as soon as you save the changes the tests run automatically.
   - notice that this spec _fails_.
 
-### 4.1 Test Your Knowledge
+### 5.1 Test Your Knowledge
 
 1. Implement the `getItem()` function in `shopping.js` so that the new test passes (you will need to use the `get()` method that forms part of the [Map](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Map) prototype)
 2. Uncomment the next spec (should throw an error if item not in list) and modify the `getItem()` function in `shopping.js`. You will need to correctly implement _exception handling_ which was covered in the previous lab.
@@ -182,7 +214,7 @@ _Unit testing_ is a vital skill if you are planning a career in software develop
 4. Uncomment the next spec (should delete last item) and make sure the tests pass.
 5. Finally Uncomment the last spec (should throw error if item not in list) and implement error handling so that the test passes.
 
-## 5 Code Coverage
+## 6 Code Coverage
 
 If we are going to rely on our automated tests to guarantee our code runs as expected we need to check that these tests are _comprehensive_. There are two aspects we need to check:
 
@@ -191,7 +223,7 @@ If we are going to rely on our automated tests to guarantee our code runs as exp
 2. Do the automated tests test _every line of our code_ including all conditional branches.
   - this is called code coverage and there are automated tools to help us with this.
 
-### 5.1 Running the Code Coverage Test
+### 6.1 Running the Code Coverage Test
 
 Start by installing the node **Istanbul** module has already been installed so we can run our coverage tests. Note that any command-line tools installed by a package can be found in the `node_modules/.bin` directory.
 ```
@@ -218,7 +250,7 @@ npm run coverage
   ==============================================================================
 ```
 
-### 5.2 Analysing the Code Coverage Report
+### 6.2 Analysing the Code Coverage Report
 
 When the coverage test has finished it generates a report in a `coverage/` directory.
 ```
@@ -243,7 +275,7 @@ When the coverage test has finished it generates a report in a `coverage/` direc
   - any line in red has never been called by the test suite and so has not been tested.
 ![Code Coverage of the Module](.images/code_coverage_by_line.png)
 
-### 5.3 Test Your Knowledge
+### 6.3 Test Your Knowledge
 
 It is immediately clear from the coverage report that there is a large chunk of code that is not being tested! If we are not testing code we have no confidence that it is working. The detailed report flags up the `decrement()` function.
 
@@ -252,7 +284,7 @@ It is immediately clear from the coverage report that there is a large chunk of 
 2. Periodically re-run the coverage tool and refresh the report page.
 3. You are aiming for 100% code coverage.
 
-## 6 Documentation
+## 7 Documentation
 
 Whenever we write a program it is important that it is fully documented. A simple solution is to add comments to the code which can then be read by anyone who opens the script. A better solution would be to write up detailed _human readable_ documentation.
 
@@ -289,7 +321,7 @@ Right-click on the `index.html` file and choose _preview_. This will open the ho
 
 There are a lot more features that can be added to this, you should take time to read the full [documentation](http://usejsdoc.org) to find out what _block tags_ can be used.
 
-### 6.1 Test Your Knowledge
+### 7.1 Test Your Knowledge
 
 1. Your challenge is to complete the documentation for the `shopping.js` module. You should use the `getItem()` documentation as a guide.
 2. The _Linter_ tool (see section 1) will help you identify where you need to add additional JSDoc comments.
