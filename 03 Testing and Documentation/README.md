@@ -21,7 +21,7 @@ EsLint is highly configurable through a hidden config file that needs to be adde
 
 Start by ensuring hidden files are displayed in the _Workspace Sidebar_ by clicking on the _gear icon_ and making sure the **Show hidden files** option is checked.
 
-![Showing hidden files](.images/show hidden.png)
+![Showing hidden files](.images/show_hidden.png)
 
 Near the bottom of the file list you should see a file called `.eslintrc`, the initial dot (.) in the filename caused it to be hidden by default.
 
