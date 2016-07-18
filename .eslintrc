@@ -1,12 +1,18 @@
 
 {
 	"env": {
+		"es6": true,
 		"node": true,
 		"jasmine": true
 	},
 	"rules": {
 		"indent": [2, "tab"],
 		"quotes": [1, "single"],
-		"semi": [2, "never"]
+		"semi": [1, "never"],
+		"valid-jsdoc": 1,
+		"no-multi-spaces": 2,
+		"no-trailing-spaces": 1,
+		"space-before-function-paren": [2, "never"],
+		"key-spacing": ["error", { "beforeColon": false, "afterColon": true }]
 	}
 }
