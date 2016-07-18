@@ -9,7 +9,65 @@ cd 305CDE
 git pull upstream
 ```
 
-## 1 The Debugger
+## 1 Using a Linter
+
+A **linter** is a program that checks your source code for _programmatic_ and _stylistic_ errors. This will help you to identifying many of the common mistakes that can occur when writing JavaScript code and will ensure the style of your code is consistent.
+
+This is especially important when programming in _JavaScript_ because there are many different programming styles and techniques, many of which can lead to tricky bugs. For this reason there are many different linters that are designed for _JavaScript_, in this module you will learn about one of the more powerful and configurable, called **ESLint**.
+
+EsLint is highly configurable through a hidden config file that needs to be added to the project root directory.
+
+### 1.1 The ESLint Configuration File
+
+Start by ensuring hidden files are displayed in the _Workspace Sidebar_ by clicking on the _gear icon_ and making sure the **Show hidden files** option is checked.
+
+![Showing hidden files](.images/show hidden.png)
+
+Near the bottom of the file list you should see a file called `.eslintrc`, the initial dot (.) in the filename caused it to be hidden by default.
+
+1. Notice that the file contents are using the _JSON_ format which should be familiar to you.
+2. There are two JSON objects, **env** and **rules**.
+  1. The **env** object describes the _environment_ you are using. In our example we indicate that we will be using the ECMA6 syntax, are writing _NodeJS_ code, and will be using _Jasmine_ tests.
+  2. The **rules** object defines the rules we want to apply. As you can see we are requiring tab indentation, single quotes and avoiding the use of semicolons on each line. The full list of rules can be found in the [ESLint Documentation](http://eslint.org/docs/rules/).
+  3. Each rule has a reporting level where 0 means _disabled_, 1 means _warning_ and 2 means _error_. This affects how the rule violations are reported.
+  4. Some rules allow for additional options. If these are specified, both the reporting level and options need to be in an array.
+
+### 1.2 ESLint Integration into Cloud9
+
+Cloud9 has support for ESLint embedded in the code editor. Open the `index.js` file and notice the error and warning symbols down the left gutter to the left of the line numbers. If you hover over them you get a description of the problem.
+
+Many ESLint errors relate to whitespace and to identify and fix these it can be useful to show the whitespace characters (spaces, tabs and newlines) in the editor. To enable this in Cloud9:
+1. choose **Preferences** from the **Cloud9** menu in the top-left corner.
+2. Click on **User Settings** and locate the **Code Editor (Ace)** option within the **Editors** section.
+3. Finally enable 'Show Invisible Characters' and close the options panel.
+
+You should now be able to see these in the editor.
+
+#### 1.2.1 Test Your Knowledge
+
+Open the `index.js` file and fix all the _whitespace_ and _indentation_ issues.
+
+### 1.3 Running ESLint From the Terminal
+
+ESLint is available as a NodeJS package which allows you to run it from the terminal. Since there is already support built-in, why would you want to do this?
+1. Some editors don't have ESLint support.
+2. Running ESLint in the Terminal gives a summary of the linting errors.to check if _all the scripts_ are fixed.
+3. It can be configured to fix many of the most common error such as whitespace and semicolon usage.
+4. The linting can be run as part of the _Continous Integration_ and _Continous Deployment_ process (more on this in a later worksheet)
+5. Finally, it will be used during the marking of your assignment to make sure your code is formatted correctly!
+
+#### 1.3.1 Test Your Knowledge
+
+lets install, configure and run the console-based linter.
+
+1. Start by opening a terminal window and navigating to the `shopping/` directory.
+2. Install the NodeJS ESLint package `npm install eslint --save-dev`. This installs it and adds it to your `package.json` file in the `devDependencies` section.
+3. Run the executable `node_modules/.bin/eslint .`. This runs the `eslint` executable located in the hidden `.bin/` directory in the `node_modules/` directory.
+4. You will see a list of all the errors and warnings found together with a summary with the total number of errors and the total number of warnings.
+5. Now run the same command but this time pass the `fix` flag, `node_modules/.bin/eslint --fix .`
+6. Open the `index.js` file and notice that most of the issues have gone. The fix tool is not perfect, it may have introduced new errors so use it with caution!
+
+## 2 The Debugger
 
 Building robust code is vitally important which means it should be frequently tested against the agreed spec. You will have already been shown the principles of Test-Driven Development (TDD) in the module 205CDE but in this module you will be taking your skills to an entirely new level and building the process into everything you do.
 
@@ -35,7 +93,7 @@ Open the `package.json` file and read it carefully.
 
 Now install all the dependencies using `npm install`.
 
-### 1.1 NodeJS Modules
+### 2.1 NodeJS Modules
 
 Open the `modules/shopping.js` script and read it carefully.
 
@@ -59,7 +117,7 @@ There is a shortcut defined to run this script, run it now and see what happens.
 npm run debug
 ```
 
-### 1.2 Test Your Knowledge
+### 2.2 Test Your Knowledge
 
 1. Open the `debug.js` script and place a breakpoint on the line `list.add('cheese')`.
 2. Use the **Run** button to run the script and open the debugger tools when the script stops on the breakpoint.
@@ -69,7 +127,7 @@ npm run debug
   - once in the module use _Step Over_ to run each line
   - as you step through watch the program flow and contents of the local variables
 
-## 2 Unit Testing
+## 3 Unit Testing
 
 _Unit testing_ is a vital skill if you are planning a career in software development. It is also a key part of your module assessment. In this exercise you will be using a framework called [Jasmine](http://jasmine.github.io/2.0/introduction.html). In this exercise you will learn how to run tests.
 
@@ -91,7 +149,7 @@ _Unit testing_ is a vital skill if you are planning a career in software develop
   - remove the pending status from the 'should throw an error if item not in list' spec. Notice that as soon as you save the changes the tests run automatically.
   - notice that this spec _fails_.
 
-### 2.1 Test Your Knowledge
+### 3.1 Test Your Knowledge
 
 1. Implement the `getItem()` function in `shopping.js` so that the new test passes (you will need to use the `get()` method that forms part of the [Map](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Map) prototype)
 2. Uncomment the next spec (should throw an error if item not in list) and modify the `getItem()` function in `shopping.js`. You will need to correctly implement _exception handling_ which was covered in the previous lab.
@@ -99,7 +157,7 @@ _Unit testing_ is a vital skill if you are planning a career in software develop
 4. Uncomment the next spec (should delete last item) and make sure the tests pass.
 5. Finally Uncomment the last spec (should throw error if item not in list) and implement error handling so that the test passes.
 
-## 3 Code Coverage
+## 4 Code Coverage
 
 If we are going to rely on our automated tests to guarantee our code runs as expected we need to check that these tests are _comprehensive_. There are two aspects we need to check:
 
@@ -108,7 +166,7 @@ If we are going to rely on our automated tests to guarantee our code runs as exp
 2. Do the automated tests test _every line of our code_ including all conditional branches.
   - this is called code coverage and there are automated tools to help us with this.
 
-### 3.1 Running the Code Coverage Test
+### 4.1 Running the Code Coverage Test
 
 Start by installing the node **Istanbul** module has already been installed so we can run our coverage tests. Note that any command-line tools installed by a package can be found in the `node_modules/.bin` directory.
 ```
@@ -135,7 +193,7 @@ npm run coverage
   ==============================================================================
 ```
 
-### 3.2 Analysing the Code Coverage Report
+### 4.2 Analysing the Code Coverage Report
 
 When the coverage test has finished it generates a report in a `coverage/` directory.
 ```
@@ -160,7 +218,7 @@ When the coverage test has finished it generates a report in a `coverage/` direc
   - any line in red has never been called by the test suite and so has not been tested.
 ![Code Coverage of the Module](.images/code_coverage_by_line.png)
 
-### 3.3 Test Your Knowledge
+### 4.3 Test Your Knowledge
 
 It is immediately clear from the coverage report that there is a large chunk of code that is not being tested! If we are not testing code we have no confidence that it is working. The detailed report flags up the `decrement()` function.
 
@@ -169,7 +227,7 @@ It is immediately clear from the coverage report that there is a large chunk of 
 2. Periodically re-run the coverage tool and refresh the report page.
 3. You are aiming for 100% code coverage.
 
-## 4 Documentation
+## 5 Documentation
 
 Whenever we write a program it is important that it is fully documented. A simple solution is to add comments to the code which can then be read by anyone who opens the script. A better solution would be to write up detailed _human readable_ documentation.
 
@@ -206,7 +264,7 @@ Right-click on the `index.html` file and choose _preview_. This will open the ho
 
 There are a lot more features that can be added to this, you should take time to read the full [documentation](http://usejsdoc.org) to find out what _block tags_ can be used.
 
-### 4.1 Test Your Knowledge
+### 5.1 Test Your Knowledge
 
 1. Your challenge is to complete the documentation for the `shopping.js` module. You should use the `getItem()` documentation as a guide.
 2. To check your results, run the documentation tool and reload the documentation web page.
