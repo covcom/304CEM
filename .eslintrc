@@ -13,6 +13,11 @@
 		"no-multi-spaces": 2,
 		"no-trailing-spaces": 1,
 		"space-before-function-paren": [2, "never"],
-		"key-spacing": ["error", { "beforeColon": false, "afterColon": true }]
+		"key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
+		"arrow-body-style": 2,
+		"arrow-spacing": [1, { "before": true, "after": true }],
+		"no-var": 2,
+		"prefer-const": 2,
+		"brace-style": 2
 	}
 }
