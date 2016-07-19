@@ -7,9 +7,9 @@ try {
 		throw 'missing parameter'
 	}
 	const symbol = process.argv[2].toUpperCase()
-	const url = 'http://api.fixer.io/latest'
-	const querystring = {symbols: symbol}
-	request.get({url: url, qs: querystring}, (err, res, body) => {
+	const url = `http://api.fixer.io/latest?symbols=${symbol}`
+	console.log(url)
+	request.get( url, (err, res, body) => {
 		if (err) {
 			throw 'could not complete request'
 		}

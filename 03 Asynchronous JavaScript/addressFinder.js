@@ -10,9 +10,9 @@ try {
 	/* we need to remove the single quotes from the string */
 	address = address.replace(/'/g,'')
 	console.log(address)
-	const url_string = 'https://maps.googleapis.com/maps/api/geocode/json'
-	const query_string = {region: 'gb', address: address, units: 'metric', appid: '44c39f3fa462f86b3fc88f5678e5c5ff'}
-	request.get({url: url_string, qs: query_string}, (err, res, body) => {
+	const url = `https://maps.googleapis.com/maps/api/geocode/json?region=gb&units=metric&appid=44c39f3fa462f86b3fc88f5678e5c5ff&address=${address}`
+	console.log(url)
+	request.get( url, (err, res, body) => {
 		if (err) {
 			throw 'could not complete request'
 		}

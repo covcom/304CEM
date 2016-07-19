@@ -19,8 +19,8 @@ In our program you will be using passing the different currencies to convert fro
 1. The script uses a third-party package called `request`. To install this, make sure your terminal in pointing to the script directory and install it with the `npm` command (Node Package Manager) like this: `npm install request`.
 2. Try running the program with a single currency code `node currency GBP`.
 3. Because we want to throw exceptions if something unexpected happens, the code needs to be enclosed in a try-catch block.
-4. When the request.get() method is called it takes two parameters The url to call and the querystring which will be appended to it are passed as a single object parameter.
-5. The second parameter is an anonymous function with three parameters, err, res and body. Note the use of the ECMA arrow syntax. This function **callback** will be run once the API call has completed, the API call running in its own thread.
+4. Next the URL is created. This string is known as a [template literal](https://goo.gl/3vznuR) and is enclosed using backticks instead of quotes. This allows variables to be embedded.
+5. When the `request.get()` method is called it takes two parameters The url to call and an anonymous function with three parameters, `err`, `res` and `body`. Note the use of the [ECMA arrow function](https://goo.gl/4pRqUs). This function **callback** will be run once the API call has completed, the API call running in its own thread.
 6. If the API request fails, the first parameter, `err` will be non-null and will contain an Error object. At this point we simply throw an exception and exit.
 7. The `res` parameter contains the entire response sent back from the server, we don't need this in this example.
 8. The `body` parameter contains the data returned from the API, this is what we will be using. it is returned as a _string_ so we use `JSON.parse()` to turn it into a JavaScript object.
