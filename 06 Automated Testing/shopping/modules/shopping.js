@@ -38,8 +38,8 @@ exports.clear = () => {
 
 /** Returns an array containing all todo items */
 exports.getAll = () => {
-	let dataArray = []
-	for (var value of data.values()) {
+	const dataArray = []
+	for (const value of data.values()) {
 		dataArray.push(value)
 	}
 	return dataArray
