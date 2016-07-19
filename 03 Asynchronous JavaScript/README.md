@@ -47,6 +47,7 @@ console.log(JSON.stringify(json, null, 2))
 Most RESTful APIs return their data as a string in JSON format. This format allows primitives, objects and arrays to be converted into a string, passed between systems as text and then converted to the correct JavaScript object at the receiving end.
 
 In this exercise you will learn how to extract information from complex _JSON_ data.
+
 1. Run the script by entering `node addressFinder 'coventry'`, the address you are looking for needs to be enclosed in single quotes. Notice the result (lots of data).
 2. Open the `addressFinder.js` file and notice that the script requires at least three parameters. The user will need to enter an address to look up.
 3. The third parameter (index 2) contains the address to find.
