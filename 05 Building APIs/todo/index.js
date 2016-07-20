@@ -1,7 +1,7 @@
 
 /* import the 'restify' module and create an instance. */
-var restify = require('restify')
-var server = restify.createServer()
+const restify = require('restify')
+const server = restify.createServer()
 
 /* import the required plugins to parse the body and auth header. */
 server.use(restify.fullResponse())
@@ -9,7 +9,7 @@ server.use(restify.bodyParser())
 server.use(restify.authorizationParser())
 
 /* import our custom module. */
-var lists = require('./lists.js')
+const lists = require('./lists.js')
 
 /* if we receive a GET request for the base URL redirect to /lists */
 server.get('/', function(req, res, next) {
@@ -23,7 +23,7 @@ server.get('/lists', function(req, res) {
 	const host = req.headers.host
 	console.log(host)
 	/* creating some empty variables */
-	var data, type
+	let data, type
 	/* is the client requesting xml data? The req.header object stores any headers passed in the request. The 'Accept' header lets the client express a preference for the format of the representation. Note you should always provide a sensible default. */
 	if (req.header('Accept') === 'application/xml') {
 		data = lists.getAllXML(host)
