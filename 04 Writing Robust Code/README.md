@@ -15,13 +15,9 @@ A **linter** is a program that checks your source code for _programmatic_ and _s
 
 This is especially important when programming in _JavaScript_ because there are many different programming styles and techniques, many of which can lead to tricky bugs. For this reason there are many different linters that are designed for _JavaScript_, in this module you will learn about one of the more powerful and configurable, called **ESLint**.
 
-EsLint is highly configurable through a hidden config file that needs to be added to the project root directory.
+EsLint is highly configurable through a hidden config file that needs to be added to the project root directory. When you submit your coursework you must demonstrate that it contains no errors or warnings when run using an identical configuration file.
 
 ### 1.1 The ESLint Configuration File
-
-Start by ensuring hidden files are displayed in the _Workspace Sidebar_ by clicking on the _gear icon_ and making sure the **Show hidden files** option is checked.
-
-![Showing hidden files](.images/show_hidden.png)
 
 Near the bottom of the file list you should see a file called `.eslintrc`, the initial dot (.) in the filename caused it to be hidden by default.
 
@@ -32,24 +28,9 @@ Near the bottom of the file list you should see a file called `.eslintrc`, the i
   3. Each rule has a reporting level where 0 means _disabled_, 1 means _warning_ and 2 means _error_. This affects how the rule violations are reported.
   4. Some rules allow for additional options. If these are specified, both the reporting level and options need to be in an array.
 
-### 1.2 ESLint Integration into Cloud9
+### 1.2 Running ESLint
 
-Cloud9 has support for ESLint embedded in the code editor. Open the `index.js` file and notice the error and warning symbols down the left gutter to the left of the line numbers. If you hover over them you get a description of the problem.
-
-Many ESLint errors relate to whitespace and to identify and fix these it can be useful to show the whitespace characters (spaces, tabs and newlines) in the editor. To enable this in Cloud9:
-1. choose **Preferences** from the **Cloud9** menu in the top-left corner.
-2. Click on **User Settings** and locate the **Code Editor (Ace)** option within the **Editors** section.
-3. Finally enable 'Show Invisible Characters' and close the options panel.
-
-You should now be able to see these in the editor.
-
-#### 1.2.1 Test Your Knowledge
-
-Open the `index.js` file and fix all the _whitespace_ and _indentation_ issues.
-
-### 1.3 Running ESLint From the Terminal
-
-ESLint is available as a NodeJS package which allows you to run it from the terminal. Since there is already support built-in, why would you want to do this?
+Although there are plugins for many popular IDEs you should get used to running the linter from the terminal. ESLint is available as a NodeJS package which allows you to run it from the terminal. Since you may find yourself using an editor with support baked in, why would you want to do this?
 
 1. Some editors don't have ESLint support.
 2. Running ESLint in the Terminal gives a summary of the linting errors.to check if _all the scripts_ are fixed.
@@ -57,16 +38,20 @@ ESLint is available as a NodeJS package which allows you to run it from the term
 4. The linting can be run as part of the _Continous Integration_ and _Continous Deployment_ process (more on this in a later worksheet)
 5. Finally, it will be used during the marking of your assignment to make sure your code is formatted correctly!
 
-#### 1.3.1 Test Your Knowledge
+#### 1.2.1 Test Your Knowledge
 
 lets install, configure and run the console-based linter.
 
 1. Start by opening a terminal window and navigating to the `shopping/` directory.
 2. Install the NodeJS ESLint package `npm install eslint --save-dev`. This installs it and adds it to your `package.json` file in the `devDependencies` section.
-3. Run the executable `node_modules/.bin/eslint .`. This runs the `eslint` executable located in the hidden `.bin/` directory in the `node_modules/` directory.
+3. Run the executable `node_modules/.bin/eslint index.js`. This runs the `eslint` executable located in the hidden `.bin/` directory in the `node_modules/` directory.
 4. You will see a list of all the errors and warnings found together with a summary with the total number of errors and the total number of warnings.
-5. Now run the same command but this time pass the `fix` flag, `node_modules/.bin/eslint --fix .`
-6. Open the `index.js` file and notice that most of the issues have gone. The fix tool is not perfect, it may have introduced new errors so use it with caution!
+5. Open the `index.js` file and, using the linter report, fix the issues. You should re-run the linter regularly to check your progress.
+6. Run the linter on the module using `node_modules/.bin/eslint modules/shopping.js` and note the errors it finds.
+7. Now run the same command but this time pass the `fix` flag, `node_modules/.bin/eslint --fix modules/shopping.js`
+8. Open the `shopping.js` file and notice that most of the issues have gone. The fix tool is not perfect, it may have introduced new errors so use it with caution!
+9. Manually correct any errors until the linter reports 0 errors and warnings.
+10. Finally run the linter against all the files in the project using `node_modules/.bin/eslint .` to ensure there are absolutely no linting errors in your code. Well done!
 
 ## 2 Project Metadata
 
@@ -78,7 +63,7 @@ Applications written in NodeJS typically contain a file called `package.json` wh
 - any modules needed to support development (devDependencies)
 - aliases to any useful commands and scripts (scripts)
 
-When you create a new project you should run the `npm init` command to run a wizard. This will build a skeleton `package.json` file for you.
+When you create a new project you should run the `npm init` command to run a wizard. This will build a skeleton `package.json` file for you. There is no need to do this in this case since the file already exists.
 
 ### 2.1 Adding Third-Party Modules
 
@@ -132,65 +117,7 @@ Open the `modules/shopping.js` script and read it carefully.
   - the other functions take a single parameter, listed before the `=>` arrow
 3. Some functionality has been completed but there are some [stub functions](https://en.wikipedia.org/wiki/Method_stub) which represent functionality we have not yet implemented.
 
-## 4 Debugging
-
-Sometimes its tricky to locate bugs in your code. Debuggers can help. Once you have identified where the problem may be in your code you place one or more **breakpoints** then run your project in **debug mode**.
-
-As soon as the execution reaches the first _breakpoint_ it will pause and allow you to view the values of all the variables in scope. At this point you can either resume the script or step through the code line by line. To demonstrate this you will be working with a script called `debug.js` which uses our shopping module.
-
-Open the `debug.js` script and study it carefully.
-
-1. Notice that it _imports_ our **shopping** module into an _immutable variable_
-  - the relative path needs to be included (its in the `modules` directory)
-  - the file extension does not need to be included
-2. Any functions in our module that are _exported_ can be accessed through the immutable variable.
-
-Run the script and see what happens.
-```
-npm run debug
-```
-
-### 4.1 Visual Debugger
-The first debugger is a visual one built into Cloud9.
-
-### 4.2 Test Your Knowledge
-
-1. Open the `debug.js` script and place a breakpoint on the line `list.add('cheese')` by clicking in the left gutter just to the left of the line number.
-2. Use the **Run** button to run the script and open the debugger tools when the script stops on the breakpoint.
-3. Add `data` to the _Watch Expressions_.
-4. Single-step through the code.
-  - start by using the _Step Into_ button to step into the module code
-  - once in the module use _Step Over_ to run each line
-  - as you step through watch the program flow and contents of the local variables
-
-### 4.3 Node Inspector
-
-An alternative to using the Cloud9 debugger is to use the **Node Inspector** tool. This would normally needs to be installed, however you installed it earlier in the tutorial. It is designed for development on a _local computer_ so you won't be able to complete this section.
-
-To start debugging you need to use Node Inspector to run your script.
-```
-./node_modules/.bin/node-inspector debug.js
-```
-If you have completed all the tasks so far in this worksheet you will have set up a _script alias_ in the `package.json` file which means you can run the debugger using `npm run debug` instead.
-
-Now you can open a tab and enter the debug URL of your script. This gives you access to a full visual debugger in a Chrome tab.
-
-### 4.4 Console Debugger
-NodeJS also contains a fully [documented](https://nodejs.org/api/debugger.html) debugger controlled from the console (terminal).
-
-### 4.5 Test Your Knowledge
-
-1. Open the `debug.js` file and remove all the breakpoints from the previous exercise.
-2. Add a new line just before the `list.add('cheese')` instruction and add the `debugger` command.
-3. Run the script using the NodeJS debug sub-command like this `node debug debug.js`, this will run the script in debug mode and pause execution on the first executable line in the script.
-4. To see a list of all the commands type `help`.
-5. use the `c` command to continue execution until you see the line containing the debugger command you entered.
-6. to explore the variables we need to enter **repl** mode then we can run any JavaScript command. Enter `repl`, the cursor will change to `>`.
-7. Now print the items in the list using `console.log(list.getAll())`.
-8. Press ctrl+C to return to the debugger then the same twice to exit the debugger.
-
-
-## 5 Documentation
+## 4 Documentation
 
 Whenever we write a program it is important that it is fully documented. A simple solution is to add comments to the code which can then be read by anyone who opens the script. A better solution would be to write up detailed _human readable_ documentation.
 
@@ -227,7 +154,7 @@ Right-click on the `index.html` file and choose _preview_. This will open the ho
 
 There are a lot more features that can be added to this, you should take time to read the full [documentation](http://usejsdoc.org) to find out what _block tags_ can be used.
 
-### 5.1 Test Your Knowledge
+### 4.1 Test Your Knowledge
 
 1. Your challenge is to complete the documentation for the `shopping.js` module. You should use the `getItem()` documentation as a guide.
 2. The _Linter_ tool (see section 1) will help you identify where you need to add additional JSDoc comments.
