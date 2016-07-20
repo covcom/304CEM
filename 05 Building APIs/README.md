@@ -20,11 +20,11 @@ The `todo/` directory contains a simple API that demonstrates these key concepts
 Before starting this worksheet you should update the node installation to the latest version. Instructions can be found in the previous worksheet (04 Introduction to NodeJS).
 
 1. use the **terminal** to navigate to the `todo` directory and install the module dependencies using `npm install`. This will install the [restify](http://restify.com/), [xmlbuilder](https://github.com/oozcitak/xmlbuilder-js) and [csprng](https://www.npmjs.com/package/csprng) modules. Take a few moments to read through their documentation.
-2. make your API **public** by clicking on the **share** button in the top-right corner of the cloud 9 window. Make sure you make the _application_ public by checking the **Application: Public** checkbox.
-2. open `index.js` then click on the **Run** button in the cloud 9 toolbar to run the nodejs script and run it in a preview tab.
-3. launch **Chrome** and install the **Postman** REST plugin.
-4. use *Postman* to access the API root URL, the format will be similar to `https://project-username.c9.io` where *project* is your Cloud 9 project and *username* is your Cloud 9 username. You should be able to copy and paste this from the Cloud 9 preview tab.
-5. now try the `https://project-username.c9.io/lists` URL. Why does it return the same result (study `index.js` carefully).
+2. start the API in CodeAnywhere by running the routes file `node index.js`.
+3. right-click on the _container_ title in the left sidebar and choose **info**.
+4. locate and copy the public URL of your container. It will look something like this: `http://preview.xxx.box.codeanywhere.com/`.
+5. install and open the Google Chrome Postman plugin and paste in the url you just copied. Remove the trailing `/` and add the port number to the end so your url looks like this: `http://preview.xxx.box.codeanywhere.com:8080`. Click on the **Send** button.
+6. now try the `http://preview.xxx.box.codeanywhere.com:8080/lists` URL. Why does it return the same result (study `index.js` carefully).
 6. each request returns a [response code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Response_codes) that indicates its success or failure. Look up the response code to find out more.
 7. the response also includes a **body** which contains any data returned from the API. Notice that the data is returned in **JSON** format. The data returned is known as its **representation**.
 
@@ -32,7 +32,7 @@ Before starting this worksheet you should update the node installation to the la
 
 You need to fully understand the concepts of *Collections*, *Resources* and their *Representations*. We will learn about these by interacting with the lists API.
 
-The `https://project-username.c9.io/lists` url represents a _collection_ of lists. We can add, view, update and delete individual lists. These actions correspond to standard database [CRUD operations](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete). lets investigate how this works. As you complete each activity, read the source code to make sure you understand how it works.
+The `/lists` url represents a _collection_ of lists. We can add, view, update and delete individual lists. These actions correspond to standard database [CRUD operations](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete). lets investigate how this works. As you complete each activity, read the source code to make sure you understand how it works.
 
 1. perform a `GET /lists` operation. This is what you did in step 5 in the previous activity. Notice that this returns an error (we haven't added any items yet!)
 2. perform a `POST /lists` request. the POST method indicates we want to _add a resource to a collection_. In the request body you need to include some json data in the request body (choose the **raw** tab and paste in the json data below). Notice the response includes a list **id**. You will get an **Unauthorized** error. Study `lists.js` to find out where this error is being generated.
