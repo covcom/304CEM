@@ -17,6 +17,10 @@ REST is an *architectural style* that defines a series of *principles* that defi
 
 The `todo/` directory contains a simple API that demonstrates these key concepts. The first step is to run it and interact with it to understand these REST principles and how they are implemented.
 
+To test your API you will need to connect using the Postman tool and to do this you will need to find the external URL of your Codeanywhere workspace. This can be found by right-clicking on the _container_ title in the left sidebar as shown.
+
+[Accessing the External URL](.images/accessing_info_screen.png)
+
 Before starting this worksheet you should update the node installation to the latest version. Instructions can be found in the previous worksheet (04 Introduction to NodeJS).
 
 1. use the **terminal** to navigate to the `todo` directory and install the module dependencies using `npm install`. This will install the [restify](http://restify.com/), [xmlbuilder](https://github.com/oozcitak/xmlbuilder-js) and [csprng](https://www.npmjs.com/package/csprng) modules. Take a few moments to read through their documentation.
