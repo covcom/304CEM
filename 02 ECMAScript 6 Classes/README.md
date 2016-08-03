@@ -1,5 +1,14 @@
 
-# Objects and Functions
+# Classes and Objects
+
+
+
+## 3 ECMAScript 6 Classes
+
+The latest version of JavaScript introduces the concept of (classes)[https://goo.gl/23Fc3f] in the traditional OOP sense. Behind the scenes however this is simply a lightweight syntax over the existing prototype-based inheritance. In JavaScript, classes are special functions and comprise two distinct components, [class expressions](https://goo.gl/xv21eC) and (class declarations)[https://goo.gl/c5N2Mm].
+
+1. Open the ``
+
 
 Arrow functions (anon)
 Default parameters
