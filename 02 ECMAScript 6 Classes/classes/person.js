@@ -9,6 +9,9 @@ module.exports = class Person {
    * @param {string} lastname - the person's last name
    */
 	constructor(firstname, lastname) {
+    if (firstname === undefined || lastname === undefined) {
+      throw new Error('missing parameter')
+    }
 		this.first = firstname
 		this.last = lastname
 	}
