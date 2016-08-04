@@ -1,5 +1,5 @@
 
-var fiat = { 
+const fiat = { 
 	make: 'Fiat',
 	model: '500',
 	year: 1957, 
@@ -11,7 +11,7 @@ var fiat = {
 	started: false,
 	start: function() {
 		console.log('trying to start car...')
-		if (this.fuel == 0) {
+		if (this.fuel === 0) {
 			console.log('The car is on empty, fill up before starting!')
 		} else {
 			console.log('car started')
@@ -26,7 +26,7 @@ var fiat = {
 		if (this.started) {
 			if (this.fuel > 0) {
 				console.log(this.make+' '+this.model + ' goes zoom zoom!')
-				this.fuel = this.fuel - 1;
+				this.fuel = this.fuel - 1
 			} else {
 				console.log('Uh oh, out of fuel.')
 				this.stop()

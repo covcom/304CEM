@@ -19,6 +19,50 @@ Open the `coffee/` directory and locate the `coffee.js` file. Lets understand ho
 
 ## 2 Prototypal Inheritance
 
+JavaScript does not natively support classes, everything except primitives are objects. ECMAScript 6 introduces OOP behaviour using [classes](https://goo.gl/wlnyoX) however behind the scenes this is just a thin syntactical rapper around a concept called [prototypal inheritance](https://goo.gl/VzlliV), a topic we will be covering in this section.
+
+As you already know, an object in JavaScript is a collection of key-value pairs. Each type of object (Strings, Arrays, etc.) has its own **prototype** which is an internal object from which any objects of that type share properties. What this means is that any objects inherit all the properties of the appropriate prototype object.
+
+All built-in object types have their own prototype objects but so do any new objects that you define.
+
+### 2.1 Extending Built-In Objects
+
+Each built-in object type has its own prototype object. This can be modified and any changes will affect any instance of that object.
+
+Locate the `prototypes/` directory and open the file `palindrome.js`.
+
+1. Note how this module exports a single anonymous function.
+2. The anonymous function is declared using the shorter [arrow function](https://goo.gl/JuCltQ) syntax.
+3. **this** refers to the string that the prototype is called on.
+4. The function contains a loop that starts at each end of the string and compares the characters working inwards.
+5. If at any point these don't match, the function returns false.
+6. Notice that there is a block of code commented out which achieves the same result in 2 lines of code.
+7. Can you understand how this works?
+
+Now open the `index.js` file in the same directory.
+
+1. Run this script to view the output.
+2. The first line of code imports our module (the anonymous function) and assigns this to the String prototype.
+3. Next we create an array of the strings we want to test.
+4. JavaScript Array objects are iterable which means we can use a [for-of](https://goo.gl/bcR50H) loop to iterate through the indexes.
+5. The String.prototype.palindrome() function returns either true or false, we can then display the correct message.
+6. Notice that there is a block of code commented out which achieves the same result in 2 lines of code using the [conditional operator](https://goo.gl/Cuvpo6.
+7. Can you understand how this works?
+
+#### 2.1.1 Test Your Knowledge
+
+1. Create a new file called `capitalise.js`.
+2. Export a function that capitalises the first letter of the stringify
+3. Add a `capitalise` property to the String prototype.
+4. Modify the test script in `index.js` to loop through the array of strings, capitalising the first letter of each.
+5. Modify the prototype function to capitalise the first letter of _each word_.
+
+### 2.2 Extending Custom Objects
+
+
+
+#### 2.2.1 Test Your Knowledge
+
 
 
 ## 3 ECMAScript 6 Classes

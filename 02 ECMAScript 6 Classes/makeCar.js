@@ -1,9 +1,9 @@
 
 function makeCar() {
-	const makes = ["Chevy", "GM", "Fiat", "Webville Motors", "Tucker"]
-	const models = ["Cadillac", "500", "Bel-Air", "Taxi", "Torpedo"]
+	const makes = ['Chevy', 'GM', 'Fiat', 'Webville Motors', 'Tucker']
+	const models = ['Cadillac', '500', 'Bel-Air', 'Taxi', 'Torpedo']
 	const years = [1955, 1957, 1948, 1954, 1961]
-	const colors = ["red", "blue", "tan", "yellow", "white"]
+	const colors = ['red', 'blue', 'tan', 'yellow', 'white']
 	const convertible = [true, false]
 
 	const rand1 = Math.floor(Math.random() * makes.length)
@@ -12,8 +12,8 @@ function makeCar() {
 	const rand4 = Math.floor(Math.random() * colors.length)
 	const rand5 = Math.floor(Math.random() * 5)
 	const rand6 = Math.floor(Math.random() * convertible.length)
-	
-	var car = {
+
+	const car = {
 		make: makes[rand1],
 		model: models[rand2],
 		year: years[rand3],
@@ -26,7 +26,7 @@ function makeCar() {
 }
 
 function displayCar(car) {
-	console.log('your new car is a '+car.year+' '+car.make+' '+car.model)
+	console.log(`your new car is a ${car.year} ${car.make} ${car.model}`)
 }
 
 const carToSell = makeCar()
