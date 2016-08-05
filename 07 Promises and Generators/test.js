@@ -8,13 +8,12 @@ const cheerio = require('cheerio')
  * @function scraper
  * @param {string} author - the name of the author to search for
  * @param {string} page - the page number of results to retrieve
- * @returns {null} no return value
+ * @returns {promise} a pending promise
  */
 function scraper(author, page) {
 	const pageCount = 10
 	const firstIndex = 0
 	const url = `http://www.quotationspage.com/search.php3?startsearch=Search&homesearch=${author}&page=${page}`
-	console.log(url)
 	return new Promise( (resolve, reject) => {
 		request.get(url).then( body => {
 			const $ = cheerio.load(body, {decodeEntities: false})
@@ -34,6 +33,12 @@ function scraper(author, page) {
 	})
 }
 
+/**
+ * handles the screen-scraping and extracts data from the html page
+ * @function countQuotes
+ * @param {string} author - the name of the author to search for
+ * @returns {promise} a pending promise
+ */
 function countQuotes(author) {
 	const page1 = 1
 	return new Promise( (resolve, reject) => {
@@ -46,22 +51,25 @@ function countQuotes(author) {
 	})
 }
 
-const promises = []
-
-//countQuotes('twain').then( count => {
-//	console.log(`COUNT: ${count}`)
-
-//})
-
-for (let i = 1; i < 3; i++) {
-	promises.push(scraper('twain', i))
-}
-
-Promise.all(promises).then(function(allResponses) {
-	let quotes = []
-	for (const page of allResponses) {
-		quotes = quotes.concat(page.quotes)
+countQuotes('twain').then( count => {
+	const quotesPerPage = 10
+	const correction = 1
+	console.log(`COUNT: ${count}`)
+	const pages = Math.trunc(count / quotesPerPage) + correction
+	console.log(`PAGES: ${pages}`)
+	const promises = []
+	for (let i = 1; i < pages; i++) {
+		promises.push(scraper('twain', i))
 	}
-	console.log(quotes)
+	Promise.all(promises).then(function(allResponses) {
+		let quotes = []
+		for (const page of allResponses) {
+			quotes = quotes.concat(page.quotes)
+		}
+		console.log(quotes)
+		return quotes
+	}).then( quotes => {
+		console.log(quotes)
+		console.log(quotes.length)
+	})
 })
-
