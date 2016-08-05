@@ -1,4 +1,5 @@
-"use strict"
+
+'use strict'
 
 const readline = require('readline-sync')
 const request = require('request')
@@ -10,14 +11,14 @@ const url = 'https://maps.googleapis.com/maps/api/directions/json?region=gb&orig
 console.log(url)
 
 request.get(url, (err, res, body) => {
-		if (err) {
-			throw 'could not complete request'
-		} else {
-			//console.log(body)
-			const json = JSON.parse(body)
-			const route = json.routes[0].legs[0]
-			//console.log(route)
-			console.log(route.start_address)
-			console.log(route.end_address)
-		}
-	})
+	if (err) {
+		throw 'could not complete request'
+	} else {
+		//console.log(body)
+		const json = JSON.parse(body)
+		const route = json.routes[0].legs[0]
+		//console.log(route)
+		console.log(route.start_address)
+		console.log(route.end_address)
+	}
+})

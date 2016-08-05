@@ -27,25 +27,28 @@ try {
  * Checks to see if the supplied parameter is formatted as a valid email
  * address.
  * @param   {string} email - The email address to be checked.
- * @returns {bool}
+ * @returns {bool} the validity of the email address string
  * @throws  {TypeError} if the parameter is not a valid email address.
  */
 function validateEmail(email) {
+	console.log(email)
 	return true
 }
 
 /**
  * Checks to see if the supplied parameter is a valid integer in the range 1-10.
  * @param   {string} score - The user-specified score.
- * @returns {bool}
+ * @returns {bool} whether the parameter is a valid integer in range
  * @throws  {TypeError} if the parameter is not a valid integer.
  * @throws  {RangeError} if the parameter is not in the range 1-10.
  */
 function validateScore(score) {
-	if (Number.isNaN(score) || score % 1 !== 0) {
+	const minScore = 0
+	const maxScore = 10
+	if (Number.isNaN(score) || score % 1 !== minScore) {
 		throw new TypeError('parameter is not a valid integer')
 	}
-	if (score < 1 || score > 10) {
+	if (score < 1 || score > maxScore) {
 		throw new RangeError('parameter should be in the range 1-10')
 	}
 	return true
@@ -54,11 +57,12 @@ function validateScore(score) {
 /**
  * Checks to see if the supplied comment is 'valid'.
  * @param   {string} comment - The user-specified score.
- * @returns {bool}
+ * @returns {bool} whether the comment is 'valid'
  * @throws  {RangeError} if the comment is not long enough.
  */
 function validateComment(comment) {
-	if (comment.length <= 5) {
+	const minLen = 5
+	if (comment.length <= minLen) {
 		throw new RangeError('comment should be at least 5 characters long')
 	}
 	return true
