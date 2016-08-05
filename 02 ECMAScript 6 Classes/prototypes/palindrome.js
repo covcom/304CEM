@@ -13,7 +13,7 @@ module.exports = () => {
 }
 
 /*
-module.exports = function() {
+module.exports = () => {
 	const reversed = this.split('').reverse().join('')
 	return (reversed === this.valueOf())
 }

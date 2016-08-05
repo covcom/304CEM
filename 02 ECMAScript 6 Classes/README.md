@@ -46,28 +46,36 @@ Now open the `index.js` file in the same directory.
 3. Next we create an array of the strings we want to test.
 4. JavaScript Array objects are iterable which means we can use a [for-of](https://goo.gl/bcR50H) loop to iterate through the indexes.
 5. The String.prototype.palindrome() function returns either true or false, we can then display the correct message.
-6. Notice that there is a block of code commented out which achieves the same result in 2 lines of code using the [conditional operator](https://goo.gl/Cuvpo6.
+6. Notice that there is a block of code commented out which achieves the same result in 2 lines of code using the [conditional operator](https://goo.gl/Cuvpo6).
 7. Can you understand how this works?
 
 #### 2.1.1 Test Your Knowledge
 
 1. Create a new file called `capitalise.js`.
-2. Export a function that capitalises the first letter of the stringify
+2. Export a function that capitalises the _first letter_ of the string
 3. Add a `capitalise` property to the String prototype.
 4. Modify the test script in `index.js` to loop through the array of strings, capitalising the first letter of each.
 5. Modify the prototype function to capitalise the first letter of _each word_.
 
 ### 2.2 Extending Custom Objects
 
+Any functions you create will also have their own `prototype` object. This allows you to change the behaviour of all instances of the object.
 
+Locate the `dog/` directory and open the file `dog.js`.
 
-#### 2.2.1 Test Your Knowledge
+1. At the top of the script we define a `Dog()` function object that takes three parameters. Any values passed in the parameters are stored in the `this` object.
+2. Next we modify the `Dog` function object, adding additional functionality through its prototype object.
+3. Finally our module exports the `Dog` function object.
 
+Now open the `index.js` file in the same directory.
 
+1. we start by importing the Dog function object.
+2. Next we use the `new` keyword to create instances of our object, these will share the same `prototype` object.
+3. The `spot` function object _overides_ the `bark()` method in the prototype.
 
 ## 3 ECMAScript 6 Classes
 
-The latest version of JavaScript introduces the concept of [classes](https://goo.gl/23Fc3f) in the traditional OOP sense. Behind the scenes however this is simply a lightweight syntax over the existing prototype-based inheritance. In JavaScript, classes are special functions and comprise two distinct components, [class expressions](https://goo.gl/xv21eC) and (class declarations)[https://goo.gl/c5N2Mm].
+The latest version of JavaScript introduces the concept of [classes](https://goo.gl/23Fc3f) in the traditional OOP sense. Behind the scenes however this is simply a lightweight syntax over the existing prototype-based inheritance. In JavaScript, classes are special functions and comprise two distinct components, [class expressions](https://goo.gl/xv21eC) and [class declarations](https://goo.gl/c5N2Mm).
 
 ### 3.1 Class Declarations
 
@@ -92,7 +100,7 @@ Open the `classes/` directory and study the files it contains.
 #### 3.1.1 Test Your Knowledge
 
 1. Modify the class declaration
-  1. Modify the constructor to take a third parameter called `dob`. This should accept a JavaScript [Date()(https://goo.gl/yjKCoK) object, this needs to be stored in a private instance variable called `dob`.
+  1. Modify the constructor to take a third parameter called `dob`. This should accept a JavaScript [Date()](https://goo.gl/yjKCoK) object, this needs to be stored in a private instance variable called `dob`.
   2. Modify the constructor to throw an exception if the third parameter is missing.
   2. Add a new _getter_ to return the person's age in _years_.
   3. Test this functionality by modifying the test script `personTest.js`. Create a new `Date()` object representing your date of birth and pass it to the constructor.
@@ -127,35 +135,3 @@ Try running the `employeeTest.js` script, notice that this doesn't work as expec
 3. Create an optional parameter in the constructor called `airMiles` with a default value of `0`
 4. Create a method called `addAirMiles()`, this should take an integer and add this to the current miles.
 5. Create a getter that returns the current number of air miles. 
-
-Arrow functions (anon)
-Destructuring assignment
-Rest parameter
-
-## employee.js
-
-creating objects
-
-parsing and stringify
-
-## js_classes.js
-
-using New commands
-
-functions as objects
-
-## makeCar.js
-
-creating car objects
-
-## objectMethods.js
-
-fiat car with properties and methods.
-
-Object Prototypes
-
-## extending_js_types.js
-
-object prototypes
-
-## prototype_inheritance.js
