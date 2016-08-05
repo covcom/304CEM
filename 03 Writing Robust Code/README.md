@@ -11,13 +11,22 @@ git pull upstream
 
 ## 1 Using a Linter
 
-A **linter** is a program that checks your source code for _programmatic_ and _stylistic_ errors. This will help you to identifying many of the common mistakes that can occur when writing JavaScript code and will ensure the style of your code is consistent.
+JavaScript is a powerful language and includes a number of powerful features but it also includes features that, whilst they may produce working code, will make your code difficult to read and debug! A **linter** is a program that analyses your scripts for _programmatic_ and _stylistic_ errors and will flag up anything that may cause problems. They define a _professional subset_ of the language and reject any code that doesn't meet that standard.
 
-This is especially important when programming in _JavaScript_ because there are many different programming styles and techniques, many of which can lead to tricky bugs. For this reason there are many different linters that are designed for _JavaScript_, in this module you will learn about one of the more powerful and configurable, called **ESLint**.
+There are a number of _linters_ available for the JavaScript language. The original one was written by Douglas Crockford (the author of JavaScript: The Good Parts). This enforced _his_ idea  of good JavaScript and was notorously not configurable! There are now a number of popular linters available, your choice should be based on what will run in your IDE as well as your personal preferences. The most popular linters are:
+
+1. [JSLint](http://www.jslint.com/help.html), the original, by Douglas Crockford
+2. [JSHint](http://jshint.com/docs/)
+3. [ESLint](http://eslint.org) which is supported by many _IDEs_ and _code editors_
 
 EsLint is highly configurable through a hidden config file that needs to be added to the project root directory. When you submit your coursework you must demonstrate that it contains no errors or warnings when run using an identical configuration file.
 
-### 1.1 The ESLint Configuration File
+### 1.1 The Linter Configuration
+
+ESLint is completely configurable through a configuration file `.eslintrc` which is located in the `01 Introduction to NodeJS` directory. By default any file or directory starting with the period (.) character is hidden. To display hidden files and directories click on the **gear icon** at the top of the _Documents Tree_ and choose _Show Hidden Files_.
+
+1. the **env** object imports groups of pre-defined global variables based on the _environment_ they are used in. In our example we will be writing scripts using the NodeJS environment so we want the linter to recognise any NodeJS global variables.
+2. the **rules** object defines any additional rules we want to enforce. In this example we are specifying that we _don't want semicolons_ at the end of each line, that we will use a 2 space tab for indenting, we will use single quotes for strings and that we are using UNIX line endings.
 
 Near the bottom of the file list you should see a file called `.eslintrc`, the initial dot (.) in the filename caused it to be hidden by default.
 

@@ -85,32 +85,6 @@ There are three ways to declare a variable in the latest version of JavaScript (
 3. Items are added to the array using its `push()` method.
   - substute the [unshift](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift) method. How does this change the script?
 
-## 3 Linting
-
-JavaScript is a powerful language and includes a number of powerful features but it also includes features that, whilst they may produce working code, will make your code difficult to read and debug! A **linter** is a program that analyses your scripts for _programmatic_ and _stylistic_ errors and will flag up anything that may cause problems. They define a _professional subset_ of the language and reject any code that doesn't meet that standard.
-
-There are a number of _linters_ available for the JavaScript language. The original one was written by Douglas Crockford (the author of JavaScript: The Good Parts). This enforced _his_ idea  of good JavaScript and was notorously not configurable! There are now a number of popular linters available, your choice should be based on what will run in your IDE as well as your personal preferences. The most popular linters are:
-
-1. [JSLint](http://www.jslint.com/help.html), the original, by Douglas Crockford
-2. [JSHint](http://jshint.com/docs/)
-3. [ESLint](http://eslint.org) which is supported by _Cloud 9_
-
-### 3.1 Linter Configuration
-
-ESLint is completely configurable through a configuration file `.eslintrc` which is located in the `01 Introduction to NodeJS` directory. By default any file or directory starting with the period (.) character is hidden. To display hidden files and directories click on the **gear icon** at the top of the _Documents Tree_ and choose _Show Hidden Files_.
-
-1. the **env** object imports groups of pre-defined global variables based on the _environment_ they are used in. In our example we will be writing scripts using the NodeJS environment so we want the linter to recognise any NodeJS global variables.
-2. the **rules** object defines any additional rules we want to enforce. In this example we are specifying that we _don't want semicolons_ at the end of each line, that we will use a 2 space tab for indenting, we will use single quotes for strings and that we are using UNIX line endings.
-
-### 3.2 Test Your Knowledge
-
-Open the `membership.js` file. Run the script, it works correctly.
-
-Notice the _red error circles_ and _yellow warning triangles_ in the left margin. If you hover the mouse pointer over these you can find out more. These
-
-1. locate any _errors_ in the script and fix
-2. locate the _warnings_ and fix the code to remove these
-
 ## 4 Cloud9 Debugger
 
 The **Cloud9** IDE includes a powerful debugger. Lets test how this works. You should then make use of it when attempting the *Test Your Knowledge* tasks.
@@ -134,7 +108,6 @@ You can read more about Cloud9 debugger capabilities in their [online documentat
 1. modify the code to prevent duplicate items being added. You will need to use the [`Array.indexOf()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) method.
 2. create a **remove** option so an item such as *cheese* can be removed using the syntax `remove cheese`. You may need to use the [`Array.splice()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) method.
 3. The current version is case sensitive. Modify the code so that items are converted to lowercase before being added or searched for. You will need to use the [`String.toLowerCase()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase) method.
-
 
 ## 5 Exception Handling
 

@@ -64,6 +64,8 @@ In this exercise you will be extracting data from the JSON object and displaying
 3. The `address_components` array contains objects describing the full address. Write code to loop through this array and extract the `long_name properties`, printing them to the console.
 4. The `bounds` object contains the geo data defining the top-right and bottom-left of a box that contains the location. Write code to calculate the width and height of the box in degrees.
 
+## 3 Modules and Callbacks
+
 
 
 - Directions: create module with callback function
