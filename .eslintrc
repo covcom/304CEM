@@ -7,6 +7,7 @@
 	},
 	"rules": {
 		"indent": [2, "tab"],
+		"linebreak-style": [2, "unix"],
 		"quotes": [1, "single"],
 		"semi": [1, "never"],
 		"valid-jsdoc": 1,
