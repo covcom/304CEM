@@ -66,8 +66,55 @@ In this exercise you will be extracting data from the JSON object and displaying
 
 ## 3 Modules and Callbacks
 
+Lets recap a little about JavaScript functions. Functions are _first-class objects_ of the type _Object_. This means they can be used just like other objects. You have already seen them stored in other variables.
+
+In the previous examples you passed a function as an argument to another function. By passing a function argument we can execute it when we wish, for example after a network operation to retrieve data. In this context, the function is called a **callback function**.
+
+In this topic you will learn how to create your own functions that take a callback function argument and how to store these in CommonJS modules, importing them where needed. 
+
+Locate the `directions/` directory then open and run the `index.js` script. You will be prompted to enter a start and finish address, the script will return the driving distance between them. Test the exception handling by using both valid and invalid data.
+
+1. The `directions` module is imported.
+2. The `getDistance()` function it contains is called:
+  1. This takes two string parameters
+  2. The third parameter is a callback function
+3. The callback function takes two arguments:
+  1. The first should always be an error object, this will be `null` if no error occurred.
+  2. The second argument is the data returned.
+4. Exceptions are handled _inside_ the callback function.
+5. The final line in the script executes _before the callback function_
+6. The callback function executes once the data has been retrieved, _without blocking the thread_.
+
+Open the `directions.js` file and study it carefully.
+
+1. The `request` module is imported.
+2. The `getDistance()` function is exported.
+3. The third argument is the _callback function_ which has two arguments, the error and the data. This is the recommended callback argument pattern sequence.
+4. The `getDistance()` function makes an aynchronous call to the `request.get()` function.
+  - by isolating the API call in its own private function we won't need to duplicate this code when we add more functionality (the DRY principle).
+5. Its third parameter is a _callback function_.
+6. In the callback function we check for a non-null first parameter which would indicate an error has occurred.
+  - If there has been an error we call our callback function and pass an Error object as its first parameter.
+  - If no error has occurred we return null for the first parameter and the data as the second one.
+
+### 3.1 Test Your Knowledge
+
+1. When the script runs, the url used in the API call is printed to the console. Copy this into [Chrome Postman](https://goo.gl/Twyycv) to see the entire API response body.
+2. Write a second function in your module called `getDuration()` which should print out how long the journey takes (in minutes).
+3. Write a third function called directions which returns an array of directions (HINT: `html_instructions`).
+
+## 4 Screen Scraping
+
+In the previous tasks we have been working with data that is available via a RESTful API but what do you do if the information you need is only found in human-readable format in an HTML webpage?
+
+In this task you will learn how to extract data from HTML web pages, a technique known as **Screen Scraping**. This is a much harder that using an existing API because:
+
+- the html won't have semantic information
+- if the website author changes the page your script will need to be rewritten.
+
+Despite these issues sometimes this approach is the only way to get the information you need.
 
 
-- Directions: create module with callback function
+
 - Famous Quotes: xml parsing
 - Weather: create from scratch
