@@ -1,4 +1,4 @@
-
+'use strict'
 /* import the 'restify' module and create an instance. */
 const restify = require('restify')
 const server = restify.createServer()
@@ -10,6 +10,21 @@ server.use(restify.authorizationParser())
 
 /* import our custom module. */
 const lists = require('./lists.js')
+
+const status = {
+	'ok': 200,
+	'created': 201,
+	'notModified': 304,
+	'badRequest': 400,
+	'unauthorised': 401
+}
+
+const mime = {
+	'json': 'application/json',
+	'xml': 'application/xml'
+}
+
+const defaultPort = 8080
 
 /* if we receive a GET request for the base URL redirect to /lists */
 server.get('/', function(req, res, next) {
@@ -23,7 +38,7 @@ server.get('/lists', function(req, res) {
 	const host = req.headers.host
 	console.log(host)
 	/* creating some empty variables */
-	let data, type
+	let data
 	/* is the client requesting xml data? The req.header object stores any headers passed in the request. The 'Accept' header lets the client express a preference for the format of the representation. Note you should always provide a sensible default. */
 	if (req.header('Accept') === 'application/xml') {
 		data = lists.getAllXML(host)
@@ -32,6 +47,7 @@ server.get('/lists', function(req, res) {
 	}
 	/* we need to set the content-type to match the data we are sending. We then send the response code and body. Finally we signal the end of the response. */
 	res.setHeader('content-type', data.contentType)
+	res.setHeader('Allow', 'GET, POST')
 	res.send(data.code, data.response)
 	res.end()
 })
@@ -41,9 +57,19 @@ server.get('/lists/:listID', function(req, res) {
 	console.log('getting a list based on its ID')
 	/* Here we store the id we want to retrieve in an 'immutable variable'. */
 	const listID = req.params.listID
+	//console.log(req.headers)
+	//let lastChecked = undefined
+	//if (req.headers['if-modified-since']) {
+	//	console.log('header found')
+	//	lastChecked = new Date(req.headers['if-modified-since'])
+	//}
+	//console.log(lastChecked)
+	//const lastChecked = req.headers['if-modified-since'] ? new Date(req.headers['if-modified-since']) : undefined
+	//console.log(`lastChecked: ${lastChecked}`)
 	/* Notice that all the business logic is kept in the 'lists' module. This stops the route file from becoming cluttered and allows us to implement 'unit testing' (we cover this in a later topic) */
 	const data = lists.getByID(listID)
 	res.setHeader('content-type', 'application/json')
+	res.setHeader('Allow', 'GET, POST', 'PUT', 'DELETE')
 	res.send(data.code, data.response)
 	res.end()
 })
@@ -55,28 +81,34 @@ server.post('/lists', function(req, res) {
 	const body = req.body
 	/* Since we are using the authorization parser plugin we gain an additional object which contains the information from the 'Authorization' header extracted into useful information. Here we are displaying it in the console so you can understand its structure. */
 	const auth = req.authorization
-	console.log(auth)
 	const data = lists.addNew(auth, body)
-	res.setHeader('content-type', data.contentType)
-	res.send(data.code, data.response)
+	res.setHeader('content-type', mime[data.contentType])
+	res.setHeader('Allow', 'GET, POST')
+	if (data.status === 'created') {
+		res.setHeader('Location', `/lists/${data.data.id}`)
+		res.setHeader('Last-Modified', data.data.modified.toUTCString())
+	}
+	res.send(status[data.status], data)
 	res.end()
 })
 
 /* The PUT method is used to 'update' a named resource. This is not only used to update a named resource that already exists but is also used to create a NEW RESOURCE at the named URL. It's important that you understand how this differs from a POST request. */
 server.put('/lists/:listID', function(req, res) {
 	res.setHeader('content-type', 'application/json')
-	res.send(data.code, {status: data.status, message: 'this should update the specified resource'})
+	res.setHeader('Allow', 'GET, POST', 'PUT', 'DELETE')
+	res.send(status[status], {status: data.status, message: 'this should update the specified resource'})
 	res.end()
 })
 
 /* The DELETE method removes the resource at the specified URL. */
 server.del('/lists/:listID', function(req, res) {
 	res.setHeader('content-type', 'application/json')
-	res.send(data.code, {status: data.status, message: 'this should delete the specified resource'})
+	res.setHeader('Allow', 'GET, POST', 'PUT', 'DELETE')
+	res.send(204, {status: 'ok', message: 'this should delete the specified resource'})
 	res.end()
 })
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT || defaultPort
 server.listen(port, function(err) {
 	if (err) {
 		console.error(err)
