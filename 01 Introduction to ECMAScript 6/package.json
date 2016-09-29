@@ -9,6 +9,7 @@
   "author": "Mark J Tyers",
   "license": "ISC",
   "dependencies": {
-    "readline-sync": "^1.2.21"
+    "readline-sync": "^1.2.21",
+    "sync-request": "^3.0.1"
   }
 }
