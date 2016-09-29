@@ -29,6 +29,10 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | b
 Once this has executed you will need to close the current terminal window and then open a new one. This is because the installation script has added a new path to your shell configuration and this needs to be loaded again. Once the new terminal window is open we can check for the versions of NodeJS available. The latest version (6.7.0 at the time of writing) will be at the end of the list.
 ```
 nvm list-remote
+         ...
+         v6.5.0                                                                                                
+         v6.6.0                                                                                                
+         v6.7.0 
 nvm install 6.7.0
   Downloading https://nodejs.org/dist/v6.7.0/node-v6.7.0-linux-x64.tar.xz...                        
   ######################################################################## 100.0%
@@ -78,7 +82,7 @@ There are three ways to declare a variable in the latest version of JavaScript (
 5. create a **remove** option so an item such as *cheese* can be removed using the syntax `remove cheese`. You may need to use the [`Array.splice()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) method.
 6. The current version is case sensitive. Modify the code so that items are converted to lowercase before being added or searched for. You will need to use the [`String.toLowerCase()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase) method.
 
-## 5 Exception Handling
+## 3 Exception Handling
 
 When JavaScript executes code errors and exceptions may occur. These may be due to incorrect user input or a broken network connection for example. JavaScript includes a rich set of tools for handling these, based on the [Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) object.
 
@@ -100,3 +104,4 @@ Implement the `validateScore()` function and thoroughly test it:
 1. Check that the string is at least 5 character long
 2. Check that there is a `@` character and that it is not at the start of the string (HINT: use the [indexOf](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) String prototype method.
 3. Check that there is a period (.) character after the `@` character but before the end of the string.
+
