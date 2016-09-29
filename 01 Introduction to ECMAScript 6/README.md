@@ -14,41 +14,31 @@ git pull upstream master
 
 ## 1 Configuring Node
 
-Before we start learning about NodeJS we should take a few moments to check which version of Node is installed on Cloud9 and make sure this is up to date. Node is being developed at a fast rate so we need to update our installed version regularly.
+During this module you will be using NodeJS, a server-side version of ECMAScript 6 (JavaScript) to develop an API. Before wer start, this will need to be installed. To check this we can try to view the version.
+```
+node -v
+  -bash: node: command not found
+```
+The tool used to install and upgrade NodeJS is called the Node Version Management tool (`nvm`).
 
-To manage and upgrade Node we use the **nvm**  (Node Version Manager). By default this is not installed. Start by installing it using **npm** (Node Package Manager). The _-g_ flag tells npm to install this module globally as a _tool_ rather than locally as a _module_.
-```
-npm install -g nvm
-```
-If this fails to install nvm you may need to run the command as sudo. If this fails you will need to install it manually using _curl_, try the following.
+Installation is carried out through the `Terminal`. Start by downloadeding the installation script using the `curl` command and executing it.
 ```
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
 ```
 
-After checking the current version, our next task is to list all the versions we can install and install the latest version. As of writing (November 2015) the latest version was v5.1.0. Finally we check that we are now using the latest version.
+Once this has executed you will need to close the current terminal window and then open a new one. This is because the installation script has added a new path to your shell configuration and this needs to be loaded again. Once the new terminal window is open we can check for the versions of NodeJS available. The latest version (6.7.0 at the time of writing) will be at the end of the list.
 ```
-node -v
-  v0.10.35
 nvm list-remote
-nvm install 6.3.1
+nvm install 6.7.0
+  Downloading https://nodejs.org/dist/v6.7.0/node-v6.7.0-linux-x64.tar.xz...                        
+  ######################################################################## 100.0%
+  Now using node v6.7.0 (npm v3.10.3)  
+nvm alias-default 6.7.0
+  default -> 6.7.0 (-> v6.7.0) 
 node -v
-  v6.3.1
+  v6.7.0
 ```
-Try closing the current terminal window and opening another one. If you check the current version on Node you will see that it has reverted back to the previously installed one! This is because the old version is flagged as the _default_. To fix this we need to set our new version as default.
-```
-node -v
-  v0.10.35
-nvm alias default 6.3.1
-node -v
-  v6.3.1
-```
-To check that this has has the desired effect, close the current terminal window, open a new one and check the current node version.
-
-Node is based on the Chrome v8 runtime and supports any features supported by that runtime. Sometimes its helpful to know which runtime version is included in the NodeJS install. Thankfully this is straightforward to find out.
-```
-node -p process.versions.v8
-  5.0.71.57
-```
+We install the latest version and then set this as default. Finally, to check everything worked we check to see ehat version is installed.
 
 ## 2 Variables and Scope
 
@@ -84,30 +74,9 @@ There are three ways to declare a variable in the latest version of JavaScript (
 2. the array at the top of the script is defined using `var`. What happens if you make this immutable (use `const`)?
 3. Items are added to the array using its `push()` method.
   - substute the [unshift](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift) method. How does this change the script?
-
-## 4 Cloud9 Debugger
-
-The **Cloud9** IDE includes a powerful debugger. Lets test how this works. You should then make use of it when attempting the *Test Your Knowledge* tasks.
-
-Stop the script using `ctrl+C` and restart it. By stopping and restarting the script it will have lost the list items you typed in previously.
-
-1. add the cheese item to the list (see above)
-2. add a breakpoint to the code just inside the callback by clicking in the left margin next to `console.log(typeof chunk)`. Breakpoints are indicated by red circles.
-3. add the *bread* item. Notice that the program execution stops on `console.log(typeof chunk)` without executing it.
-4. notice all the script's variables are listed as *undefined* in the right-hand pane.
-5. click on the **step over** button (indicated in the screenshot below) twice to execute lines 11 and 12. The local text variable should now contain the string you typed in. Locate this in the *local variables* pane. Now hover your mouse pointer over the variable name.
-6. practice using the debugger buttons *Resume*, *Step Into*, *step out* until you understand their function.
-7. the `lists` array is not a local variable and so doesn't appear in the right-hand pane. To keep track of this we can add it as a _watch expression_. In the **Watch Expressions** pane type in `lists` and press enter. You can now see the contents of the array change as the program executes. You can of course also hover over the variable name in the code...
-
-![Cloud9 Debugger](images/node_debugger.png)
-
-You can read more about Cloud9 debugger capabilities in their [online documentation](https://docs.c9.io/docs/running-and-debugging-code). You should take time to get familiar with its capabilities.
-
-### 2.2 Test Your Knowledge
-
-1. modify the code to prevent duplicate items being added. You will need to use the [`Array.indexOf()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) method.
-2. create a **remove** option so an item such as *cheese* can be removed using the syntax `remove cheese`. You may need to use the [`Array.splice()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) method.
-3. The current version is case sensitive. Modify the code so that items are converted to lowercase before being added or searched for. You will need to use the [`String.toLowerCase()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase) method.
+4. modify the code to prevent duplicate items being added. You will need to use the [`Array.indexOf()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) method.
+5. create a **remove** option so an item such as *cheese* can be removed using the syntax `remove cheese`. You may need to use the [`Array.splice()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) method.
+6. The current version is case sensitive. Modify the code so that items are converted to lowercase before being added or searched for. You will need to use the [`String.toLowerCase()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase) method.
 
 ## 5 Exception Handling
 
