@@ -105,3 +105,16 @@ Implement the `validateScore()` function and thoroughly test it:
 2. Check that there is a `@` character and that it is not at the start of the string (HINT: use the [indexOf](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) String prototype method.
 3. Check that there is a period (.) character after the `@` character but before the end of the string.
 
+# Extension Activity
+
+By now you have learned:
+
+1. How to retrieve the lab materials via GitHub
+2. How to install NodeJS on the CodeAnywhere platform
+3. How to edit and run scripts on the CodeAnywhere platform
+
+For you extension activity you are required to set up a development environment on your laptop or desktop computer. If you are running MacOS or Linux you will be able to follow a similar set of steps to those used in CodeAnywhere. If you are running a Windows OS you have three choices:
+
+1. Work out how to configure your windows machine.
+2. Install Virtualbox and create a virtualised instance of Ubuntu 16 Desktop.
+3. Dual boot with Ubuntu.
