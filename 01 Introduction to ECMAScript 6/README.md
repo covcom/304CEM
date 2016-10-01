@@ -118,3 +118,10 @@ For you extension activity you are required to set up a development environment 
 1. Work out how to configure your windows machine.
 2. Install Virtualbox and create a virtualised instance of Ubuntu 16 Desktop.
 3. Dual boot with Ubuntu.
+
+You should install and evaluate a range of editors to decide on the one you prefer. There are a wide range of choices but a starting point might be:
+
+- Visual Studio Code
+- Atom
+- Brackets
+- Sublime
