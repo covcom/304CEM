@@ -20,6 +20,7 @@ If you are using OSX you will need to install and configure a number of tools:
 
 There are a number of editors you could use to write your JavaScript apps. Currently the most promising ones are:
 
+0. [Sublime Text](http://sublimetext.com)
 1. [Visual Studio Code](https://code.visualstudio.com)
 2. [Atom](https://atom.io)
 3. [Brackets](http://brackets.io) (download the version _without_ extract)
