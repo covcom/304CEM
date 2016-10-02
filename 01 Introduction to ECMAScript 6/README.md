@@ -37,7 +37,7 @@ nvm install 6.7.0
   Downloading https://nodejs.org/dist/v6.7.0/node-v6.7.0-linux-x64.tar.xz...                        
   ######################################################################## 100.0%
   Now using node v6.7.0 (npm v3.10.3)  
-nvm alias-default 6.7.0
+nvm alias default 6.7.0
   default -> 6.7.0 (-> v6.7.0) 
 node -v
   v6.7.0
