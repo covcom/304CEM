@@ -41,7 +41,7 @@ This command prints a status message from the Git repository.
 
 At the moment we are working on a copy of the repository hosted on GitHub. As we complete the lab activities it is important to keep a backup copy of our files. This can't be backed up on the GitHub repository since it is read-only. The solution is to create our own remote repository (on GitLab) and push the changes to this.
 
-Create an account and log into **GitLab** (https://gitlab.com). Create yourself a new empty repository by clicking on the green **New project** button in the top-right corner of the page. In the *project path* you should enter **305CDE** and in the *Description* field enter *Developing the Modern Web 2*. Set the *visibility level* to **Private** and click on **Create Project*. You will be taken to the project home screen.
+Create an account and log into **GitLab** (https://gitlab.com). Create yourself a new empty repository by clicking on the green **New project** button in the top-right corner of the page. In the *project path* you should enter **304CEM** and in the *Description* field enter *Developing the Modern Web 2*. Set the *visibility level* to **Private** and click on **Create Project*. You will be taken to the project home screen.
 
 Next you need to copy the repository URL to your clipboard. It should be similar to:
 
@@ -55,7 +55,7 @@ origin  https://github.com/covcom/304CEM.git (push)
 ```
 As you can see your workspace points to the readonly version on GitHub. Lets change this to point to our read-write repository on GitLab. Make sure you substitute your own URL.
 ```
-git remote set-url origin git@gitlab.com:username/305CDE.git
+git remote set-url origin git@gitlab.com:username/304CEM.git
 git remote -v
 origin  git@gitlab.com:username/304CEM.git (fetch)
 origin  git@gitlab.com:username/304CEM.git (push)
