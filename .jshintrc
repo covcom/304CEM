@@ -1,9 +1,0 @@
-{
-  "undef": true,
-  "unused": true,
-  "predef": [ "MY_GLOBAL" ],
-  "strict": true,
-  "eqeqeq": true,
-  "esversion": 6,
-  "varstmt": true
-}
