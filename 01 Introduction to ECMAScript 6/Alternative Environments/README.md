@@ -1,7 +1,7 @@
 
 # Code Editors
 
-The lab activities are based on the use of the **Cloud 9** IDE however ther are other options. This document introduces some alternatives together with hint and tips for their use.
+The lab activities are based on the use of the **codeanywhere** IDE however ther are other options. This document introduces some alternatives together with hint and tips for their use.
 
 ## Operating Systems
 
