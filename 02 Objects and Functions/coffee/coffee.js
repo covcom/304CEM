@@ -1,5 +1,9 @@
 
-module.exports = function(roast, ounces = 8) { // can't use arrow functions here...
+'use strict'
+
+const defaultSize = 8
+
+module.exports = function(roast, ounces = defaultSize) { // can't use arrow functions here...
 	if (roast === undefined) {
 		throw new Error('missing roast type')
 	}

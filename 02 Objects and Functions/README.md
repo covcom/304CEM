@@ -15,7 +15,14 @@ Open the `coffee/` directory and locate the `coffee.js` file. Lets understand ho
 
 ### 1.1 Test Your Knowledge
 
-
+1. Modify the `.getsize()` property, replacing the `if...else` block of code with a [switch statement](https://goo.gl/x7mM3f)
+2. Now modify the switch satement:
+  - sizes up to 8 should be considered _small_.
+  - sizes between 9 and 12 should be _medium_.
+  - any size over 12 should be _large_.
+3. Add a third optional parameter called `shots` to allow the customer to specify additional coffee shots. The default value should be `0`.
+  - In the `order()` property modify the message to include the number of additional shots.
+  - Modify the message so that the coffee is labelled as `strong` if there are 2 or more additional shots.
 
 ## 2 Prototypal Inheritance
 
@@ -72,6 +79,11 @@ Now open the `index.js` file in the same directory.
 1. we start by importing the Dog function object.
 2. Next we use the `new` keyword to create instances of our object, these will share the same `prototype` object.
 3. The `spot` function object _overides_ the `bark()` method in the prototype.
+
+### 2.2.1 Test Your Knowledge
+
+1. Add a new property to the prototype called `trained`. This should be added to the `Dog()` function object at the top as a fourth parameter with a [default](https://goo.gl/0uUwuS) value of `true`.
+2. Modify the `sit()` prototype function so that the dog only sits if `trained` is `true`.
 
 ## 3 ECMAScript 6 Classes
 
@@ -135,3 +147,10 @@ Try running the `employeeTest.js` script, notice that this doesn't work as expec
 3. Create an optional parameter in the constructor called `airMiles` with a default value of `0`
 4. Create a method called `addAirMiles()`, this should take an integer and add this to the current miles.
 5. Create a getter that returns the current number of air miles. 
+
+# Extension Activity
+
+You should be already thinking of the theme of your assignment. Once you have an idea, createe the following based on this:
+
+1. An extended function object.
+2. An ECMA6Script Class using inheritance.

@@ -1,5 +1,8 @@
 
+'use strict'
+
 const Coffee = require('./coffee')
+
 try {
 	const coffee = new Coffee('House Blend', 12)
 	console.log(coffee.order())

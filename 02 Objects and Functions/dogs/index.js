@@ -1,4 +1,6 @@
 
+'use strict'
+
 const Dog = require('./dog')
 
 const fido = new Dog('Fido', 'Mixed', 38)
