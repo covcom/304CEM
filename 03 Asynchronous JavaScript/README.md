@@ -12,7 +12,7 @@ In this first exercise you will learn about two important concepts.
 1. How to pass parameters to your program as runtime parameters.
 2. How to run code in multiple threads using callbacks.
 
-When a JavaScript program is invoked from the console, the entire invocation string is available through the process.argv array, each word being stored in a different array index. This means that index 0 always contains the string `node`.
+When a JavaScript program is invoked from the console, the entire invocation string is available through the `process.argv` array, each word being stored in a different array index. This means that index 0 always contains the string `node`.
 
 In our program you will be using passing the different currencies to convert from and to through the command invocation.
 
@@ -115,6 +115,62 @@ In this task you will learn how to extract data from HTML web pages, a technique
 Despite these issues sometimes this approach is the only way to get the information you need.
 
 
+Open the `quotes/index.js` file and notice that it imports a custom `quotes` module, the `./` indicates that it is in the current directory. Because the parsing code can get quite complex it is best practice to place this in a custom module.
 
-- Famous Quotes: xml parsing
-- Weather: create from scratch
+There is only one function in this module, called `getQuotes()` which takes two parameters, the author name plus a callback. The callback follows best practice by passing an error as the first parameter followed by the data.
+
+Now open the `quotes/quotes.js` module. The screen-scraping functionality is in a private function which is referenced by the exported function, this makes it easier to update if the web page layout changes.
+
+If an error occurs the callback is called with an Error as the first parameter. If no error occurs, the callback takes a `null` first parameter with the data as a second parameter. This pattern is consistent with the built-in JavaScript functions that take a callback.
+
+Run the `index.js` script and try searching for a valid person (such as _Asimov_), copy the URL into the chrome web browser.
+
+Open the _Developer Tools_ and choose the _Elements_ tab. As you hover over the DOM elements in the _Elements_ tab you will see the content highlighted in the browser window.
+
+Use this to expand the DOM until you can highlight the first quote in the list.
+
+- Notice that all the quotes are in a `<dl>` (definition list) tag.
+- Each quote is in an `<a>` (anchor) tag a `<dt>` (definition term) tag.
+
+In the `scraper()` function:
+
+1. The supplied parameters are used to create a **unique url**. It is absolutely vital that:
+  - each resource have a unique URL.
+  - the URL for each resource can be calculated based on the supplied parameters.
+2. The url is logged to the console so that it can be pasted into a browser to check for validity.
+3. The `request` module is used to grab the web page html which is available i the `body` parameter of the callback.
+4. The `cheerio` module loads the page DOM into a constant which can be parsed using JQuery syntax.
+5. We then check the DOM for particular elements.
+  - If there is a `<p>` tag containing the text `No quotations found` we know the search has returned no quotations so an error is returned.
+  - The number of quotes is extracted from the DOM and stored as a property of the data object.
+  - An empty `quotes[]` array is added to the `data` object.
+  - [JQuery.each()](http://api.jquery.com/jquery.each/) is used to loop through each of the tags of interest.
+  - Each quote is then pushed onto the `quotes[]` array.
+6. Once all the data has been extracted from the DOM and added to the `data` object this is passed to the callback function.
+
+### 4.1 Test Your Knowledge
+
+The best way to learn about screen scraping is to have a go. In this task you will be writing a script to search for books based on ISBN numbers and returning useful data.
+
+You will be using the Amazon website, start by searching for a specific ISBN such as `1449336361`, this will give you a URL to parse.
+
+https://www.amazon.co.uk/JS-Next-ECMAScript-6-Aaron-Frost/dp/1449336361/ref=sr_1_1?ie=UTF8&qid=1475398158&sr=8-1&keywords=1449336361
+
+The next step is to remove the unnecessary parts of the URL until you are left with something you can work with. This is a process of trial and error but you need to be able to construct this URL using only the ISBN number.
+
+https://www.amazon.co.uk/dp/1449336361
+
+Have a go at writing a `books` screen scraper and try to return:
+
+1. Title
+2. Authors
+3. Description
+4. Price
+5. Rating
+
+# Extension Activity
+
+By now you whould have decided on the theme for your API.
+
+1. Identify any existing APIs you can integrate into your assignment. Write a NodeJS script to extract and display appropriate data.
+2. Identify websites that contain useful data and Write a NodeJS screen scraper to extract and display useful data (lists of items and details on specific items).
