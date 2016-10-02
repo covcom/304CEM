@@ -54,7 +54,7 @@ Before you can run the script you need to install the _module dependencies_. The
 
 Return to the `todo.js` script and run it by clicking on the **Run** button in the top toolbar. Once running you can use the `add` command to add new items to the list and the `list` command to print out the list items. The final command will terminate the application.
 ```
-node index.js
+node todo.js
 add cheese
 add bread
 add butter
