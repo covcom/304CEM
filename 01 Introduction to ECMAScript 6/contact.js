@@ -1,5 +1,7 @@
 'use strict'
 
+# this is something bad
+
 /* This script demonstrates how JavaScript can be used to handle exceptions. */
 
 const readline = require('readline-sync')
