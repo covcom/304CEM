@@ -41,13 +41,13 @@ This command prints a status message from the Git repository.
 
 At the moment we are working on a copy of the repository hosted on GitHub. As we complete the lab activities it is important to keep a backup copy of our files. This can't be backed up on the GitHub repository since it is read-only. The solution is to create our own remote repository (on GitLab) and push the changes to this.
 
-Create an account and log into **GitLab** (https://gitlab.com). Create yourself a new empty repository by clicking on the green **New project** button in the top-right corner of the page. In the *project path* you should enter **305CDE** and in the *Description* field enter *Developing the Modern Web 2*. Set the *visibility level* to **Private** and click on **Create Project*. You will be taken to the project home screen.
+Create an account and log into **GitLab** (https://gitlab.com). Create yourself a new empty repository by clicking on the green **New project** button in the top-right corner of the page. In the *project path* you should enter **304CEM** and in the *Description* field enter *Developing the Modern Web 2*. Set the *visibility level* to **Private** and click on **Create Project*. You will be taken to the project home screen.
 
 Next you need to copy the repository URL to your clipboard. It should be similar to:
 
 `git@gitlab.com:username/304CEM.git`
 
-Now return to the Cloud 9 Workspace. We need to update the remote repository URL so it points to our new repository. First lets check the current remote settings.
+Now return to the codeanywhere Workspace. We need to update the remote repository URL so it points to our new repository. First lets check the current remote settings.
 ```
 git remote -v
 origin  https://github.com/covcom/304CEM.git (fetch)
@@ -55,14 +55,14 @@ origin  https://github.com/covcom/304CEM.git (push)
 ```
 As you can see your workspace points to the readonly version on GitHub. Lets change this to point to our read-write repository on GitLab. Make sure you substitute your own URL.
 ```
-git remote set-url origin git@gitlab.com:username/305CDE.git
+git remote set-url origin git@gitlab.com:username/304CEM.git
 git remote -v
 origin  git@gitlab.com:username/304CEM.git (fetch)
 origin  git@gitlab.com:username/304CEM.git (push)
 ```
 You will notice that your remote called *origin* now points to your new GitLab repository.
 
-Finally we need to configure Git on Cloud 9 with our name and email address. Make sure this matches the name and email you used when setting up your GitLab account.
+Finally we need to configure Git on codeanywhere with our name and email address. Make sure this matches the name and email you used when setting up your GitLab account.
 ```
 git config --global user.name 'Your Name'
 git config --global user.email 'your@email.com'
@@ -80,7 +80,7 @@ tuGRLop+4Hvnft+d8YPERgk4TE+cXdytDKVL3j2I6+qTPXkScJOdivOuEd+XbuD+tk7XX8qeTZvjiYsO
 tWp0rXyaNYTnVkY1fkYhPPG3TeKTndSesN2xJ7GeKD codeanywhere-ssh-key
 ```
 
-Now open your GitLab home screen and click on the **Profile Settings* button (the gear in the top-right corner of the page). Click on the **SSH Keys** tab located down the left-edge of the screen and click on the green **Add SSH Key** button. Paste the key into the large field and give it the title **Cloud 9**. Finally click on the **Add Key** button.
+Now open your GitLab home screen and click on the **Profile Settings* button (the gear in the top-right corner of the page). Click on the **SSH Keys** tab located down the left-edge of the screen and click on the green **Add SSH Key** button. Paste the key into the large field and give it the title **codeanywhere**. Finally click on the **Add Key** button.
 
 ## 1.5 Pushing to the New Remote
 
@@ -92,7 +92,7 @@ If you now open the *GitLab* repository you will see a **files** link down the l
 
 ## 1.6 Pulling Changes
 
-Over the course of the module there will be changes made to the original read-only repository on GitHub. To allow access to these changes you will need to add a second remote to your local Cloud 9 repository (we will label this as the *upstream* repository).
+Over the course of the module there will be changes made to the original read-only repository on GitHub. To allow access to these changes you will need to add a second remote to your local codeanywhere repository (we will label this as the *upstream* repository).
 ```
 git remote -v
 git remote add upstream https://github.com/covcom/304CEM.git
