@@ -52,11 +52,8 @@ Load up the `todo.js` script and read through it to understand how it works. The
 
 Before you can run the script you need to install the _module dependencies_. These are listed in the `package.json` file. This is formatted as a `json` document, you will learn mre about this in a later topic. Open this up and look for the `dependences` array, it specifies that we need to install the `readline-sync` module. To install this you need to use the _terminal_ to navigate to the directory then run `npm install`. Notice that you now have a new directory called `node_modules/`.
 
-<<<<<<< HEAD
 Use the **terminal** to navigate to the `01 Introduction to ECMAScript 6` directory and run the script by entering ` node todo.js`. Once running you can use the `add` command to add new items to the list and the `list` command to print out the list items. The final command will terminate the application.
-=======
-Return to the `todo.js` script and run it by using the **terminal** to navigate to its directory then running it with `node todo` clicking on the **Run** button in the top toolbar. Once running you can use the `add` command to add new items to the list and the `list` command to print out the list items. The final command will terminate the application.
->>>>>>> 1d5760cc599ad651282494160c662ac8a80be080
+
 ```
 node todo.js
 add cheese
