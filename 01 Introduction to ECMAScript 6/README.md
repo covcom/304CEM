@@ -73,8 +73,10 @@ There are three ways to declare a variable in the latest version of JavaScript (
 ### 2.2 Test Your Knowledge
 
 1. locate the `input` variable declaration (just inside the `do` loop)
-  - substitute it for a constant by replacing the `var` with `const`, what effect does this have.
-  - now substitute a block-scoped variable by substituting `const` for `let`, what effect does this have?
+  - define it as a block-scoped variable by replacing the `var` with `let`, what effect does this have?
+  - modify the script so that it still works (keep the `let` variable declaration).
+  - substitute a constant by substituting `const` for `let`, what effect does this have?
+
 2. the array at the top of the script is defined using `var`. What happens if you make this immutable (use `const`)?
 3. Items are added to the array using its `push()` method.
   - substute the [unshift](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift) method. How does this change the script?
