@@ -102,7 +102,7 @@ Open the `contact.js` script and study it carefully, as before, the code include
 
 ### 3.1 Test Your Knowledge
 
-Implement the `validateEmail()` function and thoroughly test it:
+Implement the `validateEmail()` function and thoroughly test it, you should avoid using regular expressions at this stage:
 
 1. Check that the string is at least 5 character long
 2. Check that there is a `@` character and that it is not at the start of the string (HINT: use the [indexOf](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) String prototype method.
