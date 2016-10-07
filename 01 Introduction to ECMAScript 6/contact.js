@@ -64,7 +64,7 @@ function validateScore(score) {
  */
 function validateComment(comment) {
 	const minLen = 5
-	if (comment.length <= minLen) {
+	if (comment.length < minLen) {
 		throw new RangeError('comment should be at least 5 characters long')
 	}
 	return true
