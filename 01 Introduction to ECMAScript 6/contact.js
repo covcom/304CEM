@@ -1,5 +1,7 @@
 'use strict'
 
+# this is something bad
+
 /* This script demonstrates how JavaScript can be used to handle exceptions. */
 
 const readline = require('readline-sync')
@@ -62,7 +64,7 @@ function validateScore(score) {
  */
 function validateComment(comment) {
 	const minLen = 5
-	if (comment.length <= minLen) {
+	if (comment.length < minLen) {
 		throw new RangeError('comment should be at least 5 characters long')
 	}
 	return true

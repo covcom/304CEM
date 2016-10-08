@@ -128,3 +128,15 @@ You should install and evaluate a range of editors to decide on the one you pref
 - Atom
 - Brackets
 - Sublime
+
+## Installing Node
+
+As part of your configuration you will need to install the latest version of NodeJS. On Ubuntu Desktop 16.
+When you use it you will need to run it as `nodejs`.
+```
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 68576280
+sudo apt-add-repository "deb https://deb.nodesource.com/node_6.x $(lsb_release -sc) main"
+sudo apt-get update
+sudo apt-get install nodejs
+nodejs -v
+```
