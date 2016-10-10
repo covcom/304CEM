@@ -50,9 +50,10 @@ In the following examples we will be using a _node module_ to capture user input
 
 Load up the `todo.js` script and read through it to understand how it works. There are lots of code comments to assist you.
 
-Before you can run the script you need to install the _module dependencies_. These are listed in the `package.json` file. This is formatted as a `json` document, you will learn mre about this in a later topic. Open this up and look for the `dependences` array, it specifies that we need to install the `readline-sync` module. To install this you need to use the _terminal_ to navigate to the directory then run `npm install`. Notice that you now have a new directory called `node_modules/`.
+Before you can run the script you need to install the _module dependencies_. These are listed in the `package.json` file. This is formatted as a `json` document, you will learn more about this in a later topic. Open this up and look for the `dependences` array, it specifies that we need to install the `readline-sync` module. To install this you need to use the _terminal_ to navigate to the directory then run `npm install`. Notice that you now have a new directory called `node_modules/`.
 
-Return to the `todo.js` script and run it by clicking on the **Run** button in the top toolbar. Once running you can use the `add` command to add new items to the list and the `list` command to print out the list items. The final command will terminate the application.
+Use the **terminal** to navigate to the `01 Introduction to ECMAScript 6` directory and run the script by entering ` node todo.js`. Once running you can use the `add` command to add new items to the list and the `list` command to print out the list items. The final command will terminate the application.
+
 ```
 node todo.js
 add cheese
@@ -73,8 +74,10 @@ There are three ways to declare a variable in the latest version of JavaScript (
 ### 2.2 Test Your Knowledge
 
 1. locate the `input` variable declaration (just inside the `do` loop)
-  - substitute it for a constant by replacing the `var` with `const`, what effect does this have.
-  - now substitute a block-scoped variable by substituting `const` for `let`, what effect does this have?
+  - define it as a block-scoped variable by replacing the `var` with `let`, what effect does this have?
+  - modify the script so that it still works (keep the `let` variable declaration).
+  - substitute a constant by substituting `const` for `let`, what effect does this have?
+
 2. the array at the top of the script is defined using `var`. What happens if you make this immutable (use `const`)?
 3. Items are added to the array using its `push()` method.
   - substute the [unshift](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift) method. How does this change the script?
@@ -99,7 +102,7 @@ Open the `contact.js` script and study it carefully, as before, the code include
 
 ### 3.1 Test Your Knowledge
 
-Implement the `validateEmail()` function and thoroughly test it:
+Implement the `validateEmail()` function and thoroughly test it, you should avoid using regular expressions at this stage:
 
 1. Check that the string is at least 5 character long
 2. Check that there is a `@` character and that it is not at the start of the string (HINT: use the [indexOf](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) String prototype method.
@@ -125,3 +128,15 @@ You should install and evaluate a range of editors to decide on the one you pref
 - Atom
 - Brackets
 - Sublime
+
+## Installing Node
+
+As part of your configuration you will need to install the latest version of NodeJS. On Ubuntu Desktop 16.
+When you use it you will need to run it as `nodejs`.
+```
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 68576280
+sudo apt-add-repository "deb https://deb.nodesource.com/node_6.x $(lsb_release -sc) main"
+sudo apt-get update
+sudo apt-get install nodejs
+nodejs -v
+```

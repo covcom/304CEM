@@ -122,6 +122,10 @@ git push origin --all
 git log origin/master..HEAD
 ```
 
-## 1.9 Next Steps
+## 1.9 Reporting Bugs
+
+As you work through the worksheets you may find some bugs. You should report these using the [GitHub Issue Tracker](https://github.com/covcom/304CEM/issues). 
+
+## 1.10 Next Steps
 
 Now you are ready to start learning. Open the directory containing the first topic and follow the instructions given.
