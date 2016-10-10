@@ -39,7 +39,7 @@ Each built-in object type has its own prototype object. This can be modified and
 Locate the `prototypes/` directory and open the file `palindrome.js`.
 
 1. Note how this module exports a single anonymous function.
-2. The anonymous function is declared using the shorter [arrow function](https://goo.gl/JuCltQ) syntax.
+2. An anonymous function is declared and exported. For the shorter [arrow function](https://goo.gl/JuCltQ) syntax see the link.
 3. **this** refers to the string that the prototype is called on.
 4. The function contains a loop that starts at each end of the string and compares the characters working inwards.
 5. If at any point these don't match, the function returns false.
