@@ -16,7 +16,7 @@ Open the `coffee/` directory and locate the `coffee.js` file. Lets understand ho
 ### 1.1 Test Your Knowledge
 
 1. Modify the `.getsize()` property, replacing the `if...else` block of code with a [switch statement](https://goo.gl/x7mM3f)
-2. Now modify the switch satement:
+2. Now modify the switch satement back to an `if...else` one such that:
     - sizes up to 8 should be considered _small_.
     - sizes between 9 and 12 should be _medium_.
     - any size over 12 should be _large_.
