@@ -13,6 +13,10 @@ Open the `coffee/` directory and locate the `coffee.js` file. Lets understand ho
 4. We store the two parameters as properties of the `this` object.
 5. We also store our two functions in the `this` object which means we can call these once we have an instance of our enclosing function. Because we don't want to bind `this` to these functions we use the [arrow function](https://goo.gl/B3UgyF) syntax.
 
+Open the `index.js` file, also located in the `coffee/` folder to see the function object in action. Run this file to see any changes you have made to the `coffee.js` file with `node index.js`.
+
+For future reference, if there is ever an `index.js` file in the folder, this is what should be run to test the code.
+
 ### 1.1 Test Your Knowledge
 
 1. Modify the `.getsize()` property, replacing the `if...else` block of code with a [switch statement](https://goo.gl/x7mM3f)
