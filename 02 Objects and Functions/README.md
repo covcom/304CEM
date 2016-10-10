@@ -17,12 +17,12 @@ Open the `coffee/` directory and locate the `coffee.js` file. Lets understand ho
 
 1. Modify the `.getsize()` property, replacing the `if...else` block of code with a [switch statement](https://goo.gl/x7mM3f)
 2. Now modify the switch satement:
-  - sizes up to 8 should be considered _small_.
-  - sizes between 9 and 12 should be _medium_.
-  - any size over 12 should be _large_.
+    - sizes up to 8 should be considered _small_.
+    - sizes between 9 and 12 should be _medium_.
+    - any size over 12 should be _large_.
 3. Add a third optional parameter called `shots` to allow the customer to specify additional coffee shots. The default value should be `0`.
-  - In the `order()` property modify the message to include the number of additional shots.
-  - Modify the message so that the coffee is labelled as `strong` if there are 2 or more additional shots.
+    - In the `order()` property modify the message to include the number of additional shots.
+    - Modify the message so that the coffee is labelled as `strong` if there are 2 or more additional shots.
 
 ## 2 Prototypal Inheritance
 
@@ -94,42 +94,42 @@ The latest version of JavaScript introduces the concept of [classes](https://goo
 Open the `classes/` directory and study the files it contains.
 
 1. The `person.js` file contains a _class declaration_. 
-  1. the class is declared using the `class` keyword followed by the name of the class (its customary to start class names with an upper-case letter).
-  2. this class is _exported_ by the module by assigning it to `module.exports`, which means it can be used in other scripts.
-  3. each class can have one and only one constructor.
-  4. this constructor takes two parameters.
-  5. each parameter is added to the `this` object which is private to the class and contains the private instance variables.
+    1. the class is declared using the `class` keyword followed by the name of the class (its customary to start class names with an upper-case letter).
+    2. this class is _exported_ by the module by assigning it to `module.exports`, which means it can be used in other scripts.
+    3. each class can have one and only one constructor.
+    4. this constructor takes two parameters.
+    5. each parameter is added to the `this` object which is private to the class and contains the private instance variables.
 2. The `personTest.js` file contains a simple script, run it and watch the console output.
-  1. the module containing the class declaration is imported and stored in a [constant](https://goo.gl/BQBhEU).
-  2. the code is wrapped in a try-catch block to handle any thrown exceptions
-  3. the class is used to create a new Person object (called `person`)
-  4. two parameters are passed to the constructor.
-  5. the `name` getter is called which computes the person's full name and returns it.
-  6. the `lastName` setter is called which updates the private instance variable.
-  7. finally the object is printed, this returns a JSON object containing the values stored in `this`.
-  8. the second object `badPerson` misses the second parameter from the constructor, notice that an exception is thrown.
+    1. the module containing the class declaration is imported and stored in a [constant](https://goo.gl/BQBhEU).
+    2. the code is wrapped in a try-catch block to handle any thrown exceptions
+    3. the class is used to create a new Person object (called `person`)
+    4. two parameters are passed to the constructor.
+    5. the `name` getter is called which computes the person's full name and returns it.
+    6. the `lastName` setter is called which updates the private instance variable.
+    7. finally the object is printed, this returns a JSON object containing the values stored in `this`.
+    8. the second object `badPerson` misses the second parameter from the constructor, notice that an exception is thrown.
 
 #### 3.1.1 Test Your Knowledge
 
 1. Modify the class declaration
-  1. Modify the constructor to take a third parameter called `dob`. This should accept a JavaScript [Date()](https://goo.gl/yjKCoK) object, this needs to be stored in a private instance variable called `dob`.
-  2. Modify the constructor to throw an exception if the third parameter is missing.
-  2. Add a new _getter_ to return the person's age in _years_.
-  3. Test this functionality by modifying the test script `personTest.js`. Create a new `Date()` object representing your date of birth and pass it to the constructor.
-  4. Use your new _getter_ to print out the person's age.
+    1. Modify the constructor to take a third parameter called `dob`. This should accept a JavaScript [Date()](https://goo.gl/yjKCoK) object, this needs to be stored in a private instance variable called `dob`.
+    2. Modify the constructor to throw an exception if the third parameter is missing.
+    2. Add a new _getter_ to return the person's age in _years_.
+    3. Test this functionality by modifying the test script `personTest.js`. Create a new `Date()` object representing your date of birth and pass it to the constructor.
+    4. Use your new _getter_ to print out the person's age.
 
 ### 3.2 Class Inheritance
 
 Open the `employee.js` file and read through the code.
 
 1. The **Employee** class subclasses the **Person** class:
-  1. The module containing the _Person_ class needs to be imported at the top of our script.
-  2. The `extends` keyword indicates that the _Employee_ class subclasses the _Person_ class.
+    1. The module containing the _Person_ class needs to be imported at the top of our script.
+    2. The `extends` keyword indicates that the _Employee_ class subclasses the _Person_ class.
 2. The third parameter passed to the constructor is a [default parameter](https://goo.gl/SJL4tS) which means that if it is not specified, it is initialised with a default value.
 3. The _constructor_ uses the `super()` keyword to call the constructor of its _superclass_, passing the appropriate parameters.
 4. There is a method defined to calculate the salary.
-  1. There is a single _default parameter_ to determine the number of months salary to calculate.
-  2. The calculation uses the salary grade passed to the constructor to calculate the result.
+    1. There is a single _default parameter_ to determine the number of months salary to calculate.
+    2. The calculation uses the salary grade passed to the constructor to calculate the result.
 
 Open the `employeeTest.js` file. This script is used to test our new class.
 
