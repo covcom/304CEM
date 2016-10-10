@@ -33,7 +33,7 @@ module.exports = class Person {
 	}
 
 	/**
-	 * Set the person's first name
+	 * Get the person's full name
 	 * @return {string} the person's full name
 	 */
 	get name() {
