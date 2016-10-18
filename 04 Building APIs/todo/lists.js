@@ -58,7 +58,7 @@ exports.getByID = function(listID) {
 	for(let i=0; i < lists.length; i++) {
 		if (lists[i].id === listID) {
 			/* Note that every public method in this module returns an object with the same properties. This consistency makes the routes file simpler. */
-			return {status: 'ok', contentType: 'json', message: 'list found', data: lists[i]}
+			return {code: status.ok, response: {status: 'ok', contentType: 'json', message: 'list found', data: lists[i]}}
 		}
 	/* If there are no matching lists a 'resource not found' error is returned. */
 		return {code: status.notAcceptable, response: {status: 'error', contentType: 'application/json', message: 'list not found', data: listID}}
