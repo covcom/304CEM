@@ -10,7 +10,7 @@ const res = request('GET', url)
 const rates = JSON.parse(String(res.getBody())).rates
 console.log(JSON.stringify(rates, null, 2))
 
-// ask the user for the currency code, convert to uppercase and remove whitespace.
+// ask the user for the currency code, convert to uppercase and remove whitespace. Notice the methods are 'chained'
 const code = String(readline.question('enter required currency code: ')).toUpperCase().trim()
 console.log(`you chose code: "${code}"`)
 
@@ -19,4 +19,6 @@ if (rates.hasOwnProperty(code)) {
   console.log(`currency code ${code} is valid`)
   const exchange = rates[code]
   console.log(`exchange rate between ${base} and ${code} is ${exchange}`)
+} else {
+  console.log(`the code ${code} is not valid`)
 }

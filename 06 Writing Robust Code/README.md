@@ -179,5 +179,6 @@ Most desktop code editors support plugins which will extend their functionality.
 1. Find out how your preferred editor supports eslint. When configured, your browser should highlight linting errors against the appropriate lines of code, making them easier to locate and fix.
 2. Several errors and warnings are caused by bad use of whitespace. Locate the setting in your editor that allows you to see whitespace characters (spaces, tabs, newlines) and how to specify that indentations are added as 2 space tabs.
 3. There will be plugins that support autocomplete. Identify how you can add autocomplete for NodeJS, ECMAScript 6, etc. This will speed up your development.
+  - Many editors such as VS Code support the Typescript Definition Language. This can be installed as a NodeJS global module `npm install -g tsd`. Once installed, it can be used to load support for different languages, eg. `tsd install node`.
 4. You will be interacting with a terminal during the development process, most editors allow you to embed a terminal window.
 5. You will be regularly interacting with Git (both your local and remote repository). Find out whether there are any plugins that can improve your workflow. Ideally these should highlight the file diff in the code editor line by line as well as offer a simple way to stage, commit, push and pull (and change branches?).
