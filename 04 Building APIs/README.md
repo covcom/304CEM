@@ -76,20 +76,7 @@ The `/lists` url represents a _collection_ of lists. We can add, view, update an
 1. Currently we can add and view resources (create and retrieve in CRUD terms). Use the code stub in `index.js` to implement a mechanism to allow resources to be deleted. Users need to be authorised to do this.
 2. Finally implement a mechanism for resources to be updated using the **PUT** method. Again you need to check users are authorised.
 
-## 3 Representations
-
-In the previous exercise the data was returned in JSON format. This is not the list *collection* but a **representation** of the lists. A _representation_ is _a way of displaying a resource or collection_. Currently we are seeing _a JSON representation_ of our list collection. A resource may have many different representations, lets see an example.
-
-1. click on the **Headers** button in _Postman_. In the _Header_ field enter `Accept` and assign it a value of `application/xml`.
-2. make a `GET /lists` request. Notice the API returns an XML representation of the collection.
-  - You are witnessing an important principle, the resource can be shown through different representations.
-
-### 3.1 Test Your Knowledge
-
-1. modify the API so that the user can choose between JSON and XML when viewing an individual list.
-2. when adding a new list modify the API so that the list data can be supplied in XML format. You will need to import and load the [xml2js](https://www.npmjs.com/package/xml2js) module.
-
-## 4 Deploying to Heroku
+## 3 Deploying to Heroku
 
 Heroku provide a free hosting tier and make it really easy to deploy your API. Unline other material in this module you will need to be working with a separate git repository containing only a single NodeJS project, your assignment API for example. Start by creating a free [Heroku](https://www.heroku.com) account.
 
