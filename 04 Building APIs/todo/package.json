@@ -1,0 +1,25 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "Simple API to maintain to do lists.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "api",
+    "restify",
+    "tutorial"
+  ],
+  "author": "Mark J Tyers",
+  "license": "ISC",
+  "dependencies": {
+    "csprng": "^0.1.1",
+    "restify": "^4.0.3",
+    "xmlbuilder": "^3.1.0"
+  },
+  "devDependencies": {
+    "frisby": "^0.8.5",
+    "jasmine-node": "^1.14.5"
+  }
+}
