@@ -7,19 +7,23 @@ server.use(restify.bodyParser())
 
 const port = process.env.PORT || 8080
 
-/* if we receive a GET request for the base URL redirect to /lists */
+// basic response from the root endpoint
 server.get('/', function(req, res, next) {
   let data = "It works"
 	res.send(200, data)
   res.end()
 })
 
+// another call to get sets up another route
 server.get('/anotherURL', function(req, res, next) {
   let data = "You asked for another URL"
   res.send(200, data)
   res.end()
 })
 
+// other http verbs can be used
+// with `post` you can access the data sent using the request body
+// this needs the `bodyParser()` line above to work
 server.post('/users', function(req, res, next) {
   let body = req.body
   let message = `your data was: ${body}`
@@ -27,6 +31,7 @@ server.post('/users', function(req, res, next) {
   res.end()
 })
 
+// now run the server and print a message to tell if it worked
 server.listen(port, function(err) {
 	if (err) {
 		console.error(err)
