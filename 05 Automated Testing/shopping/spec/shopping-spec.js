@@ -42,7 +42,7 @@ describe('Shopping List', function () {
 		expect(list.getItem('bread').qty).toBe(2)
 	})
 
-	it('should throw an error if item not in list', () => {
+	xit('should throw an error if item not in list', () => {
 		try {
 			let jam = list.getItem('jam')
 			expect(true).toBe(false) // we want to fail test if this line is run.
@@ -51,21 +51,21 @@ describe('Shopping List', function () {
 		}
 	})
 
-	it('should delete first item', () => {
+	xit('should delete first item', () => {
 		list.removeItem('bread')
 		expect(list.count()).toBe(1)
 		const items = list.getAll()
 		expect(items[0].title).toBe('butter')
 	})
 
-	it('should delete last item', () => {
+	xit('should delete last item', () => {
 		list.removeItem('butter')
 		expect(list.count()).toBe(1)
 		const items = list.getAll()
 		expect(items[0].title).toBe('bread')
 	})
 
-	it('should throw error if item not in list', () => {
+	xit('should throw error if item not in list', () => {
 		try {
 			list.removeItem('jam')
 			expect(true).toBe(false)
