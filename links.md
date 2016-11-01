@@ -5,6 +5,6 @@
 * [Restify](http://restify.com/) - node module for creating REST APIs
 * [Jasmine](http://jasmine.github.io/2.5/introduction) - documentation for the core node test runner
 * [Frisby](http://frisbyjs.com/docs/api/) - documentation for the API testing framework
-* [Unirest](http://unirest.io/nodejs.html) - module for HTTP client requests (an alternative to [Request](https://www.npmjs.com/package/request), used in Node code examples by Mashape)
+* [Unirest](http://unirest.io/nodejs.html) - module for HTTP client requests (an alternative to [Request](https://www.npmjs.com/package/request)) that is used in Node code examples on Mashape
 * [Istanbul](https://github.com/gotwarlost/istanbul) - test coverage report generator
 * [Vim tutorial](https://linuxconfig.org/vim-tutorial) - editor used by Codeanywhere to edit your merge and commit messages.
