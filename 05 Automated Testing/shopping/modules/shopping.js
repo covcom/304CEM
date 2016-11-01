@@ -52,19 +52,12 @@ exports.getAll = () => {
  * @throws  {InvalidItem} item not in list.
  */
 exports.getItem = item => {
-	if (data.get(item) === undefined) {
-		throw new Error('item not in list')
-	}
-	return data.get(item)
+	
 }
 
 /** Removes item with the corresponding name. */
 exports.removeItem = item => {
-	console.log('removeItem')
-	if (data.get(item) === undefined) {
-		throw new Error('item not in list')
-	}
-	data.delete(item)
+	
 }
 
 /** Decrements the quantity of an item in the list. */
