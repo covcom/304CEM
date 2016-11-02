@@ -1,5 +1,6 @@
 # Useful Links for 304CEM
 
+* [Node JS Docs](https://nodejs.org/api/index.html)
 * [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - tutorials, guides, and manuals on JS from Mozilla Developer Network.
 * [Mashape API Marketplace](https://market.mashape.com/) - a large collection of (free and paid) external API services
 * [Restify](http://restify.com/) - node module for creating REST APIs
