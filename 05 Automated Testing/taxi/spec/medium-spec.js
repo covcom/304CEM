@@ -1,6 +1,7 @@
 
 'use strict'
 
+const fs = require('fs')
 const rewire = require('rewire')
 const taxi = rewire('../modules/taxi')
 
