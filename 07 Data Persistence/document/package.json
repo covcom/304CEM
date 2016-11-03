@@ -1,0 +1,14 @@
+{
+  "name": "mongodb_demo",
+  "version": "1.0.0",
+  "description": "Simple example of how to connect to a mongo database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mark J Tyers",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.78.0"
+  }
+}
