@@ -26,23 +26,21 @@ Installation is carried out through the `Terminal`. Start by downloadeding the i
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
 ```
 
-Once this has executed you will need to close the current terminal window and then open a new one. This is because the installation script has added a new path to your shell configuration and this needs to be loaded again. Once the new terminal window is open we can check for the versions of NodeJS available. The latest version (6.8.1 at the time of writing) will be at the end of the list.
+Once this has executed you will need to close the current terminal window and then open a new one. This is because the installation script has added a new path to your shell configuration and this needs to be loaded again. Once the new terminal window is open we can check for the versions of NodeJS available. The latest version (6.9.1 at the time of writing) will be at the end of the list.
 ```
 nvm list-remote
          ...
-         v6.5.0                                                                                                
-         v6.6.0                                                                                                
-         v6.7.0
-         v6.8.0
          v6.8.1
-nvm install 6.8.1
-  Downloading https://nodejs.org/dist/v6.8.1/node-v6.8.1-linux-x64.tar.xz...                        
+         v6.9.0
+         v6.9.1
+nvm install 6.9.1
+  Downloading https://nodejs.org/dist/v6.9.1/node-v6.9.1-linux-x64.tar.xz...                        
   ######################################################################## 100.0%
-  Now using node v6.8.1 (npm v3.10.8)  
-nvm alias default 6.8.1
-  default -> 6.8.1 (-> v6.8.1) 
+  Now using node v6.9.1 (npm v3.10.8)  
+nvm alias default 6.9.1
+  default -> 6.9.1 (-> v6.9.1) 
 node -v
-  v6.8.1
+  v6.9.1
 ```
 We install the latest version and then set this as default. Finally, to check everything worked we check to see ehat version is installed.
 

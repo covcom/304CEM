@@ -1,25 +1,45 @@
 {
   "name": "todo",
   "version": "1.0.0",
-  "description": "Simple API to maintain to do lists.",
+  "description": "Simple API to manipulate to do lists",
   "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "node_modules/.bin/jasmine-node spec --color --verbose --autotest --watch .",
+    "acceptance": "node_modules/.bin/forever stopall && node_modules/.bin/forever start index.js && ./node_modules/.bin/jasmine-node test/ --verbose",
+    "coverage": "./node_modules/.bin/istanbul cover -x **spec/** -x **index.js** -x **debug.js** ./node_modules/.bin/jasmine-node spec",
+    "doc": "node_modules/.bin/jsdoc modules/",
+    "linter": "node_modules/.bin/eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/covcom/todo.git"
   },
   "keywords": [
     "api",
-    "restify",
-    "tutorial"
+    "todo",
+    "deployment"
   ],
   "author": "Mark J Tyers",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/covcom/todo/issues"
+  },
+  "homepage": "https://github.com/covcom/todo#readme",
   "dependencies": {
     "csprng": "^0.1.1",
-    "restify": "^4.0.3",
-    "xmlbuilder": "^3.1.0"
+    "restify": "^4.1.1",
+    "xmlbuilder": "^8.2.2"
   },
   "devDependencies": {
+    "eslint": "^3.8.1",
+    "forever": "^0.15.2",
     "frisby": "^0.8.5",
-    "jasmine-node": "^1.14.5"
+    "istanbul": "^0.4.5",
+    "jasmine-node": "^1.14.5",
+    "jsdoc": "^3.4.2"
   }
 }

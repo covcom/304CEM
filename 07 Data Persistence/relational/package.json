@@ -1,0 +1,20 @@
+{
+  "name": "relational",
+  "version": "1.0.0",
+  "description": "simple MySQL connection example",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mysql",
+    "nodejs",
+    "tutorial"
+  ],
+  "author": "Mark J Tyers",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.11.1",
+    "request": "^2.76.0"
+  }
+}

@@ -125,9 +125,52 @@ Acceptance testing will be carried out using the [frisby](https://www.npmjs.com/
 5. run the acceptance tests by entering `./node_modules/.bin/jasmine-node test/ --verbose`, this will output the test results to the terminal. Take a few moments to understand this output.
 6. run the acceptance tests again. Why do they fail this time, use the error trace to find out what failed and why.
 
-## 1.1 Test Your Knowledge
+## 3.1 Test Your Knowledge
 
 1. create a new test `DELETE /lists` and add it at the start of the test. Eventually this should clear all the lists in the API and return success, lists deleted.
 2. run your tests, they should fail (we have not written the new API feature!
 3. add the  `--autotest --watch .` flags when you run the test script (see the previous worksheet), this will automatically run your acceptance tests every time you save a file.
 3. implement `DELETE /lists`. The tests will pass to indicate success.
+
+
+## 4 Asynchronous Testing
+
+In the previous section all module calls resolved immediately however it is often the case that a call may take a callback parameter to be executed in a different thread. Obviously we need to be able to test this type of code.
+
+In this task we will be testing and debugging a module that uses third-party APIs to calculate taxi fares between named places. Taxi fares are calculated according to an [agreed formula](https://yourtaximeter.com/local-authorities/view/london-black-cabs). Start by understanding the project files.
+```
+.
+├── index.js
+├── modules
+│   └── taxi.js
+├── package.json
+└── spec
+    ├── medium-spec.js
+    ├── routedata
+    │   ├── cov_uni_cat.json
+    │   └── cov_war_uni.json  
+    └── short-spec.js
+```
+The key differences between this and the previous example are the multiple specs and the json documents in the `routedata/` directory. Examine the files to understand the purpose of each file and how they interact.
+
+1. install the module dependencies and read through the documentation for [rewire](https://www.npmjs.com/package/rewire) and [sync-request](https://www.npmjs.com/package/sync-request) to understand how the module works.
+2. run the `index.js` script and use it to interact with the module, ensure you understand fully how it works.
+  - compare these tests with the synchronous version, there is a `done()` parameter that needs to be called to indicate the callback has completed.
+3. The tests have been split into two **suites**. A suite contains a group of related **specs**. Each spec contains one or more **expectations** which will either pass or fail. Launch the test-runner in a new terminal window and run the two suites.
+4. notice that both the suite and spec descriptions appear in the test results. The execution time is displayed against each spec. Notice that at least one of the _specs_ will fail. Why can't we be certain how many tests will pass or fail?
+  - the module calculations make use of live data from an external API. Sometimes the API will return _exactly the same data as before_ but often the return data will be different. This is not helpful when testing a module!
+  - the `getRouteData` property contains the API call so the test will substitute this for a function that _always returns the same data_, known as a **Mock**.
+  - notice we used the **rewire** package to load the `taxi` module, this allows us to _replace any private property_
+  - open the `medium-spec.js` file and uncomment the `taxi.__set__()` method which substitutes a different function, this loads data from a file rather than make the API call.
+  - check the results of the test suite
+
+## 4.1 Test Your Knowledge
+
+1. create a third _test suite_ to simulate a longer journey of more than 150 miles
+  - use the `index.js` script to generate a suitable URL for the API and print this to the console
+  - paste this into a browser tab to capture the standard response
+  - paste this into a [json parser](http://jsonlint.com/) to check it is valid and tidy up the formatting
+  - paste this into a new json file in the `routedata/` directory.
+  - use the [taxi fare calculator](https://yourtaximeter.com/local-authorities/view/london-black-cabs) to calculate the correct fare.
+  - add suitable specs to the new test suite
+2. there is an error in the fare values returned, fix the error so that the tests pass.

@@ -6,7 +6,7 @@
 		"jasmine": true
 	},
 	"rules": {
-		"indent": [1, "tab"],
+		"indent": [1, "tab", { "SwitchCase": 1 }],
 		"linebreak-style": [2, "unix"],
 		"quotes": [1, "single"],
 		"semi": [1, "never"],
@@ -33,7 +33,7 @@
 		"no-unexpected-multiline": 2,
 		"no-unreachable": 2,
 		"no-empty-function": 2,
-		"no-magic-numbers": 1,
+		"no-magic-numbers": [1, { "ignore": [-1, 0, 1] }],
 		"no-multi-str": 1,
 		"no-self-assign": 2,
 		"yoda": 2,
