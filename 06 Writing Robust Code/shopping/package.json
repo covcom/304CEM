@@ -6,7 +6,7 @@
   "scripts": {
     "app": "node index.js",
     "test": "node_modules/.bin/jasmine-node spec --color --verbose --autotest --watch .",
-    "coverage": "./node_modules/.bin/istanbul cover -x **spec/** -x **index.js** -x **debug.js** jasmine-node spec",
+    "coverage": "./node_modules/.bin/istanbul cover -x **spec/** -x **index.js** -x **debug.js** ./node_modules/.bin/jasmine-node spec",
     "doc": "node_modules/.bin/jsdoc modules/"
   },
   "keywords": [
