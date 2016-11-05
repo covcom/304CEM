@@ -85,18 +85,18 @@ Thanks to _Jack Tidbury_ for supplying this solution.
 
 If you are using **CodeAnywhere** as your development environment you will need to install a web server if you want to preview html web pages. Follow the instructions below. If you are developing locally you can just double-click the `index.html` file.
 
-Start by istalling the **Apache** web server.
+Start by istalling the **Nano tect editor** the **Apache** web server.
 ```
-sudo apt-get updated
-sudo apt-get install apache2
+sudo apt-get update
+sudo apt-get install nano apache2 -y
 ```
 Now edit the configuration file `sudo nano /etc/apache2/sites-available/000-default.conf`.
 
-Identify the line `DocumentRoot /var/html/` and change it to `../../home/cabox/workspace` then save and exit the editor.
+Identify the line `DocumentRoot /var/html/` and change it to `/home/cabox/workspace` then save and exit the editor.
 
 Next edit the main config file `nano /etc/apache2/apache2.conf` and edit the end to look like this:
 ```
-<Directory ../../home/cabox/workspace/ >
+<Directory /home/cabox/workspace/ >
     Options FollowSymLinks
     AllowOverride None
     Require all granted
