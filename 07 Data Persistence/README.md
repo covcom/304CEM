@@ -3,13 +3,48 @@
 
 In this worksheet you will learn how to connect your code to a variety of different persistence frameworks. We will cover:
 
-1. Relational databases (MySQL)
-2. Document databases (MongoDB)
-3. Graph databases (Neo4J)
+1. Saving to the filesystem using `node-persist`
+2. Relational databases (MySQL)
+3. Document databases (MongoDB)
 
 In each of these cases you will be shown how to use NodeJS to carry out the basic **CRUD** operations, it is assumed that you already understand how to work with the databases.
 
-## 1 MySQL
+## 1 The Filesystem
+
+In the first example we will persist JavaScript objects by converting them to json strings and saving the string to a text file in a directory on the server. Node comes with a built-in module called `fs` which allows you to work directly with files however in this example we will be using a module called `node-persist` which abstracts this into a module.
+
+Open the file `filesystem/storage.js` which contains an exported function to retrieve book details, extract some simple information and persist this to a file. At the top of the script we import `node-persist` and initialise it in _synchronous mode_ (it can also be use asynchronously via callbacks).
+
+- The function takes two parameters:
+  - a string containing the ISBN of the book to find.
+  - a callback function.
+- The first step is for a call to be made to the Google Books API.
+  - If the returned array is empty we use the callback to pass an error.
+  - If book data is returned, the title, subtitle, author and description are use to create a JavaScript object called `data`.
+  - Finally the data is persisted using the `save()` method and returned in the callback.
+
+Run the `index.js` script then look at the project files. Notice that there is a new (hidden) directory called `.node-persist/`. Inside this you will find a directory called `storage/` which contains a text file with our book data.
+```
+tree -a -L 3 -I node_modules
+  .
+  ├── .node-persist
+  │   └── storage
+  │       └── 7e9cf1f449d27f19b8a1869b0210dbe2     <- here is our data!
+  ├── index.js
+  ├── package.json
+  └── storage.js
+```
+### 1.1 Test Your Knowledge
+
+The sample code works but there are a number of missing features:
+
+1. Extract and store the following additional data:
+  1. The publisher
+  2. The page count
+2. Implement a function to remove a book with the specified ISBN number.
+3. The data persistence is currently performed synchronously, modify the script to perform this asynchronously via a callback.
+
+## 2 MySQL
 
 This is the most popular _relational_ database. It's cross-platform and open source.
 
@@ -58,14 +93,25 @@ Notice that it uses the [mysql](https://www.npmjs.com/package/mysql) module to c
 Now use the `mysql` command to connect to the database and retrieve all the data from the database, you should see your book in the table.
 
 
-## 2 MongoDB
+## 3 MongoDB
 
 This is the most popular _document_ database. It's cross-platform and open source.
 
 Rather than install MongoDB on your machine we will be hosting it on the [mlab](https://mlab.com) servers. You first step is to sign up for a free account. As part of this process you will be sent a confirmation email.
 
-## 3 Neo4J
+Open the `document/bookSchema.js` file.
 
-This is the most popular _graph_ database. It's cross-platform and open source.
+- Notice that we load the `mongoose` package, this is the most popular way to connect NodeJS to MongoDB however there are other packages you might want to look at.
+- The values in the connection string will need to be replaced with the ones from your database on the mlab server.
+- A new Schema object is created called `bookSchema` which is passed to the `mongoose.model()` method to create a Book model.
+- this is exported.
 
-Rather than install Neo4J on your machine we will be hosting it on the [GrapheneDB](http://www.graphenedb.com) servers. You first step is to sign up for a free account.
+Open the `document/mongodb.js` file, this is where we will write the logic to work with Book Mongoose objects.
+
+- We import our mongoose model.
+- There is a single exported function which takes an **isbn** number and a callback function.
+- There is a call to the Google Books API which returns details on the specified book.
+- The data is extracted and stored in a JavaScript object.
+- A new `Book` object ia created.
+- The save method is called to persist the data.
+

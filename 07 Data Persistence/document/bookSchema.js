@@ -3,6 +3,7 @@
 
 // import the mongoose package
 const mongoose = require('mongoose')
+mongoose.connect('mongodb://user:pass@host:port/db')
 mongoose.Promise = global.Promise
 const Schema = mongoose.Schema
 

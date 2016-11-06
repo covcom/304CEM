@@ -5,6 +5,7 @@ coverage/
 out/
 data/
 photos/
+.node-persist/
 npm-debug.log
 labs/13 Introduction to NodeJS/node_modules/
 labs/16 File System/node_modules/

@@ -21,5 +21,6 @@ exports.addBook = function(isbn, callback) {
 			description: json.items[0].volumeInfo.description
 		}
 		storage.setItemSync(isbn, data)
+		return callback(null, data)
 	})
 }
