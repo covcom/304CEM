@@ -9,3 +9,5 @@
 * [Unirest](http://unirest.io/nodejs.html) - module for HTTP client requests (an alternative to [Request](https://www.npmjs.com/package/request)) that is used in Node code examples on Mashape
 * [Istanbul](https://github.com/gotwarlost/istanbul) - test coverage report generator
 * [Vim tutorial](https://linuxconfig.org/vim-tutorial) - editor used by Codeanywhere to edit your merge and commit messages.
+* [ESLint Quick Start](http://eslint.org/docs/user-guide/getting-started)
+* [JSDoc Quick Start](http://usejsdoc.org/about-getting-started.html)
