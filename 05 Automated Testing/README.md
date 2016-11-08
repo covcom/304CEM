@@ -79,7 +79,45 @@ npm run coverage
   ==============================================================================
 ```
 
-### 2.2 Analysing the Code Coverage Report
+### 2.2 Installing Apache (Only for CodeAnywhere Users)
+
+Thanks to _Jack Tidbury_ for supplying this solution.
+
+If you are using **CodeAnywhere** as your development environment you will need to install a web server if you want to preview html web pages. Follow the instructions below. If you are developing locally you can just double-click the `index.html` file.
+
+Start by istalling the **Nano tect editor** the **Apache** web server.
+```
+sudo apt-get update
+sudo apt-get install nano apache2 -y
+```
+Now edit the configuration file `sudo nano /etc/apache2/sites-available/000-default.conf`.
+
+Identify the line `DocumentRoot /var/html/` and change it to `/home/cabox/workspace` then save and exit the editor.
+
+Next edit the main config file `nano /etc/apache2/apache2.conf` and edit the end to look like this:
+```
+<Directory /home/cabox/workspace/ >
+    Options FollowSymLinks
+    AllowOverride None
+    Require all granted
+</Directory> 
+
+<Directory /usr/share> 
+    AllowOverride None
+    Require all granted
+</Directory>
+
+<Directory />
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+</Directory>
+```
+We have changed the directory that apache will use to server files and pointed it to our workspace directory. Secondly it allows requests from the root folder found at `/` to Require all granted allowing files to be served. Lastly the apache server needs to be restarted via the `sudo service apache2 restart` command.
+
+This should restart the server without any errors. All thats left is to right click and preview the file you want to view, and hopefully it should all work.
+
+### 2.3 Analysing the Code Coverage Report
 
 When the coverage test has finished it generates a report in a `coverage/` directory.
 ```
@@ -96,6 +134,7 @@ When the coverage test has finished it generates a report in a `coverage/` direc
 │   └── sorter.js
 └── lcov.info
 ```
+
 1. Open the `index.html` file (as shown above), then click on the **Run** button at the top of the screen (we need to be running the Apache web server to view our report).
 2. Right-click on the index.html file and choose **Preview**. You will see a code coverage summary screen where you will immediately spot we have very poor coverage with only 27 out of 41 lines of code being tested!
 ![Code Coverage Summary Screen](.images/coverage_overview.png)
