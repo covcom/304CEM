@@ -8,38 +8,35 @@ try {
 		throw 'missing parameter'
 	}
 	const symbol = process.argv[2].toUpperCase()
-  let info
-  getData(symbol)
-    .print
-    .then( (result) => {
-    info = result
-    console.log(result)
-  }).catch( (error) => {
-    console.log(error)
-  })
+	getData(symbol)
+		.then( (result) => {
+			print(result)
+		}).catch( (error) => {
+			console.log(error)
+		})
 } catch(err) {
 	console.log(err)
 }
 
 function getData(symbol) {
-  return new Promise( (resolve, reject) => {
-    const url = `http://api.fixer.io/latest?symbols=${symbol}`
-    request.get( url, (err, res, body) => {
-		if (err) {
-			reject('could not complete request')
-		}
-		const json = JSON.parse(body)
-    resolve(json)
+	return new Promise( (resolve, reject) => {
+		const url = `http://api.fixer.io/latest?symbols=${symbol}`
+		request.get( url, (err, res, body) => {
+			if (err) {
+				reject('could not complete request')
+			}
+			const json = JSON.parse(body)
+			resolve(json)
+		})
 	})
-  })
 }
 
 function print(data) {
-  return new Promise( (resolve, reject) => {
-    if (data.rates === undefined) {
-      reject('missing rates array')
-    }
-    console.log(data.rates)
-    resolve(data.rates)
-  })
+	return new Promise( (resolve, reject) => {
+		if (data.rates === undefined) {
+			reject('missing rates array')
+		}
+		console.log(data.rates)
+		resolve(data.rates)
+	})
 }
