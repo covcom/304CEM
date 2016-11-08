@@ -8,7 +8,11 @@ try {
 		throw 'missing parameter'
 	}
 	const symbol = process.argv[2].toUpperCase()
-  getData(symbol).print.then( (result) => {
+  let info
+  getData(symbol)
+    .print
+    .then( (result) => {
+    info = result
     console.log(result)
   }).catch( (error) => {
     console.log(error)
