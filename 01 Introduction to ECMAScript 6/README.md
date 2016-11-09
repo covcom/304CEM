@@ -140,3 +140,11 @@ sudo apt-get update
 sudo apt-get install nodejs
 nodejs -v
 ```
+
+If you are running MacOS or Windows you will need to download the NodeJS installer from https://nodejs.org/en/download/current/, make sure you choose the **Current** version and not the **LTS** version.
+
+Once you have installed NodeJS you can install the Typescript Definition Language tool and use it to install the `node` and `jasmine` definitions. This will add both node and jasmine to the autocomplete data. Most modern editors include support for this.
+```
+npm install tsd -g
+tsd query -r -o -a install node jasmine
+```
