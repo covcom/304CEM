@@ -1,5 +1,6 @@
 # Useful Links for 304CEM
 
+* [You Don't Know JavaScript](https://github.com/getify/You-Dont-Know-JS) - A nice series of books introducing JavaScript and all the core components of the language
 * [Node JS Docs](https://nodejs.org/api/index.html)
 * [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - tutorials, guides, and manuals on JS from Mozilla Developer Network.
 * [Mashape API Marketplace](https://market.mashape.com/) - a large collection of (free and paid) external API services
