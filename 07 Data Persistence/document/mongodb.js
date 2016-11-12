@@ -6,9 +6,11 @@ const Book = require('./bookSchema')
 
 exports.addBook = function(isbn, callback) {
 	const url = `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`
+
 	request.get( url, (err, res, body) => {
 		if (err) return callback(Error('could not complete request'))
 		const json = JSON.parse(body)
+
 		if (json.totalItems === 0) {
 			console.log('no results')
 			return callback(Error('book not found'))
