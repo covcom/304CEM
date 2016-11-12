@@ -2,12 +2,12 @@
 'use strict'
 
 const google = require('./modules/google')
-const persistence = require('./modules/persistence')
+//const persistence = require('./modules/persistence')
 
 exports.search = (request, callback) => {
 	this.extractParam(request, 'q').then( query => {
 		console.log(query)
-		google.searchByString(query)
+		return google.searchByString(query)
 	}).then( data => {
 		console.log('search query complete')
 		console.log(data)

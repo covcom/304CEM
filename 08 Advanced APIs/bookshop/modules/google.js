@@ -11,7 +11,7 @@ exports.searchByString = query => new Promise( (resolve, reject) => {
 			reject(Error('failed to make API call'))
 		}
 		const data = JSON.parse(body)
-		//console.log(data)
+		console.log(data) //this prints results...
 		resolve(data)
 	})
 })
