@@ -99,10 +99,73 @@ This is the most popular _document_ database. It's cross-platform and open sourc
 
 Rather than install MongoDB on your machine we will be hosting it on the [mlab](https://mlab.com) servers. You first step is to sign up for a free account. As part of this process you will be sent a confirmation email.
 
+### 3.1 Installing MongoDB
+
+You need to make sure you have a recent version of MongoDB installed. If you are on a linux computer (such as CodeAnywhere) you can perform the following steps:
+
+1. Check the codename of the version of Ubuntu you have installed (this will be needed at a later step)
+2. Use `apt-key` to add the mongodb authentication key. This flags the mongodb packages as trusted.
+3. Add the correct MongoDB repository (note you need to insert the codename located in step 1 in the space indicated)
+4. Download the package lists from the registered repositories
+5. Install MongoDB
+6. Check that you have installed a recent version of the Mongo Shell.
+```
+lsb_release -a
+  No LSB modules are available.
+  Distributor ID: Ubuntu
+  Description:    Ubuntu 14.04.5 LTS
+  Release:        14.04
+  Codename:       trusty                  <-- Here is the CODENAME.
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927c
+echo "deb http://repo.mongodb.org/apt/ubuntu CODENAME/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+mongo --version
+MongoDB shell version: 3.2.10           <-- now we have mongo v3.2.x installed
+```
+
+### 3.2 Check Connectivity
+
+Now we can create a new database on the mLab server and then use the Mongo Shell to connect to the database hosted on MLab. Start by loggin in and creating a new **MongoDB Deployment**
+
+![Creating a new Deployment](.images/step01.png)
+
+Next create a single Sandbox environment using an EU hosted AWS instance. Give your database the name **bookshop**.
+
+![Creating a new database](.images/step02.png)
+
+Open the database and copy the two sets of connection details, paste them into a suitable file. Notice that we have two warnings. The first indicates that this database should not be used for production environments, we can ignore this. The second flags up that we have no database users. 
+
+Click on the **Users** tab and then on the **Add Database User** button. Create a suitable account and make a note of the username and password.
+
+![Creating a new user](.images/step03.png)
+
+Now we can try to connect to our database. Open the terminal in CodeAnywhere and paste in the mongo shell command you copied from the bookshop database screen, inserting your username and password where indicated.
+```
+mongo ds147497.mlab.com:47497/bookshop -u testuser -p password
+  MongoDB shell version: 3.2.10
+  connecting to: ds147497.mlab.com:47497/bookshop
+  Welcome to the MongoDB shell.
+  For interactive help, type "help".
+  For more comprehensive documentation, see 
+    http://docs.mongodb.org/
+  Questions? Try the support group
+    http://groups.google.com/group/mongodb-user
+  rs-ds147497:PRIMARY>
+```
+Typing in the `exit` command will return you to the shell prompt.
+
+### 3.3 Connecting from NodeJS
+
+Now we have a hosted database and have confirmed we have connectivity its time to connect to it from our NodeJS script.
+
 Open the `document/bookSchema.js` file.
 
 - Notice that we load the `mongoose` package, this is the most popular way to connect NodeJS to MongoDB however there are other packages you might want to look at.
-- The values in the connection string will need to be replaced with the ones from your database on the mlab server.
+- The database login credentials are stored here:
+  - The database username and password are stored in a `db` object, these will need replacing with your own login details.
+  - To connect to the database using mongoose you need a connection string. This should be copied from the mLab database page.
+  - The string is a template literal and you will need to insert the user and pass properties from your db object.
 - A new Schema object is created called `bookSchema` which is passed to the `mongoose.model()` method to create a Book model.
 - this is exported.
 
