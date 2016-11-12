@@ -20,25 +20,19 @@ server.get('/', (req, res, next) => {
 	res.redirect('/books', next)
 })
 
-// collection used for searching for books. Requires a 'q' parameter
 server.get('/books', (req, res) => {
-	res.setHeader('content-type', 'application/json')
-	res.setHeader('accepts', 'GET')
-	console.log(req.host)
-	const host = req.host || 'localhost'
-
-	try {
-		if (req.params.q === undefined) throw new Error('query prameter missing')
-		const data = bookshop.search(req.params.q, host)
-
-		console.log('DATA')
-		res.send(status.ok, data)
-	} catch(err) {
-		console.log(err)
-		res.send(status.badRequest, {error: err.message})
-	} finally {
+	console.log(req.params.q)
+	bookshop.search(req, (err, data) => {
+		res.setHeader('content-type', 'application/json')
+		res.setHeader('accepts', 'GET')
+		if (err) {
+			res.send(status.badRequest, {error: err.message})
+		} else {
+			console.log(data)
+			res.send(status.ok, data)
+		}
 		res.end()
-	}
+	})
 })
 
 const port = process.env.PORT || defaultPort
