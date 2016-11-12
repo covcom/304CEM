@@ -9,6 +9,7 @@
   "author": "Mark J Tyers",
   "license": "ISC",
   "dependencies": {
+    "mongoose": "^4.6.7",
     "request": "^2.78.0"
   }
 }
