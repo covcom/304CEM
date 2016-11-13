@@ -178,3 +178,24 @@ Open the `document/mongodb.js` file, this is where we will write the logic to wo
 - A new `Book` object ia created.
 - The save method is called to persist the data.
 
+Try running the script, this will insert a new document into the database each time you run it.
+
+### 3.4 Querying using Mongo Shell
+
+Lets log in using the `mongo` command as we did in step 3.2 so we can query the database.
+```
+use bookshop
+db.books.find()
+```
+If you need to delete a collection completely you can use `drop()`
+```
+db.books.drop()
+```
+
+## Installing on MacOS
+
+You will need to use [Homebrew](http://brew.sh) to install MongoDB on a Mac. Once this is installed:
+```
+brew update
+brew install mongodb
+```

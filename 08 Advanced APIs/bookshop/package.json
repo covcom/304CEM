@@ -1,16 +1,48 @@
 {
   "name": "bookshop",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple API to demonstrate REST principles",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "apidoc": {
+    "title": "Bookshop API",
+    "url": "http://localhost"
   },
-  "author": "",
+  "scripts": {
+    "start": "node index.js",
+    "test": "./node_modules/.bin/jasmine-node spec/ --color --verbose --noStack --autotest --watch .",
+    "coverage": "./node_modules/.bin/istanbul cover -x **/spec/** -x **index.js** --include-all-sources jasmine-node spec",
+    "apidoc": "node_modules/.bin/apidoc -e node_modules/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/covcom/bookshop.git"
+  },
+  "keywords": [
+    "nodejs",
+    "rest",
+    "api",
+    "javascript"
+  ],
+  "author": "Mark J Tyers",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/covcom/bookshop/issues"
+  },
+  "homepage": "https://github.com/covcom/bookshop#readme",
   "dependencies": {
+    "bcrypt": "^0.8.7",
     "mongoose": "^4.6.7",
-    "request": "^2.78.0",
-    "restify": "^4.2.0"
+    "node-persist": "0.0.8",
+    "request": "^2.67.0",
+    "restify": "^4.0.3"
+  },
+  "engines": {
+    "node": "5.1.0"
+  },
+  "devDependencies": {
+    "apidoc": "^0.16.1",
+    "istanbul": "^0.4.1",
+    "jasmine-node": "^1.14.5",
+    "rewire": "^2.5.1"
   }
 }

@@ -13,14 +13,23 @@ mongoose.Promise = global.Promise
 const Schema = mongoose.Schema
 
 // create a schema
-const bookSchema = new Schema({
-	title: String,
-	authors: String,
-	description: String
+const userSchema = new Schema({
+	name: String,
+	username: String,
+	password: String
 })
 
 // create a model using the schema
-const Book = mongoose.model('Book', bookSchema)
+exports.User = mongoose.model('User', userSchema)
 
-// export this so it can be used in our application
-module.exports = Book
+// create a schema
+const bookSchema = new Schema({
+	account: String,
+	title: String,
+	authors: String,
+	description: String,
+	bookID: String
+})
+
+// create a model using the schema
+exports.Book = mongoose.model('Book', bookSchema)
