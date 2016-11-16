@@ -25,8 +25,8 @@
 
 #### Robust Code and Testing
 
-* [ESLint Quick Start](http://eslint.org/docs/user-guide/getting-started)
-* [JSDoc Quick Start](http://usejsdoc.org/about-getting-started.html)
+* [ESLint Quick Start](http://eslint.org/docs/user-guide/getting-started) - set up consistent rules for code formatting
+* [JSDoc Quick Start](http://usejsdoc.org/about-getting-started.html) - document your modules and functions
 * [Istanbul](https://github.com/gotwarlost/istanbul) - test coverage report generator
 * [Jasmine](http://jasmine.github.io/2.5/introduction) - documentation for the core node test runner
 * [Frisby](http://frisbyjs.com/docs/api/) - documentation for the API testing framework
