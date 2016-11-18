@@ -23,7 +23,7 @@ To test your API you will need to connect using the Postman tool and to do this 
 
 Before starting this worksheet you should update the node installation to the latest version. Instructions can be found in the previous worksheet (04 Introduction to NodeJS).
 
-1. use the **terminal** to navigate to the `todo` directory and install the module dependencies using `npm install`. This will install the [restify](http://restify.com/), [xmlbuilder](https://github.com/oozcitak/xmlbuilder-js) and [csprng](https://www.npmjs.com/package/csprng) modules. Take a few moments to read through their documentation.
+1. use the **terminal** to navigate to the `todo` directory and install the module dependencies using `npm install restify csprng`. This will install the [restify](http://restify.com/), [xmlbuilder](https://github.com/oozcitak/xmlbuilder-js) and [csprng](https://www.npmjs.com/package/csprng) modules. Take a few moments to read through their documentation.
 2. start the API in CodeAnywhere by running the routes file `node index.js`.
 3. right-click on the _container_ title in the left sidebar and choose **info**.
 4. locate and copy the public URL of your container. It will look something like this: `http://preview.xxx.box.codeanywhere.com/`.
@@ -50,12 +50,7 @@ The `/lists` url represents a _collection_ of lists. We can add, view, update an
     ]
 }
 ```
-3. The API makes use of [Basic Access Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side) and so you will need to add an *Authorization* header to your request.
-  - click on the **Basic Auth** tab at the top of Postman and enter the valid _Username_ and _Password_, you can find these buried in the code... then click on the **Refresh Headers** button.
-  - this combines both into a single string, base64 encodes it and uses it the create your _Authorization_ header.
-  - you can now make the request, it will return a [201 response code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Response_codes) and some data in the response body formatted as json.
-  - since a RESTful API is _stateless_ you will need to pass the _Authorization header_ for every request that needs authentication.
-4. repeat the POST request to add a second resource `['red', 'orange', 'green', 'blue', 'purple']`.
+3. repeat the POST request to add a second resource `['red', 'orange', 'green', 'blue', 'purple']`.
 ```
 {
     "name": "shopping",
@@ -68,13 +63,13 @@ The `/lists` url represents a _collection_ of lists. We can add, view, update an
     ]
 }
 ```
-4. repeat the `GET /lists` request. This should now return the lists collection. The list contains the list names and links to access the individual lists. The use of **hypertext** to connect related resources is an important principle of REST architecture just like you can connect normal web pages using hyperlinks.
+4. repeat the `GET /lists` request. This should now return the lists collection. The list contains the list names and the unique id for each list which can be used to access details for an individual list.
 5. each list resource has its own unique URL. Perform a `GET /lists/xxx` request, where xxx is one of your list ids. The API should return the specified list.
 
 ### 2.1 Test Your Knowledge
 
-1. Currently we can add and view resources (create and retrieve in CRUD terms). Use the code stub in `index.js` to implement a mechanism to allow resources to be deleted. Users need to be authorised to do this.
-2. Finally implement a mechanism for resources to be updated using the **PUT** method. Again you need to check users are authorised.
+1. Currently we can add and view resources (create and retrieve in CRUD terms). Use the code stub in `index.js` to implement a mechanism to allow resources to be deleted.
+2. Finally implement a mechanism for resources to be updated using the **PUT** method.
 
 ## 3 Deploying to Heroku
 
