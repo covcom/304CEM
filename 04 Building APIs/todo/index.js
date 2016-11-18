@@ -96,7 +96,7 @@ server.del('/lists/:listID', function(req, res) {
 
 const port = process.env.PORT || defaultPort
 
-server.listen(port, function(err) {
+server.listen(port, err => {
 	if (err) {
 		console.error(err)
 	} else {
