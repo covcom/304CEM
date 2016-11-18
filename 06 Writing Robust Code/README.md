@@ -62,71 +62,8 @@ lets install, configure and run the console-based linter.
 9. Manually correct any errors until the linter reports 0 errors and warnings.
 10. Finally run the linter against all the files in the project using `node_modules/.bin/eslint .` to ensure there are absolutely no linting errors in your code. Well done!
 
-## 2 Project Metadata
 
-Applications written in NodeJS typically contain a file called `package.json` which contains the _metadata_ associated with the project. This includes:
-
-- information about the project such as name, description, keywords and author
-- information about the remote repository where the project is hosted
-- any modules needed for the project to run (dependencies)
-- any modules needed to support development (devDependencies)
-- aliases to any useful commands and scripts (scripts)
-
-When you create a new project you should run the `npm init` command to run a wizard. This will build a skeleton `package.json` file for you. There is no need to do this in this case since the file already exists.
-
-### 2.1 Adding Third-Party Modules
-
-You are already familiar with the process of importing modules into your projects however if you are using a metadata file you need to make sure any modules you import are listed. This is achieved by using _flags_.
-
-- To add a module to the `dependencies` list you need to use the `--save` flag. For example to import the _request_ module and add a reference into your `package.json` file you would run `npm install request --save`.
-- To add a module to the `devDependencies` list you use the `--save-dev` flag instead.
-
-Open the `package.json` file and read it carefully.
-
-1. the `scripts` section defines four script shortcuts
-2. the `dependencies` section defines the same dependencies as were used in the previous lab
-3. the `dev-dependencies` section defines any dependencies required as part of the _development process_
-
-Now install all the dependencies using `npm install`.
-
-### 2.2 Test Your Knowledge
-
-1. modify the `package.json` file and change the version to 1.0.1
-2. install the **request** module, making sure it is referenced in the `dependencies` object in your `package.json` file.
-3. install the **node-inspector** module, making sure it is referenced in the `devDependencies` object.
-4. add a new script alias called `debug` and set its value to `./node_modules/.bin/node-inspector debug.js`, you will be using this later in the worksheet.
-
-## 3 Writing Modular Code
-
-Building robust code is vitally important which means it should be frequently tested against the agreed spec. You will have already been shown the principles of Test-Driven Development (TDD) in the module 205CDE but in this module you will be taking your skills to an entirely new level and building the process into everything you do.
-
-Open the `shopping/` directory and examine the files and directory structure.
-```
-.
-├── debug.js
-├── index.js
-├── modules
-│   └── shopping.js
-├── node_modules
-├── package.json
-└── spec
-    └── shopping-spec.js
-```
-Notice that there is a `modules/` directory. Unit testing is carried out on _units_ of code. In NodeJS we capture functionality in **modules** and these are what we will run the tests on. Each module should be self-contained. _All_ the application _business logic_ should be moved into modules.
-
-### 3.1 NodeJS Modules
-
-Open the `modules/shopping.js` script and read it carefully.
-
-1. Notice that the module imports its own dependencies which will not be visible to other scripts (node-persist in this case).
-2. The `exports` object contains the public-facing functionality
-  - each object stores an anonymous function which can be called by other parts of our app.
-  - each anonymous function is defined using the [ECMA6 Arrow Function](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) syntax
-  - the functions in some of the properties (count, clear, getAll) take no parameters (indicated by a pair of empty brackets in front of the `=>` arrow)
-  - the other functions take a single parameter, listed before the `=>` arrow
-3. Some functionality has been completed but there are some [stub functions](https://en.wikipedia.org/wiki/Method_stub) which represent functionality we have not yet implemented.
-
-## 4 Documentation
+## 2 Documentation
 
 Whenever we write a program it is important that it is fully documented. A simple solution is to add comments to the code which can then be read by anyone who opens the script. A better solution would be to write up detailed _human readable_ documentation.
 
@@ -163,12 +100,82 @@ Right-click on the `index.html` file and choose _preview_. This will open the ho
 
 There are a lot more features that can be added to this, you should take time to read the full [documentation](http://usejsdoc.org) to find out what _block tags_ can be used.
 
-### 4.1 Test Your Knowledge
+### 2.1 Test Your Knowledge
 
 1. Your challenge is to complete the documentation for the `shopping.js` module. You should use the `getItem()` documentation as a guide.
 2. The _Linter_ tool (see section 1) will help you identify where you need to add additional JSDoc comments.
 3. To check your results, run the documentation tool and reload the documentation web page.
 4. Carefully read through the generated documentation to ensure it is both complete and makes sense.
+
+## 3 Project Metadata
+
+Applications written in NodeJS typically contain a file called `package.json` which contains the _metadata_ associated with the project. This includes:
+
+- information about the project such as name, description, keywords and author
+- information about the remote repository where the project is hosted
+- any modules needed for the project to run (dependencies)
+- any modules needed to support development (devDependencies)
+- aliases to any useful commands and scripts (scripts)
+
+When you create a new project you should run the `npm init` command to run a wizard. This will build a skeleton `package.json` file for you. There is no need to do this in this case since the file already exists.
+
+### 3.1 Adding Third-Party Modules
+
+You are already familiar with the process of importing modules into your projects however if you are using a metadata file you need to make sure any modules you import are listed. This is achieved by using _flags_.
+
+- To add a module to the `dependencies` list you need to use the `--save` flag. For example to import the _request_ module and add a reference into your `package.json` file you would run `npm install request --save`.
+- To add a module to the `devDependencies` list you use the `--save-dev` flag instead.
+
+Open the `package.json` file and read it carefully.
+
+1. the `scripts` section defines four script shortcuts
+2. the `dependencies` section defines the same dependencies as were used in the previous lab
+3. the `dev-dependencies` section defines any dependencies required as part of the _development process_
+
+Now install all the dependencies using `npm install`.
+
+### 3.2 Test Your Knowledge
+
+1. modify the `package.json` file and change the version to 1.0.1
+2. install the **request** module, making sure it is referenced in the `dependencies` object in your `package.json` file.
+3. install the **node-inspector** module, making sure it is referenced in the `devDependencies` object.
+4. add a new script alias called `debug` and set its value to `./node_modules/.bin/node-inspector debug.js`, you will be using this later in the worksheet.
+
+## 4 Writing Modular Code
+
+Building robust code is vitally important which means it should be frequently tested against the agreed spec. You will have already been shown the principles of Test-Driven Development (TDD) in the module 205CDE but in this module you will be taking your skills to an entirely new level and building the process into everything you do.
+
+Open the `shopping/` directory and examine the files and directory structure.
+```
+.
+├── debug.js
+├── index.js
+├── modules
+│   └── shopping.js
+├── node_modules
+├── package.json
+└── spec
+    └── shopping-spec.js
+```
+Notice that there is a `modules/` directory. Unit testing is carried out on _units_ of code. In NodeJS we capture functionality in **modules** and these are what we will run the tests on. Each module should be self-contained. _All_ the application _business logic_ should be moved into modules.
+
+### 4.1 NodeJS Modules
+
+Open the `modules/shopping.js` script and read it carefully.
+
+1. Notice that the module imports its own dependencies which will not be visible to other scripts (node-persist in this case).
+2. The `exports` object contains the public-facing functionality
+  - each object stores an anonymous function which can be called by other parts of our app.
+  - each anonymous function is defined using the [ECMA6 Arrow Function](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) syntax
+  - the functions in some of the properties (count, clear, getAll) take no parameters (indicated by a pair of empty brackets in front of the `=>` arrow)
+  - the other functions take a single parameter, listed before the `=>` arrow
+3. Some functionality has been completed but there are some [stub functions](https://en.wikipedia.org/wiki/Method_stub) which represent functionality we have not yet implemented.
+
+# 5 Creating Packages
+
+# 5.1 Local Packages
+
+# 5.2 Publishing Packages
 
 # Extension Activity
 
