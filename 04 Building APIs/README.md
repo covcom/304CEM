@@ -39,7 +39,7 @@ You need to fully understand the concepts of *Collections*, *Resources* and thei
 The `/lists` url represents a _collection_ of lists. We can add, view, update and delete individual lists. These actions correspond to standard database [CRUD operations](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete). lets investigate how this works. As you complete each activity, read the source code to make sure you understand how it works.
 
 1. perform a `GET /lists` operation. This is what you did in step 5 in the previous activity. Notice that this returns an error (we haven't added any items yet!)
-2. perform a `POST /lists` request. the POST method indicates we want to _add a resource to a collection_. In the request body you need to include some json data in the request body (choose the **raw** tab and paste in the json data below). Notice the response includes a list **id**. You will get an **Unauthorized** error. Study `lists.js` to find out where this error is being generated.
+2. perform a `POST /lists` request. the POST method indicates we want to _add a resource to a collection_. In the request body you need to include some json data in the request body (choose the **raw** tab and paste in the json data below). Notice the response includes a list **id**.
 ```
 {
     "name": "shopping",
@@ -53,7 +53,7 @@ The `/lists` url represents a _collection_ of lists. We can add, view, update an
 3. repeat the POST request to add a second resource `['red', 'orange', 'green', 'blue', 'purple']`.
 ```
 {
-    "name": "shopping",
+    "name": "colours",
     "list": [
         "red",
         "orange",
