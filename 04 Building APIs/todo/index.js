@@ -29,6 +29,7 @@ server.get('/lists', (req, res) => {
 	try {
 		if (lists.length === 0) throw new Error('no lists found')
 		const data = []
+
 		for(let i=0; i<lists.length; i++) {
 			data.push({name: lists[i].name, id: lists[i].id})
 		}
