@@ -8,25 +8,18 @@ const persistence = require('./modules/persistence')
 // ------------------ ROUTE FUNCTIONS ------------------ 
 
 exports.search = (request, callback) => {
-	extractParam(request, 'q').then( query => {
-		return google.searchByString(query)
-	}).then( data => {
-		return this.cleanArray(request, data)
-	}).then( data => {
-		callback(null, data)
-	}).catch( err => {
-		callback(err)
-	})
+	extractParam(request, 'q')
+		.then( query => google.searchByString(query))
+		.then( data => this.cleanArray(request, data))
+		.then( data => callback(null, data))
+		.catch( err => callback(err))
 }
 
 exports.addToCartOld = (request, callback) => {
-	extractBodyKey(request, 'id').then( id => {
-		return google.getByID(id)
-	}).then( book => {
-		return persistence.saveBook(book)
-	}).catch( err => {
-		callback(err)
-	})
+	extractBodyKey(request, 'id')
+	.then( id => google.getByID(id))
+	.then( book => persistence.saveBook(book))
+	.catch( err => callback(err))
 }
 
 exports.addToCart = (request, callback) => {
