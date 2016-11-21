@@ -4,6 +4,7 @@ const server = restify.createServer()
 const googleapi = require('./modules/booksquery')
 
 server.use(restify.fullResponse())
+server.use(restify.queryParser())
 server.use(restify.bodyParser())
 server.use(restify.authorizationParser())
 

@@ -9,6 +9,7 @@
   "author": "Colin Stephen",
   "license": "ISC",
   "dependencies": {
+    "request": "^2.79.0",
     "restify": "^4.3.0"
   }
 }
