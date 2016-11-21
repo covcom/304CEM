@@ -11,6 +11,7 @@ exports.doBookSearch = function doBookSearch (req, res, next) {
       const books = []
       for (let i = 0; i < 5; i++) {
         let book = {
+          id: JSON.parse(body).items[i].id,
           title: JSON.parse(body).items[i].volumeInfo.title,
           authors: JSON.parse(body).items[i].volumeInfo.authors,
           description: JSON.parse(body).items[i].volumeInfo.description
