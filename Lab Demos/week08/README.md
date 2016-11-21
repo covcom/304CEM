@@ -5,7 +5,7 @@
 * provide api to query google books
   - use restify to query external api
   - pull out first 5 books from returned results
-  - pull out title, description, authors
+  - pull out **title, description, authors**
   - return to api user
 * manage user accounts for authorisation
   - add list of valid users to system (manually at first, then using registration)
