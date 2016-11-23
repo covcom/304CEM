@@ -1,5 +1,7 @@
 // file to manage the actual connections to the database
 
+const storage = require('node-persist')
+
 exports.usersConnection = function usersConnection (res, callback) {
 
   // define the storage file for the list of users
