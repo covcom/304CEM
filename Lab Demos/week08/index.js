@@ -21,8 +21,8 @@ server.get('/favourites/:id', authorization.authorize, favourites.get)  // get d
 server.put('/favourites/:id', authorization.authorize, favourites.validate, favourites.update)  // update details of existing fav using id
 server.del('/favourites/:id', authorization.authorize, favourites.delete)  // delete existing fav using id
 
-server.post('/users', users.validate, users.add)  // add a new user to the DB (pending confirmation)
-server.post('/users/:username', users.validateConfirmation, users.confirm)  // confirm a pending user
+server.post('/users', users.validateUser, users.add)  // add a new user to the DB (pending confirmation)
+server.post('/users/:username', users.validateCode, users.confirm)  // confirm a pending user
 server.del('/users/:username', authorization.authorize, users.delete)  // delete a user
 
 const port = process.env.PORT || 8080
