@@ -2,6 +2,15 @@
 
 const storage = require('node-persist')  // use basic file-based data persistence
 
+exports.validate = function validate (req, res, next) {
+  const fav = req.body
+  if (!fav) res.send(400, {message: 'Need to send some data'})
+  if (!fav.id || !fav.title || !fav.authors || !fav.description) res.send(400, {message: 'ID, title, authors, description: REQUIRED'})
+  if (fav.review && typeof fav.review !== 'string') res.send(400, {message: 'Review must be a string'})
+  if (fav.stars && fav.stars < 0) res.send(400, {message: 'Stars must be over 0'})
+  next()
+}
+
 exports.list = function list (req, res) {
   dbConnect(req, res, userstore => res.send({favourites: userstore.values()}))
 }
@@ -23,6 +32,13 @@ exports.add = function add (req, res) {
 
 exports.get = function get (req, res, next) {
   // use the ID in the URL to look up a particular favourite
+  const bookid = req.params.id
+  dbConnect(req, res, userstore => {
+    userstore.getItem(bookid, (err, book) => {
+      if (err) return res.send(400, {message: `Book with ID ${bookid} not found`})
+      res.send({book: book})
+    })
+  })
 }
 
 exports.update = function update (req, res, next) {
