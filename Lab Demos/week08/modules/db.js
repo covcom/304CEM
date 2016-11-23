@@ -18,7 +18,7 @@ exports.usersConnection = function usersConnection (res, callback) {
   })
 }
 
-export.favouritesConnection = function favouritesConnection (req, res, callback) {
+exports.favouritesConnection = function favouritesConnection (req, res, callback) {
 
   // define the storage file for this user
   const username = req.authorization.basic.username
