@@ -4,21 +4,29 @@ const request = require('request')
 const googleapikey = require('../secrets').googleapi.key
 
 exports.doBookSearch = function doBookSearch (req, res, next) {
-  const q = req.query.q
+
+  const q = req.query.q  // get the search term from the URL querystring
+
   const url = `https://www.googleapis.com/books/v1/volumes?q=${q}&key=${googleapikey}`
+
   request.get(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       const books = []
-      for (let i = 0; i < 5; i++) {
+      const results = JSON.parse(body).items
+      for (let i = 0; i < results.length; i++) {
         let book = {
-          id: JSON.parse(body).items[i].id,
-          title: JSON.parse(body).items[i].volumeInfo.title,
-          authors: JSON.parse(body).items[i].volumeInfo.authors,
-          description: JSON.parse(body).items[i].volumeInfo.description
+          id: results[i].id,
+          title: results[i].volumeInfo.title,
+          authors: results[i].volumeInfo.authors,
+          description: results[i].volumeInfo.description
         }
         books.push(book)
       }
-      res.send(books)
+      res.send({books: books})
+    } else {
+      res.send(501, {message: 'Problem with Google API query.', error: error, statusCode: response.statusCode})
     }
   })
+
 }
+

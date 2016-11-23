@@ -16,7 +16,7 @@ server.get('/favourites', authorization.authorize, favourites.list)  // get a li
 server.post('/favourites', authorization.authorize, favourites.add)  // add a new fav
 server.get('/favourites/:id', favourites.get)  // get details of a particular fav using id
 server.put('/favourites/:id', favourites.update)  // update details of existing fav using id
-server.delete('/favourites/:id', favourites.delete)  // delete existing fav using id
+server.del('/favourites/:id', favourites.delete)  // delete existing fav using id
 
 const port = process.env.PORT || 8080
 server.listen(port, err => console.log(err || `App running on port ${port}`))
