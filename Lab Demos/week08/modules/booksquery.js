@@ -29,4 +29,3 @@ exports.doBookSearch = function doBookSearch (req, res, next) {
   })
 
 }
-

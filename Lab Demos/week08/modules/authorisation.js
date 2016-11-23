@@ -1,15 +1,16 @@
+'use strict'
 
 const users = [
-  {
-    username: 'alice',
-    password: 'alice'
-  },
-  {
-    username: 'bob',
-    password: 'bob'
-  }
+	{
+		username: 'alice',
+		password: 'alice'
+	},
+	{
+		username: 'bob',
+		password: 'bob'
+	}
 ]
 
-exports.authorize = function authorize (req, res, next) {
-  next()
+exports.authorize = function authorize(req, res, next) {
+	next()
 }

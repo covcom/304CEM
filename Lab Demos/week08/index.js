@@ -1,3 +1,5 @@
+'use strict'
+
 const restify = require('restify')
 const server = restify.createServer()
 
@@ -19,4 +21,5 @@ server.put('/favourites/:id', favourites.update)  // update details of existing 
 server.del('/favourites/:id', favourites.delete)  // delete existing fav using id
 
 const port = process.env.PORT || 8080
+
 server.listen(port, err => console.log(err || `App running on port ${port}`))
