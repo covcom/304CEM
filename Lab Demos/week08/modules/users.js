@@ -2,67 +2,82 @@
 
 const storage = require('node-persist')
 const uuid = require('uuid')
+const usersConnection = require('./db').usersConnection
 
-exports.validate = function validate (req, res, next) {
+exports.validateUser = function validateUser (req, res, next) {
+  // ensure new users include a username and password
   const data = JSON.parse(req.body)
-  if (!data.username || !data.password) res.send(400, {message: 'Must send a username and password'})
+  if (!data.username || !data.password) return res.send(400, {message: 'Must supply a username and password'})
   next()
 }
 
-exports.validateConfirmation = function confirmOK (req, res, next) {
+exports.validateCode = function validateCode (req, res, next) {
+  // ensure confirmation code is passed in the body
   const data = JSON.parse(req.body)
-  if (!data.confirmationcode) res.send(400, {message: 'Must supply a conf code'})
+  if (!data.confirmation) return res.send(400, {message: 'Must supply a confirmation code'})
   next()
 }
 
 exports.add = function add (req, res, next) {
+  // body includes username and password details
   const user = JSON.parse(req.body)
-  // first check user does already exist: if OK then proceed as follows
-  user.confirmed = false
-  user.code = uuid()
-  dbConnect(res, usersDB => {
+
+  usersConnection(res, usersDB => {
+
+    // first check that the user does not already exist
+    if (usersDB.getItemSync(user.username)) return res.send(400, {message: 'Username taken.'})
+
+    // create a code and save as a *pending* user
+    user.code = uuid()
+    user.confirmed = false
     usersDB.setItemSync(user.username, user)
-    // send email!
-    console.log(user.code)
-    return res.send(201, {message: 'User added, please confirm registration using code in CONSOLE/EMAIL', username: user.username})
+
+    // get the code to the user somehow
+    console.log(user.code)  // or send an email...
+
+    // NB: don't send the code in the response
+    return res.send(201, {message: 'User added, please confirm registration using code', username: user.username})
   })
 }
 
 exports.confirm = function confirm (req, res, next) {
+
+  // username came as part of the URL
   const username = req.params.username
-  const code = JSON.parse(req.body).confirmationcode
-  dbConnect(res, usersDB => {
+  // confirmation code comes in the body
+  const code = JSON.parse(req.body).confirmation
+
+  // now connect to the users list and check the code matches
+  usersConnection(res, usersDB => {
     usersDB.getItem(username, (err, user) => {
-      if (err) return res.send(404, {message: 'error finding user'})
+      if (err) return res.send(500, {message: 'error finding user'})
       if (user.code === code) {
         user.confirmed = true
         usersDB.setItem(username, user, err => {
           if (err) return res.send(500, {message: `Failed confirming user ${username}`})
           return res.send(201, {message: `Confirmed user ${username}`})
         })
+      } else {
+        return res.send(400, {message: `Code ${code} does not match for user ${username}.`})
       }
     })
   })
 }
                           
 exports.delete = function delete_ (req, res, next) {
-  
-}
 
-function dbConnect (res, callback) {
+  // username came as part of the URL
+  const username = req.params.username
 
-  // define the storage file for the list of users
-  const usersDB = storage.create({dir: `./.node-persist/users`})
-  
-  // initialise the connection (creates a new file if necessary)
-  usersDB.init(err => {
+  // username must match authorization username
+  const authuser = req.authorization.basic.username
+  if (username !== authuser) return res.send(400, {message: 'You can\'t delete other users!'})
 
-    if (err) {
-      console.log(err)
-      return res.send(500, {message: 'Unable to initialise data store'})
-    } else {
-      return callback(usersDB)  // can now read and write to the storage file
-    }
-
+  // if it matches then connect to the store and delete
+  usersConnection(res, usersDB => {
+    usersDB.removeItem(username, err => {
+      if (err) return res.send(500, {message: 'Could not delete user.'})
+      return res.send({message: `User ${username} deleted`})
+    })
   })
 }
