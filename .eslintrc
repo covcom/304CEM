@@ -19,7 +19,7 @@
 		"arrow-body-style": 2,
 		"arrow-spacing": [1, { "before": true, "after": true }],
 		"no-var": 2,
-		"prefer-const": 2,
+		"prefer-const": 1,
 		"brace-style": 2,
 		"eqeqeq": 2,
 		"no-cond-assign": 2,
