@@ -6,8 +6,6 @@ out/
 data/
 doc/
 photos/
-.images/
-images/
 .node-persist/
 npm-debug.log
 .DS_Store
