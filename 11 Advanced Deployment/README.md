@@ -47,6 +47,30 @@ If you log out and back in again you will be able to run `docker` as a normal us
 $ docker run hello-world
 ```
 
+#### Installing Docker-Machine
+
+You have installed the Docker runtime whick will be used to run your containers. We now need to install `docker-machine` which will be used to provision and manage multiple remote Docker hosts and _Swarm clusters_.
+```
+sudo -i
+curl -L https://github.com/docker/machine/releases/download/v0.8.2/docker-machine-`uname -s`-`uname -m` > /usr/local/bin/docker-machine && chmod +x /usr/local/bin/docker-machine
+sudo chmod +x /usr/local/bin/docker-machine
+curl -L https://github.com/docker/machine/releases/download/v0.8.2/docker-machine-`uname -s`-`uname -m` > /usr/local/bin/docker-machine && chmod +x /usr/local/bin/docker-machine
+```
+
+#### Installing VirtualBox
+
+You will need to be running the latest version of **VirtualBox**. Start by removing old versions.
+```
+sudo apt-get remove virtualbox virtualbox-4.* virtualbox-5.0
+```
+Now we need to add the VirtualBox repository to the list stored in `/etc/apt/sources` and store its public key so it is trusted by your Ubuntu system. We can then update our package list and install VirtualBox.
+```
+$ sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian xenial contrib" >> /etc/apt/sources.list.d/virtualbox.list'
+$ wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+$ sudo apt update
+$ sudo apt install virtualbox-5.1
+```
+
 ### Mac OSX
 
 http://docs.docker.com/mac/started/
@@ -89,8 +113,8 @@ eval "$(docker-machine env develop)"
 By running this last command we assign the correct values to the variables and configure the shell to talk to our new server. This makes the server *active*. We can check this has worked.
 ```
 docker-machine ls
-NAME  ACTIVE   DRIVER       STATE     URL
-dev   *        virtualbox   Running   tcp://192.168.99.100:2376
+NAME  ACTIVE  DRIVER      STATE    URL
+dev   *       virtualbox  Running  tcp://192.168.99.100:2376
 ```
 The asterix indicates that the **dev** host is **active** which means it will be the target of any docker or docker-compose commands. before we deploy our app lets learn some useful docker-machine commands.
 
@@ -117,15 +141,15 @@ Now we have a host configured we need to build a custom image. This image will c
 
 Every custom image we create needs to start from a base image. There are hundreds to choose from. These can be found at https://hub.docker.com/explore/ and include official images from all the main vendors. Since we will be building an API using NodeJS it would make sense to use the official NodeJS image. If we locate this and examine the details we can see that the latest *named* version is **0.12.7** (https://hub.docker.com/_/node/).
 
-Lets pull a copy of this base image into our docker host.
+Lets pull a copy of this base image into our docker host. Make sure you are pulling the _latest current version_ (7.2.0 at the time of writing). This information can be found on the nodejs website https://nodejs.org/en/.
 ```
-docker pull node:0.12.7
+docker pull node:7.2.0
 ```
 This will download and unpack the image. we can verify this has been completed.
 ```
-docker images
-REPOSITORY  TAG     IMAGE ID      CREATED      VIRTUAL SIZE
-node        0.12.7  9e20baae42c8  11 days ago  641.6 MB
+$ docker images
+  REPOSITORY  TAG     IMAGE ID       CREATED      SIZE
+  node        7.2.0   89cd8193c9a1   2 days ago   655.5 MB
 ```
 
 ### 3.2 Writing a Dockerfile
@@ -137,18 +161,31 @@ Once we have this base image we will need to carry out the following steps:
 3. copy the *index.js* script into the image
 4. run the script using `node`.
 
-We write these steps in a **Dockerfile** and you can see a complete one in the `20 Docker Containers/app/` directory. Take a few moments to see how the steps listed above translate into commands in the *Dockerfile*.
+We write these steps in a **Dockerfile** and you can see a complete one in the `docker/` directory. Take a few moments to see how the steps listed above translate into commands in the *Dockerfile*.
 
-To build our custom image we navigate to the directory containing the Dockerfile using *Terminal* and then use the **docker** command. We should give each image a tag name that includes a version number. The final period (.) tells docker to look for a Dockerfile in the current directory.
+To build our custom image we navigate to the directory containing the Dockerfile using *Terminal* and then use the `docker build` command. We should give each image a tag name that includes a version number. The final period (.) tells docker to look for a Dockerfile in the current directory.
 ```
 docker build -t api:1.0.0 .
 ```
 This will take the base image we have already downloaded and then run through each line in the Dockerfile. This will create a new image with the tag we supplied.
 ```
-REPOSITORY  TAG     IMAGE ID      CREATED        VIRTUAL SIZE
-api         1.0.0   6f752964c447  8 seconds ago  647.3 MB
-node        0.12.7  9e20baae42c8  11 days ago    641.6 MB
+$ docker images
+REPOSITORY   TAG     IMAGE ID      CREATED         SIZE
+api          1.0.0   a4cd9b0b67f1  13 seconds ago  665.1 MB
+node         7.2.0   89cd8193c9a1  2 days ago      655.5 MB
+hello-world  latest  c54a2cc56cbb  4 months ago    1.848 kB
 ```
+
+### 3.3 Deploying a Custom Image
+
+Finally we can run our custom image on VirtualBox. First check there is a valid VM (some columns omitted for clarity). If there are no active virtual machines you will need to follow the earlier instructions in this worksheet.
+```
+$ docker-machine ls
+  NAME  ACTIVE  DRIVER      STATE    URL
+  dev   *       virtualbox  Running  tcp://192.168.99.100:2376
+```
+
+
 
 ## 4. Building Containers
 
