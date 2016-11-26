@@ -1,0 +1,9 @@
+[editor]
+highlight = false
+useSpaces = false
+tabSize = 2
+visibleWhiteSpace = true
+visibleLineEndings = true
+
+[fileBrowser]
+width = 26
