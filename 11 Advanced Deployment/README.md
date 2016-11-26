@@ -15,25 +15,43 @@ You will need to use these skills is your assignment when you develop and deploy
 The installation instructions depend on the operating system you are running. You can find detailed information below:
 Regardless of what platform you are running you will need also to install **VirtualBox**.
 
-Ubuntu
+### Ubuntu
+These instructions assume you are running the latest version of Ubuntu (16.04 at the time of writing). The first step is to check you are running a kernel version of **3.10 or higher**. Then we need to install the `linux-image-extra` package for the kernel we are running.
 ```
-wget -qO- https://get.docker.com/ | sh
-curl -L https://github.com/docker/compose/releases/download/1.4.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
-curl -L https://github.com/docker/machine/releases/download/v0.4.0/docker-machine_linux-amd64 > /usr/local/bin/docker-machine
-chmod +x /usr/local/bin/docker-machine
+$ uname -r
+  4.4.0-45-generic
+$ sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual
+```
+Next we need to make sure we are running the latest version of `ca-certificates` so that we have support for `apt` package manager over https. We can then add the new GPG key. Finally we add the repository that matches our ubuntu distro (in our case we are running 16.04 (xenial) and pull down the available packages.
+```
+sudo apt-get install apt-transport-https ca-certificates
+sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" | sudo tee /etc/apt/sources.list.d/docker.list
+sudo apt-get update
+```
+Now we can install the latest stable version of **Docker Engine** and start the service. Finally we run the 'hello world' image to check everything is working.
+```
+$ sudo apt-get install docker-engine
+$ sudo service docker start
+$ sudo docker run hello-world
+```
+#### Running Docker as Non-Root
 
-add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian vivid contrib"
-wget -q http:/sudo apt-get install virtualbox-5.0/download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
-sudo apt-get install virtualbox-5.0
-.
+At this stage you need to run Docker as root which is why you had to sudo the `docker-run` command. This section shows you how to configure `docker` to run using a standard user account. To do this we create a new group called `docker` and add our user to this.
+```
+$ sudo groupadd docker
+$ sudo usermod -aG docker $USER
+```
+If you log out and back in again you will be able to run `docker` as a normal user.
+```
+$ docker run hello-world
 ```
 
-Mac OSX
+### Mac OSX
 
 http://docs.docker.com/mac/started/
 
-Windows
+### Windows
 
 http://docs.docker.com/windows/started/
 
