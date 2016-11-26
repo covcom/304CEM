@@ -139,7 +139,7 @@ Now we have a host configured we need to build a custom image. This image will c
 
 ### 3.1 Choosing a Base Image
 
-Every custom image we create needs to start from a base image. There are hundreds to choose from. These can be found at https://hub.docker.com/explore/ and include official images from all the main vendors. Since we will be building an API using NodeJS it would make sense to use the official NodeJS image. If we locate this and examine the details we can see that the latest *named* version is **0.12.7** (https://hub.docker.com/_/node/).
+Every custom image we create needs to start from a base image. There are hundreds to choose from. These can be found at https://hub.docker.com/explore/ and include official images from all the main vendors. Since we will be building an API using NodeJS it would make sense to use the official NodeJS image. If we locate this and examine the details we can see that the latest *named* version is `7.2.0` (https://hub.docker.com/_/node/).
 
 Lets pull a copy of this base image into our docker host. Make sure you are pulling the _latest current version_ (7.2.0 at the time of writing). This information can be found on the nodejs website https://nodejs.org/en/.
 ```
@@ -185,6 +185,11 @@ $ docker-machine ls
   dev   *       virtualbox  Running  tcp://192.168.99.100:2376
 ```
 
+Now we can deploy a docker image to the docker virtual machine. The `-d` flag indicates the server should run as a background _daemon_ and the `-p` flag maps local port 80 to port 8080 on the virtual machine.
+```
+docker run -d -p 80:8080 api:1.0.0
+```
+We can now access the API on the IP address of the virtual machine (`docker-machine ip dev`) on port 80.
 
 
 ## 4. Building Containers
