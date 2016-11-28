@@ -7,6 +7,11 @@
 * [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - Tutorials, guides, and manuals on JS from Mozilla Developer Network.
 * [Vim tutorial](https://linuxconfig.org/vim-tutorial) - guide to the editor used by Codeanywhere to edit your merge and commit messages.
 
+## Promises
+
+* [MDN documentation on promises](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise) - Describes the main object methods and prototype methods for using promises correctly
+* [HTML5Rocks Promises Tutorial](https://developers.google.com/web/fundamentals/getting-started/primers/promises) - an *excellent* primer on promises, including motivation and construction of a working example, all on one page
+
 ## External APIs
 
 * [Mashape API Marketplace](https://market.mashape.com/) - a large collection of (free and paid) external API services
