@@ -1,0 +1,29 @@
+
+version: '2'
+services:
+	api:
+		build: web/
+		# restart policy (how the container should be restarted on exit)
+		restart: always
+		ports:
+			- 8080
+		links:
+			- db:database
+
+	database:
+		build: mysql/
+		environment:
+			- MYSQL_ROOT_PASSWORD=p455w0rd
+			- MYSQL_DATABASE=todo
+			- MYSQL_USER=todo
+			- MYSQL_PASSWORD=p455w0rd
+		# mount the volumes from another container [rw/ro] (rw is default)
+		volumes_from:
+			- storage:rw
+
+	storage:
+		# mount paths or named volumes [HOST:CONTAINER]
+		volumes:
+			- ./app:/src/code
+
+# docker-compose up

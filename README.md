@@ -64,10 +64,11 @@ origin  git@gitlab.com:username/304CEM.git (push)
 ```
 You will notice that your remote called *origin* now points to your new GitLab repository.
 
-Finally we need to configure Git on codeanywhere with our name and email address. Make sure this matches the name and email you used when setting up your GitLab account.
+Finally we need to configure Git on codeanywhere with our name and email address. Make sure this matches the name and email you used when setting up your GitLab account. You should also change your _default editor_ to `nano` otherwise you will be stuck with `vi` when adding your commit messages!
 ```
 git config --global user.name 'Your Name'
 git config --global user.email 'your@email.com'
+git config --global core.editor nano
 ```
 
 ## 1.4 Configuring SSH Keys

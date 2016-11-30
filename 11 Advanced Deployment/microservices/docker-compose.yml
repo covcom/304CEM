@@ -1,0 +1,32 @@
+redis:
+  build: redis/
+  ports:
+    - "6379:6379"
+logs:
+  build: logs/
+  links:
+    - "redis"
+  volumes:
+    - /home/docker/logs:/home/data
+mysql:
+  build: mysql/
+  ports:
+    - "3306:3306"
+  volumes:
+    - /home/docker/mysql:/var/lib/mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: p455w0rd
+    MYSQL_DATABASE: chat
+    MYSQL_USER: chatuser
+    MYSQL_PASSWORD: p455w0rd
+api:
+  build: api/
+  links:
+    - "mysql:db"
+    - "redis"
+  ports:
+    - "80:8080"
+
+# stop all containers
+# remove all containers
+# remove all images

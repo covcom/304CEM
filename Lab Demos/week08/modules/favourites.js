@@ -8,10 +8,10 @@ const favouritesConnection = require('./db').favouritesConnection
 exports.validate = function validate(req, res, next) {
 	const fav = req.body
 
-	if (!fav) res.send(400, {message: 'Need to send some data'})
-	if (!fav.id || !fav.title || !fav.authors || !fav.description) res.send(400, {message: 'ID, title, authors, description: REQUIRED'})
-	if (fav.review && typeof fav.review !== 'string') res.send(400, {message: 'Review must be a string'})
-	if (fav.stars && fav.stars < 0) res.send(400, {message: 'Stars must be over 0'})
+	if (!fav) return res.send(400, {message: 'Need to send some data'})
+	if (!fav.id || !fav.title || !fav.authors || !fav.description) return res.send(400, {message: 'ID, title, authors, description: REQUIRED'})
+	if (fav.review && typeof fav.review !== 'string') return res.send(400, {message: 'Review must be a string'})
+	if (fav.stars && fav.stars < 0) return res.send(400, {message: 'Stars must be over 0'})
 
 	// TODO: you would also want to ensure no *extra* fields are sent (or ignore them in the methods below)
 
