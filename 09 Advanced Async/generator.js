@@ -9,7 +9,7 @@ const request = require('request')
  */
 function makeAPICall(url) {
 	request.get( url, (err, res, body) => {
-		if (err) console.log(err)
+		if (err) it.throw(new Error(err))
 		it.next(JSON.parse(body))
 	})
 }
