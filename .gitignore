@@ -16,5 +16,5 @@ npm-debug.log
 .vscode/
 mongod
 jsconfig.json
-.log
-.out
+*.log
+*.out
