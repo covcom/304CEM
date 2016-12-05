@@ -2,6 +2,8 @@
 
 'use strict'
 
+const dbConnection = require('./db').dbConnection
+
 exports.check = (auth, callback) => {
     
     if (!auth || !auth.basic) return callback({message: 'Need basic authorization header'})
