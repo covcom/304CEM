@@ -16,3 +16,4 @@ mongod
 jsconfig.json
 *.log
 *.out
+secrets.js
