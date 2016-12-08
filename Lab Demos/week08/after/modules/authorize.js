@@ -17,9 +17,7 @@ exports.check = (auth, callback) => {
         const users = db.values()
 
         for (let i = 0; i < users.length; i++) {
-            if (users[i].username === username \\
-                && users[i].password === password \\
-                && users[i].confirmed === true) return callback(null, true)
+            if (users[i].username === username && users[i].password === password && users[i].confirmed === true) return callback(null, true)
         }
         
         return callback({message: 'Username or password incorrect, or registration not confirmed'})
