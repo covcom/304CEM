@@ -4,6 +4,9 @@ const rewire = require('rewire')
 const favourites = rewire('../modules/favourites')
 
 describe('favourites validation', function () {
+  
+  // simple unit tests
+  
   beforeEach(function() {})
   afterEach(function() {})
   
@@ -26,6 +29,8 @@ describe('favourites validation', function () {
 })
 
 describe('CRUD methods for favourites', function () {
+  
+  // more advanced unit tests
   
   // we want to test the methods exported from favourites.js
   // BUT we don't want to depend on the db.js module working
@@ -90,6 +95,8 @@ describe('CRUD methods for favourites', function () {
     })
 
   })
+  
+  // you would add more 'describe' blocks here to test deleting, updating, listing, etc.
   
   
 })

@@ -1,7 +1,7 @@
 'use strict'
 
 // testing asynchronous modules that have their own external dependencies can be considered "advanced"
-// for simpler unit testing, please see the "favourites-spec.js" test file next to this one
+// for simpler unit testing, please see the 'favourites validation' test suite in the "favourites-spec.js" test file next to this one
 
 // we need to override calls that our db module makes to node-persist's methods
 // so we "rewire" the db module rather than just require it
