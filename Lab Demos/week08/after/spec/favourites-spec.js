@@ -3,7 +3,7 @@
 const rewire = require('rewire')
 const favourites = rewire('../modules/favourites')
 
-xdescribe('favourites validation', function () {
+describe('favourites validation', function () {
   beforeEach(function() {})
   afterEach(function() {})
   
