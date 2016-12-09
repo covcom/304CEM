@@ -2,7 +2,7 @@
 
 'use strict'
 
-const storage = require('node-persist')
+let storage = require('node-persist')
 
 exports.dbConnection = function dbConnection(dbName, callback) {
 

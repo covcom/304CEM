@@ -16,5 +16,7 @@ const cleanData = data => new Promise( resolve => {
 	resolve(data.rates.USD)
 })
 
-getData('USD').then( data => cleanData(data))
-.then( data => console.log(data))
+getData('USD').
+then( data => cleanData(data)).
+then( data => console.log(data)).
+catch( err => console.error('There was a problem'))

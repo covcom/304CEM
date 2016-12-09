@@ -2,7 +2,8 @@
 
 'use strict'
 
-const dbConnection = require('./db').dbConnection
+const db = require('./db')
+let dbConnection = db.dbConnection  // use 'let' so we can override it in testing
 
 exports.validate = (fav, callback) => {
 
