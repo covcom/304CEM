@@ -2,14 +2,16 @@
 'use strict'
 
 const request = require('request')
-var storage = require('node-persist')
+const storage = require('node-persist')
 
 storage.initSync()
 
 const testableCode = require('./testableCode')
 
 exports.validateFavourite = function validateFavourite(req, res, next) {
-	if (testableCode.checkData(req.body)) next()
+	if (testableCode.checkData(req.body)) {
+		next()
+	}
 	res.send(400, 'book id missing')
 	res.end()
 }
@@ -36,17 +38,13 @@ exports.updateFavourite = function updateFavourite(req, res) {
 
 exports.listFavourites = function listFavourites(req, res) {
 	if (testableCode.countItems) {
-		res.send(storage.values())
+		res.send({ favourites: storage.values()})
 		res.end()
 	} else {
 		res.send(400, 'no favourites in list')
 		res.end()
 	}
 }
-
-// storage.setItemSync('name','yourname')
-// console.log(storage.getItemSync('name'))
-// storage.values()
 
 exports.doBookSearch = function doBookSearch(req, res, next) {
 	const q = req.query.q  // get the search term from the URL querystring

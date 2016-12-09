@@ -7,6 +7,7 @@ storage.initSync()
 
 // can write 2 tests
 exports.checkData = function(data) {
+	console.log(data)
 	if (data.id === undefined) return false
 	return true
 }
