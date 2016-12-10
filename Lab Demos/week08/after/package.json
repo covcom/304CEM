@@ -4,13 +4,20 @@
   "description": "example code to bring things together",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/jasmine-node spec",
+    "coverage": "istanbul cover -x **/spec/** -x **index.js** --include-all-sources node_modules/.bin/jasmine-node spec"
   },
   "author": "Colin Stephen",
   "license": "ISC",
   "dependencies": {
+    "node-persist": "^2.0.7",
     "request": "^2.79.0",
     "restify": "^4.3.0",
     "uuid": "^3.0.0"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.5",
+    "jasmine-node": "^1.14.5",
+    "rewire": "^2.5.2"
   }
 }
