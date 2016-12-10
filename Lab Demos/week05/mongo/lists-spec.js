@@ -27,6 +27,7 @@ describe('shopping list', () => {
 
 			lists.add(shopping, (err, data) => {
 				if (err) expect(true).toBe(false)
+				expect(data.name).toBe('shopping')
 				schema.List.count({}, (err, count) => {
 					if (err) expect(true).toBe(false)
 					expect(count).toBe(2)
