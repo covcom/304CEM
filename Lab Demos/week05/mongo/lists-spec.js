@@ -1,4 +1,7 @@
 
+// node jasmine
+// istanbul cover -x **spec/** -x **index.js** -x **debug.js** jasmine.js
+
 'use strict'
 
 const lists = require('./lists')

@@ -5,14 +5,14 @@ const restify = require('restify')
 const server = restify.createServer()
 
 const myModule = require('module')
-{
-  server.use(restify.fullResponse())
-  server.use(restify.queryParser())
-  server.use(restify.bodyParser())
-  server.use(restify.authorizationParser())
-}
 
-server.get('/books', module.doBookSearch)
+server.use(restify.fullResponse())
+server.use(restify.queryParser())
+server.use(restify.bodyParser())
+server.use(restify.authorizationParser())
+
+
+server.get('/books', module.searchBooks)
 
 server.get('/favourites', myModule.listFavourites)  // get a list of all favs
 server.post('/favourites', myModule.validateFavourite, myModule.addFavourite)  // add a new fav
