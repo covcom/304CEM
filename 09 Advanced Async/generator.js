@@ -26,7 +26,7 @@ function *main(symbol) {
 
 		console.log(JSON.stringify(result, null, 2))
 	} catch(err) {
-
+		console.log(err.message)
 	}
 }
 

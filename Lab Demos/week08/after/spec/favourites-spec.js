@@ -82,7 +82,7 @@ describe('CRUD methods for favourites', function () {
 
     it('should save a book using the id as the database key', function(done) {
       favourites.add(undefined, this.testBook, (err, result) => {
-        expect(this.items.has(this.testBook.id)).toBe(true)
+        expect(this.items.has(this.testBook.id)).toBe(true)  // .has() checks for a key in the Map
         done()
       })
     })

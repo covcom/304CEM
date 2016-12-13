@@ -10,7 +10,7 @@ const JasmineConsoleReporter = require('jasmine-console-reporter')
 const reporter = new JasmineConsoleReporter({
 	colors: true,
 	cleanStack: true,
-	verbosity: 4,
+	verbosity: 3,
 	listStyle: 'indent',
 	activity: true
 })
