@@ -4,7 +4,7 @@ function error(name, default_message) {
     function ErrorConstructor(message) {
         this.name = name
         this.message = message || default_message
-        this.stsack = (new Error()).stack
+        this.stack = (new Error()).stack
     }
     ErrorConstructor.prototype = Object.create(Error.prototype)
     ErrorConstructor.prototype.constructor = ErrorConstructor
