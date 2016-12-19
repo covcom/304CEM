@@ -46,7 +46,7 @@ exports.listFavourites = function listFavourites(req, res) {
 	}
 }
 
-exports.doBookSearch = function doBookSearch(req, res, next) {
+exports.searchBooks = function doBookSearch(req, res, next) {
 	const q = req.query.q  // get the search term from the URL querystring
 	const url = `https://www.googleapis.com/books/v1/volumes?q=${q}`
 
@@ -71,8 +71,3 @@ exports.doBookSearch = function doBookSearch(req, res, next) {
 		}
 	})
 }
-
-
-// =============================================
-
-
