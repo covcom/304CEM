@@ -1,5 +1,7 @@
 /* Custom errors to throw from api modules */
 
+'use strict'
+
 function error(name, default_message) {
     function ErrorConstructor(message) {
         this.name = name
@@ -18,5 +20,5 @@ module.exports = {
     ConnectionError: error('ConnectionError', 'could not connect'),
     ConfirmationError: error('ConfirmationError', 'confirmation code does not match'),
     AuthorizationError: error('AuthorizationError', 'unauthorized'),
-    GatewayError: error('GatewayError', 'received an unexpected response')  
+    GatewayError: error('GatewayError', 'received an unexpected response')
 }

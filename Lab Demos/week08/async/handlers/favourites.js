@@ -12,7 +12,7 @@ async function validate(req, res, next) {
 	return next()
 }
 
-async function add(req, res, next) {
+async function add(req, res) {
 	const user = req.authorization.basic.username
 	const book = req.body
 	try {
@@ -23,7 +23,7 @@ async function add(req, res, next) {
 	return res.send(201, book)
 }
 
-async function list(req, res, next) {
+async function list(req, res) {
 	const user = req.authorization.basic.username
 	let favs = null
 	try {
@@ -35,7 +35,7 @@ async function list(req, res, next) {
 	return res.send(200, favs)
 }
 
-async function get(req, res, next) {
+async function get(req, res) {
 	const user = req.authorization.basic.username
 	const id = req.params.id
 	let book = null
@@ -48,7 +48,7 @@ async function get(req, res, next) {
 	return res.send(200, book)
 }
 
-async function update(req, res, next) {
+async function update(req, res) {
 	const user = req.authorization.basic.username
 	const book = req.body
 	try {
@@ -59,7 +59,7 @@ async function update(req, res, next) {
 	return res.send(201, book)
 }
 
-async function delete_(req, res, next) {
+async function delete_(req, res) {
 	const user = req.authorization.basic.username
 	const id = req.params.id
 	try {
