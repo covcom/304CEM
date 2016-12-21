@@ -17,3 +17,4 @@ jsconfig.json
 *.log
 *.out
 secrets.js
+.node_persist/
