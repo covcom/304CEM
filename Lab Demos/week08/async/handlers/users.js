@@ -1,3 +1,4 @@
+
 'use strict'
 
 const users = require('../modules/users')
@@ -52,7 +53,6 @@ async function delete_(req, res, next) {
 	}
 	return res.send(204)
 }
-
 
 module.exports = {
 	validate: validate,
