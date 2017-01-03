@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node --harmony-async-await index.js",
-    "test": "node_modules/.bin/jasmine-node spec",
+    "test": "node --harmony-async-await node_modules/jasmine-node/bin/jasmine-node spec",
     "coverage": "istanbul cover -x **/spec/** -x **index.js** --include-all-sources node_modules/.bin/jasmine-node spec"
   },
   "author": "Colin Stephen",
@@ -17,6 +17,7 @@
     "uuid": "^3.0.0"
   },
   "devDependencies": {
-    "eslint": "^3.12.2"
+    "eslint": "^3.12.2",
+    "jasmine-node": "^1.14.5"
   }
 }
