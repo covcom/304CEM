@@ -1,3 +1,4 @@
+
 // file to store, confirm and delete users that will be authorized to manage favourites
 
 'use strict'

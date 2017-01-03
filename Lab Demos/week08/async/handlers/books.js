@@ -1,3 +1,4 @@
+
 'use strict'
 
 const search = require('../modules/books')
@@ -19,4 +20,3 @@ exports.search = async function(req, res, next) {
     }
     return res.send(200, result)
 }
-
