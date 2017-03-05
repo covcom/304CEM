@@ -13,6 +13,8 @@ cd 305CDE
 git pull upstream
 ```
 
+There is a slide deck https://goo.gl/059sBv to accompay this worksheet. Make sure you are familiar with its contents before proceeding.
+
 ## 1 Unit Testing
 
 _Unit testing_ is a vital skill if you are planning a career in software development. It is also a key part of your module assessment. In this exercise you will be using a framework called [Jasmine](http://jasmine.github.io/2.0/introduction.html). In this exercise you will learn how to run tests.

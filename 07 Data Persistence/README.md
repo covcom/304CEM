@@ -11,6 +11,8 @@ In each of these cases you will be shown how to use NodeJS to carry out the basi
 
 In most cases, MongoDB Document databases are easier to integrate into your NodeJS code however if you prefer to use a relational database there are instructions at the end of this worksheet.
 
+There is a slide deck https://goo.gl/izG1Xt to accompay this worksheet. Make sure you are familiar with its contents before proceeding.
+
 ## 1 The Filesystem
 
 In the first example we will persist JavaScript objects by converting them to json strings and saving the string to a text file in a directory on the server. Node comes with a built-in module called `fs` which allows you to work directly with files however in this example we will be using a module called `node-persist` which abstracts this into a module.

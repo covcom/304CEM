@@ -9,6 +9,8 @@ cd 305CDE
 git pull upstream
 ```
 
+There is a slide deck https://goo.gl/XHBbMx to accompay this worksheet. Make sure you are familiar with its contents before proceeding.
+
 ## 1 Using a Linter
 
 JavaScript is a powerful language and includes a number of powerful features but it also includes features that, whilst they may produce working code, will make your code difficult to read and debug! A **linter** is a program that analyses your scripts for _programmatic_ and _stylistic_ errors and will flag up anything that may cause problems. They define a _professional subset_ of the language and reject any code that doesn't meet that standard.

@@ -12,6 +12,8 @@ Before you start this or any other worksheet you should make sure you have the l
 git pull upstream master
 ```
 
+There is a slide deck https://goo.gl/EGvS5Z to accompay this worksheet. Make sure you are familiar with its contents before proceeding.
+
 ## 1 Configuring Node
 
 During this module you will be using NodeJS, a server-side version of ECMAScript 6 (JavaScript) to develop an API. Before wer start, this will need to be installed. To check this we can try to view the version.

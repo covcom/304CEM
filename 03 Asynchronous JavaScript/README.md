@@ -5,6 +5,8 @@ This week’s lab tasks will focus on how JavaScript is used to asynchronously g
 
 Note that AJAX technically uses XML as the data format, but we will be using JSON which is easier to parse, and becoming the defacto standard for much data on the web. The principles of asynchronous communication and callback functions are effectively identical for XML and JSON though.
 
+There is a slide deck https://goo.gl/qF1iAy to accompay this worksheet. Make sure you are familiar with its contents before proceeding.
+
 ## 1 Async Callbacks
 
 In this first exercise you will learn about two important concepts.

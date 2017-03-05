@@ -10,6 +10,8 @@ In this worksheet you will be getting familiar with the technology by installing
 
 You will need to use these skills is your assignment when you develop and deploy your API and client.
 
+There is a slide deck https://goo.gl/nqAj9a to accompay this worksheet. Make sure you are familiar with its contents before proceeding.
+
 ## 1. Installation
 
 The installation instructions depend on the operating system you are running. You can find detailed information below:

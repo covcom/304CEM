@@ -5,6 +5,8 @@
 
 In JavaScript every function is actually a [function object](https://goo.gl/jjyhZM). Because of this we can use the [new operator](https://goo.gl/gKwCCH) to create instances of them.
 
+There is a slide deck https://goo.gl/w3jZ3t to accompay this worksheet. Make sure you are familiar with its contents before proceeding.
+
 Open the `coffee/` directory and locate the `coffee.js` file. Lets understand how it works.
 
 1. The `coffee.js` file contains a module that exports a single _function object_. Notice that we can't use an [arrow function](https://goo.gl/B3UgyF) for this because it does not bind its own `this` value.

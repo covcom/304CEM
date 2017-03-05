@@ -4,6 +4,8 @@ In the previous lab you built a number of asynchronous functions. In several cas
 
 In this lab we will be exploring a couple of powerful features of ECMAScript 6 to simplify the problem.
 
+There is a slide deck https://goo.gl/D4Uszk to accompay this worksheet. Make sure you are familiar with its contents before proceeding.
+
 ## 1 Promises
 
 
