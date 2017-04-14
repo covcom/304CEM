@@ -39,6 +39,8 @@ Near the bottom of the file list you should see a file called `.eslintrc`, the i
   3. Each rule has a reporting level where 0 means _disabled_, 1 means _warning_ and 2 means _error_. This affects how the rule violations are reported.
   4. Some rules allow for additional options. If these are specified, both the reporting level and options need to be in an array.
 
+Whilst you need to use the supplied configuration file in your assignment you should take time to understand the range of [rules](http://eslint.org/docs/rules/) available and adding them to your `.eslintrc` configuration file. To make this process easier you can use this handy [ESLint Rule Generator](http://rapilabs.github.io/eslintrc-generator/).
+
 ### 1.2 Running ESLint
 
 Although there are plugins for many popular IDEs you should get used to running the linter from the terminal. ESLint is available as a NodeJS package which allows you to run it from the terminal. Since you may find yourself using an editor with support baked in, why would you want to do this?
