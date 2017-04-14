@@ -34,13 +34,15 @@ nvm list-remote
          v7.0.0
          v7.1.0
          v7.2.0
-nvm install 7.2.0
-  Downloading https://nodejs.org/dist/v7.2.0/node-v7.2.0-linux-x64.tar.xz...                        
+         ...
+         v7.9.0
+nvm install 7.9.0
+  Downloading https://nodejs.org/dist/v7.9.0/node-v7.2.0-linux-x64.tar.xz...                        
   ######################################################################## 100.0%
-  Now using node v7.2.0 (npm v3.10.9)  
-  default -> 7.2.0 (-> v7.2.0) 
+  Now using node v7.9.0 (npm v3.10.9)  
+  default -> 7.9.0 (-> v7.9.0) 
 node -v
-  v7.2.0
+  v7.9.0
 ```
 We install the latest version and then set this as default. Finally, to check everything worked we check to see ehat version is installed.
 
