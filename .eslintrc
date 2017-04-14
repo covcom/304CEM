@@ -11,8 +11,6 @@
 		"linebreak-style": [2, "unix"],
 		"quotes": [1, "single"],
 		"semi": [1, "never"],
-		"require-jsdoc": [1, { "require": { "FunctionDeclaration": true, "MethodDefinition": true, "ClassDeclaration": true }}],
-		"valid-jsdoc": 1,
 		"no-multi-spaces": 2,
 		"no-trailing-spaces": 1,
 		"space-before-function-paren": [2, "never"],
@@ -44,7 +42,6 @@
 		"global-require": 2,
 		"handle-callback-err": 2,
 		"eol-last": 1,
-		"no-multiple-empty-lines": 1,
-    "newline-after-var": [1, "always"]
+		"no-multiple-empty-lines": 1
 	}
 }
