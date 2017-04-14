@@ -25,7 +25,7 @@ The tool used to install and upgrade NodeJS is called the Node Version Managemen
 
 Installation is carried out through the `Terminal`. Start by downloadeding the installation script using the `curl` command and executing it.
 ```
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
 ```
 The installation script has added a new path to your shell configuration and this needs to be loaded again using `source ~/.bashrc`, then we can check for the versions of NodeJS available. The latest version (7.2.0 at the time of writing) will be at the end of the list.
 ```
