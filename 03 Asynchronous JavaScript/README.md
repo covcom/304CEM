@@ -9,7 +9,7 @@ There is a slide deck https://goo.gl/qF1iAy to accompay this worksheet. Make sur
 
 ## Contents
 
-The lab covers a wide number of topics associated with running async code. The first 3 should be considered **essential** and the rest are topics that, whilst not essential to completing the assignment will greatly improve your knowledge of how asyncronous code works and, should you choose to implement these, will lead to much cleaner code.
+The lab covers a wide number of topics associated with running async code. The first 4 should be considered **essential** and the rest are topics that, whilst not essential to completing the assignment will greatly improve your knowledge of how asyncronous code works and, should you choose to implement these, will lead to much cleaner code.
 
 1. Async callbacks
 2. JSON data
@@ -22,14 +22,26 @@ The lab covers a wide number of topics associated with running async code. The f
 
 ## 1 Async Callbacks
 
-In this first exercise you will learn about two important concepts.
+In this first exercise you will be studying the `currency.js` script to learn about two important concepts.
 
 1. How to pass parameters to your program as runtime parameters.
 2. How to run code in multiple threads using callbacks.
 
+### 1.1 Runtime Parameters
+
 When a JavaScript program is invoked from the console, the entire invocation string is available through the `process.argv` array, each word being stored in a different array index. This means that index 0 always contains the string `node`.
 
-In our program you will be using passing the different currencies to convert from and to through the command invocation.
+Study the `currency.js` script carefully. When we run this script we need to pass the currency we want as a _runtime parameter_ like this: `node currency GBP`.
+
+1. If the script is invoked correctly there should be 3 indexes in the `process.argv` array. Index 0 contains the string `node`, index 1 contains the string `currency` and index 2 contains the string `GBP`.
+2. If the array is shorter than 3 indexes we throw an error
+3. Finally we take the third index and convert it to upper case, storing the resulting string in an immutable variable (constant).
+
+### 1.2 Callbacks
+
+NodeJS is a single-threaded event loop that processes queued events. This means that if you were to execute a long-running task within a single thread then the process would block. To solve this problem, NodeJS  relies on callbacks, which are functions that run after a long-running process has finished. Instead of waiting for the task to finish, the event loop moves on to the next piece of code. When the long-running task has finished, the callback is added to the event loop and run.
+
+Because callbacks are such a fundamental part of NodeJS you need to spend time to make sure you fully understand how they work.
 
 1. The script uses a third-party package called `request`. To install this, make sure your terminal in pointing to the script directory and install it with the `npm` command (Node Package Manager) like this: `npm install request`.
 2. Try running the program with a single currency code `node currency GBP`.
@@ -41,7 +53,7 @@ In our program you will be using passing the different currencies to convert fro
 8. The `body` parameter contains the data returned from the API, this is what we will be using. it is returned as a _string_ so we use `JSON.parse()` to turn it into a JavaScript object.
 9. Finally we extract the data we need from the JavaScript object and send it to the console for display. the `JSON.stringify()` function does the opposite of `JSON.parse` in that it turns a JavaScript object into a JSON string. The second parameter can be used to filter the results. The third parameter specifies the indentation to use when formatting.
 
-### 1.1 Test Your Knowledge
+### 1.3 Test Your Knowledge
 
 Lets improve the currency exchange tool. You will need to refer to the API [documentation](http://fixer.io) as you work through the tasks.
 
@@ -120,11 +132,26 @@ Open the `directions.js` file and study it carefully.
 
 ## 4 Nested Callbacks
 
+Because the code to be run after a callback is run needs to be _inside_ the callback code it is very challenging to build a script that contains several long-running tasks you get into a situation where you nest callbacks inside callbacks (inside callbacks) which makes the code very difficult to write, debug and read and means its very difficult to split into separate functions, a situation commonly known as **Callback Hell**.
+
+Open the file `nestedCallbacks.js`. Notice that there are four functions defined, three of which include a callback. Our script is designed to capture user input using `stdin` (needing a callback), identify whether a currency code is valid (requiring a second callback) and then getting the currency conversion rates for the specified currency (requiring a third callback).
+
+1. Notice that the `checkValidCurrencyCode()` function is called by the callback for the `getInput()` function and the `getData()` function is called by the callback for the `checkValidCurrencyCode()` function.
+2. Each callback takes two parameters as normal. The first contains the error (if any) and this needs to be handled in each callback.
+3. The data from the first callback is needed when calling the third function so needs to be stored in an immutable variable (constant).
+4. The fourth, and final, function does not have a callback.
+
 ### 4.1 Test Your Knowledge
+
+The callbacks are already nested 3 deep. To test your knowledge of deeply nested callbacks you are going to create a script that has 6 levels of nested callbacks!
 
 1. modify the script to ask for the base currency
 2. instead of printing the exchange rate, ask for the amount to be converted and them return the equivalent in the chosen currency
-3. use the [OpenExchangeRates](https://openexchangerates.org/api/currencies.json) API to display the full name of the chosen currency
+3. use the [OpenExchangeRates](https://openexchangerates.org/api/currencies.json) API to display the full name of the chosen currency.
+
+Even though the script is still simple you are probably already getting in a tangle! Imagine a more complex script with conditions, it would quickly get out of hand and become practically impossible to debug.
+
+Thankfully there are a number of advance features in NodeJS that are designed to flatten out these callbacks and to treat asynchronous code in a more _synchronous_ manner. These care called _Generators_, _Promises_ and _Async Functions_ and are described below. Even though you don't technically _need_ to know these, its worth learning them to keep your code manageable.
 
 ## 5 Generators
 
