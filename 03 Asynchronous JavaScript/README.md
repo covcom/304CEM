@@ -7,6 +7,19 @@ Note that AJAX technically uses XML as the data format, but we will be using JSO
 
 There is a slide deck https://goo.gl/qF1iAy to accompay this worksheet. Make sure you are familiar with its contents before proceeding.
 
+## Contents
+
+The lab covers a wide number of topics associated with running async code. The first 3 should be considered **essential** and the rest are topics that, whilst not essential to completing the assignment will greatly improve your knowledge of how asyncronous code works and, should you choose to implement these, will lead to much cleaner code.
+
+1. Async callbacks
+2. JSON data
+3. Modules and callbacks
+4. Nested callbacks
+5. Generators
+6. Promises
+7. Async functions
+8. Screen scraping
+
 ## 1 Async Callbacks
 
 In this first exercise you will learn about two important concepts.
@@ -105,7 +118,41 @@ Open the `directions.js` file and study it carefully.
 2. Write a second function in your module called `getDuration()` which should print out how long the journey takes (in minutes).
 3. Write a third function called directions which returns an array of directions (HINT: `html_instructions`).
 
-## 4 Screen Scraping
+## 4 Nested Callbacks
+
+### 4.1 Test Your Knowledge
+
+1. modify the script to ask for the base currency
+2. instead of printing the exchange rate, ask for the amount to be converted and them return the equivalent in the chosen currency
+3. use the [OpenExchangeRates](https://openexchangerates.org/api/currencies.json) API to display the full name of the chosen currency
+
+## 5 Generators
+
+### 5.1 Test Your Knowledge
+
+1. modify the script to ask for the base currency
+2. instead of printing the exchange rate, ask for the amount to be converted and them return the equivalent in the chosen currency
+3. use the [OpenExchangeRates](https://openexchangerates.org/api/currencies.json) API to display the full name of the chosen currency
+
+## 6 Promises
+
+### 6.1 Test Your Knowledge
+
+1. modify the script to ask for the base currency
+2. instead of printing the exchange rate, ask for the amount to be converted and them return the equivalent in the chosen currency
+3. use the [OpenExchangeRates](https://openexchangerates.org/api/currencies.json) API to display the full name of the chosen currency
+
+## 7 Async Functions
+
+async await.
+
+### 7.1 Test Your Knowledge
+
+1. modify the script to ask for the base currency
+2. instead of printing the exchange rate, ask for the amount to be converted and them return the equivalent in the chosen currency
+3. use the [OpenExchangeRates](https://openexchangerates.org/api/currencies.json) API to display the full name of the chosen currency
+
+## 8 Screen Scraping
 
 In the previous tasks we have been working with data that is available via a RESTful API but what do you do if the information you need is only found in human-readable format in an HTML webpage?
 
