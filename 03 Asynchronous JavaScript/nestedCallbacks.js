@@ -6,9 +6,11 @@ const request = require('request')
 try {
 	getInput('enter base currency', (err, data) => {
 		if (err) throw err
+    const base = data
 		checkValidCurrencyCode(data, (err, data) => {
 			if (err) throw err
-			getData(`http://api.fixer.io/latest?base=${data}`, (err, data) => {
+      console.log(`base: ${data}`)
+			getData(`http://api.fixer.io/latest?base=${base}`, (err, data) => {
 				if (err) throw err
 				const obj = JSON.parse(data)
 				printObject(obj)
