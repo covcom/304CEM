@@ -3,15 +3,25 @@
 // after understanding this you should move onto promises
 // based on code by https://davidwalsh.name/async-generators
 
+// Test Your Knowledge
+// modify the script to ask for the base currency
+// instead of printing the exchange rate, ask for the amount to be converted and them return the equivalent in the chosen currency
+// use https://openexchangerates.org/api/currencies.json to display the full name of the chosen currency
+
 'use strict'
 
 const request = require('request')
 
 function *main() {
-	const base = yield getInput('enter base currency')
-	const body = yield getData(`http://api.fixer.io/latest?base=${base}`)
-	const obj = JSON.parse(body)
-	print(obj)
+	try {
+		const base = yield getInput('enter base currency')
+		yield checkValidCurrencyCode(base)
+		const body = yield getData(`http://api.fixer.io/latest?base=${base}`)
+		const obj = JSON.parse(body)
+		printObject(obj)
+	} catch(err) {
+		console.log(err.message)
+	}
 	process.exit()
 }
 
@@ -22,16 +32,26 @@ function getInput(prompt) {
 	process.stdin.on('data', text => it.next(text))
 }
 
+function checkValidCurrencyCode(code) {
+	code = code.trim()
+	request('http://api.fixer.io/latest', (err, res, body) => {
+		if (err) it.throw(new Error('invalid API call'))
+		const rates = JSON.parse(body).rates
+		if (!rates.hasOwnProperty(code)) it.throw(new Error(`invalid currency code ${code}`))
+		it.next()
+	})
+}
+
 function getData(url) {
 	// the async call is 'hidden' in this function
 	request(url, (err, res, body) => {
-		if (err) throw new Error('request error')
+		if (err) throw new Error('invalid API call')
 		it.next(body)
 	})
 	// the function does not return anything
 }
 
-function print(data) {
+function printObject(data) {
 	const indent = 2
 	const str = JSON.stringify(data, null, indent)
 	console.log(str)
