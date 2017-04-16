@@ -1,0 +1,12 @@
+{
+  "name": "currency",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "jasmine": "^2.5.3",
+    "jasmine-console-reporter": "^1.2.7"
+  }
+}
