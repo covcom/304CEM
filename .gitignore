@@ -18,4 +18,4 @@ jsconfig.json
 *.out
 secrets.js
 .node_persist/
-.tgz
+*.tgz
