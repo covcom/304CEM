@@ -3,11 +3,6 @@
 // after understanding this you should move onto promises
 // based on code by https://davidwalsh.name/async-generators
 
-// Test Your Knowledge
-// modify the script to ask for the base currency
-// instead of printing the exchange rate, ask for the amount to be converted and them return the equivalent in the chosen currency
-// use https://openexchangerates.org/api/currencies.json to display the full name of the chosen currency
-
 'use strict'
 
 const request = require('request')
@@ -45,7 +40,7 @@ function checkValidCurrencyCode(code) {
 function getData(url) {
 	// the async call is 'hidden' in this function
 	request(url, (err, res, body) => {
-		if (err) throw new Error('invalid API call')
+		if (err) it.throw(new Error('invalid API call'))
 		it.next(body)
 	})
 	// the function does not return anything
