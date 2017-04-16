@@ -5,6 +5,9 @@
 		"node": true,
 		"jasmine": true
 	},
+	"parserOptions": {
+		"ecmaVersion": 8
+	},
 	"rules": {
 		"indent": [1, "tab", { "SwitchCase": 1 }],
 		"camelcase": 1,
