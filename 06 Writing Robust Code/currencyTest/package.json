@@ -1,0 +1,14 @@
+{
+  "name": "currency-test",
+  "version": "1.0.0",
+  "description": "test for the local currency package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mark J Tyers",
+  "license": "ISC",
+  "dependencies": {
+    "currency": "file:///Users/marktyers/Documents/304CEM/06 Writing Robust Code/currency"
+  }
+}

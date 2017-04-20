@@ -175,9 +175,20 @@ Open the `modules/shopping.js` script and read it carefully.
   - the other functions take a single parameter, listed before the `=>` arrow
 3. Some functionality has been completed but there are some [stub functions](https://en.wikipedia.org/wiki/Method_stub) which represent functionality we have not yet implemented.
 
-# 5 Creating Packages
+## 5 Creating Packages
 
-# 5.1 Local Packages
+### 5.1 Local Packages
+
+https://www.hacksparrow.com/how-to-write-node-js-modules.html
+```
+$ npm pack
+  currency-0.0.1.tgz
+```
+
+#### 5.1.2 Installing a Local Package
+```
+$ npm install --save ../currency
+```
 
 # 5.2 Publishing Packages
 
