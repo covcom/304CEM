@@ -134,18 +134,20 @@ Open the `directions.js` file and study it carefully.
 
 Because the code to be run after a callback is run needs to be _inside_ the callback code it is very challenging to build a script that contains several long-running tasks you get into a situation where you nest callbacks inside callbacks (inside callbacks) which makes the code very difficult to write, debug and read and means its very difficult to split into separate functions, a situation commonly known as **Callback Hell**.
 
-Open the file `nestedCallbacks.js`. Notice that there are four functions defined, three of which include a callback. Our script is designed to capture user input using `stdin` (needing a callback), identify whether a currency code is valid (requiring a second callback) and then getting the currency conversion rates for the specified currency (requiring a third callback).
+Open the file `nestedCallbacks.js` which asks for a _base_ currency code then prints out all the exchange rates against other currencies. Notice that there are four functions defined, three of which include a callback. Our script is designed to capture user input using `stdin` (needing a callback), identify whether a currency code is valid (requiring a second callback) and then getting the currency conversion rates for the specified currency (requiring a third callback).
 
 1. Notice that the `checkValidCurrencyCode()` function is called by the callback for the `getInput()` function and the `getData()` function is called by the callback for the `checkValidCurrencyCode()` function.
 2. Each callback takes two parameters as normal. The first contains the error (if any) and this needs to be handled in each callback.
 3. The data from the first callback is needed when calling the third function so needs to be stored in an immutable variable (constant).
 4. The fourth, and final, function does not have a callback.
 
+Callbacks are the simplest possible mechanism for asynchronous code in JavaScript. Unfortunately, raw callbacks sacrifice the control flow, exception handling, and function semantics familiar from synchronous code.
+
 ### 4.1 Test Your Knowledge
 
 The callbacks are already nested 3 deep. To test your knowledge of deeply nested callbacks you are going to create a script that has 6 levels of nested callbacks!
 
-1. modify the script to ask for the base currency
+1. modify the script to ask for the currency to convert to and display only the one conversion rate.
 2. instead of printing the exchange rate, ask for the amount to be converted and them return the equivalent in the chosen currency
 3. use the [OpenExchangeRates](https://openexchangerates.org/api/currencies.json) API to display the full name of the chosen currency.
 
@@ -155,17 +157,41 @@ Thankfully there are a number of advance features in NodeJS that are designed to
 
 ## 5 Generators
 
+Until now we have made certain assumptions about NodeJS functions. One of these is that once a function starts running it will always run to completion before any other code runs. A **Generator** is a different kind of function that can be _paused_ at any time and _resumed_ later.
+
+In concurrent programming there are two types of concurrency, _cooperative_, which allows the process to determine when the interruption happens, and _preemptive_, which allows the process to be interrupted by another process. A Generator is an example of _cooperative concurrency_ and use the `yield` keyword to trigger the interruption. To resume execution requires external control.
+
+The cool feature of Generators is that messages can be passed to and from it.
+
+Start by opening the `generators.js` file.
+
+1. The `function *main()` function declares a _function generator_ which behaves much like a standard function.
+2. At the end of the script we use this to instantiate an _iterator_ object we are calling `it`. This instantiates the iterator object but doesn't execute any of its contents.
+3. To start iterating over the _generator function_ we call its `.next()` property, this runs the generator function up to the first `yield` keyword.
+4. The `yield` function pauses the _generator function_ and passes control to the `getInput()` function, passing the parameter as normal.
+5. At the end of the `getInput()` function the `.next()` function is called on the `it` _iterator object_ which passes control back to the _generator function_ which runs until it encounters the next `yield` keyword...
+6. if an error occurs, the error object is passed to the _iterator object_'s `.throw()` function (see the `checkValidCurrencyCode()` function to see this in action).
+7. Errors passed in this way are caught by the `catch` block in the _generator function_.
+
+Simply by looking at the _function generator_ you can see how it has completely eliminated the nested callbacks, making the code much easier to read (and debug).
+
 ### 5.1 Test Your Knowledge
 
-1. modify the script to ask for the base currency
+The sample script `generators.js` has the same functionality as the previous script `nestedCallbacks.js` and your challenge is to implement the same changes as the previous challenge (repeated below). The good news is that you have already solved a lot of the coding challenges and so you can focus on how to implement it using generators.
+
+1. modify the script to ask for the currency to convert to and display only the one conversion rate.
 2. instead of printing the exchange rate, ask for the amount to be converted and them return the equivalent in the chosen currency
 3. use the [OpenExchangeRates](https://openexchangerates.org/api/currencies.json) API to display the full name of the chosen currency
 
 ## 6 Promises
 
+_A promise is an object that proxies for the return value thrown by a function that has to do some asynchronous processing (Kris Kowal)._
+
+The key component is the `.then()` method which is how we get the resolved (or fulfilled) value or the exception it has thrown.
+
 ### 6.1 Test Your Knowledge
 
-1. modify the script to ask for the base currency
+1. modify the script to ask for the currency to convert to and display only the one conversion rate.
 2. instead of printing the exchange rate, ask for the amount to be converted and them return the equivalent in the chosen currency
 3. use the [OpenExchangeRates](https://openexchangerates.org/api/currencies.json) API to display the full name of the chosen currency
 
@@ -175,7 +201,7 @@ async await.
 
 ### 7.1 Test Your Knowledge
 
-1. modify the script to ask for the base currency
+1. modify the script to ask for the currency to convert to and display only the one conversion rate.
 2. instead of printing the exchange rate, ask for the amount to be converted and them return the equivalent in the chosen currency
 3. use the [OpenExchangeRates](https://openexchangerates.org/api/currencies.json) API to display the full name of the chosen currency
 
