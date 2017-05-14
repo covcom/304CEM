@@ -44,7 +44,7 @@ nvm install 7.9.0
 node -v
   v7.9.0
 ```
-We install the latest version and then set this as default. Finally, to check everything worked we check to see ehat version is installed.
+We install the latest version and then set this as default. Finally, to check everything worked we check to see what version is installed.
 
 ## 2 Variables and Scope
 
