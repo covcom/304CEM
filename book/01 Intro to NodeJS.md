@@ -62,7 +62,24 @@ To uninstall a _local_ package you can use the `npm uninstall` subcommand and pa
 npm uninstall readline-sync
 ```
 
-## 2 Variables and Scope
+## 2 Basics of Javascript
+
+### 2.3 Worked Example
+
+Now we have learned some theory it's time to see this in practice.
+
+Its time to dive into our first example to see the workings of JavaScript in practice. This first example covers a number of important concepts and will show you the key JavaScript syntax. Specifically it covers:
+
+1. Variables and scope
+2. Strict mode
+3. Importing packages and modules
+4. Conditionals and loops
+5. Strings
+6. Arrays
+
+Load up the `todo.js` script and reference it as you read through the rest of this section.
+
+### 2.1 Variables and Scope
 
 If you have ever worked with JavaScript you will have declared variables with the `var` keyword. This creates a _hoisted function-scoped_ variable which has several issues:
 
@@ -71,27 +88,21 @@ If you have ever worked with JavaScript you will have declared variables with th
 
 Until the release of ECMA6, programmers in JavaScript have had to work with these issues but the release of ECMA6 provided two more options and the use of `var` is now deprecated and should no longer be used.
 
-
-
-### 2.1 Block-Level Variables
+#### 2.1.1 Block-Level Variables
 
 Now we can declare _block-level_ variables using the [let](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/let) keyword. These behave much like variables in other languages such as Python or Java in that they are only visible in the block they are declared in (such as a loop or branch).
 
-### 2.2 Block-Level Constants
+#### 2.1.2 Block-Level Constants
 
 Until ECMA6, you could not declare _immutable variables_ (otherwise known as constants). ECMA introduced the [const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) keyword that can be used to declare block-level constants.
 
-### 2.3 Worked Example
 
-Now we have learned some theory it's time to see this in practice. Load up the `todo.js` script and read through it to understand how it works. There are lots of code comments to assist you.
-
-#### 2.3.1 Strict Mode
+### 2.2 Strict Mode
 
 Notice the first line contains a **Directive**. This is a feature from ECMA5 telling the JavaScript runtime to run the script in [strict mode](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Strict_mode).
 ```javascript
 'use strict'
 ```
-
 This:
 
 - Prevents the declaration of global variables.
@@ -102,7 +113,7 @@ For the above reasone
 
 Use the **terminal** to run the script by entering ` node todo.js`. Once running you can use the `add` command to add new items to the list and the `list` command to print out the list items. The final command will terminate the application.
 
-#### 2.3.2 Importing a Package or Module
+### 2.3 Importing a Package or Module
 
 Since we will be using the functionality in the `readline-sync` package it needs to be imported using the `require` function.
 ```javascript
@@ -110,7 +121,11 @@ const readline = require('readline-sync')
 ```
 This can be used to import an installed package (as we are doing here) but can also be used to import other scripts we have created locally (this is covered in a later chapter).
 
-#### 2.3.3 Conditionals
+### 2.4 Conditionals and Loops
+
+Javascript supports a range of branching and looping constructs. They all follow a similar syntax to Java and C++.
+
+#### 2.4.1 Conditionals
 
 JavaScript includes the standard set of conditionals (if, if...else and switch) and the syntax is similar to other modern programming languages. The `todo.js` script makes use of a number of `if` statements to identify which option the user has entered, for example:
 ```javascript
@@ -133,7 +148,7 @@ switch(name) {
 }
 ```
 
-#### 2.3.4 Loops
+#### 2.4.2 Loops
 
 Javascript also supports a wide number of loop constructs:
 
@@ -155,9 +170,13 @@ for (let i=0; i< items.length; i++) {
 		}
 ```
 
-#### 2.3.5 Strings
+### 2.5 Strings
 
-In JavaScript, all strings are objects and have a number of useful methods.  In the `todo.js` example there is a line:
+In common with most other programming languages, JavaScript supports strings.
+
+#### 2.5.1 Strings as Objects
+
+In JavaScript, all strings are objects and have a number of useful methods. In the `todo.js` example there is a line:
 ```javascript
 const input = String(readline.question('enter command: ')).trim()
 ```
@@ -183,7 +202,7 @@ const item = input.substring(space).trim()
 
 It's worth taking a few moments to learn about some of the useful [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) methods.
 
-#### 2.3.6 String Concatenation
+#### 2.5.2 String Concatenation
 
 There are two ways to concatenate (join) strings. Prior to ECMA6 the `+` operator was used to join string literals and string variables.
 ```javascript
@@ -197,7 +216,7 @@ console.log(`my name is ${name}`)
 ```
 By using _template literals_ your strings become much easier to read and so you should get into the habit of always using these.
 
-#### 2.3.7 Arrays
+### 2.6 Arrays
 
 Our `todo.js` script declares an array near the start to hold the items in our todo list. Notice that the array is declared as _immutable_ using the `const` keyword.
 
@@ -209,7 +228,7 @@ Arrays are _objects_ and have a number of built-in methods. Later in the script 
 items.push(item)
 ```
 
-### 2.4 Running a NodeJS Script
+### 2.7 Running a NodeJS Script
 
 Now you have an understanding of the code features used in the script it is time to run it. Unlike client-side JavaScript, you don't run NodeJS scripts in a web browser, instead you need to run them using the **Terminal**.
 
@@ -234,7 +253,7 @@ exit
 ```
 
 
-### 2.2 Test Your Knowledge
+### 2.8 Test Your Knowledge
 
 Now you are familiar with the basics of the ECMA6 language its time to put this to the test. Make sure you successfully complete all six tasks before continuing to the next section.
 
