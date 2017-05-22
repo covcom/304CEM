@@ -64,8 +64,6 @@ npm uninstall readline-sync
 
 ## 2 Basics of Javascript
 
-### 2.3 Worked Example
-
 Now we have learned some theory it's time to see this in practice.
 
 Its time to dive into our first example to see the workings of JavaScript in practice. This first example covers a number of important concepts and will show you the key JavaScript syntax. Specifically it covers:
@@ -259,7 +257,7 @@ Now you are familiar with the basics of the ECMA6 language its time to put this 
 
 1. locate the `input` variable declaration (just inside the `do` loop)
   - define it as a block-scoped variable by replacing the `var` with `let`, what effect does this have?
-  - modify the script so that it still works (keep the `let` variable declaration).
+  - modify the script so that it still works (keep the `let` variable declaration). Hint: think about the variable _scope_, you will need to move the variable declaration.
   - substitute a constant by substituting `const` for `let`, what effect does this have?
 
 2. the array at the top of the script is defined using `var`. What happens if you make this immutable (use `const`)?
@@ -269,59 +267,72 @@ Now you are familiar with the basics of the ECMA6 language its time to put this 
 5. create a **remove** option so an item such as *cheese* can be removed using the syntax `remove cheese`. You may need to use the [`Array.splice()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) method.
 6. The current version is case sensitive. Modify the code so that items are converted to lowercase before being added or searched for. You will need to use the [`String.toLowerCase()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase) method.
 
-## 3 Exception Handling
+
+## 3 Modular Code
+
+By now you have learned and practiced the basics of the JavaScript language. In this section you will extend your knowledge and understanding by working with a more complex script that will extend your existing knowledge. In this section you will cover:
+
+1. Errors and exceptions
+2. Declaring and calling functions
+3. Introspection and data types
+4. Working with Numbers
+4. Documenting your code
+
+Open the `contact.js` script and study it as you cover the following sections.
+
+### 3.1 Errors and Exceptions
 
 When JavaScript executes code errors and exceptions may occur. These may be due to incorrect user input or a broken network connection for example. JavaScript includes a rich set of tools for handling these, based on the [Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) object.
 
 1. Errors are serious problems that normally mean the application will terminate
 2. Exceptions on the other hand are problems that can be handled by the program logic and thus prevent the application from terminating. In this task we will be focussing on _exception handling_.
 
-Open the `contact.js` script and study it carefully, as before, the code includes detailed comments to explain how it works.
+No matter how good we are at programming, our scripts will contain errors. In JavaScript when an unrecoverable error occurs in your code it throws an **Exception**. If this is not caught and handled by your script it will terminate the execution of the script and print the error to the console. Obviously this is a bad outcome and to prevent it we can _catch_ the error and handle it gracefully without causing the program to crash.
+
+#### 3.1.1 Handling Errors
+
+To help catch any errors, JavaScript uses the `try-catch-finally` statement. The syntax is very similar to other modern language and looks like this:
+```javascript
+try {
+  // this line of code might throw an error
+} catch(err) {
+  // if an error occurs the execution jumps to this block
+  // if no error occurs the block is ignored
+} finally {
+  // this line runs whether or not an error was thrown
+  // this block is optional
+}
+```
 
 1. All code that could throw an exception _must_ be in a `try{}` block.
 2. If an exception is _thrown_ the execution moves to the `catch{}` block.
   - the error object thrown will be passed as the parameter.
-  - the error object contains three properties: the name of the error, the message passed and the stack trace.
+
+#### 3.1.2 The Error Object
+
+When an error gets thrown it passes an Error object which contains three properties:
+- the name of the error
+- the message passed
+- the stack trace.
   - the _stack trace_ is a list of the method calls that the application was in the middle of when an Exception was thrown and can help identify some of the more insidious errors. You should learn to read and understand what information it contains.
 
-### 3.1 Test Your Knowledge
+### 3.2 Functions
+
+As with other programming languages, functions can be used to split the code into separate chunks. There is a lot more to functions and this will be covered in chapter 2.
+
+### 3.3 Introspection
+
+
+### 3.4 Numbers
+
+
+### 3.5 Documentation
+
+
+### 3.6 Test Your Knowledge
 
 Implement the `validateEmail()` function and thoroughly test it, you should avoid using regular expressions at this stage:
 
 1. Check that the string is at least 5 character long
 2. Check that there is a `@` character and that it is not at the start of the string (HINT: use the [indexOf](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) String prototype method.
 3. Check that there is a period (.) character after the `@` character but before the end of the string.
-
-----------------------------------------------------------
-
-## Programming Language
-
-Learning advanced programming techniques
-All programming done in ECMAScript 6
-Latest version of JavaScript
-Significant update
-
-## Server-Side Scripting
-
-
-## NodeJS and ECMAScript 6
-
-v6 supports most ECMAScript 6 features
-
-Block scoping: let, const
-Promises
-Arrow functions
-Iterators and Generators
-
-## Object Creation
-
-The preferred way to create objects in JS is using an “object literal”:
-```javascript
-var empty_object = {}
-var physicist = {
-  "first-name": "Albert",
-  "second-name": "Einstein"
-  "age": 135
-}
-```
-
