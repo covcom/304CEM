@@ -294,6 +294,16 @@ Now you are familiar with the basics of the ECMA6 language its time to put this 
 5. create a **remove** option so an item such as *cheese* can be removed using the syntax `remove cheese`. You may need to use the [`Array.splice()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) method.
 6. The current version is case sensitive. Modify the code so that items are converted to lowercase before being added or searched for. You will need to use the [`String.toLowerCase()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase) method.
 
+## 3 Data Types
+
+JavaScript is a _loosely typed_ language which means you don't declare a data type, it will be automatically determined when a value is assigned. This is sometime referred to as _duck typing_. There are six primitive data types that you should be familiar with, these are:
+
+- `Number`: This is used to represent both floating point and integer values.
+- `String`: This is used to represent textual data and consists of a set of 16 bit elements with each element occupying a position referenced by an index, with the first character at index 0.
+- `Boolean`: This represents a boolean state and can have only two possible values, `true` or `false`.
+- `Null`: This represents the intentional absence of a value. It can contain only one value, `null`.
+- `Undefined`: This represents a variable that has not been assigned a value.
+- `Symbol`: This is a token representing a unique ID and are created using the `symbol()` function. They are new in ECMA6.
 
 ## 3 Modular Code
 
@@ -399,20 +409,159 @@ The built-in  `Array.slice()` method returns the section of array between the sp
 
 The final step is to pass this string to the sentiment tool which returns the sentiment of the sentence.
 
-### 3.2 Functions
+## 5 Functions
 
-As with other programming languages, functions can be used to split the code into separate chunks. There is a lot more to functions and this will be covered in chapter 2.
+In JavaScript, as in most other languages, code can be divided in to modular blocks called functions. Once defined, these can be called from other code. Data can be passed in the form of parameters and functions can return data back to the calling code.
 
-### 3.3 Introspection
+Open the `maths.js` file. Notice that this contains several functions. Each is called directly under its definition.
 
+### 5.1 Function Syntax
 
-### 3.4 Numbers
+Lets start with a simple example.
+```javascript
+function largestNumber(a, b) {
+  if (a > b) return a
+  if (b > a) return b
+  return null
+}
 
+const biggest = largestNumber(5, 8)
+```
+1. The function is declared using the `function` keyword and the function is given a name which must be a valid variable name.
+    a. If the name comprises more than one word these should be written using camel casing as shown above.
+2. The function above takes two parameters, `a` and `b`.
+    - These are variables with local scope (they can't ba accessed outside the function)
+    - When the function is called, you need to pass two **values** which get assigned to the two parameters.
+    - If you pass too many values the extra ones get _ignored_.
+    - If you don't pass enough values the remainder are assigned a value of `null`. `Null` is an assignment value (means a value of no value).
+3. The function returns a value.
+  a. If the numbers are not the same it returns the largest.
+  b. If they are the same it returns `null`.
 
-### 3.5 Documentation
+### 5.2 The Spread Operator
 
+If the data you want to pass to a function is stored in an `Array` (this is quite common), you could extract each value and assign to the function like this:
+```javascript
+const nums = [5, 8]
+const biggest2 = largestNumber(nums[0], nums[1])
+```
+Because this is such a common task, there is a shortcut called the **spread operator**. Using this, the same task can be expressed like this.
+```javascript
+const nums = [5, 8]
+const biggest2 = largestNumber(...nums)
+```
+Notice the syntax of the _spread operator_.
 
-### 3.6 Test Your Knowledge
+### 5.3 The Arguments Object
+
+When a function is declared it has a **signature** which defines the number of parameters it is expecting, for example in the `largestNumber()` function, the signature defines two arguments.
+```javascript
+function largestNumber(a, b) { // this is the function signature.
+  // function body
+}
+```
+What happens if you try to call this with the _wrong_ number of arguments?
+
+- If you supply too few arguments the remaining parameters are assigned a data type and value of `null`.
+- If you supply too many arguments, the remaining ones are not assigned to the parameters, so where are they?
+
+Every JavaScript function has an object called `Arguments` which contains all the parameters passed to that function, even ones no assigned to the formal parameters. This provides a mechanism to access arguments that don't get assigned to parameters. Lets take a look at the `add()` function.
+```javascript
+function add() {
+	let total = 0
+	console.log(arguments)
+	console.log(arguments['1'])
+	for(const arg of arguments) {
+		total += arg
+	}
+	return total
+}
+```
+As you can see, the function signature defines no parameters, but when we call it we pass 4 arguments. What happens to these and how can we access them?
+```javascript
+const addNums = add(1, 2, 3, 4)
+```
+Inside the function we can access the `arguments` object. The `add()` function shows three ways to do this (we will be covering objects in detail in the next chapter):
+
+- display all the arguments (see below).
+- access individual arguments by referencing a key.
+- Use a `for...of` loop to iterate through the values.
+
+### 5.4 The Rest Parameter
+Whilst the `arguments` object provides a mechanism for accessing the function arguments, it returns an Object (the keys are `Strings`). It would be better if
+
+- the arguments could be accessed in an `Array`.
+- it ignored arguments already assigned to parameters.
+
+ECMA6 introduced a special parameter called a _rest parameter_ which captures all the arguments that have not been assigned to parameters and stores them in an array. Look at the `add2()` function.
+```javascript
+function add2(...values) {
+	let total = 0
+	console.log(values)
+  console.log(values[1])
+	for (let i=0; i<values.length; i++) {
+		total += values[i]
+	}
+	return total
+}
+```
+The `...values` parameter has a `...` prefix which defines it as a _rest parameter_. In the body of the function it can be seen that this is an `Array` and so each argument has a numerical index. This is the preferred way to handle arguments that are not assigned to parameters.
+
+### 5.5 Default Parameters
+
+As explained above, if you don't supply enough arguments for the parameters in the function signature, all the parameters without arguments are assigned a value of `null`. This means you have to add code within the function to check that there is a value assigned to the parameters before you can safely use them. ECMA6 has introduced **default parameters**. These allow you to assign a default value to a parameter if one is not supplied by when the function is called. Lets examine the `divide()` function.
+```javascript
+function divide(dividend, divisor=1) {
+	const quotient = dividend / divisor
+	return quotient
+}
+```
+Notice that the divisor has been assigned a value in the function signature. If this parameter is not assigned an argument, it defaults to this value.
+
+### 5.6 Function Expressions
+
+Functions are a data type in JavaScript (they are objects but more on that in the next chapter). As such they can be stored in variables for later execution. Prior to ECMA6 they were declared using the `function` keyword like this:
+```javascript
+const remainder = function(dividend, divisor) {
+	const quotient = Math.floor(dividend / divisor)
+	return dividend - quotient
+}
+```
+To execute the function you simply reference the variable and append `()`.
+```javascript
+const rem = remainder(8, 5)
+```
+
+ECMA6 introduced a better way to handle function expressions, called an **arrow function expression**. This has a much shorter (and cleaner) syntax. Here is the same function expression written using this new syntax, make a careful note of the differences.
+```javascript
+const remainder2 = (dividend, divisor) => {
+	const quotient = Math.floor(dividend / divisor)
+	return dividend - quotient
+}
+```
+The _arrow function expression_ has a number of important features:
+
+1. It does not have its own function scope which means it does not bind its own `this` object (made clearer later).
+2. In a concise body (one line) it has an implicit return and you don't need to use block braces. This results in very concise code, see the example below).
+3. If there is only a single parameter the parameter brackets can be omitted.
+
+Here is an example that should make points 2 and 3 clearer.
+```javascript
+const sqr = num => num * num
+```
+
+### 5.7 Test Your Knowledge
+
+Start by running the `maths.js` script and map the output it generates against the `console.log` statements in the script.
+
+1. Create a new function called `multiply()` that takes two parameters, `a` and `b` and returns the _product_ of the two.
+    - what happens if you call it with only a single parameter?
+2. Modify the function so it uses a default parameter to multiply by 1 if the second parameter is missing.
+    - What happens if you don't supply _any_ parameters?
+    - Add a second default parameter to prevent this.
+3. Write an _arrow function expression_ stored in a constant called `squareRoot` which calculates and returns the square root of the supplied number. You will need to use the `sqrt()` method which is part of the `Math` object.
+
+### 3.4 Test Your Knowledge
 
 Implement the `validateEmail()` function and thoroughly test it, you should avoid using regular expressions at this stage:
 

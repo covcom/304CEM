@@ -99,83 +99,6 @@ flight.arrival.city = {full: "Los Angeles", short: "LA"}
 flight.arrival.city.short // returns "LA"
 ```
 
-## 2 Functions
-
-In JavaScript, as in most other languages, code can be divided in to modular blocks called functions. Once defined, these can be called from other code. Data can be passed in the form of parameters and functions can return data back to the calling code.
-
-Open the `maths.js` file. Notice that this contains several functions. Each is called directly under its definition.
-
-### 2.1 Function Syntax
-
-Lets start with a simple example.
-```javascript
-function largestNumber(a, b) {
-  if (a > b) return a
-  if (b > a) return b
-  return null
-}
-
-const biggest = largestNumber(5, 8)
-```
-1. The function is declared using the `function` keyword and the function is given a name which must be a valid variable name.
-    a. If the name comprises more than one word these should be written using camel casing as shown above.
-2. The function above takes two parameters, `a` and `b`.
-    - These are variables with local scope (they can't ba accessed outside the function)
-    - When the function is called, you need to pass two **values** which get assigned to the two parameters.
-    - If you pass too many values the extra ones get _ignored_.
-    - If you don't pass enough values the remainder are assigned a value of `null`. `Null` is an assignment value (means a value of no value).
-3. The function returns a value.
-  a. If the numbers are not the same it returns the largest.
-  b. If they are the same it returns `null`.
-
-### 2.2 The Spread Operator
-
-If the data you want to pass to a function is stored in an `Array` (this is quite common), you could extract each value and assign to the function like this:
-```javascript
-const nums = [5, 8]
-const biggest2 = largestNumber(nums[0], nums[1])
-```
-Because this is such a common task, there is a shortcut called the **spread operator**. Using this, the same task can be expressed like this.
-```javascript
-const nums = [5, 8]
-const biggest2 = largestNumber(...nums)
-```
-Notice the syntax of the _spread operator_.
-
-### 2.3 The Arguments Object
-
-
-### 2.4 The Rest Parameter
-
-
-### 2.5 Default Parameters
-
-
-### 2.6 Test Your Knowledge
-
-Start by running the `maths.js` script and map the output it generates against the `console.log` statements in the script.
-
-1. Create a new function called `multiply()` that takes two parameters, `a` and `b` and returns the _product_ of the two.
-    - what happens if you call it with only a single parameter?
-2. Modify the function so it uses a default parameter to multiply by 1 if the second parameter is missing.
-    - What happens if you don't supply _any_ parameters?
-    - Add a second default parameter to prevent this.
----
-
-Defining a function syntax
-
-function invocation:
-
-- The `()` operator invokes the function.
-
-passing parameters:
-
-- arguments object
-- default parameters
-- rest parameters
-
-function return
-
 functions used as variable values
 
 - the arrow function syntax
@@ -650,3 +573,7 @@ console.log(manager.name)
 console.log(manager.calculateSalary(6))
 console.log(manager)
 ```
+
+## Introspection
+
+Using the `Reflect` object.

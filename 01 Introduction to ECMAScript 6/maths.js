@@ -1,5 +1,6 @@
 
 'use strict'
+/* eslint no-magic-numbers: 0 */
 
 function largestNumber(a, b) {
 	if (a > b) return a
@@ -18,7 +19,8 @@ console.log(biggest2)
 function add() {
 	let total = 0
 	console.log(arguments)
-	for(let arg of arguments) {
+	console.log(arguments['1'])
+	for(const arg of arguments) {
 		total += arg
 	}
 	return total
@@ -32,14 +34,14 @@ console.log(addNums)
 function add2(...values) {
 	let total = 0
 	console.log(values)
-	for (let val of values) {
-		total += val
+	for (let i=0; i<values.length; i++) {
+		total += values[i]
 	}
 	return total
 }
 
 const addNums2 = add2(1, 2, 3, 4)
-console.log(addNums)
+console.log(addNums2)
 
 
 // example with default parameter
@@ -54,27 +56,23 @@ console.log(`calling the divide function with '2' paramters: ${quotient}`)
 const quotient2 = divide(42)
 console.log(`calling divide function with '1' parameter: ${quotient2}`)
 
+// function expression using the `function` keyword
+const remainder = function(dividend, divisor) {
+	const quotient = Math.floor(dividend / divisor)
+	return dividend - quotient
+}
 
-/*
-Functions: lots of small functions to carry out maths operators
+const rem = remainder(8, 5)
+console.log(`remainder: ${rem}`)
 
-Needs to cover:
+// function expression using arrow syntax (preferred)
+const remainder2 = (dividend, divisor) => {
+	const quotient = Math.floor(dividend / divisor)
+	return dividend - quotient
+}
 
-undefined means variable declared but not assigned a value
-null is an assignment value (means a value of no value)
+console.log(remainder2(13, 4))
 
-1. Function Declaration
-
-- defining a function (function declaration / function expression)
-- passing parameters
-  - default parameters
-  - rest parameters
-  - spread syntax - use array as arguments to a function
-  - arguments object - show how to iterate over object values (let of)
-- return values
-
-
-Function constructor?
-- function constructor vs function declaration?
-
-*/
+// function expression using arrow syntax and one parameter
+const sqr = num => num * num
+console.log(sqr(4))
