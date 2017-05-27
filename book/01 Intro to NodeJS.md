@@ -62,6 +62,7 @@ To uninstall a _local_ package you can use the `npm uninstall` subcommand and pa
 npm uninstall readline-sync
 ```
 
+<<<<<<< HEAD
 #### 1.3 Useful Modules
 
 Although there are a lot of modules available through the package manager you will only need a few of these to complete the exercises in this book.
@@ -73,6 +74,24 @@ Although there are a lot of modules available through the package manager you wi
 - Sentiment: a module that uses the AFINN-165 wordlist and Emoji Sentiment Ranking to perform sentiment analysis on arbitrary blocks of input text.
 
 ## 2 Variables and Scope
+=======
+## 2 Basics of Javascript
+
+Now we have learned some theory it's time to see this in practice.
+
+Its time to dive into our first example to see the workings of JavaScript in practice. This first example covers a number of important concepts and will show you the key JavaScript syntax. Specifically it covers:
+
+1. Variables and scope
+2. Strict mode
+3. Importing packages and modules
+4. Conditionals and loops
+5. Strings
+6. Arrays
+
+Load up the `todo.js` script and reference it as you read through the rest of this section.
+
+### 2.1 Variables and Scope
+>>>>>>> 5a2aaad6b13503d4560dd235fcbb07b315b6d934
 
 If you have ever worked with JavaScript you will have declared variables with the `var` keyword. This creates a _hoisted function-scoped_ variable which has several issues:
 
@@ -81,27 +100,21 @@ If you have ever worked with JavaScript you will have declared variables with th
 
 Until the release of ECMA6, programmers in JavaScript have had to work with these issues but the release of ECMA6 provided two more options and the use of `var` is now deprecated and should no longer be used.
 
-
-
-### 2.1 Block-Level Variables
+#### 2.1.1 Block-Level Variables
 
 Now we can declare _block-level_ variables using the [let](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/let) keyword. These behave much like variables in other languages such as Python or Java in that they are only visible in the block they are declared in (such as a loop or branch).
 
-### 2.2 Block-Level Constants
+#### 2.1.2 Block-Level Constants
 
 Until ECMA6, you could not declare _immutable variables_ (otherwise known as constants). ECMA introduced the [const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) keyword that can be used to declare block-level constants.
 
-### 2.3 Worked Example
 
-Now we have learned some theory it's time to see this in practice. Load up the `todo.js` script and read through it to understand how it works. There are lots of code comments to assist you.
-
-#### 2.3.1 Strict Mode
+### 2.2 Strict Mode
 
 Notice the first line contains a **Directive**. This is a feature from ECMA5 telling the JavaScript runtime to run the script in [strict mode](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Strict_mode).
 ```javascript
 'use strict'
 ```
-
 This:
 
 - Prevents the declaration of global variables.
@@ -112,7 +125,7 @@ For the above reasone
 
 Use the **terminal** to run the script by entering ` node todo.js`. Once running you can use the `add` command to add new items to the list and the `list` command to print out the list items. The final command will terminate the application.
 
-#### 2.3.2 Importing a Package or Module
+### 2.3 Importing a Package or Module
 
 Since we will be using the functionality in the `readline-sync` package it needs to be imported using the `require` function.
 ```javascript
@@ -120,7 +133,11 @@ const readline = require('readline-sync')
 ```
 This can be used to import an installed package (as we are doing here) but can also be used to import other scripts we have created locally (this is covered in a later chapter).
 
-#### 2.3.3 Conditionals
+### 2.4 Conditionals and Loops
+
+Javascript supports a range of branching and looping constructs. They all follow a similar syntax to Java and C++.
+
+#### 2.4.1 Conditionals
 
 JavaScript includes the standard set of conditionals (if, if...else and switch) and the syntax is similar to other modern programming languages. The `todo.js` script makes use of a number of `if` statements to identify which option the user has entered, for example:
 ```javascript
@@ -143,7 +160,7 @@ switch(name) {
 }
 ```
 
-#### 2.3.4 Loops
+#### 2.4.2 Loops
 
 Javascript also supports a wide number of loop constructs:
 
@@ -165,9 +182,13 @@ for (let i=0; i< items.length; i++) {
 		}
 ```
 
-#### 2.3.5 Strings
+### 2.5 Strings
 
-In JavaScript, all strings are objects and have a number of useful methods.  In the `todo.js` example there is a line:
+In common with most other programming languages, JavaScript supports strings.
+
+#### 2.5.1 Strings as Objects
+
+In JavaScript, all strings are objects and have a number of useful methods. In the `todo.js` example there is a line:
 ```javascript
 const input = String(readline.question('enter command: ')).trim()
 ```
@@ -193,7 +214,7 @@ const item = input.substring(space).trim()
 
 It's worth taking a few moments to learn about some of the useful [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) methods.
 
-#### 2.3.6 String Concatenation
+#### 2.5.2 String Concatenation
 
 There are two ways to concatenate (join) strings. Prior to ECMA6 the `+` operator was used to join string literals and string variables.
 ```javascript
@@ -207,7 +228,7 @@ console.log(`my name is ${name}`)
 ```
 By using _template literals_ your strings become much easier to read and so you should get into the habit of always using these.
 
-#### 2.3.7 Arrays
+### 2.6 Arrays
 
 Our `todo.js` script declares an array near the start to hold the items in our todo list. Notice that the array is declared as _immutable_ using the `const` keyword.
 
@@ -219,7 +240,7 @@ Arrays are _objects_ and have a number of built-in methods. Later in the script 
 items.push(item)
 ```
 
-### 2.4 Running a NodeJS Script
+### 2.7 Running a NodeJS Script
 
 Now you have an understanding of the code features used in the script it is time to run it. Unlike client-side JavaScript, you don't run NodeJS scripts in a web browser, instead you need to run them using the **Terminal**.
 
@@ -257,13 +278,13 @@ chmod +x todo.js
 The last line above tells the OS to run the `todo.js` file in the current directory.
 
 
-### 2.2 Test Your Knowledge
+### 2.8 Test Your Knowledge
 
 Now you are familiar with the basics of the ECMA6 language its time to put this to the test. Make sure you successfully complete all six tasks before continuing to the next section.
 
 1. locate the `input` variable declaration (just inside the `do` loop)
   - define it as a block-scoped variable by replacing the `var` with `let`, what effect does this have?
-  - modify the script so that it still works (keep the `let` variable declaration).
+  - modify the script so that it still works (keep the `let` variable declaration). Hint: think about the variable _scope_, you will need to move the variable declaration.
   - substitute a constant by substituting `const` for `let`, what effect does this have?
 
 2. the array at the top of the script is defined using `var`. What happens if you make this immutable (use `const`)?
@@ -273,28 +294,54 @@ Now you are familiar with the basics of the ECMA6 language its time to put this 
 5. create a **remove** option so an item such as *cheese* can be removed using the syntax `remove cheese`. You may need to use the [`Array.splice()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) method.
 6. The current version is case sensitive. Modify the code so that items are converted to lowercase before being added or searched for. You will need to use the [`String.toLowerCase()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase) method.
 
-## 3 Exception Handling
+
+## 3 Modular Code
+
+By now you have learned and practiced the basics of the JavaScript language. In this section you will extend your knowledge and understanding by working with a more complex script that will extend your existing knowledge. In this section you will cover:
+
+1. Errors and exceptions
+2. Declaring and calling functions
+3. Introspection and data types
+4. Working with Numbers
+4. Documenting your code
+
+Open the `contact.js` script and study it as you cover the following sections.
+
+### 3.1 Errors and Exceptions
 
 When JavaScript executes code errors and exceptions may occur. These may be due to incorrect user input or a broken network connection for example. JavaScript includes a rich set of tools for handling these, based on the [Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) object.
 
 1. Errors are serious problems that normally mean the application will terminate
 2. Exceptions on the other hand are problems that can be handled by the program logic and thus prevent the application from terminating. In this task we will be focussing on _exception handling_.
 
-Open the `contact.js` script and study it carefully, as before, the code includes detailed comments to explain how it works.
+No matter how good we are at programming, our scripts will contain errors. In JavaScript when an unrecoverable error occurs in your code it throws an **Exception**. If this is not caught and handled by your script it will terminate the execution of the script and print the error to the console. Obviously this is a bad outcome and to prevent it we can _catch_ the error and handle it gracefully without causing the program to crash.
+
+#### 3.1.1 Handling Errors
+
+To help catch any errors, JavaScript uses the `try-catch-finally` statement. The syntax is very similar to other modern language and looks like this:
+```javascript
+try {
+  // this line of code might throw an error
+} catch(err) {
+  // if an error occurs the execution jumps to this block
+  // if no error occurs the block is ignored
+} finally {
+  // this line runs whether or not an error was thrown
+  // this block is optional
+}
+```
 
 1. All code that could throw an exception _must_ be in a `try{}` block.
 2. If an exception is _thrown_ the execution moves to the `catch{}` block.
   - the error object thrown will be passed as the parameter.
-  - the error object contains three properties: the name of the error, the message passed and the stack trace.
+
+#### 3.1.2 The Error Object
+
+When an error gets thrown it passes an Error object which contains three properties:
+- the name of the error
+- the message passed
+- the stack trace.
   - the _stack trace_ is a list of the method calls that the application was in the middle of when an Exception was thrown and can help identify some of the more insidious errors. You should learn to read and understand what information it contains.
-
-### 3.1 Test Your Knowledge
-
-Implement the `validateEmail()` function and thoroughly test it, you should avoid using regular expressions at this stage:
-
-1. Check that the string is at least 5 character long
-2. Check that there is a `@` character and that it is not at the start of the string (HINT: use the [indexOf](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) String prototype method.
-3. Check that there is a period (.) character after the `@` character but before the end of the string.
 
 ## 4 Passing Parameters on the Command Line
 
@@ -351,3 +398,24 @@ console.log(words)
 The built-in  `Array.slice()` method returns the section of array between the specified index and the end of the array. The `join()` method converts an array into a string using the parameter as separator. It is standard practice when programming in JavaScript to use _method chaining_ whereby several methods are called on the same data.
 
 The final step is to pass this string to the sentiment tool which returns the sentiment of the sentence.
+
+### 3.2 Functions
+
+As with other programming languages, functions can be used to split the code into separate chunks. There is a lot more to functions and this will be covered in chapter 2.
+
+### 3.3 Introspection
+
+
+### 3.4 Numbers
+
+
+### 3.5 Documentation
+
+
+### 3.6 Test Your Knowledge
+
+Implement the `validateEmail()` function and thoroughly test it, you should avoid using regular expressions at this stage:
+
+1. Check that the string is at least 5 character long
+2. Check that there is a `@` character and that it is not at the start of the string (HINT: use the [indexOf](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) String prototype method.
+3. Check that there is a period (.) character after the `@` character but before the end of the string.
