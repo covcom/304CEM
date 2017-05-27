@@ -62,6 +62,16 @@ To uninstall a _local_ package you can use the `npm uninstall` subcommand and pa
 npm uninstall readline-sync
 ```
 
+#### 1.3 Useful Modules
+
+Although there are a lot of modules available through the package manager you will only need a few of these to complete the exercises in this book.
+
+- Request: an HTTP client written in JavaScript, for accessing web resources such as APIs
+- Simple-Storage: a wrapper to store data in the filesystem
+- Mongoose: a MongoDB object modeling tool.
+- FS: a module giving direct access to the host file system, for reading and writing files
+- Sentiment: a module that uses the AFINN-165 wordlist and Emoji Sentiment Ranking to perform sentiment analysis on arbitrary blocks of input text.
+
 ## 2 Variables and Scope
 
 If you have ever worked with JavaScript you will have declared variables with the `var` keyword. This creates a _hoisted function-scoped_ variable which has several issues:
@@ -233,6 +243,19 @@ list
 exit
 ```
 
+#### 2.4.1 Executing NodeJS Files
+
+There is an alternative way to execute a NodeJS script which works on Linux systems. it works because we have a _shebang_, otherwise known as a **processor directive** as the first line of our script. This tells the operating system where to find the command to run the script.
+```
+#!/usr/bin/env node
+```
+This tells the operating system to use the node command that appears in the environment path variable. You will also need to set the execute flag on the file.
+```
+chmod +x todo.js
+./todo.js
+```
+The last line above tells the OS to run the `todo.js` file in the current directory.
+
 
 ### 2.2 Test Your Knowledge
 
@@ -273,36 +296,58 @@ Implement the `validateEmail()` function and thoroughly test it, you should avoi
 2. Check that there is a `@` character and that it is not at the start of the string (HINT: use the [indexOf](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) String prototype method.
 3. Check that there is a period (.) character after the `@` character but before the end of the string.
 
-----------------------------------------------------------
+## 4 Passing Parameters on the Command Line
 
-## Programming Language
+You have probably seen some commands that take startup parameters. Each time you run a script, everything you type at the shell is made available through the process object which contains an `argv` array.
 
-Learning advanced programming techniques
-All programming done in ECMAScript 6
-Latest version of JavaScript
-Significant update
+This is useful since it means we can pass extra data to a script when we invoke it from the shell. We will be using this feature to pass in a sentence and measure its sentiment (positive or negative).
 
-## Server-Side Scripting
+Open the script `sentiment.js` and make sure you understand how it works.
 
-
-## NodeJS and ECMAScript 6
-
-v6 supports most ECMAScript 6 features
-
-Block scoping: let, const
-Promises
-Arrow functions
-Iterators and Generators
-
-## Object Creation
-
-The preferred way to create objects in JS is using an “object literal”:
+Try running the script without any extra parameters.
+```
+$ node sentiment
+  [ '/Users/.../bin/node',
+    '/Users/.../sentiment.js' ]
+  missing parameters
+```
+Notice that it prints out an array which contains two indexes corresponding to the _node command_ and the script name (sentiment.js). There is also a message that there are missing parameters. Where is this message coming from?
 ```javascript
-var empty_object = {}
-var physicist = {
-  "first-name": "Albert",
-  "second-name": "Einstein"
-  "age": 135
+const minParam = 3
+console.log(process.argv)
+if (process.argv.length < minParam) {
+  throw new Error('missing parameters')
 }
 ```
+In the code above you can see that the array printed to the shell is the contents of `process.argv`. The error was because the script expected an array of at least 3 indexes.
 
+Now let's run the command and pass it a sentence.
+```
+node sentiment happy to meet you
+$ node sentiment happy to meet you again
+  [ '/Users/.../bin/node',
+    '/Users/.../sentiment',
+    'happy',
+    'to',
+    'meet',
+    'you',
+    'again' ]
+  happy to meet you again
+  { score: 3,
+    comparative: 0.6,
+    tokens: [ 'happy', 'to', 'meet', 'you', 'again' ],
+    words: [ 'happy' ],
+    positive: [ 'happy' ],
+    negative: []
+  }
+```
+So what's happened here? Well now the `process.argv` array contains the additional words we typed. because there were more than 2 indexes the error is not thrown.
+
+Now we have some words to process we need to combine them into a single string.
+```javascript
+const words = process.argv.slice(minParam-1).join(' ')
+console.log(words)
+```
+The built-in  `Array.slice()` method returns the section of array between the specified index and the end of the array. The `join()` method converts an array into a string using the parameter as separator. It is standard practice when programming in JavaScript to use _method chaining_ whereby several methods are called on the same data.
+
+The final step is to pass this string to the sentiment tool which returns the sentiment of the sentence.

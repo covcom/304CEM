@@ -8,46 +8,24 @@ Outcomes
 - Understand the JSON data format and know how to convert between it and JavaScript objects.
 - Understand Screen Scraping
 
-## Command Line Options
+## IO is Expensive
 
-Used to pass data to a script at startup.
-```
-node currency usd gbp
-```
-In this example we have a command, a script and two command line options.
+Waiting for IO to complete is big waste of resources
+Three solutions:
+synchronous
+processes		Apache
+threads			Node
 
-Accessing Command Line Options
+## NodeJS Threading Model
 
-Available through the process object
+NodeJS runs in a single thread
+JavaScript supports lambda / callbacks
+Callbacks run in their own threads
+After callback thread is destroyed
 
-Array called `argv[]`
 
-Contains entire instruction.
-```
-node currency usd gbp
-['node', 'currency', 'usd', 'gbp']
-```
 
-Useful modules.
 
-Request: an HTTP client written in JavaScript, for accessing web resources such as APIs
-
-Simple-Storage: a wrapper to store data in the filesystem
-
-Nano: an ORM (database wrapper) for CouchDB
-
-FS: a module giving direct access to the host file system, for reading and writing files
-
-Request module
-
-An HTTP client written in JavaScript
-
-Can be used by your scripts to access other HTTP resources on the web
-
-Very useful!
-```
-var request = require('request')
-```
 
 Using Request.
 

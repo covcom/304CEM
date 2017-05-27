@@ -19,3 +19,4 @@ jsconfig.json
 secrets.js
 .node_persist/
 *.tgz
+tmp/

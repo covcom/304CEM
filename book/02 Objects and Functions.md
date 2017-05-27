@@ -38,7 +38,7 @@ false
 ```
 
 The preferred way to create objects in JS is using an “object literal”:
-```
+```javascript
 var empty_object = {}
 var physicist = {
   "first-name": "Albert",
@@ -49,7 +49,7 @@ var physicist = {
 
 Remember that the value can be any JS value. That includes other objects. In other words: objects can be nested.
 
-```
+```javascript
 var flight = {
   airline: "BA",
   departure: {
@@ -66,7 +66,7 @@ var flight = {
 Object values can be retrieved in two ways:
 Use [ ] around a string with the name to retrieve as a suffix
 to the object name:
-```
+```javascript
 physicist["first-name"] // returns "Albert"
 flight["number"] // returns 882
 ```
@@ -79,20 +79,20 @@ flight.departure.city // returns "Sydney"
 Undefined Values
 
 If you try to retrieve a nonexistent name from an object, JS returns undefined:
-```
+```javascript
 physicist["middle-name"] // returns undefined
 flight.capacity // returns undefined
 ```
 
 TIP: the OR operator `||` can be used to fill in “default” values:
-```
+```javascript
 var middle = physicist["middle-name"] || "(none)"
 var capacity = flight.capacity || "unknown"
 ```
 Undefined Objects
 
 If you try to retrieve a value from an object that is undefined, JS throws a TypeError exception:
-```
+```javascript
 fakeObject["any-string"] // throw "TypeError"
 flight.capacity // returns undefined
 flight.capacity.minimum // throw "TypeError"
@@ -102,7 +102,7 @@ Avoiding TypeError
 
 The AND operator && can be used to guard against this
 problem:
-```
+```javascript
 flight.capacity // undefined
 flight.capacity.minimum // throw "TypeError"
 
@@ -115,7 +115,7 @@ Setting object values at creation.
 Object values are set in two ways:
 
 During object creation, unless your object is empty {}:
-```
+```javascript
 var employee = {name: "Colin"};
 employee.name // returns "Colin"
 ```
@@ -123,7 +123,7 @@ employee.name // returns "Colin"
 Setting values by assignment.
 
 This sets a new value if the name does not already exist. Otherwise, it updates the existing value:
-```
+```javascript
 physicist["middle-name"] = "Bob";
 physicist["middle-name"] // returns "Bob"
 flight.arrival.city // returns "Los Angeles"
@@ -134,14 +134,14 @@ flight.arrival.city.short // returns "LA"
 Call by reference.
 
 Objects are passed around in JS programs “by reference”. They are never copied.
-```
+```javascript
 var a = {}
 var b = {}
 a.test = "hello"
 b.test // returns undefined
 ```
 
-```
+```javascript
 var a = {};
 var b = a;
 a.test = "hello"
@@ -149,7 +149,7 @@ b.test // returns "hello"
 ```
 
 Example.
-```
+```javascript
 var stooge = {first: "Jerome", second: "Howard"}
 var x = stooge;
 x.nickname = "Curly";
@@ -160,7 +160,7 @@ nick // returns "Curly"
 Function creation.
 
 This creates a function object using a function literal
-```
+```javascript
 For example:
 function add(x, y) {
   var total = x + y
@@ -172,7 +172,7 @@ Named functions.
 
 The function can use its own name to call itself
 Useful for manipulating tree structures
-```
+```javascript
 var add = function(x, y) {
   var total = x + y
   return total
@@ -197,7 +197,7 @@ Functions as object properties.
 
 Methods are functions stored as properties of objects.
 When a method is invoked, this is bound to that object.
-```
+```javascript
 var myValueObject = {
   value: 0,
   increment: function(inc) {
