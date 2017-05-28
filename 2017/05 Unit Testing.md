@@ -155,25 +155,6 @@ It is immediately clear from the coverage report that there is a large chunk of 
 2. Periodically re-run the coverage tool and refresh the report page.
 3. You are aiming for 100% code coverage.
 
-## 3 Acceptance Testing
-
-In addition to carrying out _unit tests_ you can run tests on the API _interface_. This allows you to write tests that define how your API should handle various calls and test it using both good and bad data. Typically you should write these tests when you define your API _interface_ and before you carry out any coding.
-
-Acceptance testing will be carried out using the [frisby](https://www.npmjs.com/package/frisby) package which is built on the [jasmine-node](https://www.npmjs.com/package/jasmine-node) framework you have already used.
-
-2. open the `shopping/test/todo-spec.js` script and read it, paying particular attention to the detailed comments.
-3. start the API and check it is visible using Postman.
-4. change the base urls to match your cloud9 API.
-5. run the acceptance tests by entering `./node_modules/.bin/jasmine-node test/ --verbose`, this will output the test results to the terminal. Take a few moments to understand this output.
-6. run the acceptance tests again. Why do they fail this time, use the error trace to find out what failed and why.
-
-## 3.1 Test Your Knowledge
-
-1. create a new test `DELETE /lists` and add it at the start of the test. Eventually this should clear all the lists in the API and return success, lists deleted.
-2. run your tests, they should fail (we have not written the new API feature!
-3. add the  `--autotest --watch .` flags when you run the test script (see the previous worksheet), this will automatically run your acceptance tests every time you save a file.
-3. implement `DELETE /lists`. The tests will pass to indicate success.
-
 
 ## 4 Asynchronous Testing
 
@@ -206,7 +187,7 @@ The key differences between this and the previous example are the multiple specs
   - open the `medium-spec.js` file and uncomment the `taxi.__set__()` method which substitutes a different function, this loads data from a file rather than make the API call.
   - check the results of the test suite
 
-## 4.1 Test Your Knowledge
+### 4.1 Test Your Knowledge
 
 1. create a third _test suite_ to simulate a longer journey of more than 150 miles
   - use the `index.js` script to generate a suitable URL for the API and print this to the console
@@ -216,6 +197,14 @@ The key differences between this and the previous example are the multiple specs
   - use the [taxi fare calculator](https://yourtaximeter.com/local-authorities/view/london-black-cabs) to calculate the correct fare.
   - add suitable specs to the new test suite
 2. there is an error in the fare values returned, fix the error so that the tests pass.
+
+## 5 Continuous Integration
+
+TODO
+
+## 6 Continuous Deployment
+
+TODO
 
 -------------------------
 
@@ -383,3 +372,67 @@ also consider range of test data...
 - Enforcing single responsibility
 - Conscious development
 - Improved productivity
+
+----------
+
+Continuous Integration
+
+The Problem
+
+Adding new features can add bugs
+Automated tests need to be run frequently
+Possible to add commits that break code
+
+If all tests pass the code needs to be deployed live
+
+The Solution
+
+Isolated changes are immediately tested and reported on as they are added
+Gives quick feedback
+If a bug is introduced into the code it can be quickly identified and fixed
+Automates testing
+
+GitLab CI
+
+Built-in continuous integration service
+Add a .gitlab-ci.yml file to the root directory of the repository
+Configure the GitLab project to use a Runner
+Each merge request or push triggers your CI pipeline.
+
+Runners
+
+A Docker Machine
+Picks up builds through the coordinator API
+Two types:
+Shared Runners
+Specific Runners
+
+Pipelines
+
+Three-stage pipeline:
+Build
+Test
+Deploy
+Stages can be omitted
+Moves to next stage if tests return non-zero
+
+Sample Build File
+```yaml
+stages:
+ - test
+ - deploy
+
+unit_tests:
+  stage: test
+  script:
+    - npm install
+    - npm test
+
+acceptance_tests:
+  stage: deploy
+  script:
+    - gem install dpl
+    - dpl --provider=heroku --app=test_server --api-key=xxxxxxxx
+  only:
+    - master
+```
