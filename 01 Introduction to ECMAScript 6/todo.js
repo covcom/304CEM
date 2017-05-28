@@ -2,6 +2,8 @@
 
 'use strict'
 
+/* eslint-disable no-var */
+
 const readline = require('readline-sync')
 
 const items = []

@@ -2,43 +2,36 @@
 'use strict'
 
 const employee = {
-    firstName: 'Colin',
-    'last name': 'Stephen',
-    'department': 'Computing'
+	firstName: 'Colin',
+	'last name': 'Stephen',
+	'department': 'Computing',
+	employment: {
+		department: 'Computing',
+		startDate: '20120815'
+	}
 }
 
 console.log(employee)
-console.log(JSON.stringify(employee, null, 4))
+const firstName = employee.firstName
+const lastName = employee['last name']
+const dept = employee.employment.department
+const grade = employee.employment.grade
 
-console.log(`${employee.firstName} ${employee['last name']}`)
+console.log(`${firstName} ${lastName} in ${dept} is at grade ${grade}`)
+
 console.log(employee.department)
-
 employee.department = 'Computer Science'
 console.log(employee.department)
 
 employee.grade = 4
 console.log(employee)
+console.log(grade)
 
 delete employee.department
 console.log(employee)
 
-/*
-simple objects example.
-Used for 
-
-needs to cover:
-valid and invalid property names
-using object literals
-different property name syntaxes
-setting new values
-
-Needs to cover:
-- name/value pairs
-- valid and invalid property names
-- creating object literals
-- retrieving object values
-- setting values by assignment
-- overwriting values
-- removing names
-
-*/
+// const nonExistentObject.postCode // throws "TypeError"
+// const addressObject = employee.address  // returns undefined
+// const postCode = employee.address.postCode // throws "TypeError"
+const postCode = employee.address && employee.address.postCode
+console.log(postCode)

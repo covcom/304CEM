@@ -1,4 +1,6 @@
 
+'use strict'
+
 function makeCar() {
 	const makes = ['Chevy', 'GM', 'Fiat', 'Webville Motors', 'Tucker']
 	const models = ['Cadillac', '500', 'Bel-Air', 'Taxi', 'Torpedo']

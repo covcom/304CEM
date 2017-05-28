@@ -1,21 +1,15 @@
 
 'use strict'
 
+// example of a nested function
+function flights(airline, startCode, endCode) {
+	return function printDetails() {
+		return `you are flying ${airline} from ${startCode} to ${endCode}`
+	}
+}
 
+const flight = flights('KLM', 'BHX', 'JFK')
+const flightSummary = flight()
+console.log(flightSummary)
 
-/*
-2. Function Expressions
-
-More advanced stuff combining objects and functions.
-
-
-needs to cover:
-- Functions used as values
-- Arrow syntax: should be the default option.
-- Self-invoking functions? - immediately invoked function expressions (IIFE)
-- getters and setters
-- destructuring (fail soft)
-- proxies (eg. for logging)
-- reflect (opposite of proxy)
-- symbols (new primitive type)
-*/
+// https://www.sitepoint.com/javascript-closures-demystified/
