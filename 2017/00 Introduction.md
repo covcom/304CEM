@@ -36,12 +36,23 @@ If you do not have lots of experience stick with the part 1 content then come ba
 
 ### Cloning the Sample Code
 
-Whilst you could simply download the sample code from GitHub it is recommended that you clone this. The benefits are that as bugs are found and the exercise files improved, you can pull these changes into your local copy of the code.
+In each chapter you will be working on real code samples and these are available through GitHub.
 
-Assuming you are running a *NIX system you can clone the materials. This command will create a `nodejs/` directory in your `Documents/` directory containing all the sample code.
+Assuming you are running a *NIX system you can clone the materials. This command will create a `nodejs/` directory in your `Documents/` directory containing all the sample code. The sample code can be found inside the `exercises/` directory where you will find a directory corresponding to each chapter.
 ```
 git clone https://github.com/covcom/304CEM.git ~/Documents/nodejs
 ```
+Whilst you could simply download the sample code from GitHub it is recommended that you clone this. The benefits are that as bugs are found and the exercise files improved, you can pull these changes into your local copy of the code.
+
+## Coding Style
+
+One of the features (or problems) with JavaScript is that there are a lot of ways to write code. This book uses the following style:
+
+- no semicolons at the end of lines. This is a much debated point but the author prefers to leave these out for a less-cluttered style.
+- tabs, not spaces. Without going into the tabs v spaces flame wars, the author feels that with tabs, the indentation can be customised by the end user through the editor settings.
+- single quotes. These have been chosen over double quotes for a cleaner feel to the code.
+
+Obviously if you have your pown preferences you can impose these but ensure you update the _ESLint configuration file_ when you get to chapter 4!
 
 ## Your System
 
