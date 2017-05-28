@@ -3,6 +3,8 @@
 
 This material covers the design of RESTful APIs and the use of NodeJS to build, test and deploy them. The material is split into two sections. The first covers the programming skills and knowledge you need to be able to understand and write scripts using NodeJS whilst the second part covers the design, development and deployment of the APIs themselves.
 
+[Introduction](00%20Introduction.md)
+
 ## Part 1: NodeJS
 
 1. [Introduction to NodeJS](01%20Intro%20to%20NodeJS.md)
