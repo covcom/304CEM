@@ -5,9 +5,9 @@ This material covers the design of RESTful APIs and the use of NodeJS to build, 
 
 ## Part 1: NodeJS
 
-1. [Introduction to NodeJS](01%20Introduction.md)
+1. [Introduction to NodeJS](01%20Intro%20to%20NodeJS.md)
 2. [Javascript Objects](02%20JavaScript%20Objects.md)
-3. [Asynchronous JavaScript](03%20Asynchonous%20JavaScript.md)
+3. [Asynchronous JavaScript](03%20Asynchronous%20JavaScript.md)
 4. [Writing Robust Code](04%20Writing%20Robust%20Code.md)
 5. [Unit Testing](05%20Unit%20Testing.md)
 6. [Data Persistence](06%20Data%20Persistence.md)
