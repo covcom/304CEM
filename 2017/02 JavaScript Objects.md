@@ -131,11 +131,7 @@ const postCode = employee.address && employee.address.postCode
 console.log(postCode) // returns undefined
 ```
 
-### 1.5 This
-
-TODO
-
-### 1.6 Passing by Reference
+### 1.5 Passing by Reference
 
 Call by reference.
 
@@ -168,34 +164,7 @@ nick // returns "Curly"
 TODO
 
 
-## 2 The Function Object
-
-In JavaScript every function is actually a [function object](https://goo.gl/jjyhZM). Because of this we can use the [new operator](https://goo.gl/gKwCCH) to create instances of them.
-
-Open the `coffee/` directory and locate the `coffee.js` file. Lets understand how it works.
-
-1. The `coffee.js` file contains a module that exports a single _function object_. Notice that we can't use an [arrow function](https://goo.gl/B3UgyF) for this because it does not bind its own `this` value.
-2. The function takes two parameters although the second one is a [default parameter](https://goo.gl/SJL4tS).
-3. Because we will be invoking the function as a constructor, the `this` object is bound to the returned object, this means that we will be able to access all its properties in our created object.
-4. We store the two parameters as properties of the `this` object.
-5. We also store our two functions in the `this` object which means we can call these once we have an instance of our enclosing function. Because we don't want to bind `this` to these functions we use the [arrow function](https://goo.gl/B3UgyF) syntax.
-
-Open the `index.js` file, also located in the `coffee/` folder to see the function object in action. Run this file to see any changes you have made to the `coffee.js` file with `node index.js`.
-
-For future reference, if there is ever an `index.js` file in the folder, this is what should be run to test the code.
-
-### 2.1 Test Your Knowledge
-
-1. Modify the `.getsize()` property, replacing the `if...else` block of code with a [switch statement](https://goo.gl/x7mM3f)
-2. Now modify the switch satement back to an `if...else` one such that:
-    - sizes up to 8 should be considered _small_.
-    - sizes between 9 and 12 should be _medium_.
-    - any size over 12 should be _large_.
-3. Add a third optional parameter called `shots` to allow the customer to specify additional coffee shots. The default value should be `0`.
-    - In the `order()` property modify the message to include the number of additional shots.
-    - Modify the message so that the coffee is labelled as `strong` if there are 2 or more additional shots.
-
-## 3 Constructors
+## 2 Constructors
 
 A **constructor** is any JavaScript function called with the `new` keyword. Functions that are designed to be called by ‘new’ are called **constructor functions**.	
 
@@ -222,7 +191,13 @@ For any object we can use the `instanceof` operator to check the constructor fun
 if (b instanceof Book) console.log('its a Book')
 ```
 
-### 3.1 Defining Properties
+### 2.1 This
+
+Since functions are _objects_ in JavaScript they get their own properties just like other objects. `this` is a **function-scoped variable** that contains the _value of the object that invoked the function_. We use it to access the properties and methods of the object without needing to know the name of the invoking object. Adding properties and methods to `this` is a safe way to store data that should be scoped to the function.
+
+ife we look back at the previous example you will see that the two function _parameters_ are added to the function's `this` object as properties.
+
+### 2.2 Defining Properties
 
 You have already seen properties in the built-in constructor functions. For example all `Array` objects have a `length` property. You can add properties to your own constructor functions as well.
 ```javascript
@@ -242,9 +217,9 @@ b.year = 2016
 console.log(b.published) // prints 2016
 ```
 
-### 3.2 Object Literals vs Constructors
+### 2.3 Object Literals vs Constructors
 
-JavaScript has 9 built-in constructors, `Object()`, `String()`, `Number()`, `Boolean()`, `Date()`, `Array()`, `Error()` and `Regexp()`. All of these will allow you to create the appropriate objects however for each of these there is an alternative _object literal_ that achieves the same result. For example to create an array or a string, these lines achieve the same result.
+JavaScript has 8 built-in constructors, `Object()`, `String()`, `Number()`, `Boolean()`, `Date()`, `Array()`, `Error()` and `Regexp()`. All of these will allow you to create the appropriate objects however for each of these there is an alternative _object literal_ that achieves the same result. For example to create an array or a string, these lines achieve the same result.
 ```javascript
 const arrLit = ['JavaScript', 'Swift', 'C++', 'Java']
 const arrCon = new Array('JavaScript', 'Swift', 'C++', 'Java')
@@ -255,16 +230,80 @@ If there are two ways to achieve the same result which one is preferred?
 
 Generally, object literals are more concise and easier to read. They also run faster due to parse-time optimisations. For these reasons it is always recommended to create them using object literals.
 
-### 3.3 Test Your Knowledge
+### 2.4 Test Your Knowledge
 
 TODO
 
-## 4 Immediately Invoked Function Expressions
+## 3 The Function Object
 
 As we have seen, functions are _first class citizens_, they can be used like any other data type. They can also be passed to other functions and returned from them. They can also be nested.
 
+In JavaScript every function is actually a [function object](https://goo.gl/jjyhZM). Because of this we can use the [new operator](https://goo.gl/gKwCCH) to create instances of them.
 
-Open the `counter.js` file.
+Open the `coffee.js` file. Lets understand how it works.
+
+1. The `coffee.js` file contains a **constructor** called `Coffee()` that can be used to create new objects.
+2. The function takes two parameters although the second one is a [default parameter](https://goo.gl/SJL4tS).
+3. Because we will be invoking the function as a constructor, the `this` object is bound to the returned object, this means that we will be able to access all its properties in our created object.
+    - Notice that we added an object to `this` to store the different sizes and this is accessible by the function parameters.
+4. We store the two parameters as properties of the `this` object.
+5. We also store the `getSize()` functions in the `this` object which means we can call it once we have an instance of our enclosing function. Because we are storing the function as a _function expression_, we use the [arrow function](https://goo.gl/B3UgyF) syntax.
+6. We define a readonly property called `order` that will return a description of the drink order.
+
+After the _constructor_ is defined, we use this to create various coffee orders by passing different parameters to the _constructor_.
+
+Run the script to see what it produces.
+
+Notice that when we print one of our coffee objects we can access the local `this` object meaning everything is _public_. This is not recommended and the next section describes how we can hide some of this.
+
+### 3.1 Test Your Knowledge
+
+1. Modify the `.getsize()` property, replacing the `switch` with an `if...else` block.
+2. Now modify the `if...else` such that:
+    - sizes up to 8 should be considered _small_.
+    - sizes between 9 and 12 should be _medium_.
+    - any size over 12 should be _large_.
+3. Add a third optional parameter called `shots` to allow the customer to specify additional coffee shots. The default value should be `0`.
+    - In the `order` property modify the message to include the number of additional shots.
+    - Modify the message so that the coffee is labelled as `strong` if there are 2 or more additional shots.
+
+## 4 Data Encapsulation
+
+The problem with the last example was that all the data was public. This is because it was assigned to the `this` object which has visibility outside the function scope. To solve this we take advantage of the scoping of JavaScript functions using a special construct called a **closure**.
+
+### 4.1 Closures
+
+Open the `betterCoffee.js` file which fixes this. Compare the code to the previous version and note:
+
+We have moved the data we want to hide into a block scoped variable called `privateData`, this prevents it being seen outside the function object.
+```javascript
+const privateData = {}
+
+privateData.size = {
+	small: 8,
+	medium: 12,
+	large: 16
+}
+```
+The `getSize()` method is not needed outside the function object and so it is defined locally.
+```javascript
+function getSize() {
+	if (this.ounces === this.size.small) {
+		return 'small'
+	} else if (this.ounces === this.size.medium) {
+		return 'medium'
+	} else if (this.ounces === this.size.large) {
+		return 'large'
+	}
+}
+```
+The `order` property needs to be visible outside the function object. The only way to make it visible is to _return_ it using the `return` statement. By returning an object you can return many different methods.
+
+### 4.2 Immediately Invoked Function Expressions
+
+Remember that we can assign a function to a variable (a _function expression_), all expressions return a value which, in the case of a function expression, is the function itself. Also remember that we can _invoke_ a function by appending a pair pf parenthesis `()`.
+
+Open the `counter.js` file and see if you can understand what is happening. The purpose of an IIFE is to obtain data privacy. 
 
 ### 4.1 Test Your Knowledge
 

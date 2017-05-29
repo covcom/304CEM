@@ -1,5 +1,9 @@
 
-'use strict'
+//'use strict'
+
+(function() {
+	console.log('Woohoo!')
+})()
 
 // simple closure example (using an IIFE)
 const add = ( () => {
@@ -12,7 +16,7 @@ add()
 console.log(add())
 
 // IIFE returning multiple functions via an object
-const counter = ( () => {
+(function() {
 	let count = 0
 	return {
 		increment: () => count += 1,
@@ -20,8 +24,6 @@ const counter = ( () => {
 		reset: () => count = 0
 	}
 })()
-
-//console.log(count)
 
 counter.increment()
 counter.increment()

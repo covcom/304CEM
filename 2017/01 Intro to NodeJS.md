@@ -62,7 +62,6 @@ To uninstall a _local_ package you can use the `npm uninstall` subcommand and pa
 npm uninstall readline-sync
 ```
 
-<<<<<<< HEAD
 #### 1.3 Useful Modules
 
 Although there are a lot of modules available through the package manager you will only need a few of these to complete the exercises in this book.
@@ -74,8 +73,6 @@ Although there are a lot of modules available through the package manager you wi
 - Sentiment: a module that uses the AFINN-165 wordlist and Emoji Sentiment Ranking to perform sentiment analysis on arbitrary blocks of input text.
 
 ## 2 Variables and Scope
-=======
-## 2 Basics of Javascript
 
 Now we have learned some theory it's time to see this in practice.
 
@@ -91,7 +88,6 @@ Its time to dive into our first example to see the workings of JavaScript in pra
 Load up the `todo.js` script and reference it as you read through the rest of this section.
 
 ### 2.1 Variables and Scope
->>>>>>> 5a2aaad6b13503d4560dd235fcbb07b315b6d934
 
 If you have ever worked with JavaScript you will have declared variables with the `var` keyword. This creates a _hoisted function-scoped_ variable which has several issues:
 
