@@ -10,7 +10,6 @@ var data = new Map();
 
 /** add a new item to the todo list. Notice that we are using the new 'Arrow Function' syntax from the ECMA6 specification. */
 exports.add = item  => {
-	debugger
 	/* check if the item is already in the list */
 	if (data.get(item) == undefined)
 	{
@@ -42,11 +41,11 @@ exports.clear = () => {
 
 /** Returns an array containing all todo items */
 exports.getAll = () => {
-	let dataArray = []
+	let data_array = []
 	for (var value of data.values()) {
-		dataArray.push(value)
+		data_array.push(value)
 	}
-	return dataArray
+	return data_array
 }
 
 /**

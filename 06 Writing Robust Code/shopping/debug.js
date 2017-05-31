@@ -2,13 +2,15 @@
 'use strict'
 
 const list = require('./modules/shopping')
-
+debugger
 list.add('bread')
 list.add('butter')
+debugger
 list.add('cheese')
 list.add('bread')
 list.add('bread')
 list.add('butter')
+debugger
 try {
 	list.decrement('bread', 2)
 	list.decrement('butter', 4)

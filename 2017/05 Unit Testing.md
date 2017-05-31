@@ -4,6 +4,8 @@
 
 In the previous lab you learned about a range of tools and techniques to help you write robust code, in this lab you will learn about the most important tool to improve your productivity.
 
+Building robust code is vitally important which means it should be frequently tested against the agreed spec. You will have already been shown the principles of Test-Driven Development (TDD) in the module 205CDE but in this module you will be taking your skills to an entirely new level and building the process into everything you do.
+
 In this worksheet you will be introduced to the principles behind test-driven development (TDD) and shown how to automate the testing of both your overall API and the individual modules it contains.
 
 You will be expected to demonstrate these skills in your assignment, marks will be awarded, so ensure you make use of TDD if you want to get a good grade.
