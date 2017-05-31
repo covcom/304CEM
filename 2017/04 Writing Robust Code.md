@@ -86,18 +86,47 @@ npm install
 
 ### 1.3 Global and Local Modules
 
-TODO
+Modules can either be installed _locally_ or _globally_ so what is the difference?
+
+####1.3.1 Locally Installed Modules
+
+If a module is installed locally it is installed using standard permissions in the `node_modules/` directory within the current directory. If there is a _binary executable_, it can be found in the `.bin/` directory. This is the recommended way to install packages and how we have been doing this until now.
+
+You will see this approach used for the first time when we install and run our linter. Let's install the `eslint` package locally and run its binary from the terminal.
+```
+npm install eslint --save-dev
+node_modules/.bin/eslint
+```
+Remember that the linter is used as a developer tool and not by the script itself so it needs to be added to the `devDependencies` object in `package.json`, this is done by specifying the `--save-dev` flag.
+
+Also notice that the `eslint` binary is inside the `.bin/` directory which is inside the `node_modules/` directory. To run it we need to specify the relative path.
+
+#### 1.3.2 Globally Installed Modules
+
+There are some situations where you need to install a module globally, this is normally only done for packages with a _binary executable_ and needs to be done as `root`. The main benefit is that, once installed, a module can be called from any directory without needing to know the file path. The disadvantage is that these can't be automatically tracked and installed as part of the script dependencies (from `package.json`). It is not recommended this approach is used unless absolutely necessary.
 
 ### 1.4 Script Aliases
 
-TODO
+The last object to understand in `package.json` is the `scripts`. This is where we can define aliases for our scripts.
+```json
+"scripts": {
+  "app": "node index.js",
+  "lint": "node_modules/.bin/eslint modules/"
+}
+```
+In the example above, the first alias, `app` is already defined and will execute the `index.js` script. The second one has been manually added and runs `eslint` on all the files in the `modules/` directory. To execute these you would type.
+```
+npm run app
+npm run lint
+```
+As you can see, by using a script alias you can simplify how you call scripts, especially if there are a lot of flags and options.
 
 ### 1.5 Test Your Knowledge
 
 1. modify the `package.json` file and change the version to 1.0.1
 2. install the `request` module, making sure it is referenced in the `dependencies` object in your `package.json` file.
-3. install the `jsdoc` module, making sure it is referenced in the `devDependencies` object.
-4. add a new script alias called `debug` and set its value to `./node_modules/.bin/node-inspector debug.js`, you will be using this later in the worksheet.
+3. install the `jsdoc` module, making sure it is referenced in the `devDependencies` object and add an alias called `doc` set to `node_modules/.bin/jsdoc modules/`.
+4. add a new script alias called `debug` and set its value to `node debug index.js`, you will be using this later in the worksheet.
 
 
 ## 2 CommonJS Modules
@@ -364,44 +393,41 @@ One really useful feature is that the browser-based debugger will automatically 
 
 ## 5 Documentation
 
-Documentation Generators
-
-Programming tools
-
-Generate software documentation from a source code files.
-
-JSDoc
-
-A markup language
-
-Based on Javadoc
-
-Used to annotate JavaScript code.
-
-Batch processed by a special tool
-
-Generates a HTML website
-
-Contains the human-readable documentation
-```javascript
-/**
- * Returns details for the named item.
- * @param   {string} item - The item name
- * @returns {string} The name of the item
- * @throws  {InvalidItem} item not in list
- */
- ```
- http://usejsdoc.org
-
 Whenever we write a program it is important that it is fully documented. A simple solution is to add comments to the code which can then be read by anyone who opens the script. A better solution would be to write up detailed _human readable_ documentation.
 
-So what should we be documenting?
+A **documentation generator** is a tool that takes structured comments added to source files and turns them into properly-formatted documentation. We will be using the [jsdoc]( http://usejsdoc.org) tool which is based on the **JavaDoc** tool used by Java programmers. JSDoc is a markup language used to annotate JavaScript source code files. Using comments containing JSDoc, you can add documentation describing the application programming interface of your code and turn these into a documentation website.
+
+In this exercise you will learn how to use JSDoc to create detailed professional documentation for your code.
+
+### 5.1 Adding JSDoc Comments
+
+So what needs to be documented?
 
 1. all function signatures (names, purpose, parameter, return types)
 2. any exceptions that may be thrown.
 3. an explanation of the purpose of any obscure lines of code
 
-In this exercise you will learn how to use JSDoc to create detailed professional documentation for your code. JSDoc is a markup language used to annotate JavaScript source code files. Using comments containing JSDoc, you can add documentation describing the application programming interface of your code.
+Let's look at a simple example, taken from `modules/shopping.js`
+```javascript
+/**
+ * Returns details for the named item.
+ * @param   {string} item - The item name to retrieve.
+ * @returns {string} The name of the item
+ * @throws  {InvalidItem} item not in list.
+ */
+exports.getItem = item => {
+	if (data.get(item) === undefined) {
+    // error thrown in the item is not in the Map()
+		throw new Error('item not in list')
+	}
+	return data.get(item)
+}
+```
+Notice that the JSDoc comments start with `/**` and end with `*/`. Each line starts with an asterix `*` and the first line describes the purpose of the function. All parameters are then listed together with their preferred data type and this is followed by the return value and its expected type. Finally any errors/exceptions thrown by the function are shown.
+
+You should also add standard JavaScript comments to explain the code itself. These begin with `//`. Even though these won't be extracted into the documentation they are important when trying to understand the code logic.
+
+### 5.2 Generating the Documentation
 
 JSDoc is available as a NodeJS plugin. It has already been added as a _Dev Dependency_ in the `package.json` file and so it should already be installed. Lets use it to build the documentation for our modules.
 ```
@@ -431,9 +457,9 @@ There are a lot more features that can be added to this, you should take time to
 ### 5.1 Test Your Knowledge
 
 1. Your challenge is to complete the documentation for the `shopping.js` module. You should use the `getItem()` documentation as a guide.
-2. The _Linter_ tool (see section 1) will help you identify where you need to add additional JSDoc comments.
-3. To check your results, run the documentation tool and reload the documentation web page.
-4. Carefully read through the generated documentation to ensure it is both complete and makes sense.
+    - Make sure you add the JSDoc documentation block and also add comments to explain the code.
+2. To check your results, run the documentation tool and reload the documentation web page.
+3. Carefully read through the generated documentation to ensure it is both complete and makes sense.
 
 
 ## 6 Creating Packages
