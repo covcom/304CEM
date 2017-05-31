@@ -12,14 +12,16 @@ There is a slide deck https://goo.gl/qF1iAy to accompay this worksheet. Make sur
 
 The lab covers a wide number of topics associated with running async code. The first 4 should be considered **essential** and the rest are topics that, whilst not essential to completing the assignment will greatly improve your knowledge of how asyncronous code works and, should you choose to implement these, will lead to much cleaner code.
 
-1. Async callbacks
-2. JSON data
-3. Modules and callbacks
-4. Nested callbacks
+1. Async callbacks *
+2. JSON data *
+3. Modules and callbacks *
+4. Nested callbacks *
 5. Generators
 6. Promises
 7. Async functions
 8. Screen scraping
+
+Any section above marked with an asterix `*` should be considered essential knowledge.
 
 ## 1 Async Callbacks
 

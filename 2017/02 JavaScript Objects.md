@@ -11,9 +11,9 @@ There is a slide deck https://goo.gl/w3jZ3t to accompay this worksheet. Make sur
 
 This chapter covers the following topics:
 
-1. Object literals
-2. The function object
-3. Constructors
+1. Object literals *
+2. The function object *
+3. Constructors *
 4. Immediately invoked function expressions
 5. Prototypal inheritance
 6. Classes

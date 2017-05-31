@@ -3,13 +3,23 @@
 
 In this chapter we will begin learning about programming in NodeJS. Note that we will only be covering the parts of the language that relate directly to building our APIs, there are lots of books that cover the language in more depth.
 
+This chapter covers the following concepts, _all_ of which should be considered essential.
+
+1. Node packages
+2. Variables and scope
+3. Data types
+4. Errors and exceptions
+5. Passing parameters on the command line
+6. Functions
+
+
 NodeJS is based on the JavaScript language which is used extensively in the browser to handle such tasks as form validation and animations. The latest version of the language (known as ECMA6) is not fully supported by the different browsers and, as a result, it is not recommended that you use the more up to date features.
 
 NodeJS is built on Chrome's V8 JavaScript engine which powers the latest version of the Chrome web browser and supports the majority of the latest ECMA6 features. It has been modified to allow it to run on a server.
 
 Because our scripts will run on the server on which we have installed a known version of the ECMA6 runtime, we can guarantee that our scripts will run correctly which means we can focus on teaching the absolute latest programming concepts and features.
 
-## 1 Benefits of NodeJS
+### Benefits of NodeJS
 
 There are a lot of languages that can be used to write server-side script ranging from **Perl**, one of the earliest _CGI Script_ languages through **PHP**, one of most popular languages and through to **Java** and **C#**. So why is NodeJS becoming so popular in recent years (and why have I chosen it for this book?
 
@@ -260,7 +270,7 @@ list
 exit
 ```
 
-#### 2.4.1 Executing NodeJS Files
+#### 2.7.1 Executing NodeJS Files
 
 There is an alternative way to execute a NodeJS script which works on Linux systems. it works because we have a _shebang_, otherwise known as a **processor directive** as the first line of our script. This tells the operating system where to find the command to run the script.
 ```
@@ -301,19 +311,7 @@ JavaScript is a _loosely typed_ language which means you don't declare a data ty
 - `Undefined`: This represents a variable that has not been assigned a value.
 - `Symbol`: This is a token representing a unique ID and are created using the `symbol()` function. They are new in ECMA6.
 
-## 3 Modular Code
-
-By now you have learned and practiced the basics of the JavaScript language. In this section you will extend your knowledge and understanding by working with a more complex script that will extend your existing knowledge. In this section you will cover:
-
-1. Errors and exceptions
-2. Declaring and calling functions
-3. Introspection and data types
-4. Working with Numbers
-4. Documenting your code
-
-Open the `contact.js` script and study it as you cover the following sections.
-
-### 3.1 Errors and Exceptions
+## 4 Errors and Exceptions
 
 When JavaScript executes code errors and exceptions may occur. These may be due to incorrect user input or a broken network connection for example. JavaScript includes a rich set of tools for handling these, based on the [Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) object.
 
@@ -322,7 +320,10 @@ When JavaScript executes code errors and exceptions may occur. These may be due 
 
 No matter how good we are at programming, our scripts will contain errors. In JavaScript when an unrecoverable error occurs in your code it throws an **Exception**. If this is not caught and handled by your script it will terminate the execution of the script and print the error to the console. Obviously this is a bad outcome and to prevent it we can _catch_ the error and handle it gracefully without causing the program to crash.
 
-#### 3.1.1 Handling Errors
+
+Open the `contact.js` script and study it as you cover the following sections.
+
+#### 4.1 Handling Errors
 
 To help catch any errors, JavaScript uses the `try-catch-finally` statement. The syntax is very similar to other modern language and looks like this:
 ```javascript
@@ -341,7 +342,7 @@ try {
 2. If an exception is _thrown_ the execution moves to the `catch{}` block.
   - the error object thrown will be passed as the parameter.
 
-#### 3.1.2 The Error Object
+#### 4.2 The Error Object
 
 When an error gets thrown it passes an Error object which contains three properties:
 - the name of the error
@@ -349,7 +350,7 @@ When an error gets thrown it passes an Error object which contains three propert
 - the stack trace.
   - the _stack trace_ is a list of the method calls that the application was in the middle of when an Exception was thrown and can help identify some of the more insidious errors. You should learn to read and understand what information it contains.
 
-## 4 Passing Parameters on the Command Line
+## 5 Passing Parameters on the Command Line
 
 You have probably seen some commands that take startup parameters. Each time you run a script, everything you type at the shell is made available through the process object which contains an `argv` array.
 
@@ -405,13 +406,13 @@ The built-in  `Array.slice()` method returns the section of array between the sp
 
 The final step is to pass this string to the sentiment tool which returns the sentiment of the sentence.
 
-## 5 Functions
+## 6 Functions
 
 In JavaScript, as in most other languages, code can be divided in to modular blocks called functions. Once defined, these can be called from other code. Data can be passed in the form of parameters and functions can return data back to the calling code.
 
 Open the `maths.js` file. Notice that this contains several functions. Each is called directly under its definition.
 
-### 5.1 Function Syntax
+### 6.1 Function Syntax
 
 Lets start with a simple example.
 ```javascript
@@ -434,7 +435,7 @@ const biggest = largestNumber(5, 8)
   a. If the numbers are not the same it returns the largest.
   b. If they are the same it returns `null`.
 
-### 5.2 The Spread Operator
+### 6.2 The Spread Operator
 
 If the data you want to pass to a function is stored in an `Array` (this is quite common), you could extract each value and assign to the function like this:
 ```javascript
@@ -448,7 +449,7 @@ const biggest2 = largestNumber(...nums)
 ```
 Notice the syntax of the _spread operator_.
 
-### 5.3 The Arguments Object
+### 6.3 The Arguments Object
 
 When a function is declared it has a **signature** which defines the number of parameters it is expecting, for example in the `largestNumber()` function, the signature defines two arguments.
 ```javascript
@@ -483,7 +484,7 @@ Inside the function we can access the `arguments` object. The `add()` function s
 - access individual arguments by referencing a key.
 - Use a `for...of` loop to iterate through the values.
 
-### 5.4 The Rest Parameter
+### 6.4 The Rest Parameter
 Whilst the `arguments` object provides a mechanism for accessing the function arguments, it returns an Object (the keys are `Strings`). It would be better if
 
 - the arguments could be accessed in an `Array`.
@@ -503,7 +504,7 @@ function add2(...values) {
 ```
 The `...values` parameter has a `...` prefix which defines it as a _rest parameter_. In the body of the function it can be seen that this is an `Array` and so each argument has a numerical index. This is the preferred way to handle arguments that are not assigned to parameters.
 
-### 5.5 Default Parameters
+### 6.5 Default Parameters
 
 As explained above, if you don't supply enough arguments for the parameters in the function signature, all the parameters without arguments are assigned a value of `null`. This means you have to add code within the function to check that there is a value assigned to the parameters before you can safely use them. ECMA6 has introduced **default parameters**. These allow you to assign a default value to a parameter if one is not supplied by when the function is called. Lets examine the `divide()` function.
 ```javascript
@@ -514,7 +515,7 @@ function divide(dividend, divisor=1) {
 ```
 Notice that the divisor has been assigned a value in the function signature. If this parameter is not assigned an argument, it defaults to this value.
 
-### 5.6 Function Expressions
+### 6.6 Function Expressions
 
 Functions are a data type in JavaScript (they are objects but more on that in the next chapter). As such they can be stored in variables for later execution. Prior to ECMA6 they were declared using the `function` keyword like this:
 ```javascript
@@ -546,7 +547,7 @@ Here is an example that should make points 2 and 3 clearer.
 const sqr = num => num * num
 ```
 
-### 5.7 Test Your Knowledge
+### 6.7 Test Your Knowledge
 
 Start by running the `maths.js` script and map the output it generates against the `console.log` statements in the script.
 
@@ -557,7 +558,7 @@ Start by running the `maths.js` script and map the output it generates against t
     - Add a second default parameter to prevent this.
 3. Write an _arrow function expression_ stored in a constant called `squareRoot` which calculates and returns the square root of the supplied number. You will need to use the `sqrt()` method which is part of the `Math` object.
 
-### 3.4 Test Your Knowledge
+### 7.8 Test Your Knowledge
 
 Implement the `validateEmail()` function and thoroughly test it, you should avoid using regular expressions at this stage:
 

@@ -8,12 +8,14 @@ There is a slide deck https://goo.gl/XHBbMx to accompay this worksheet. Make sur
 
 In this chapter you will be covering:
 
-1. Project metadata
-2. CommonJS modules
-3. Linters
+1. Project metadata *
+2. CommonJS modules *
+3. Linters *
 4. Debugging
-5. Documentation
+5. Documentation *
 6. Creating packages
+
+Any section above marked with an asterix `*` should be considered essential knowledge.
 
 
 ## 1 Project Metadata
