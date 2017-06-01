@@ -24,6 +24,8 @@
     "eslint": "^3.1.0",
     "frisby": "^0.8.5",
     "istanbul": "^0.4.0",
+    "jasmine": "^2.6.0",
+    "jasmine-console-reporter": "^1.2.7",
     "jasmine-node": "^1.14.5",
     "jsdoc": "^3.4.0"
   }
