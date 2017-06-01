@@ -4,6 +4,8 @@
 .
 #304CEM
 
+## This repository contains legacy code from 2016-17 and is no longer maintained. For the current worksheets and accompanying exercises you should visit https://github.coventry.ac.uk/304CEM-1718SEPJAN/TEACHING-MATERIALS
+
 ## [Useful Links for the Module](links.md)
 
 Welcome to **Web API Development**. You are probably viewing this via **GitHub** so one of the first tasks we will be carrying out is showing you how to *clone* your own copy of the code and maintain it on *your own Git repository*.
